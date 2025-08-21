@@ -1,0 +1,116 @@
+{% extends "cpm_basev2.html" %}
+{% load i18n %}
+{% block title %}{% trans "Question Category" %}{% endblock%}
+{% block head %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/django.csrf.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/intemass.util.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/cpm_questioncategory_edit.js"></script>
+<!--<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script>
+ 
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui-1.8.23.custom.css" type="text/css">-->
+
+
+<!-- ======================= Add Teacher ======================= -->
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.blockUI.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.easytree.js"></script>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/zTreeStyle.css" type="text/css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/zTreeStyle_mcq.css" type="text/css">
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.core-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.excheck-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.exedit-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.exedit-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/cpm_questioncategory_teacherlist.js"></script>
+
+<!-- =================== End of Add Teacher ================== -->
+
+
+<style>
+	.textLabel{
+		width:200px;
+		padding:5px;
+		font-weight:bold;
+	}
+	.textInput{
+		width:300px;
+		padding:5px;
+	}
+	.textInput input , textarea{
+		width:400px;
+	}
+	div#zTreeBackground {
+		float:right;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container_12">
+	<div id="content" style="min-height:220px;height:430px">
+		<div class="form" style="height:740px">
+		<h1 >{% trans "(CPM) Question Category" %}</h1>
+		<p style="padding:5px;border:solid 1px black;width:95%;"><button id="btnAdd" class="blueBtn">{% trans "Add New Sub" %}</button><button id="btnSave" class="blueBtn">{% trans "Save" %}</button><button id="btnDelete" class="blueBtn">Delete</button><button id="btnReturn" onclick="window.location='/cpm/questioncategory/view/';" class="blueBtn">{% trans "Return" %}</button></p>
+		
+		<p>
+			<table>
+				<tr style="display:none;">
+					<td class="textLabel">id</td><td colspan="2" class="textInput"><input type="text" id="txtid" width="200" value="{{ rowQuestCat.id }}" /></td>
+					
+				</tr>
+				<tr>
+					<td class="textLabel">{% trans "Question Category" %}</td><td class="textInput"><input readonly="true" disabled type="text" value="{{ rowQuestCat.qct_category }}" id="txtquestionCategory" width="200" /></td>
+					
+				</tr>
+				<tr>
+					<td class="textLabel">{% trans "Description" %}</td><td class="textInput"><textarea   id="txtDescription" width="200">{{ rowQuestCat.qct_description }}</textarea></td>
+				</tr>
+				<tr style="display:none;">
+					<td class="textLabel">seq</td><td class="textInput"><input type="text" value="{{ rowQuestCat.qct_sequence }}" id="txtseq" width="200" /></td>
+				</tr>
+				<tr style="display:none;">
+					<td class="textLabel">{% trans "parent id" %}</td><td class="textInput"><input type="text"  value="{{ rowQuestCat.qct_QuestionCategory_parentid}}" id="txtparentid" width="200" /></td>
+				</tr>
+			</table>
+
+			
+<!-- =================== Add Teacher ================== -->
+		
+			<div id="zTreeBackground">
+				<span id="zTreeHeader">{% trans "All Teacher" %}</span>
+				<ul id="teacher_list" class="ztree"></ul>
+				<span id="zTreeFooter">{% trans "Teacher" %}:<span id='qnum' style="width:60px;padding:0 5px;"></span>{% trans ", Selected" %}:<span id='snum' style="width:60px;padding:0 5px;"></span></span>
+				<a style="float: right;margin-top:10px;" href="javascript:submitform()" class="greenBtn" id="button_teacher">{% trans "Add Teacher" %}</a>
+
+			</div>
+
+			<!-- =================== End of Add Teacher ================== -->
+			
+		</p>
+
+		</div>
+	</div>
+</div>
+<div id="dialog-message" title="Download complete" style="display:none;">
+  <p>
+    <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+    {% trans "Your record save successfully." %}"
+  </p>
+  
+</div>
+
+<div id="dialog-error-desc" title="Can not be blank" style="display:none;">
+  <p>
+    <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 50px 0;"></span>
+    {% trans "Description can not be blank." %}"
+  </p>
+</div>
+<div id="dialog-error-cat" title="Can not be blank" style="display:none;">
+  <p>
+    <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 50px 0;"></span>
+    {% trans "Category can not be blank." %}"
+  </p>
+</div>
+<div id="dialog-confirm" title="Delete Confirmation?" style="display:none;">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "Confirm delete?" %}</p>
+</div>
+{% endblock %}

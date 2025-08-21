@@ -1,0 +1,228 @@
+{% extends "mcq_base.html" %}
+{% load i18n %}
+{% block title%} {% trans "Taking an Assigned Assignment" %} {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/mcq_student_takeassignment.css" type="text/css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/nyroModal.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/select2.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/custominput.css" />
+<script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.blockUI.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/customInput.jquery.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/ckeditor.adapter.jquery.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/select2.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.nyroModal.custom.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.json-2.3.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/select2.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.maskedinput-1.3.min.js"></script>
+
+
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/mathquill_editor.css " />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/mathquill_editor_sci.css " />
+<script type="text/javascript" src="{{ STATIC_URL }}js/mathquill_editor.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/mathquill_editor_sci.js"></script>
+
+
+<script type="text/javascript">
+    var global_isRetake = true;
+    var csrfvalue='{{ csrf_token }}';
+    var qids = {{qids}};
+    var qnames = {{qnames|safe}};
+    var paperid = {{paper.id}};
+    var studentid = {{ student.user.id }};
+	$('input[name=question_multiselection_option]').customInput();
+</script>
+<style>
+	#question_multiselection label {
+  width: 200px;
+  border-radius: 3px;
+  border: 1px solid #D1D3D4
+}
+
+/* hide input */
+input.radio:empty {
+	margin-left: -999px;
+}
+
+/* style label */
+input.radio:empty ~ label {
+	position: relative;
+	float: left;
+	line-height: 2.5em;
+	text-indent: 3.25em;
+	margin-top: 2em;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+input.radio:empty ~ label:before {
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	content: '';
+	width: 2.5em;
+	background: #D1D3D4;
+	border-radius: 3px 0 0 3px;
+}
+
+/* toggle hover */
+input.radio:hover:not(:checked) ~ label:before {
+	content:'\2714';
+	text-indent: .9em;
+	color: #C2C2C2;
+}
+
+input.radio:hover:not(:checked) ~ label {
+	color: #888;
+}
+
+/* toggle on */
+input.radio:checked ~ label:before {
+	content:'\2714';
+	text-indent: .9em;
+	color: #9CE2AE;
+	background-color: #4DCB6D;
+}
+
+input.radio:checked ~ label {
+	color: #777;
+}
+
+/* radio focus */
+input.radio:focus ~ label:before {
+	box-shadow: 0 0 0 3px #999;
+}
+
+
+.AssignmentLabel{
+	font-size: 16px;
+	position: relative;
+	top: 2px;
+}
+
+
+.optionlist{
+	height: 250px;
+	border: 1px solid;
+	font-size: 17px;
+}
+#question_editor{
+	font-size: 17px;
+}
+.optionlist input{
+	height:20px;width:20px;
+}
+
+#headerInfo td{
+	font-size: 17px;
+}
+#headerInfo label{
+	font-weight:bold
+}
+</style>
+<script type="text/javascript" src="{{ STATIC_URL }}js/mcq_student_takeassignment.js?v=1"></script>
+{% endblock %}
+
+{% block content %}
+
+<div id='content'>
+    <div class="showList wide">
+        <div class="rttip">{% trans "(MCQ) Assigned Assignment" %}</div>
+
+	<table id="headerInfo" style="width:100%;">
+		<tr>
+			<td><label class="AssignmentLabel" for="assignment">{% trans "Assignment:" %}</label></td>
+			<td><span>{{assignment.asm_assignmentname}}</span></td>
+			<td><label for="" class="AssignmentLabel">{% trans "Question:" %}</label></td>
+			<td><span id="question_name_show"></span></td>
+		</tr>
+		<tr>
+			<td><label class="AssignmentLabel" for="Teacher">{% trans "Teacher:" %}</label></td>
+			<td><span>{{assignment.teacher.user.username}}</span></td>
+			<td><label for="" class="AssignmentLabel">{% trans "Process:" %}</label></td>
+			<td><span id="question_process_show">2/10</span></td>
+		</tr>
+		<tr>
+			<td><label for="Student" class="AssignmentLabel">{% trans "Student:" %}</label></td>
+			<td><span>{{student.user.username}}</span></td>
+			<td><label for="" class="AssignmentLabel">{% trans "Time:" %}</label></td>
+			<td><span id="time_show">24/60</span></td>
+		</tr>
+		
+	</table>
+        <table  class="singleContent">
+            <tbody>
+                <tr>
+                    <td class="rtfwrapper">
+                        <div id="question_content">
+				
+                            <textarea id="question_editor" name="question_editor"></textarea>
+                        </div>
+			
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>	<a id="question_canvas" style="width: 43px; height: 16px;" class="populate greenBtn" href="#">{% trans "Graph" %}</a>		      	
+                        <h4 class="ui-widget-header" id="thumbnails_header">{% trans "Question Diagrams" %}</h4>
+                        <div id="thumbnails" class="ui-widget-content ui-state-default">
+                            <ul id="possible_diagrams" class="gallery ui-helper-reset ui-helper-clearfix  ">
+                            </ul>
+                        </div>
+
+                    </td>			     
+                </tr>     		
+                <tr><td colspan='3'> &nbsp;</td></tr>
+		<tr>
+			<td colspan='3'>
+				<hr/>
+				<div id="question_multiselection">
+				
+					<input name="question_multiselection_option" 
+						id="question_multiselection_option" type="radio"  value="" disabled> 
+						- {% trans "No Option Available" %} - 
+					</input>
+
+				</div>
+			</td>
+		</tr>
+<div style="display:none;">
+                	<a id="question_canvas1" style="width: 43px; height: 16px;" class="populate greenBtn" href="#">{% trans "Graph" %}</a>
+	</div>	
+            </tbody>
+        </table>
+        
+		<p class="longp btngroup">
+		<a  class="blueBtn shortBtn" id='first'>&lt;&lt; {% trans "First" %}</a>
+        <a  class="blueBtn shortBtn" id='previous'>&lt; {% trans "Previous" %}</a>
+        <a  class="blueBtn shortBtn" id='next'>{% trans "Next" %} &gt;</a>
+        <a  class="blueBtn shortBtn" id='last'>{% trans "Last" %} &gt;&gt;</a>
+        <a  class="greenBtn" id='btnBack'>{% trans "Close" %}</a>
+        <a  class="greenBtn"  id='btnGoToReport' onclick="onCloseExamGotoReport({{paper.id}},{{ student.user.id }});return false;" style="width:150px;;display:none;margin-top:15px;">{% trans "End and view report" %}</a>
+ 
+
+        </p>
+<div style="display:none;">
+	<form name='formx1' class="content" method="post" action='{% url mcq_report_studentanswer %}'>{% csrf_token %}
+	<input type="hidden" id='paperids' name="paperids" value=''>
+	</form>
+</div>
+    </div>
+</div>
+<div style='display:none;'  id="dialog-process" title="Processing">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "Processing your request..." %}</p>
+	<div id="progressbar"></div>
+</div>
+<div style='display:none;'  id="dialog-error" title="error">
+		<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span><span id='lblerrormessage'></span></p>
+</div>
+<div style='display:none;'  id="dialog-confirm" title="Are you sure?">
+		<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "Once selected. Answer can not be change." %}</p>
+</div>
+{% endblock %}

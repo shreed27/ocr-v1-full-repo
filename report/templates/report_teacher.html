@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans " Teacher's Assignment Overview " %}{% endblock %} {% block head %}
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/datatable_custom.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/report_teacher.css" />
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.blockUI.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.dataTables.columnFilter.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/report_teacher.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/django.csrf.js"></script>
+{% comment %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jsonToCsvconverter.js"></script>
+{% endcomment %}
+<script type="text/javascript">
+var csrf_token = '{{ csrf_token }}';
+</script>
+{% endblock %} {% block content %}
+<div class="container_12">
+    <div class="grid_12">
+        <div style="text-align:center;margin:0;clear:both;">
+            <h1>{% trans " Teacher's Assignment Record " %}</h1>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="grid_12">
+        <div class="grid_3 alpha">
+            <form class="content" method="post" action="">{% csrf_token %}
+                <p style="float:left;">
+                    <label class="title1" for="id_year" style="float:left;margin-top:0;">{% trans "Year" %}:</label>
+                    {{ form.year }} {%if form.year.errors %} {% for error in form.year.errors %}
+                    <div class="warning">{{ error }}</div>
+                    {% endfor %} {% endif %}
+                </p>
+                <p style="float:left;">
+                    <label class="title1" for="id_subject" style="float:left;margin-top:0;">{% trans "Subject" %}:</label>
+                    {{ form.subject }} {%if form.subject.errors %} {% for error in form.subject.errors %}
+                    <div class="warning">{{ error }}</div>
+                    {% endfor %} {% endif %}
+                </p>
+
+                <p style="float:left;">
+                    <label class="title1" for="id_level" style="float:left;margin-top:0;">{% trans "Level" %}:</label>
+                    {{ form.level }} {%if form.level.errors %} {% for error in form.level.errors %}
+                    <div class="warning">{{ error }}</div>
+                    {% endfor %} {% endif %}
+                </p>
+                <p style="clear:both;width:250px;">
+                    <a href=javascript:submitform() class="blueBtn" id="button" style="min-width:100px;width:100px">{% trans "Please Select" %}</a>
+                </p>
+            </form>
+        </div>
+        <div class="grid_8">
+            <table class="datatable_display" id="data_list">
+                <thead>
+                    <tr>
+                        <th width="12%">{% trans "YEAR" %}</th>
+                        <th width="18%">{% trans "SUBJECT" %}</th>
+                        <th width="15%">{% trans "LEVEL" %}</th>
+                        <th width="25%">{% trans "ASSIGNMENT" %}</th>
+                        <th width="30%">{% trans "VIEW DETAILED MARKS" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="grid_4 alpha">
+                <a href=javascript:selectall() class="blueBtn btn" id="buttonselect">{% trans "Select All" %}</a>
+            </div>
+            <div class="grid_4 alpha">
+                <a href=javascript:checkdetailmark() class="greenBtn btn" id="buttonprocess">{% trans "Process" %}</a>
+            </div>
+        </div>
+    </div>
+    <div class="clear">
+        <form name='formx1' class="content" method="post" action='{% url report_teacher %}'>{% csrf_token %}
+            <input type="hidden" id='paperids' name="paperids" value=''>
+        </form>
+    </div>
+
+    <!-- New closeness report table  -->
+    <div class="asgn_list_cont" style="margin-top:5%;">
+    <div class="grid_12">
+        <div class="grid_12">
+            <div style="text-align:center;margin:0;clear:both;">
+                <h1>{% trans " Closeness Reports " %}</h1>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="grid_12 asgn_radio_table">
+            <div class="grid_3 alpha">
+                <form class="content" method="post" action="">{% csrf_token %}
+                    <p style="float:left;">
+                        <label class="title1" for="id_asgn_year" style="float:left;margin-top:0;">{% trans "Year" %}:</label>
+                        <select id="id_asgn_year">
+                            {% for y in form.fields.year.choices %}
+                            <option value="{{y.0}}">{{y.1}}</option>
+                            {% endfor %}
+                        </select>
+                        {%if form.year.errors %} {% for error in form.year.errors %}
+                        <div class="warning">{{ error }}</div>
+                        {% endfor %} {% endif %}
+                    </p>
+                    <p style="float:left;">
+                        <label class="title1" for="id_asgn_subject" style="float:left;margin-top:0;">{% trans "Subject" %}:</label>
+                        <select id="id_asgn_subject">
+                            {% for s in form.fields.subject.choices %}
+                            <option value="{{s.0}}">{{s.1}}</option>
+                            {% endfor %}
+                        </select>
+                        {%if form.subject.errors %} {% for error in form.subject.errors %}
+                        <div class="warning">{{ error }}</div>
+                        {% endfor %} {% endif %}
+                    </p>
+
+                    <p style="float:left;">
+                        <label class="title1" for="id_asgn_level" style="float:left;margin-top:0;">{% trans "Level" %}:</label>
+                        <select id="id_asgn_level">
+                            {% for l in form.fields.level.choices %}
+                            <option value="{{l.0}}">{{l.1}}</option>
+                            {% endfor %}
+                        </select>
+                        {%if form.level.errors %} {% for error in form.level.errors %}
+                        <div class="warning">{{ error }}</div>
+                        {% endfor %} {% endif %}
+                    </p>
+                    <p style="clear:both;width:250px;">
+                        <a href=javascript:asgnFilterform() class="blueBtn" id="button" style="min-width:100px;width:100px">{% trans "Please Select" %}</a>
+                    </p>
+                </form>
+            </div>
+
+            <div class="grid_8">
+                <table class="datatable_display" id="asgn_data_list">
+                    <thead>
+			{% comment %}
+                        <tr>
+                            <th width="10%">{% trans "YEAR" %}</th>
+                            <th width="15%">{% trans "SUBJECT" %}</th>
+                            <th width="10%">{% trans "LEVEL" %}</th>
+                            <th width="25%">{% trans "ASSIGNMENT" %}</th>
+                            <th width="20%">{% trans "CLOSENESS REPORT" %}</th>
+                            <th width="20%">{% trans "DOWNLOAD CLOSENESS REPORT" %}</th>
+                        </tr>
+			{% endcomment %}
+                        <tr>
+                            <th width="10%">{% trans "YEAR" %}</th>
+                            <th width="20%">{% trans "SUBJECT" %}</th>
+                            <th width="10%">{% trans "LEVEL" %}</th>
+                            <th width="40%">{% trans "ASSIGNMENT" %}</th>
+                            <th width="20%">{% trans "CLOSENESS REPORT" %}</th>
+                        </tr>
+                    </thead>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div class="grid_4 alpha">
+                    <a href="{% url csv_closeness_report_summary %}" class="blueBtn btn" id="buttonselect">{% trans "Download All" %}</a>
+                </div>
+                <div class="grid_4 alpha get_cls_report">
+                    <a href=javascript:getClosnessReport() class="greenBtn btn" id="buttonprocess">{% trans "Process" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- new closeness report assignment table endings -->
+
+    <!-- detailed closeness report starts -->
+    <div class="grid_12 asgn_closeness_report" style="display: none">
+        <div class="grid_12">
+            <div style="text-align:center;margin:0;clear:both;">
+                <h1>{% trans " Closeness Report Summary" %}</h1>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="grid_8 grid_cls_report">
+            <table class="datatable_display" id="asgn_closeness_report" width="100%">
+                <thead>
+                    <tr>
+                        <th width="30%">{% trans "Question" %}</th>
+                        <th width="10%">{% trans "Point List" %}</th>
+                        <th width="30%">{% trans "Correctly Answered" %}</th>
+                        <th width="30%">{% trans "Wrongly Answered" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- detailed closeness report ends -->
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "mcq_basev2.html" %}
+{% block title %}Option List Detail{% endblock%}
+{% block head %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/django.csrf.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/intemass.util.js"></script> 
+<script type="text/javascript">
+     var csrfvalue='{{ csrf_token }}';
+</script>
+{% endblock %}
+
+{% block content %}
+
+<center><h3>{{ errormessage }}</h3></center>
+
+{% endblock %}

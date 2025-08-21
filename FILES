@@ -1,0 +1,1829 @@
+.
+├── algo
+│   ├── answer.py
+│   ├── canvascompare.py
+│   ├── __init__.py
+│   ├── markscheme.py
+│   ├── models.py
+│   ├── scheme_lang.py
+│   ├── standard.py
+│   ├── testdata
+│   │   ├── convertdocx.py
+│   │   ├── logging.conf
+│   │   ├── raw
+│   │   │   ├── Market_Failure
+│   │   │   │   ├── Market_Failure-student1.docx
+│   │   │   │   ├── Market_Failure-student2.docx
+│   │   │   │   ├── Market_Failure-student3.docx
+│   │   │   │   └── Standard
+│   │   │   │       ├── Market_Failure_MarkScheme.docx
+│   │   │   │       ├── Market_Failure-Question.docx
+│   │   │   │       ├── Market_Failure-Standard.docx
+│   │   │   │       └── Market_Failure-Standard-Image.JPG
+│   │   │   └── Q1
+│   │   │       ├── ans_Q1.txt
+│   │   │       ├── MarkingAppSystem-120314.xls
+│   │   │       ├── Q1_html.txt
+│   │   │       ├── Q1_SS10.docx
+│   │   │       ├── Q1_SS11.docx
+│   │   │       ├── Q1_SS12.docx
+│   │   │       ├── Q1_SS13.docx
+│   │   │       ├── Q1_SS14.docx
+│   │   │       ├── Q1_SS15.docx
+│   │   │       ├── Q1_SS16.docx
+│   │   │       ├── Q1_SS17.docx
+│   │   │       ├── Q1_SS18.docx
+│   │   │       ├── Q1_SS19.docx
+│   │   │       ├── Q1_SS1.docx
+│   │   │       ├── Q1_SS20.docx
+│   │   │       ├── Q1_SS21.docx
+│   │   │       ├── Q1_SS22.docx
+│   │   │       ├── Q1_SS23.docx
+│   │   │       ├── Q1_SS24.docx
+│   │   │       ├── Q1_SS25.docx
+│   │   │       ├── Q1_SS26.docx
+│   │   │       ├── Q1_SS27.docx
+│   │   │       ├── Q1_SS28.docx
+│   │   │       ├── Q1_SS29.docx
+│   │   │       ├── Q1_SS2.docx
+│   │   │       ├── Q1_SS30.docx
+│   │   │       ├── Q1_SS31.docx
+│   │   │       ├── Q1_SS32.docx
+│   │   │       ├── Q1_SS3.docx
+│   │   │       ├── Q1_SS4.docx
+│   │   │       ├── Q1_SS5.docx
+│   │   │       ├── Q1_SS6.docx
+│   │   │       ├── Q1_SS7.docx
+│   │   │       ├── Q1_SS8.docx
+│   │   │       ├── Q1_SS9.docx
+│   │   │       └── Standard
+│   │   │           ├── Q1-MarkScheme.docx
+│   │   │           ├── Q1-Question.docx
+│   │   │           ├── Q1-Standard.docx
+│   │   │           └── Q1-Standard-Image.JPG
+│   │   └── README.txt
+│   └── tests.py
+├── annoying
+│   ├── decorators.py
+│   ├── exceptions.py
+│   ├── fields.py
+│   ├── functions.py
+│   ├── __init__.py
+│   ├── middlewares.py
+│   ├── templatetags
+│   │   ├── annoying.py
+│   │   ├── __init__.py
+│   │   └── smart_if.py
+│   └── utils.py
+├── assignment
+│   ├── admin.py
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── models.py
+│   ├── static
+│   │   ├── css
+│   │   │   ├── assignment_detail.css
+│   │   │   ├── jquery.multiselect.css
+│   │   │   └── PIE.htc
+│   │   └── js
+│   │       ├── assignment_detail.js
+│   │       ├── jquery.multiselect.min.js
+│   │       └── jquery-ui-timepicker-addon.js
+│   ├── templates
+│   │   ├── assignment_all.json
+│   │   ├── assignment_detail.html
+│   │   └── teacherreport_assignment_all.json
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── canvas
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── models.py
+│   ├── static
+│   │   ├── css
+│   │   │   ├── 960.css
+│   │   │   ├── images
+│   │   │   │   ├── back_disabled.png
+│   │   │   │   ├── back_enabled_hover.png
+│   │   │   │   ├── back_enabled.png
+│   │   │   │   ├── bar-alpha.png
+│   │   │   │   ├── bar-opacity.png
+│   │   │   │   ├── bar.png
+│   │   │   │   ├── bar-pointer.png
+│   │   │   │   ├── b_browse.png
+│   │   │   │   ├── b_drop.png
+│   │   │   │   ├── b_edit.png
+│   │   │   │   ├── body_bg.gif
+│   │   │   │   ├── btn_add.gif
+│   │   │   │   ├── form_title_corner.gif
+│   │   │   │   ├── forward_disabled.png
+│   │   │   │   ├── forward_enabled_hover.png
+│   │   │   │   ├── forward_enabled.png
+│   │   │   │   ├── header_bg_bk.gif
+│   │   │   │   ├── header_bg_bl.gif
+│   │   │   │   ├── header_bg_coner1
+│   │   │   │   ├── login_form_bg.gif
+│   │   │   │   ├── long_form_bg.gif
+│   │   │   │   ├── map-opacity.png
+│   │   │   │   ├── map.png
+│   │   │   │   ├── map-pointer.png
+│   │   │   │   ├── navi_bg
+│   │   │   │   ├── navi_bg_coner1
+│   │   │   │   ├── navi_bg_coner2
+│   │   │   │   ├── paper-icon.png
+│   │   │   │   ├── preview-opacity.png
+│   │   │   │   ├── question-icon.png
+│   │   │   │   ├── sort_asc_disabled.png
+│   │   │   │   ├── sort_asc.png
+│   │   │   │   ├── sort_both.png
+│   │   │   │   ├── sort_desc_disabled.png
+│   │   │   │   ├── sort_desc.png
+│   │   │   │   ├── stu_female.png
+│   │   │   │   ├── stu_male.png
+│   │   │   │   ├── teacher.png
+│   │   │   │   ├── toolbar_start.gif
+│   │   │   │   ├── ui-bg_flat_0_aaaaaa_40x100.png
+│   │   │   │   ├── ui-bg_flat_75_ffffff_40x100.png
+│   │   │   │   ├── ui-bg_glass_55_fbf9ee_1x400.png
+│   │   │   │   ├── ui-bg_glass_65_ffffff_1x400.png
+│   │   │   │   ├── ui-bg_glass_75_dadada_1x400.png
+│   │   │   │   ├── ui-bg_glass_75_e6e6e6_1x400.png
+│   │   │   │   ├── ui-bg_glass_95_fef1ec_1x400.png
+│   │   │   │   ├── ui-bg_highlight-soft_75_cccccc_1x100.png
+│   │   │   │   ├── ui-colorpicker.png
+│   │   │   │   ├── ui-icons_222222_256x240.png
+│   │   │   │   ├── ui-icons_2e83ff_256x240.png
+│   │   │   │   ├── ui-icons_454545_256x240.png
+│   │   │   │   ├── ui-icons_888888_256x240.png
+│   │   │   │   └── ui-icons_cd0a0a_256x240.png
+│   │   │   ├── intemasscanvas.css
+│   │   │   ├── jquery.colorpicker.css
+│   │   │   ├── jquery.contextMenu.css
+│   │   │   ├── jquery-ui-1.8.21.custom.css
+│   │   │   ├── reset.css
+│   │   │   ├── style.css
+│   │   │   └── text.css
+│   │   └── js
+│   │       ├── jquery-1.7.2.min.js
+│   │       ├── jquery.colorpicker.js
+│   │       ├── jquery.contextMenu.js
+│   │       ├── jquery.json-2.3.min.js
+│   │       ├── jquery-ui-1.8.21.custom.min.js
+│   │       ├── knockout-2.1.0.js
+│   │       ├── my1.js
+│   │       ├── my.js
+│   │       ├── original-my.js
+│   │       ├── raphael.js
+│   │       ├── raphael-popup.js
+│   │       └── ui.spinner.min.js
+│   ├── templates
+│   │   └── raphael.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── classroom
+│   ├── admin.py
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── models.py
+│   ├── static
+│   │   ├── css
+│   │   │   └── classroom_detail.css
+│   │   └── js
+│   │       └── classroom_detail.js
+│   ├── templates
+│   │   ├── classroom_all.json
+│   │   ├── classroom_detail.html
+│   │   └── classroom_getstudents.json
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── clean.sh
+├── common
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── models.py
+│   ├── static
+│   │   ├── css
+│   │   │   ├── 960.css
+│   │   │   ├── datatable_custom.css
+│   │   │   ├── images
+│   │   │   │   ├── line_conn.gif
+│   │   │   │   ├── loading.gif
+│   │   │   │   ├── select_left.gif
+│   │   │   │   ├── select_right.gif
+│   │   │   │   ├── ui-bg_flat_0_aaaaaa_40x100.png
+│   │   │   │   ├── ui-bg_flat_75_ffffff_40x100.png
+│   │   │   │   ├── ui-bg_glass_55_fbf9ee_1x400.png
+│   │   │   │   ├── ui-bg_glass_65_ffffff_1x400.png
+│   │   │   │   ├── ui-bg_glass_75_dadada_1x400.png
+│   │   │   │   ├── ui-bg_glass_75_e6e6e6_1x400.png
+│   │   │   │   ├── ui-bg_glass_95_fef1ec_1x400.png
+│   │   │   │   ├── ui-bg_highlight-soft_75_cccccc_1x100.png
+│   │   │   │   ├── ui-icons_222222_256x240.png
+│   │   │   │   ├── ui-icons_2e83ff_256x240.png
+│   │   │   │   ├── ui-icons_454545_256x240.png
+│   │   │   │   ├── ui-icons_888888_256x240.png
+│   │   │   │   ├── ui-icons_cd0a0a_256x240.png
+│   │   │   │   ├── zTreeStandard.gif
+│   │   │   │   └── zTreeStandard.png
+│   │   │   ├── jquery-ui-1.8.20.custom.css
+│   │   │   ├── PIE.htc
+│   │   │   ├── reset.css
+│   │   │   ├── style.css
+│   │   │   ├── text.css
+│   │   │   ├── zTreeStyle.css
+│   │   │   └── zTreeStyle_custom.css
+│   │   ├── images
+│   │   │   ├── back_disabled.png
+│   │   │   ├── back_enabled_hover.png
+│   │   │   ├── back_enabled.png
+│   │   │   ├── b_browse.png
+│   │   │   ├── b_drop.png
+│   │   │   ├── b_edit.png
+│   │   │   ├── body_bg.gif
+│   │   │   ├── btn_add.gif
+│   │   │   ├── form_title_corner.gif
+│   │   │   ├── forward_disabled.png
+│   │   │   ├── forward_enabled_hover.png
+│   │   │   ├── forward_enabled.png
+│   │   │   ├── header_bg_bk.gif
+│   │   │   ├── header_bg_bl.gif
+│   │   │   ├── header_bg_coner1
+│   │   │   ├── login_form_bg.gif
+│   │   │   ├── long_form_bg.gif
+│   │   │   ├── navi_bg
+│   │   │   ├── navi_bg_coner1
+│   │   │   ├── navi_bg_coner2
+│   │   │   ├── paper-icon.png
+│   │   │   ├── pbar-ani.gif
+│   │   │   ├── question-icon.png
+│   │   │   ├── sort_asc_disabled.png
+│   │   │   ├── sort_asc.png
+│   │   │   ├── sort_both.png
+│   │   │   ├── sort_desc_disabled.png
+│   │   │   ├── sort_desc.png
+│   │   │   ├── stu_female.png
+│   │   │   ├── stu_male.png
+│   │   │   ├── teacher.png
+│   │   │   └── toolbar_start.gif
+│   │   └── js
+│   │       ├── ckeditor
+│   │       │   ├── ckeditor.adapter.jquery.js
+│   │       │   ├── ckeditor.js
+│   │       │   ├── ckeditor_source.js
+│   │       │   ├── config.js
+│   │       │   ├── contents.css
+│   │       │   ├── lang
+│   │       │   │   ├── af.js
+│   │       │   │   ├── ar.js
+│   │       │   │   ├── bg.js
+│   │       │   │   ├── bn.js
+│   │       │   │   ├── bs.js
+│   │       │   │   ├── ca.js
+│   │       │   │   ├── cs.js
+│   │       │   │   ├── cy.js
+│   │       │   │   ├── da.js
+│   │       │   │   ├── de.js
+│   │       │   │   ├── el.js
+│   │       │   │   ├── en-au.js
+│   │       │   │   ├── en-ca.js
+│   │       │   │   ├── en-gb.js
+│   │       │   │   ├── en.js
+│   │       │   │   ├── eo.js
+│   │       │   │   ├── es.js
+│   │       │   │   ├── et.js
+│   │       │   │   ├── eu.js
+│   │       │   │   ├── fa.js
+│   │       │   │   ├── fi.js
+│   │       │   │   ├── fo.js
+│   │       │   │   ├── fr-ca.js
+│   │       │   │   ├── fr.js
+│   │       │   │   ├── gl.js
+│   │       │   │   ├── gu.js
+│   │       │   │   ├── he.js
+│   │       │   │   ├── hi.js
+│   │       │   │   ├── hr.js
+│   │       │   │   ├── hu.js
+│   │       │   │   ├── is.js
+│   │       │   │   ├── it.js
+│   │       │   │   ├── ja.js
+│   │       │   │   ├── ka.js
+│   │       │   │   ├── km.js
+│   │       │   │   ├── ko.js
+│   │       │   │   ├── _languages.js
+│   │       │   │   ├── lt.js
+│   │       │   │   ├── lv.js
+│   │       │   │   ├── mk.js
+│   │       │   │   ├── mn.js
+│   │       │   │   ├── ms.js
+│   │       │   │   ├── nb.js
+│   │       │   │   ├── nl.js
+│   │       │   │   ├── no.js
+│   │       │   │   ├── pl.js
+│   │       │   │   ├── pt-br.js
+│   │       │   │   ├── pt.js
+│   │       │   │   ├── ro.js
+│   │       │   │   ├── ru.js
+│   │       │   │   ├── sk.js
+│   │       │   │   ├── sl.js
+│   │       │   │   ├── sr.js
+│   │       │   │   ├── sr-latn.js
+│   │       │   │   ├── sv.js
+│   │       │   │   ├── th.js
+│   │       │   │   ├── _translationstatus.txt
+│   │       │   │   ├── tr.js
+│   │       │   │   ├── ug.js
+│   │       │   │   ├── uk.js
+│   │       │   │   ├── vi.js
+│   │       │   │   ├── zh-cn.js
+│   │       │   │   └── zh.js
+│   │       │   ├── plugins
+│   │       │   │   ├── a11yhelp
+│   │       │   │   │   ├── dialogs
+│   │       │   │   │   │   └── a11yhelp.js
+│   │       │   │   │   └── lang
+│   │       │   │   │       ├── cs.js
+│   │       │   │   │       ├── cy.js
+│   │       │   │   │       ├── da.js
+│   │       │   │   │       ├── de.js
+│   │       │   │   │       ├── el.js
+│   │       │   │   │       ├── en.js
+│   │       │   │   │       ├── eo.js
+│   │       │   │   │       ├── fa.js
+│   │       │   │   │       ├── fi.js
+│   │       │   │   │       ├── fr.js
+│   │       │   │   │       ├── gu.js
+│   │       │   │   │       ├── he.js
+│   │       │   │   │       ├── it.js
+│   │       │   │   │       ├── mk.js
+│   │       │   │   │       ├── nb.js
+│   │       │   │   │       ├── nl.js
+│   │       │   │   │       ├── no.js
+│   │       │   │   │       ├── _translationstatus.txt
+│   │       │   │   │       ├── tr.js
+│   │       │   │   │       ├── ug.js
+│   │       │   │   │       ├── vi.js
+│   │       │   │   │       └── zh-cn.js
+│   │       │   │   ├── about
+│   │       │   │   │   └── dialogs
+│   │       │   │   │       ├── about.js
+│   │       │   │   │       └── logo_ckeditor.png
+│   │       │   │   ├── adobeair
+│   │       │   │   │   └── plugin.js
+│   │       │   │   ├── ajax
+│   │       │   │   │   └── plugin.js
+│   │       │   │   ├── autogrow
+│   │       │   │   │   └── plugin.js
+│   │       │   │   ├── bbcode
+│   │       │   │   │   └── plugin.js
+│   │       │   │   ├── clipboard
+│   │       │   │   │   └── dialogs
+│   │       │   │   │       └── paste.js
+│   │       │   │   ├── colordialog
+│   │       │   │   │   └── dialogs
+│   │       │   │   │       └── colordialog.js
+│   │       │   │   ├── devtools
+│   │       │   │   │   ├── lang
+│   │       │   │   │   │   ├── bg.js
+│   │       │   │   │   │   ├── cs.js
+│   │       │   │   │   │   ├── cy.js
+│   │       │   │   │   │   ├── da.js
+│   │       │   │   │   │   ├── de.js
+│   │       │   │   │   │   ├── el.js
+│   │       │   │   │   │   ├── en.js
+│   │       │   │   │   │   ├── eo.js
+│   │       │   │   │   │   ├── et.js
+│   │       │   │   │   │   ├── fa.js
+│   │       │   │   │   │   ├── fi.js
+│   │       │   │   │   │   ├── fr.js
+│   │       │   │   │   │   ├── gu.js
+│   │       │   │   │   │   ├── he.js
+│   │       │   │   │   │   ├── hr.js
+│   │       │   │   │   │   ├── it.js
+│   │       │   │   │   │   ├── nb.js
+│   │       │   │   │   │   ├── nl.js
+│   │       │   │   │   │   ├── no.js
+│   │       │   │   │   │   ├── pl.js
+│   │       │   │   │   │   ├── _translationstatus.txt
+│   │       │   │   │   │   ├── tr.js
+│   │       │   │   │   │   ├── ug.js
+│   │       │   │   │   │   ├── uk.js
+│   │       │   │   │   │   ├── vi.js
+│   │       │   │   │   │   └── zh-cn.js
+│   │       │   │   │   └── plugin.js
+│   │       │   │   ├── dialog
+│   │       │   │   │   └── dialogDefinition.js
+│   │       │   │   ├── div
+│   │       │   │   │   └── dialogs
+│   │       │   │   │       └── div.js
+│   │       │   │   ├── docprops
+│   │       │   │   │   ├── dialogs
+│   │       │   │   │   │   └── docprops.js
+│   │       │   │   │   └── plugin.js
+│   │       │   │   ├── find
+│   │       │   │   │   └── dialogs
+│   │       │   │   │       └── find.js
+│   │       │   │   ├── flash
+│   │       │   │   │   ├── dialogs
+│   │       │   │   │   │   └── flash.js
+│   │       │   │   │   └── images
+│   │       │   │   │       └── placeholder.png
+│   │       │   │   ├── fmath_formula
+│   │       │   │   │   ├── dialogs
+│   │       │   │   │   │   ├── configMathMLEditor.xml
+│   │       │   │   │   │   ├── editor.html
+│   │       │   │   │   │   ├── fmath_formula.js
+│   │       │   │   │   │   └── mathml
+│   │       │   │   │   │       ├── fontswf
+│   │       │   │   │   │       │   ├── fonts.swf
+│   │       │   │   │   │       │   ├── s0000.swf
+│   │       │   │   │   │       │   ├── s0100.swf
+│   │       │   │   │   │       │   ├── s0200.swf
+│   │       │   │   │   │       │   ├── s0300.swf
+│   │       │   │   │   │       │   ├── s0400.swf
+│   │       │   │   │   │       │   ├── s1D00.swf
+│   │       │   │   │   │       │   ├── s1E00.swf
+│   │       │   │   │   │       │   ├── s1F00.swf
+│   │       │   │   │   │       │   ├── s2000.swf
+│   │       │   │   │   │       │   ├── s2100.swf
+│   │       │   │   │   │       │   ├── s2200.swf
+│   │       │   │   │   │       │   ├── s2300.swf
+│   │       │   │   │   │       │   ├── s2400.swf
+│   │       │   │   │   │       │   ├── s2500.swf
+│   │       │   │   │   │       │   ├── s2600.swf
+│   │       │   │   │   │       │   ├── s2700.swf
+│   │       │   │   │   │       │   ├── s2900.swf
+│   │       │   │   │   │       │   ├── s2A00.swf
+│   │       │   │   │   │       │   ├── s2B00.swf
+│   │       │   │   │   │       │   ├── s2C00.swf
+│   │       │   │   │   │       │   ├── s2E00.swf
+│   │       │   │   │   │       │   ├── s3000.swf
+│   │       │   │   │   │       │   ├── s3100.swf
+│   │       │   │   │   │       │   ├── s3200.swf
+│   │       │   │   │   │       │   ├── s3300.swf
+│   │       │   │   │   │       │   ├── s4E00.swf
+│   │       │   │   │   │       │   ├── s4F00.swf
+│   │       │   │   │   │       │   ├── s5000.swf
+│   │       │   │   │   │       │   ├── s5100.swf
+│   │       │   │   │   │       │   ├── s5200.swf
+│   │       │   │   │   │       │   ├── s5300.swf
+│   │       │   │   │   │       │   ├── s5400.swf
+│   │       │   │   │   │       │   ├── s5500.swf
+│   │       │   │   │   │       │   ├── s5600.swf
+│   │       │   │   │   │       │   ├── s5700.swf
+│   │       │   │   │   │       │   ├── s5800.swf
+│   │       │   │   │   │       │   ├── s5900.swf
+│   │       │   │   │   │       │   ├── s5A00.swf
+│   │       │   │   │   │       │   ├── s5B00.swf
+│   │       │   │   │   │       │   ├── s5C00.swf
+│   │       │   │   │   │       │   ├── s5D00.swf
+│   │       │   │   │   │       │   ├── s5E00.swf
+│   │       │   │   │   │       │   ├── s5F00.swf
+│   │       │   │   │   │       │   ├── s6000.swf
+│   │       │   │   │   │       │   ├── s6100.swf
+│   │       │   │   │   │       │   ├── s6200.swf
+│   │       │   │   │   │       │   ├── s6300.swf
+│   │       │   │   │   │       │   ├── s6400.swf
+│   │       │   │   │   │       │   ├── s6500.swf
+│   │       │   │   │   │       │   ├── s6600.swf
+│   │       │   │   │   │       │   ├── s6700.swf
+│   │       │   │   │   │       │   ├── s6800.swf
+│   │       │   │   │   │       │   ├── s6900.swf
+│   │       │   │   │   │       │   ├── s6A00.swf
+│   │       │   │   │   │       │   ├── s6B00.swf
+│   │       │   │   │   │       │   ├── s6C00.swf
+│   │       │   │   │   │       │   ├── s6D00.swf
+│   │       │   │   │   │       │   ├── s6E00.swf
+│   │       │   │   │   │       │   ├── s6F00.swf
+│   │       │   │   │   │       │   ├── s7000.swf
+│   │       │   │   │   │       │   ├── s7100.swf
+│   │       │   │   │   │       │   ├── s7200.swf
+│   │       │   │   │   │       │   ├── s7300.swf
+│   │       │   │   │   │       │   ├── s7400.swf
+│   │       │   │   │   │       │   ├── s7500.swf
+│   │       │   │   │   │       │   ├── s7600.swf
+│   │       │   │   │   │       │   ├── s7700.swf
+│   │       │   │   │   │       │   ├── s7800.swf
+│   │       │   │   │   │       │   ├── s7900.swf
+│   │       │   │   │   │       │   ├── s7A00.swf
+│   │       │   │   │   │       │   ├── s7B00.swf
+│   │       │   │   │   │       │   ├── s7C00.swf
+│   │       │   │   │   │       │   ├── s7D00.swf
+│   │       │   │   │   │       │   ├── s7E00.swf
+│   │       │   │   │   │       │   ├── s7F00.swf
+│   │       │   │   │   │       │   ├── s8000.swf
+│   │       │   │   │   │       │   ├── s8100.swf
+│   │       │   │   │   │       │   ├── s8200.swf
+│   │       │   │   │   │       │   ├── s8300.swf
+│   │       │   │   │   │       │   ├── s8400.swf
+│   │       │   │   │   │       │   ├── s8500.swf
+│   │       │   │   │   │       │   ├── s8600.swf
+│   │       │   │   │   │       │   ├── s8700.swf
+│   │       │   │   │   │       │   ├── s8800.swf
+│   │       │   │   │   │       │   ├── s8900.swf
+│   │       │   │   │   │       │   ├── s8A00.swf
+│   │       │   │   │   │       │   ├── s8B00.swf
+│   │       │   │   │   │       │   ├── s8C00.swf
+│   │       │   │   │   │       │   ├── s8D00.swf
+│   │       │   │   │   │       │   ├── s8E00.swf
+│   │       │   │   │   │       │   ├── s8F00.swf
+│   │       │   │   │   │       │   ├── s9000.swf
+│   │       │   │   │   │       │   ├── s9100.swf
+│   │       │   │   │   │       │   ├── s9200.swf
+│   │       │   │   │   │       │   ├── s9300.swf
+│   │       │   │   │   │       │   ├── s9400.swf
+│   │       │   │   │   │       │   ├── s9500.swf
+│   │       │   │   │   │       │   ├── s9600.swf
+│   │       │   │   │   │       │   ├── s9700.swf
+│   │       │   │   │   │       │   ├── s9800.swf
+│   │       │   │   │   │       │   ├── s9900.swf
+│   │       │   │   │   │       │   ├── s9A00.swf
+│   │       │   │   │   │       │   ├── s9B00.swf
+│   │       │   │   │   │       │   ├── s9C00.swf
+│   │       │   │   │   │       │   ├── s9D00.swf
+│   │       │   │   │   │       │   ├── s9E00.swf
+│   │       │   │   │   │       │   ├── s9F00.swf
+│   │       │   │   │   │       │   ├── sE000.swf
+│   │       │   │   │   │       │   ├── sE100.swf
+│   │       │   │   │   │       │   ├── sE200.swf
+│   │       │   │   │   │       │   ├── sE300.swf
+│   │       │   │   │   │       │   ├── sFB00.swf
+│   │       │   │   │   │       │   ├── sFE00.swf
+│   │       │   │   │   │       │   └── sFF00.swf
+│   │       │   │   │   │       ├── lookAndFeel
+│   │       │   │   │   │       │   ├── CKELookEditor-app.xml
+│   │       │   │   │   │       │   ├── CKELookEditorBlue.xml
+│   │       │   │   │   │       │   ├── CKELookEditor.swf
+│   │       │   │   │   │       │   ├── EditorTextEn.xml
+│   │       │   │   │   │       │   ├── EditorTextFr.xml
+│   │       │   │   │   │       │   ├── EditorTextRo.xml
+│   │       │   │   │   │       │   ├── fMathEditor.pdf
+│   │       │   │   │   │       │   ├── TinyLookEditor-app.xml
+│   │       │   │   │   │       │   ├── TinyLookEditorDefault.xml
+│   │       │   │   │   │       │   ├── TinyLookEditorRed.xml
+│   │       │   │   │   │       │   ├── TinyLookEditor.swf
+│   │       │   │   │   │       │   ├── XpLookEditor-app.xml
+│   │       │   │   │   │       │   ├── XpLookEditorBlue.xml
+│   │       │   │   │   │       │   ├── XpLookEditorGreen.xml
+│   │       │   │   │   │       │   ├── XpLookEditorRed.xml
+│   │       │   │   │   │       │   ├── XpLookEditor.swf
+│   │       │   │   │   │       │   ├── YUILookEditorBlack.xml
+│   │       │   │   │   │       │   ├── YUILookEditorBlue.xml
+│   │       │   │   │   │       │   └── YuiLookEditor.swf
+│   │       │   │   │   │       └── MathMLEditor.swf
+│   │       │   │   │   ├── fmath_formula.jpg
+│   │       │   │   │   └── plugin.js
+│   │       │   │   ├── forms
+│   │       │   │   │   └── dialogs
+│   │       │   │   │       ├── button.js
+│   │       │   │   │       ├── checkbox.js
+│   │       │   │   │       ├── form.js
+│   │       │   │   │       ├── hiddenfield.js
+│   │       │   │   │       ├── radio.js
+│   │       │   │   │       ├── select.js
+│   │       │   │   │       ├── textarea.js
+│   │       │   │   │       └── textfield.js
+│   │       │   │   ├── iframe
+│   │       │   │   │   ├── dialogs
+│   │       │   │   │   │   └── iframe.js
+│   │       │   │   │   └── images
+│   │       │   │   │       └── placeholder.png
+│   │       │   │   ├── iframedialog
+│   │       │   │   │   └── plugin.js
+│   │       │   │   ├── image
+│   │       │   │   │   └── dialogs
+│   │       │   │   │       └── image.js
+│   │       │   │   ├── link
+│   │       │   │   │   └── dialogs
+│   │       │   │   │       ├── anchor.js
+│   │       │   │   │       └── link.js
+│   │       │   │   ├── liststyle
+│   │       │   │   │   └── dialogs
+│   │       │   │   │       └── liststyle.js
+│   │       │   │   ├── pastefromword
+│   │       │   │   │   └── filter
+│   │       │   │   │       └── default.js
+│   │       │   │   ├── pastetext
+│   │       │   │   │   └── dialogs
+│   │       │   │   │       └── pastetext.js
+│   │       │   │   ├── placeholder
+│   │       │   │   │   ├── dialogs
+│   │       │   │   │   │   └── placeholder.js
+│   │       │   │   │   ├── lang
+│   │       │   │   │   │   ├── bg.js
+│   │       │   │   │   │   ├── cs.js
+│   │       │   │   │   │   ├── cy.js
+│   │       │   │   │   │   ├── da.js
+│   │       │   │   │   │   ├── de.js
+│   │       │   │   │   │   ├── el.js
+│   │       │   │   │   │   ├── en.js
+│   │       │   │   │   │   ├── eo.js
+│   │       │   │   │   │   ├── et.js
+│   │       │   │   │   │   ├── fa.js
+│   │       │   │   │   │   ├── fi.js
+│   │       │   │   │   │   ├── fr.js
+│   │       │   │   │   │   ├── he.js
+│   │       │   │   │   │   ├── hr.js
+│   │       │   │   │   │   ├── it.js
+│   │       │   │   │   │   ├── nb.js
+│   │       │   │   │   │   ├── nl.js
+│   │       │   │   │   │   ├── no.js
+│   │       │   │   │   │   ├── pl.js
+│   │       │   │   │   │   ├── _translationstatus.txt
+│   │       │   │   │   │   ├── tr.js
+│   │       │   │   │   │   ├── ug.js
+│   │       │   │   │   │   ├── uk.js
+│   │       │   │   │   │   ├── vi.js
+│   │       │   │   │   │   └── zh-cn.js
+│   │       │   │   │   └── plugin.js
+│   │       │   │   ├── scayt
+│   │       │   │   │   └── dialogs
+│   │       │   │   │       ├── options.js
+│   │       │   │   │       └── toolbar.css
+│   │       │   │   ├── showblocks
+│   │       │   │   │   └── images
+│   │       │   │   │       ├── block_address.png
+│   │       │   │   │       ├── block_blockquote.png
+│   │       │   │   │       ├── block_div.png
+│   │       │   │   │       ├── block_h1.png
+│   │       │   │   │       ├── block_h2.png
+│   │       │   │   │       ├── block_h3.png
+│   │       │   │   │       ├── block_h4.png
+│   │       │   │   │       ├── block_h5.png
+│   │       │   │   │       ├── block_h6.png
+│   │       │   │   │       ├── block_p.png
+│   │       │   │   │       └── block_pre.png
+│   │       │   │   ├── smiley
+│   │       │   │   │   └── dialogs
+│   │       │   │   │       └── smiley.js
+│   │       │   │   ├── specialchar
+│   │       │   │   │   ├── dialogs
+│   │       │   │   │   │   └── specialchar.js
+│   │       │   │   │   └── lang
+│   │       │   │   │       ├── cs.js
+│   │       │   │   │       ├── cy.js
+│   │       │   │   │       ├── de.js
+│   │       │   │   │       ├── en.js
+│   │       │   │   │       ├── eo.js
+│   │       │   │   │       ├── et.js
+│   │       │   │   │       ├── fa.js
+│   │       │   │   │       ├── fi.js
+│   │       │   │   │       ├── fr.js
+│   │       │   │   │       ├── hr.js
+│   │       │   │   │       ├── it.js
+│   │       │   │   │       ├── nb.js
+│   │       │   │   │       ├── nl.js
+│   │       │   │   │       ├── no.js
+│   │       │   │   │       ├── _translationstatus.txt
+│   │       │   │   │       ├── tr.js
+│   │       │   │   │       ├── ug.js
+│   │       │   │   │       └── zh-cn.js
+│   │       │   │   ├── styles
+│   │       │   │   │   └── styles
+│   │       │   │   │       └── default.js
+│   │       │   │   ├── stylesheetparser
+│   │       │   │   │   └── plugin.js
+│   │       │   │   ├── table
+│   │       │   │   │   └── dialogs
+│   │       │   │   │       └── table.js
+│   │       │   │   ├── tableresize
+│   │       │   │   │   └── plugin.js
+│   │       │   │   ├── tabletools
+│   │       │   │   │   └── dialogs
+│   │       │   │   │       └── tableCell.js
+│   │       │   │   ├── templates
+│   │       │   │   │   ├── dialogs
+│   │       │   │   │   │   └── templates.js
+│   │       │   │   │   └── templates
+│   │       │   │   │       └── default.js
+│   │       │   │   ├── uicolor
+│   │       │   │   │   ├── dialogs
+│   │       │   │   │   │   └── uicolor.js
+│   │       │   │   │   ├── lang
+│   │       │   │   │   │   ├── bg.js
+│   │       │   │   │   │   ├── cs.js
+│   │       │   │   │   │   ├── cy.js
+│   │       │   │   │   │   ├── da.js
+│   │       │   │   │   │   ├── de.js
+│   │       │   │   │   │   ├── el.js
+│   │       │   │   │   │   ├── en.js
+│   │       │   │   │   │   ├── eo.js
+│   │       │   │   │   │   ├── et.js
+│   │       │   │   │   │   ├── fa.js
+│   │       │   │   │   │   ├── fi.js
+│   │       │   │   │   │   ├── fr.js
+│   │       │   │   │   │   ├── he.js
+│   │       │   │   │   │   ├── hr.js
+│   │       │   │   │   │   ├── it.js
+│   │       │   │   │   │   ├── mk.js
+│   │       │   │   │   │   ├── nb.js
+│   │       │   │   │   │   ├── nl.js
+│   │       │   │   │   │   ├── no.js
+│   │       │   │   │   │   ├── pl.js
+│   │       │   │   │   │   ├── _translationstatus.txt
+│   │       │   │   │   │   ├── tr.js
+│   │       │   │   │   │   ├── ug.js
+│   │       │   │   │   │   ├── uk.js
+│   │       │   │   │   │   ├── vi.js
+│   │       │   │   │   │   └── zh-cn.js
+│   │       │   │   │   ├── plugin.js
+│   │       │   │   │   └── yui
+│   │       │   │   │       ├── assets
+│   │       │   │   │       │   ├── hue_bg.png
+│   │       │   │   │       │   ├── hue_thumb.png
+│   │       │   │   │       │   ├── picker_mask.png
+│   │       │   │   │       │   ├── picker_thumb.png
+│   │       │   │   │       │   └── yui.css
+│   │       │   │   │       └── yui.js
+│   │       │   │   ├── wsc
+│   │       │   │   │   └── dialogs
+│   │       │   │   │       ├── ciframe.html
+│   │       │   │   │       ├── tmpFrameset.html
+│   │       │   │   │       ├── wsc.css
+│   │       │   │   │       └── wsc.js
+│   │       │   │   └── xml
+│   │       │   │       └── plugin.js
+│   │       │   ├── skins
+│   │       │   │   └── v2
+│   │       │   │       ├── dialog.css
+│   │       │   │       ├── editor.css
+│   │       │   │       ├── icons.png
+│   │       │   │       ├── icons_rtl.png
+│   │       │   │       ├── images
+│   │       │   │       │   ├── dialog_sides.png
+│   │       │   │       │   ├── dialog_sides_rtl.png
+│   │       │   │       │   ├── noimage.png
+│   │       │   │       │   ├── sprites_ie6.png
+│   │       │   │       │   ├── sprites.png
+│   │       │   │       │   └── toolbar_start.gif
+│   │       │   │       ├── skin.js
+│   │       │   │       └── templates.css
+│   │       │   └── themes
+│   │       │       └── default
+│   │       │           └── theme.js
+│   │       ├── django.csrf.js
+│   │       ├── intemass.common.js
+│   │       ├── intemass.ui.js
+│   │       ├── intemass.util.js
+│   │       ├── jquery-1.7.2.min.js
+│   │       ├── jquery.blockUI.min.js
+│   │       ├── jquery.cookie.js
+│   │       ├── jquery.dataTables.columnFilter.js
+│   │       ├── jquery.dataTables.min.js
+│   │       ├── jquery.form.js
+│   │       ├── jquery.jeditable.js
+│   │       ├── jquery.textExt.min.js
+│   │       ├── jquery-ui-1.8.20.custom.min.js
+│   │       ├── jquery.ztree.core-3.1.min.js
+│   │       ├── jquery.ztree.excheck-3.1.min.js
+│   │       └── jquery.ztree.exedit-3.1.min.js
+│   ├── templates
+│   │   ├── 404.html
+│   │   ├── 500.html
+│   │   ├── base.html
+│   │   ├── callback.json
+│   │   ├── foot.html
+│   │   └── head.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── docs
+│   ├── UserManual.doc
+│   └── UserManual.pdf
+├── entity
+│   ├── admin.py
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── models.py
+│   ├── templates
+│   │   ├── admin
+│   │   │   └── entity
+│   │   │       └── randomcode
+│   │   │           └── change_list.html
+│   │   └── entity.json
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── FILES
+├── images
+│   ├── generated_img
+│   │   ├── 1038989A-2E4F-6C98-CC22-5A1B413AC80E.JPG
+│   │   ├── 88B3B785-3D6B-887B-5C83-150AA66C65B8.JPG
+│   │   ├── D17F3C16-815E-EADF-5450-CF5D343A7E83.JPG
+│   │   └── EE06B119-F2AD-6843-D7C9-E37C59A52978.JPG
+│   ├── questionimages
+│   │   └── jjj__10.jpg
+│   └── thumbnails
+│       └── thumb__jjj__10.jpg
+├── __init__.py
+├── itempool
+│   ├── admin.py
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── models.py
+│   ├── static
+│   │   ├── css
+│   │   │   └── itempool_detail.css
+│   │   └── js
+│   │       └── itempool_detail.js
+│   ├── templates
+│   │   ├── itempool_all.json
+│   │   ├── itempool_allquestions.json
+│   │   ├── itempool_allquestions_readonly.json
+│   │   └── itempool_detail.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── manage.py
+├── nltk_data
+│   ├── corpora
+│   │   ├── stopwords
+│   │   │   ├── danish
+│   │   │   ├── dutch
+│   │   │   ├── english
+│   │   │   ├── finnish
+│   │   │   ├── french
+│   │   │   ├── german
+│   │   │   ├── hungarian
+│   │   │   ├── italian
+│   │   │   ├── norwegian
+│   │   │   ├── portuguese
+│   │   │   ├── README
+│   │   │   ├── russian
+│   │   │   ├── spanish
+│   │   │   ├── swedish
+│   │   │   └── turkish
+│   │   └── wordnet
+│   │       ├── adj.exc
+│   │       ├── adv.exc
+│   │       ├── cntlist.rev
+│   │       ├── data.adj
+│   │       ├── data.adv
+│   │       ├── data.noun
+│   │       ├── data.verb
+│   │       ├── index.adj
+│   │       ├── index.adv
+│   │       ├── index.noun
+│   │       ├── index.sense
+│   │       ├── index.verb
+│   │       ├── lexnames
+│   │       ├── noun.exc
+│   │       └── verb.exc
+│   └── taggers
+│       ├── hmm_treebank_pos_tagger
+│       │   └── treebank.tagger.pickle.gz
+│       └── maxent_treebank_pos_tagger
+│           └── english.pickle
+├── paper
+│   ├── admin.py
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── models.py
+│   ├── static
+│   │   ├── css
+│   │   │   └── paper_detail.css
+│   │   └── js
+│   │       └── paper_detail.js
+│   ├── templates
+│   │   ├── paper_all.json
+│   │   ├── paper_allquestions.json
+│   │   ├── paper_detail.html
+│   │   ├── paper_mark.json
+│   │   └── paper_report.json
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── portal
+│   ├── admin.py
+│   ├── common.py
+│   ├── emailtool.py
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── management
+│   │   ├── commands
+│   │   │   ├── addtestdata.py
+│   │   │   ├── initportal.py
+│   │   │   └── __init__.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── templates
+│   │   ├── forgot_password.html
+│   │   ├── info_modify.html
+│   │   ├── login.html
+│   │   └── register.html
+│   ├── tests.py
+│   └── views.py
+├── pull_github.sh
+├── question
+│   ├── admin.py
+│   ├── __init__.py
+│   ├── management
+│   │   ├── commands
+│   │   │   ├── __init__.py
+│   │   │   └── initquestion.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── static
+│   │   ├── css
+│   │   │   ├── question_detail.css
+│   │   │   ├── swfimages
+│   │   │   │   ├── cancelbutton.gif
+│   │   │   │   ├── XPButtonNoText_61x22.png
+│   │   │   │   └── XPButtonNoText_61x22x4.png
+│   │   │   └── swfupload_default.css
+│   │   └── js
+│   │       ├── jquery.maskedinput-1.3.min.js
+│   │       ├── question_detail.js
+│   │       └── swfupload
+│   │           ├── fileprogress.js
+│   │           ├── handlers.js
+│   │           ├── swfuploadbutton.swf
+│   │           ├── swfupload.js
+│   │           ├── swfupload.queue.js
+│   │           └── swfupload.swf
+│   ├── templates
+│   │   └── question_detail.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── README.TXT
+├── report
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── models.py
+│   ├── static
+│   │   ├── css
+│   │   │   ├── report_paper.css
+│   │   │   ├── report_question.css
+│   │   │   ├── report_studentanswer.css
+│   │   │   └── report_teacher.css
+│   │   └── js
+│   │       ├── report_paper.js
+│   │       ├── report_reviewquestion.js
+│   │       ├── report_student.js
+│   │       └── report_teacher.js
+│   ├── templates
+│   │   ├── exam_all.json
+│   │   ├── exam_detail.html
+│   │   ├── report_paper.html
+│   │   ├── report_question.html
+│   │   ├── report_studentanswer.html
+│   │   ├── report_student.html
+│   │   └── report_teacher.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── selenium_ide_test
+│   ├── 2.10_add_assignment
+│   ├── 2.1_teacher_index_F
+│   ├── 2.2_add_student_F
+│   ├── 2.2_student_view_profile_F
+│   ├── 2.3_add_classroom_F
+│   ├── 2.5_add_itempool_F
+│   ├── 2.9_add_paper_f
+│   ├── add_assignment
+│   ├── add_classroom
+│   ├── add_itempool
+│   ├── add_paper
+│   ├── add_question
+│   ├── add_student
+│   ├── classroom_view
+│   ├── classroom_view_F
+│   ├── forgetpassword
+│   ├── forget_password_F
+│   ├── login_as_teacher
+│   ├── login_as_teacher2
+│   ├── login_student
+│   ├── login_student_F
+│   ├── paper_summary
+│   ├── README
+│   ├── register
+│   ├── register_as_teacher_true
+│   ├── report_teacher
+│   ├── report_teacher_true
+│   ├── student_custompaper
+│   ├── student_custompaper2
+│   ├── student_custompaper_add
+│   ├── student_index
+│   ├── student_view_profile
+│   ├── take_teacherassignment
+│   ├── teacher_index_true
+│   ├── teacher_profile_modify
+│   ├── teacher_profile_modify_F
+│   ├── teacher_view_question
+│   ├── teacher_view_question_F
+│   ├── test_case_suite
+│   └── user_profile
+├── settings_local.py
+├── settings.py
+├── static
+│   ├── admin
+│   │   ├── css
+│   │   │   ├── base.css
+│   │   │   ├── changelists.css
+│   │   │   ├── dashboard.css
+│   │   │   ├── forms.css
+│   │   │   ├── ie.css
+│   │   │   ├── login.css
+│   │   │   ├── rtl.css
+│   │   │   └── widgets.css
+│   │   ├── img
+│   │   │   ├── changelist-bg.gif
+│   │   │   ├── changelist-bg_rtl.gif
+│   │   │   ├── chooser-bg.gif
+│   │   │   ├── chooser_stacked-bg.gif
+│   │   │   ├── default-bg.gif
+│   │   │   ├── default-bg-reverse.gif
+│   │   │   ├── deleted-overlay.gif
+│   │   │   ├── gis
+│   │   │   │   ├── move_vertex_off.png
+│   │   │   │   └── move_vertex_on.png
+│   │   │   ├── icon_addlink.gif
+│   │   │   ├── icon_alert.gif
+│   │   │   ├── icon_calendar.gif
+│   │   │   ├── icon_changelink.gif
+│   │   │   ├── icon_clock.gif
+│   │   │   ├── icon_deletelink.gif
+│   │   │   ├── icon_error.gif
+│   │   │   ├── icon-no.gif
+│   │   │   ├── icon_searchbox.png
+│   │   │   ├── icon_success.gif
+│   │   │   ├── icon-unknown.gif
+│   │   │   ├── icon-yes.gif
+│   │   │   ├── inline-delete-8bit.png
+│   │   │   ├── inline-delete.png
+│   │   │   ├── inline-restore-8bit.png
+│   │   │   ├── inline-restore.png
+│   │   │   ├── inline-splitter-bg.gif
+│   │   │   ├── nav-bg.gif
+│   │   │   ├── nav-bg-grabber.gif
+│   │   │   ├── nav-bg-reverse.gif
+│   │   │   ├── nav-bg-selected.gif
+│   │   │   ├── selector-icons.gif
+│   │   │   ├── selector-search.gif
+│   │   │   ├── sorting-icons.gif
+│   │   │   ├── tool-left.gif
+│   │   │   ├── tool-left_over.gif
+│   │   │   ├── tool-right.gif
+│   │   │   ├── tool-right_over.gif
+│   │   │   ├── tooltag-add.gif
+│   │   │   ├── tooltag-add_over.gif
+│   │   │   ├── tooltag-arrowright.gif
+│   │   │   └── tooltag-arrowright_over.gif
+│   │   └── js
+│   │       ├── actions.js
+│   │       ├── actions.min.js
+│   │       ├── admin
+│   │       │   ├── DateTimeShortcuts.js
+│   │       │   ├── ordering.js
+│   │       │   └── RelatedObjectLookups.js
+│   │       ├── calendar.js
+│   │       ├── collapse.js
+│   │       ├── collapse.min.js
+│   │       ├── compress.py
+│   │       ├── core.js
+│   │       ├── getElementsBySelector.js
+│   │       ├── inlines.js
+│   │       ├── inlines.min.js
+│   │       ├── jquery.init.js
+│   │       ├── jquery.js
+│   │       ├── jquery.min.js
+│   │       ├── LICENSE-JQUERY.txt
+│   │       ├── prepopulate.js
+│   │       ├── prepopulate.min.js
+│   │       ├── SelectBox.js
+│   │       ├── SelectFilter2.js
+│   │       ├── timeparse.js
+│   │       └── urlify.js
+│   ├── css
+│   │   ├── 960.css
+│   │   ├── assignment_detail.css
+│   │   ├── classroom_detail.css
+│   │   ├── datatable_custom.css
+│   │   ├── images
+│   │   │   ├── back_disabled.png
+│   │   │   ├── back_enabled_hover.png
+│   │   │   ├── back_enabled.png
+│   │   │   ├── bar-alpha.png
+│   │   │   ├── bar-opacity.png
+│   │   │   ├── bar.png
+│   │   │   ├── bar-pointer.png
+│   │   │   ├── b_browse.png
+│   │   │   ├── b_drop.png
+│   │   │   ├── b_edit.png
+│   │   │   ├── body_bg.gif
+│   │   │   ├── btn_add.gif
+│   │   │   ├── form_title_corner.gif
+│   │   │   ├── forward_disabled.png
+│   │   │   ├── forward_enabled_hover.png
+│   │   │   ├── forward_enabled.png
+│   │   │   ├── header_bg_bk.gif
+│   │   │   ├── header_bg_bl.gif
+│   │   │   ├── header_bg_coner1
+│   │   │   ├── line_conn.gif
+│   │   │   ├── loading.gif
+│   │   │   ├── login_form_bg.gif
+│   │   │   ├── long_form_bg.gif
+│   │   │   ├── map-opacity.png
+│   │   │   ├── map.png
+│   │   │   ├── map-pointer.png
+│   │   │   ├── navi_bg
+│   │   │   ├── navi_bg_coner1
+│   │   │   ├── navi_bg_coner2
+│   │   │   ├── paper-icon.png
+│   │   │   ├── preview-opacity.png
+│   │   │   ├── question-icon.png
+│   │   │   ├── select_left.gif
+│   │   │   ├── select_right.gif
+│   │   │   ├── sort_asc_disabled.png
+│   │   │   ├── sort_asc.png
+│   │   │   ├── sort_both.png
+│   │   │   ├── sort_desc_disabled.png
+│   │   │   ├── sort_desc.png
+│   │   │   ├── stu_female.png
+│   │   │   ├── stu_male.png
+│   │   │   ├── teacher.png
+│   │   │   ├── toolbar_start.gif
+│   │   │   ├── ui-bg_flat_0_aaaaaa_40x100.png
+│   │   │   ├── ui-bg_flat_75_ffffff_40x100.png
+│   │   │   ├── ui-bg_glass_55_fbf9ee_1x400.png
+│   │   │   ├── ui-bg_glass_65_ffffff_1x400.png
+│   │   │   ├── ui-bg_glass_75_dadada_1x400.png
+│   │   │   ├── ui-bg_glass_75_e6e6e6_1x400.png
+│   │   │   ├── ui-bg_glass_95_fef1ec_1x400.png
+│   │   │   ├── ui-bg_highlight-soft_75_cccccc_1x100.png
+│   │   │   ├── ui-colorpicker.png
+│   │   │   ├── ui-icons_222222_256x240.png
+│   │   │   ├── ui-icons_2e83ff_256x240.png
+│   │   │   ├── ui-icons_454545_256x240.png
+│   │   │   ├── ui-icons_888888_256x240.png
+│   │   │   ├── ui-icons_cd0a0a_256x240.png
+│   │   │   ├── zTreeStandard.gif
+│   │   │   └── zTreeStandard.png
+│   │   ├── intemasscanvas.css
+│   │   ├── itempool_detail.css
+│   │   ├── jquery.colorpicker.css
+│   │   ├── jquery.contextMenu.css
+│   │   ├── jquery.multiselect.css
+│   │   ├── jquery-ui-1.8.20.custom.css
+│   │   ├── jquery-ui-1.8.21.custom.css
+│   │   ├── jquery-ui-timepicker-addon.css
+│   │   ├── paper_detail.css
+│   │   ├── PIE.htc
+│   │   ├── question_detail.css
+│   │   ├── report_paper.css
+│   │   ├── report_question.css
+│   │   ├── report_studentanswer.css
+│   │   ├── report_teacher.css
+│   │   ├── reset.css
+│   │   ├── student_index.css
+│   │   ├── student_takeassignment.css
+│   │   ├── style.css
+│   │   ├── swfimages
+│   │   │   ├── cancelbutton.gif
+│   │   │   ├── XPButtonNoText_61x22.png
+│   │   │   └── XPButtonNoText_61x22x4.png
+│   │   ├── swfupload_default.css
+│   │   ├── text.css
+│   │   ├── zTreeStyle.css
+│   │   └── zTreeStyle_custom.css
+│   ├── favicon.ico
+│   ├── generated_img
+│   │   ├── 1038989A-2E4F-6C98-CC22-5A1B413AC80E.JPG
+│   │   ├── 88B3B785-3D6B-887B-5C83-150AA66C65B8.JPG
+│   │   ├── D17F3C16-815E-EADF-5450-CF5D343A7E83.JPG
+│   │   └── EE06B119-F2AD-6843-D7C9-E37C59A52978.JPG
+│   ├── images
+│   │   ├── back_disabled.png
+│   │   ├── back_enabled_hover.png
+│   │   ├── back_enabled.png
+│   │   ├── b_browse.png
+│   │   ├── b_drop.png
+│   │   ├── b_edit.png
+│   │   ├── body_bg.gif
+│   │   ├── btn_add.gif
+│   │   ├── form_title_corner.gif
+│   │   ├── forward_disabled.png
+│   │   ├── forward_enabled_hover.png
+│   │   ├── forward_enabled.png
+│   │   ├── header_bg_bk.gif
+│   │   ├── header_bg_bl.gif
+│   │   ├── header_bg_coner1
+│   │   ├── login_form_bg.gif
+│   │   ├── long_form_bg.gif
+│   │   ├── navi_bg
+│   │   ├── navi_bg_coner1
+│   │   ├── navi_bg_coner2
+│   │   ├── paper-icon.png
+│   │   ├── pbar-ani.gif
+│   │   ├── question-icon.png
+│   │   ├── sort_asc_disabled.png
+│   │   ├── sort_asc.png
+│   │   ├── sort_both.png
+│   │   ├── sort_desc_disabled.png
+│   │   ├── sort_desc.png
+│   │   ├── stu_female.png
+│   │   ├── stu_male.png
+│   │   ├── teacher.png
+│   │   └── toolbar_start.gif
+│   ├── js
+│   │   ├── assignment_detail.js
+│   │   ├── ckeditor
+│   │   │   ├── ckeditor.adapter.jquery.js
+│   │   │   ├── ckeditor.js
+│   │   │   ├── ckeditor_source.js
+│   │   │   ├── config.js
+│   │   │   ├── contents.css
+│   │   │   ├── lang
+│   │   │   │   ├── af.js
+│   │   │   │   ├── ar.js
+│   │   │   │   ├── bg.js
+│   │   │   │   ├── bn.js
+│   │   │   │   ├── bs.js
+│   │   │   │   ├── ca.js
+│   │   │   │   ├── cs.js
+│   │   │   │   ├── cy.js
+│   │   │   │   ├── da.js
+│   │   │   │   ├── de.js
+│   │   │   │   ├── el.js
+│   │   │   │   ├── en-au.js
+│   │   │   │   ├── en-ca.js
+│   │   │   │   ├── en-gb.js
+│   │   │   │   ├── en.js
+│   │   │   │   ├── eo.js
+│   │   │   │   ├── es.js
+│   │   │   │   ├── et.js
+│   │   │   │   ├── eu.js
+│   │   │   │   ├── fa.js
+│   │   │   │   ├── fi.js
+│   │   │   │   ├── fo.js
+│   │   │   │   ├── fr-ca.js
+│   │   │   │   ├── fr.js
+│   │   │   │   ├── gl.js
+│   │   │   │   ├── gu.js
+│   │   │   │   ├── he.js
+│   │   │   │   ├── hi.js
+│   │   │   │   ├── hr.js
+│   │   │   │   ├── hu.js
+│   │   │   │   ├── is.js
+│   │   │   │   ├── it.js
+│   │   │   │   ├── ja.js
+│   │   │   │   ├── ka.js
+│   │   │   │   ├── km.js
+│   │   │   │   ├── ko.js
+│   │   │   │   ├── _languages.js
+│   │   │   │   ├── lt.js
+│   │   │   │   ├── lv.js
+│   │   │   │   ├── mk.js
+│   │   │   │   ├── mn.js
+│   │   │   │   ├── ms.js
+│   │   │   │   ├── nb.js
+│   │   │   │   ├── nl.js
+│   │   │   │   ├── no.js
+│   │   │   │   ├── pl.js
+│   │   │   │   ├── pt-br.js
+│   │   │   │   ├── pt.js
+│   │   │   │   ├── ro.js
+│   │   │   │   ├── ru.js
+│   │   │   │   ├── sk.js
+│   │   │   │   ├── sl.js
+│   │   │   │   ├── sr.js
+│   │   │   │   ├── sr-latn.js
+│   │   │   │   ├── sv.js
+│   │   │   │   ├── th.js
+│   │   │   │   ├── _translationstatus.txt
+│   │   │   │   ├── tr.js
+│   │   │   │   ├── ug.js
+│   │   │   │   ├── uk.js
+│   │   │   │   ├── vi.js
+│   │   │   │   ├── zh-cn.js
+│   │   │   │   └── zh.js
+│   │   │   ├── plugins
+│   │   │   │   ├── a11yhelp
+│   │   │   │   │   ├── dialogs
+│   │   │   │   │   │   └── a11yhelp.js
+│   │   │   │   │   └── lang
+│   │   │   │   │       ├── cs.js
+│   │   │   │   │       ├── cy.js
+│   │   │   │   │       ├── da.js
+│   │   │   │   │       ├── de.js
+│   │   │   │   │       ├── el.js
+│   │   │   │   │       ├── en.js
+│   │   │   │   │       ├── eo.js
+│   │   │   │   │       ├── fa.js
+│   │   │   │   │       ├── fi.js
+│   │   │   │   │       ├── fr.js
+│   │   │   │   │       ├── gu.js
+│   │   │   │   │       ├── he.js
+│   │   │   │   │       ├── it.js
+│   │   │   │   │       ├── mk.js
+│   │   │   │   │       ├── nb.js
+│   │   │   │   │       ├── nl.js
+│   │   │   │   │       ├── no.js
+│   │   │   │   │       ├── _translationstatus.txt
+│   │   │   │   │       ├── tr.js
+│   │   │   │   │       ├── ug.js
+│   │   │   │   │       ├── vi.js
+│   │   │   │   │       └── zh-cn.js
+│   │   │   │   ├── about
+│   │   │   │   │   └── dialogs
+│   │   │   │   │       ├── about.js
+│   │   │   │   │       └── logo_ckeditor.png
+│   │   │   │   ├── adobeair
+│   │   │   │   │   └── plugin.js
+│   │   │   │   ├── ajax
+│   │   │   │   │   └── plugin.js
+│   │   │   │   ├── autogrow
+│   │   │   │   │   └── plugin.js
+│   │   │   │   ├── bbcode
+│   │   │   │   │   └── plugin.js
+│   │   │   │   ├── clipboard
+│   │   │   │   │   └── dialogs
+│   │   │   │   │       └── paste.js
+│   │   │   │   ├── colordialog
+│   │   │   │   │   └── dialogs
+│   │   │   │   │       └── colordialog.js
+│   │   │   │   ├── devtools
+│   │   │   │   │   ├── lang
+│   │   │   │   │   │   ├── bg.js
+│   │   │   │   │   │   ├── cs.js
+│   │   │   │   │   │   ├── cy.js
+│   │   │   │   │   │   ├── da.js
+│   │   │   │   │   │   ├── de.js
+│   │   │   │   │   │   ├── el.js
+│   │   │   │   │   │   ├── en.js
+│   │   │   │   │   │   ├── eo.js
+│   │   │   │   │   │   ├── et.js
+│   │   │   │   │   │   ├── fa.js
+│   │   │   │   │   │   ├── fi.js
+│   │   │   │   │   │   ├── fr.js
+│   │   │   │   │   │   ├── gu.js
+│   │   │   │   │   │   ├── he.js
+│   │   │   │   │   │   ├── hr.js
+│   │   │   │   │   │   ├── it.js
+│   │   │   │   │   │   ├── nb.js
+│   │   │   │   │   │   ├── nl.js
+│   │   │   │   │   │   ├── no.js
+│   │   │   │   │   │   ├── pl.js
+│   │   │   │   │   │   ├── _translationstatus.txt
+│   │   │   │   │   │   ├── tr.js
+│   │   │   │   │   │   ├── ug.js
+│   │   │   │   │   │   ├── uk.js
+│   │   │   │   │   │   ├── vi.js
+│   │   │   │   │   │   └── zh-cn.js
+│   │   │   │   │   └── plugin.js
+│   │   │   │   ├── dialog
+│   │   │   │   │   └── dialogDefinition.js
+│   │   │   │   ├── div
+│   │   │   │   │   └── dialogs
+│   │   │   │   │       └── div.js
+│   │   │   │   ├── docprops
+│   │   │   │   │   ├── dialogs
+│   │   │   │   │   │   └── docprops.js
+│   │   │   │   │   └── plugin.js
+│   │   │   │   ├── find
+│   │   │   │   │   └── dialogs
+│   │   │   │   │       └── find.js
+│   │   │   │   ├── flash
+│   │   │   │   │   ├── dialogs
+│   │   │   │   │   │   └── flash.js
+│   │   │   │   │   └── images
+│   │   │   │   │       └── placeholder.png
+│   │   │   │   ├── fmath_formula
+│   │   │   │   │   ├── dialogs
+│   │   │   │   │   │   ├── configMathMLEditor.xml
+│   │   │   │   │   │   ├── editor.html
+│   │   │   │   │   │   ├── fmath_formula.js
+│   │   │   │   │   │   └── mathml
+│   │   │   │   │   │       ├── fontswf
+│   │   │   │   │   │       │   ├── fonts.swf
+│   │   │   │   │   │       │   ├── s0000.swf
+│   │   │   │   │   │       │   ├── s0100.swf
+│   │   │   │   │   │       │   ├── s0200.swf
+│   │   │   │   │   │       │   ├── s0300.swf
+│   │   │   │   │   │       │   ├── s0400.swf
+│   │   │   │   │   │       │   ├── s1D00.swf
+│   │   │   │   │   │       │   ├── s1E00.swf
+│   │   │   │   │   │       │   ├── s1F00.swf
+│   │   │   │   │   │       │   ├── s2000.swf
+│   │   │   │   │   │       │   ├── s2100.swf
+│   │   │   │   │   │       │   ├── s2200.swf
+│   │   │   │   │   │       │   ├── s2300.swf
+│   │   │   │   │   │       │   ├── s2400.swf
+│   │   │   │   │   │       │   ├── s2500.swf
+│   │   │   │   │   │       │   ├── s2600.swf
+│   │   │   │   │   │       │   ├── s2700.swf
+│   │   │   │   │   │       │   ├── s2900.swf
+│   │   │   │   │   │       │   ├── s2A00.swf
+│   │   │   │   │   │       │   ├── s2B00.swf
+│   │   │   │   │   │       │   ├── s2C00.swf
+│   │   │   │   │   │       │   ├── s2E00.swf
+│   │   │   │   │   │       │   ├── s3000.swf
+│   │   │   │   │   │       │   ├── s3100.swf
+│   │   │   │   │   │       │   ├── s3200.swf
+│   │   │   │   │   │       │   ├── s3300.swf
+│   │   │   │   │   │       │   ├── s4E00.swf
+│   │   │   │   │   │       │   ├── s4F00.swf
+│   │   │   │   │   │       │   ├── s5000.swf
+│   │   │   │   │   │       │   ├── s5100.swf
+│   │   │   │   │   │       │   ├── s5200.swf
+│   │   │   │   │   │       │   ├── s5300.swf
+│   │   │   │   │   │       │   ├── s5400.swf
+│   │   │   │   │   │       │   ├── s5500.swf
+│   │   │   │   │   │       │   ├── s5600.swf
+│   │   │   │   │   │       │   ├── s5700.swf
+│   │   │   │   │   │       │   ├── s5800.swf
+│   │   │   │   │   │       │   ├── s5900.swf
+│   │   │   │   │   │       │   ├── s5A00.swf
+│   │   │   │   │   │       │   ├── s5B00.swf
+│   │   │   │   │   │       │   ├── s5C00.swf
+│   │   │   │   │   │       │   ├── s5D00.swf
+│   │   │   │   │   │       │   ├── s5E00.swf
+│   │   │   │   │   │       │   ├── s5F00.swf
+│   │   │   │   │   │       │   ├── s6000.swf
+│   │   │   │   │   │       │   ├── s6100.swf
+│   │   │   │   │   │       │   ├── s6200.swf
+│   │   │   │   │   │       │   ├── s6300.swf
+│   │   │   │   │   │       │   ├── s6400.swf
+│   │   │   │   │   │       │   ├── s6500.swf
+│   │   │   │   │   │       │   ├── s6600.swf
+│   │   │   │   │   │       │   ├── s6700.swf
+│   │   │   │   │   │       │   ├── s6800.swf
+│   │   │   │   │   │       │   ├── s6900.swf
+│   │   │   │   │   │       │   ├── s6A00.swf
+│   │   │   │   │   │       │   ├── s6B00.swf
+│   │   │   │   │   │       │   ├── s6C00.swf
+│   │   │   │   │   │       │   ├── s6D00.swf
+│   │   │   │   │   │       │   ├── s6E00.swf
+│   │   │   │   │   │       │   ├── s6F00.swf
+│   │   │   │   │   │       │   ├── s7000.swf
+│   │   │   │   │   │       │   ├── s7100.swf
+│   │   │   │   │   │       │   ├── s7200.swf
+│   │   │   │   │   │       │   ├── s7300.swf
+│   │   │   │   │   │       │   ├── s7400.swf
+│   │   │   │   │   │       │   ├── s7500.swf
+│   │   │   │   │   │       │   ├── s7600.swf
+│   │   │   │   │   │       │   ├── s7700.swf
+│   │   │   │   │   │       │   ├── s7800.swf
+│   │   │   │   │   │       │   ├── s7900.swf
+│   │   │   │   │   │       │   ├── s7A00.swf
+│   │   │   │   │   │       │   ├── s7B00.swf
+│   │   │   │   │   │       │   ├── s7C00.swf
+│   │   │   │   │   │       │   ├── s7D00.swf
+│   │   │   │   │   │       │   ├── s7E00.swf
+│   │   │   │   │   │       │   ├── s7F00.swf
+│   │   │   │   │   │       │   ├── s8000.swf
+│   │   │   │   │   │       │   ├── s8100.swf
+│   │   │   │   │   │       │   ├── s8200.swf
+│   │   │   │   │   │       │   ├── s8300.swf
+│   │   │   │   │   │       │   ├── s8400.swf
+│   │   │   │   │   │       │   ├── s8500.swf
+│   │   │   │   │   │       │   ├── s8600.swf
+│   │   │   │   │   │       │   ├── s8700.swf
+│   │   │   │   │   │       │   ├── s8800.swf
+│   │   │   │   │   │       │   ├── s8900.swf
+│   │   │   │   │   │       │   ├── s8A00.swf
+│   │   │   │   │   │       │   ├── s8B00.swf
+│   │   │   │   │   │       │   ├── s8C00.swf
+│   │   │   │   │   │       │   ├── s8D00.swf
+│   │   │   │   │   │       │   ├── s8E00.swf
+│   │   │   │   │   │       │   ├── s8F00.swf
+│   │   │   │   │   │       │   ├── s9000.swf
+│   │   │   │   │   │       │   ├── s9100.swf
+│   │   │   │   │   │       │   ├── s9200.swf
+│   │   │   │   │   │       │   ├── s9300.swf
+│   │   │   │   │   │       │   ├── s9400.swf
+│   │   │   │   │   │       │   ├── s9500.swf
+│   │   │   │   │   │       │   ├── s9600.swf
+│   │   │   │   │   │       │   ├── s9700.swf
+│   │   │   │   │   │       │   ├── s9800.swf
+│   │   │   │   │   │       │   ├── s9900.swf
+│   │   │   │   │   │       │   ├── s9A00.swf
+│   │   │   │   │   │       │   ├── s9B00.swf
+│   │   │   │   │   │       │   ├── s9C00.swf
+│   │   │   │   │   │       │   ├── s9D00.swf
+│   │   │   │   │   │       │   ├── s9E00.swf
+│   │   │   │   │   │       │   ├── s9F00.swf
+│   │   │   │   │   │       │   ├── sE000.swf
+│   │   │   │   │   │       │   ├── sE100.swf
+│   │   │   │   │   │       │   ├── sE200.swf
+│   │   │   │   │   │       │   ├── sE300.swf
+│   │   │   │   │   │       │   ├── sFB00.swf
+│   │   │   │   │   │       │   ├── sFE00.swf
+│   │   │   │   │   │       │   └── sFF00.swf
+│   │   │   │   │   │       ├── lookAndFeel
+│   │   │   │   │   │       │   ├── CKELookEditor-app.xml
+│   │   │   │   │   │       │   ├── CKELookEditorBlue.xml
+│   │   │   │   │   │       │   ├── CKELookEditor.swf
+│   │   │   │   │   │       │   ├── EditorTextEn.xml
+│   │   │   │   │   │       │   ├── EditorTextFr.xml
+│   │   │   │   │   │       │   ├── EditorTextRo.xml
+│   │   │   │   │   │       │   ├── fMathEditor.pdf
+│   │   │   │   │   │       │   ├── TinyLookEditor-app.xml
+│   │   │   │   │   │       │   ├── TinyLookEditorDefault.xml
+│   │   │   │   │   │       │   ├── TinyLookEditorRed.xml
+│   │   │   │   │   │       │   ├── TinyLookEditor.swf
+│   │   │   │   │   │       │   ├── XpLookEditor-app.xml
+│   │   │   │   │   │       │   ├── XpLookEditorBlue.xml
+│   │   │   │   │   │       │   ├── XpLookEditorGreen.xml
+│   │   │   │   │   │       │   ├── XpLookEditorRed.xml
+│   │   │   │   │   │       │   ├── XpLookEditor.swf
+│   │   │   │   │   │       │   ├── YUILookEditorBlack.xml
+│   │   │   │   │   │       │   ├── YUILookEditorBlue.xml
+│   │   │   │   │   │       │   └── YuiLookEditor.swf
+│   │   │   │   │   │       └── MathMLEditor.swf
+│   │   │   │   │   ├── fmath_formula.jpg
+│   │   │   │   │   └── plugin.js
+│   │   │   │   ├── forms
+│   │   │   │   │   └── dialogs
+│   │   │   │   │       ├── button.js
+│   │   │   │   │       ├── checkbox.js
+│   │   │   │   │       ├── form.js
+│   │   │   │   │       ├── hiddenfield.js
+│   │   │   │   │       ├── radio.js
+│   │   │   │   │       ├── select.js
+│   │   │   │   │       ├── textarea.js
+│   │   │   │   │       └── textfield.js
+│   │   │   │   ├── iframe
+│   │   │   │   │   ├── dialogs
+│   │   │   │   │   │   └── iframe.js
+│   │   │   │   │   └── images
+│   │   │   │   │       └── placeholder.png
+│   │   │   │   ├── iframedialog
+│   │   │   │   │   └── plugin.js
+│   │   │   │   ├── image
+│   │   │   │   │   └── dialogs
+│   │   │   │   │       └── image.js
+│   │   │   │   ├── link
+│   │   │   │   │   └── dialogs
+│   │   │   │   │       ├── anchor.js
+│   │   │   │   │       └── link.js
+│   │   │   │   ├── liststyle
+│   │   │   │   │   └── dialogs
+│   │   │   │   │       └── liststyle.js
+│   │   │   │   ├── pastefromword
+│   │   │   │   │   └── filter
+│   │   │   │   │       └── default.js
+│   │   │   │   ├── pastetext
+│   │   │   │   │   └── dialogs
+│   │   │   │   │       └── pastetext.js
+│   │   │   │   ├── placeholder
+│   │   │   │   │   ├── dialogs
+│   │   │   │   │   │   └── placeholder.js
+│   │   │   │   │   ├── lang
+│   │   │   │   │   │   ├── bg.js
+│   │   │   │   │   │   ├── cs.js
+│   │   │   │   │   │   ├── cy.js
+│   │   │   │   │   │   ├── da.js
+│   │   │   │   │   │   ├── de.js
+│   │   │   │   │   │   ├── el.js
+│   │   │   │   │   │   ├── en.js
+│   │   │   │   │   │   ├── eo.js
+│   │   │   │   │   │   ├── et.js
+│   │   │   │   │   │   ├── fa.js
+│   │   │   │   │   │   ├── fi.js
+│   │   │   │   │   │   ├── fr.js
+│   │   │   │   │   │   ├── he.js
+│   │   │   │   │   │   ├── hr.js
+│   │   │   │   │   │   ├── it.js
+│   │   │   │   │   │   ├── nb.js
+│   │   │   │   │   │   ├── nl.js
+│   │   │   │   │   │   ├── no.js
+│   │   │   │   │   │   ├── pl.js
+│   │   │   │   │   │   ├── _translationstatus.txt
+│   │   │   │   │   │   ├── tr.js
+│   │   │   │   │   │   ├── ug.js
+│   │   │   │   │   │   ├── uk.js
+│   │   │   │   │   │   ├── vi.js
+│   │   │   │   │   │   └── zh-cn.js
+│   │   │   │   │   └── plugin.js
+│   │   │   │   ├── scayt
+│   │   │   │   │   └── dialogs
+│   │   │   │   │       ├── options.js
+│   │   │   │   │       └── toolbar.css
+│   │   │   │   ├── showblocks
+│   │   │   │   │   └── images
+│   │   │   │   │       ├── block_address.png
+│   │   │   │   │       ├── block_blockquote.png
+│   │   │   │   │       ├── block_div.png
+│   │   │   │   │       ├── block_h1.png
+│   │   │   │   │       ├── block_h2.png
+│   │   │   │   │       ├── block_h3.png
+│   │   │   │   │       ├── block_h4.png
+│   │   │   │   │       ├── block_h5.png
+│   │   │   │   │       ├── block_h6.png
+│   │   │   │   │       ├── block_p.png
+│   │   │   │   │       └── block_pre.png
+│   │   │   │   ├── smiley
+│   │   │   │   │   └── dialogs
+│   │   │   │   │       └── smiley.js
+│   │   │   │   ├── specialchar
+│   │   │   │   │   ├── dialogs
+│   │   │   │   │   │   └── specialchar.js
+│   │   │   │   │   └── lang
+│   │   │   │   │       ├── cs.js
+│   │   │   │   │       ├── cy.js
+│   │   │   │   │       ├── de.js
+│   │   │   │   │       ├── en.js
+│   │   │   │   │       ├── eo.js
+│   │   │   │   │       ├── et.js
+│   │   │   │   │       ├── fa.js
+│   │   │   │   │       ├── fi.js
+│   │   │   │   │       ├── fr.js
+│   │   │   │   │       ├── hr.js
+│   │   │   │   │       ├── it.js
+│   │   │   │   │       ├── nb.js
+│   │   │   │   │       ├── nl.js
+│   │   │   │   │       ├── no.js
+│   │   │   │   │       ├── _translationstatus.txt
+│   │   │   │   │       ├── tr.js
+│   │   │   │   │       ├── ug.js
+│   │   │   │   │       └── zh-cn.js
+│   │   │   │   ├── styles
+│   │   │   │   │   └── styles
+│   │   │   │   │       └── default.js
+│   │   │   │   ├── stylesheetparser
+│   │   │   │   │   └── plugin.js
+│   │   │   │   ├── table
+│   │   │   │   │   └── dialogs
+│   │   │   │   │       └── table.js
+│   │   │   │   ├── tableresize
+│   │   │   │   │   └── plugin.js
+│   │   │   │   ├── tabletools
+│   │   │   │   │   └── dialogs
+│   │   │   │   │       └── tableCell.js
+│   │   │   │   ├── templates
+│   │   │   │   │   ├── dialogs
+│   │   │   │   │   │   └── templates.js
+│   │   │   │   │   └── templates
+│   │   │   │   │       └── default.js
+│   │   │   │   ├── uicolor
+│   │   │   │   │   ├── dialogs
+│   │   │   │   │   │   └── uicolor.js
+│   │   │   │   │   ├── lang
+│   │   │   │   │   │   ├── bg.js
+│   │   │   │   │   │   ├── cs.js
+│   │   │   │   │   │   ├── cy.js
+│   │   │   │   │   │   ├── da.js
+│   │   │   │   │   │   ├── de.js
+│   │   │   │   │   │   ├── el.js
+│   │   │   │   │   │   ├── en.js
+│   │   │   │   │   │   ├── eo.js
+│   │   │   │   │   │   ├── et.js
+│   │   │   │   │   │   ├── fa.js
+│   │   │   │   │   │   ├── fi.js
+│   │   │   │   │   │   ├── fr.js
+│   │   │   │   │   │   ├── he.js
+│   │   │   │   │   │   ├── hr.js
+│   │   │   │   │   │   ├── it.js
+│   │   │   │   │   │   ├── mk.js
+│   │   │   │   │   │   ├── nb.js
+│   │   │   │   │   │   ├── nl.js
+│   │   │   │   │   │   ├── no.js
+│   │   │   │   │   │   ├── pl.js
+│   │   │   │   │   │   ├── _translationstatus.txt
+│   │   │   │   │   │   ├── tr.js
+│   │   │   │   │   │   ├── ug.js
+│   │   │   │   │   │   ├── uk.js
+│   │   │   │   │   │   ├── vi.js
+│   │   │   │   │   │   └── zh-cn.js
+│   │   │   │   │   ├── plugin.js
+│   │   │   │   │   └── yui
+│   │   │   │   │       ├── assets
+│   │   │   │   │       │   ├── hue_bg.png
+│   │   │   │   │       │   ├── hue_thumb.png
+│   │   │   │   │       │   ├── picker_mask.png
+│   │   │   │   │       │   ├── picker_thumb.png
+│   │   │   │   │       │   └── yui.css
+│   │   │   │   │       └── yui.js
+│   │   │   │   ├── wsc
+│   │   │   │   │   └── dialogs
+│   │   │   │   │       ├── ciframe.html
+│   │   │   │   │       ├── tmpFrameset.html
+│   │   │   │   │       ├── wsc.css
+│   │   │   │   │       └── wsc.js
+│   │   │   │   └── xml
+│   │   │   │       └── plugin.js
+│   │   │   ├── skins
+│   │   │   │   └── v2
+│   │   │   │       ├── dialog.css
+│   │   │   │       ├── editor.css
+│   │   │   │       ├── icons.png
+│   │   │   │       ├── icons_rtl.png
+│   │   │   │       ├── images
+│   │   │   │       │   ├── dialog_sides.png
+│   │   │   │       │   ├── dialog_sides_rtl.png
+│   │   │   │       │   ├── noimage.png
+│   │   │   │       │   ├── sprites_ie6.png
+│   │   │   │       │   ├── sprites.png
+│   │   │   │       │   └── toolbar_start.gif
+│   │   │   │       ├── skin.js
+│   │   │   │       └── templates.css
+│   │   │   └── themes
+│   │   │       └── default
+│   │   │           └── theme.js
+│   │   ├── classroom_detail.js
+│   │   ├── django.csrf.js
+│   │   ├── intemass.common.js
+│   │   ├── intemass.ui.js
+│   │   ├── intemass.util.js
+│   │   ├── itempool_detail.js
+│   │   ├── jquery-1.7.2.min.js
+│   │   ├── jquery.blockUI.min.js
+│   │   ├── jquery.colorpicker.js
+│   │   ├── jquery.contextMenu.js
+│   │   ├── jquery.cookie.js
+│   │   ├── jquery.dataTables.columnFilter.js
+│   │   ├── jquery.dataTables.min.js
+│   │   ├── jquery.form.js
+│   │   ├── jquery.jeditable.js
+│   │   ├── jquery.json-2.3.min.js
+│   │   ├── jquery.maskedinput-1.3.min.js
+│   │   ├── jquery.multiselect.min.js
+│   │   ├── jquery.textExt.min.js
+│   │   ├── jquery-ui-1.8.20.custom.min.js
+│   │   ├── jquery-ui-1.8.21.custom.min.js
+│   │   ├── jquery-ui-timepicker-addon.js
+│   │   ├── jquery.ztree.core-3.1.min.js
+│   │   ├── jquery.ztree.excheck-3.1.min.js
+│   │   ├── jquery.ztree.exedit-3.1.min.js
+│   │   ├── knockout-2.1.0.js
+│   │   ├── my1.js
+│   │   ├── my.js
+│   │   ├── original-my.js
+│   │   ├── paper_detail.js
+│   │   ├── question_detail.js
+│   │   ├── raphael.js
+│   │   ├── raphael-popup.js
+│   │   ├── report_paper.js
+│   │   ├── report_reviewquestion.js
+│   │   ├── report_student.js
+│   │   ├── report_teacher.js
+│   │   ├── student_add.js
+│   │   ├── student_custompaper.js
+│   │   ├── student_index.js
+│   │   ├── student_summarize.js
+│   │   ├── student_takeassignment.js
+│   │   ├── swfupload
+│   │   │   ├── fileprogress.js
+│   │   │   ├── handlers.js
+│   │   │   ├── swfuploadbutton.swf
+│   │   │   ├── swfupload.js
+│   │   │   ├── swfupload.queue.js
+│   │   │   └── swfupload.swf
+│   │   ├── teacher_index.js
+│   │   └── ui.spinner.min.js
+│   ├── questionimages
+│   │   └── jjj__10.jpg
+│   └── thumbnails
+│       └── thumb__jjj__10.jpg
+├── student
+│   ├── admin.py
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── models.py
+│   ├── static
+│   │   ├── css
+│   │   │   ├── jquery-ui-timepicker-addon.css
+│   │   │   ├── student_index.css
+│   │   │   └── student_takeassignment.css
+│   │   └── js
+│   │       ├── student_add.js
+│   │       ├── student_custompaper.js
+│   │       ├── student_index.js
+│   │       ├── student_summarize.js
+│   │       └── student_takeassignment.js
+│   ├── templates
+│   │   ├── student_add.html
+│   │   ├── student_allassignedassignments.json
+│   │   ├── student_allcustompapers.json
+│   │   ├── student_allhistoryanswers.json
+│   │   ├── student_all.json
+│   │   ├── student_assignmentsummarize.html
+│   │   ├── student_custompaper.html
+│   │   ├── student_index.html
+│   │   ├── student_profile.html
+│   │   ├── student_takeassignment.html
+│   │   └── takeselectiveexam.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── teacher
+│   ├── admin.py
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── models.py
+│   ├── static
+│   │   └── js
+│   │       └── teacher_index.js
+│   ├── templates
+│   │   └── teacher_index.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── TODO
+└── urls.py
+
+273 directories, 1553 files

@@ -1,0 +1,17 @@
+1. (((Market failure))) is defined as the the failure of a society to allocate resources efficiently resulting in the welfare lose to society. Market failure, both negative and positive, can be caused by externalities, assymmetric, information, public goods and market power like a monopolist. 
+
+2. In this instance, the congestion of cars in Beijing has caused (((negative externalities))) to arise. Negative externalities arise owing to the over consumption or over production of a good/service giving rise to a spill over effect on a third party to whom no compensation is made. 
+
+2.1. Labelled (((market failure diagram))) below showing how market failure has occurred owing to the negative externality.
+
+2.1.1 In the free market, consumers and producers only consider their own  private benefit and cost. The (((free market equilibrium))) under the free market will be  where the marginal private benefit equals the marginal private cost. (((MPB= MPC))).
+
+2.1.2 The existence of negative externalities creates a(((spillover cost))) or (((reduction in benefit))) to society and causes a (((divergence))) between the marginal social benefit with the marginal private benefit (((MSB < MPB))) or divergence between the marginal private  social cost with the marginal private cost. (((MSC > MPC)))
+
+2.1.3 A (((welfare loss or deadweight loss))) equivalent to the (((marginal external cost))) or (((MEC))) arises and is represented by the gray shaded region on the graph. As can be seen, this welfare lost results from the market to not be allocative efficient and as such causes the market to fail.
+
+3. In relation to the passage, the (((over usage of cars))) or (((over production of cars))) have caused  negative externalities. In this case, the spill over to 3rd parties maybe in the form of pollution which is bad to the health of people living in the city of Beijing as it causes health problems to others plus the carbon emission give rise to global warming which is a cost to society and which (((causes MSB < MPB or MSC > MPC))). 
+
+As such (((government intervention))) is necessary to (((correct this market failure))).
+
+ The government should implement policies to reduce the externality. Appropriate policies like (((banning))) may well remove the divergence by reducing usage of cars from Q3 to Q4 (as seen from the diagram). Ultimately a new equilibrium is reached as seen as point E of diagram 2.1, (((where MSC = MSB))) which the social optimum point after factoring in the marginal external cost of the externality of road usage in Beijing.

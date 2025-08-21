@@ -1,0 +1,22 @@
+{% include "admin/change_list.html" %}
+{% block gen %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+
+    function generaterandomcode(){
+        $.get('/entity/randomcode/add/',
+                function(payload){
+                if(payload){
+                location.href='/admin/entity/randomcode/';
+                }
+                },'json');
+        }
+
+  (function($) {
+
+    $(document).ready(function($){
+     $("#content-main .object-tools li").append("<li><a href='javascript:generaterandomcode()' class='addlink'> Generate New InviteCodes</a></li>");
+     });
+    })(django.jQuery);
+</script>
+{% endblock %}

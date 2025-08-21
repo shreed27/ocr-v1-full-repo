@@ -1,0 +1,11 @@
+How is the increased usage of cars in Beijing seen to be causing an externality? 
+
+Externality refers to the spillover effects of production or consumption experienced by third parties other than the producer or consumer. Externality can occur when there is an increased usage of cars by consumers. The scenario can be illustrated by the diagram below.
+
+The demand for cars in Beijing is represented by the demand curve D1 and the supply of cars in Beijing by the supply curve S1. Initially the equilibrium is at E1 where the price of cars is at P1 and the quantity of cars at Q1. When the demand for cars in Beijing increases due to an increase in the population of the working force, this is represented by the rightward shift of the demand curve to a new demand curve D2. As this happens, excess demand is created. The excess demand pushes the price of cars to increase to P2 where the new demand curve D2 intersects the supply curve S1. The price of cars then becomes P2, and the quantity of cars, Q2. Hence a new equilibrium is established.
+
+The above case shows that a larger quantity of cars is being purchased and used by consumers.
+
+This leads to an overconsumption of cars in Beijing. When overconsumption occurs, an external cost of consumption occurs. This can be represented by the diagram below.
+
+Initially the socially optimum point is at where the Marginal Social Benefit (MSB) curve intersects the Marginal Social Cost (MSC) curve. The increased usage of cars means individuals purchase the cars experience benefit from using their cars. However, the public, a third party not involved in the production and consumption of cars in Beijing, are negatively affected and experiences a welfare loss. The increased usage of cars in Beijing results in increased production of cars and this means that car companies are discharging more pollutant gases and wastage of resources into the public environment. The increased pollution is the externality which causes the deterioration of nature and since people are exposed to the contaminated air, people’s health is worsened. Hence, our welfare will be adversely affected. This welfare loss is represented by the shaded area in the diagram above. Therefore, the increased usage of cars in Beijing creates externality in the form of pollution and health problems.

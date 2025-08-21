@@ -1,0 +1,14 @@
+# Modernized requirements for Python 3.9+
+Django>=3.2,<4.0
+numpy
+nltk>=3.7
+setuptools
+Pillow
+ply>=3.4
+PyYAML
+mysqlclient  # replacement for MySQL-python
+django-nose
+html5lib
+beautifulsoup4
+reportlab>=3.6
+# South is no longer needed (migrations built into Django)

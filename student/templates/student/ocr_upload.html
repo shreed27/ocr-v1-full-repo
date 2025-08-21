@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <i class="fa fa-upload"></i> {{ title }}
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if error %}
+                        <div class="alert alert-danger">
+                            <strong>Error:</strong> {{ error }}
+                        </div>
+                    {% endif %}
+
+                    <div class="alert alert-info">
+                        <strong>Instructions:</strong>
+                        <ul class="mb-0 mt-2">
+                            <li>Upload a clear, high-quality image of the handwritten answer sheet</li>
+                            <li>Supported formats: JPG, PNG, PDF, TIFF (max 10MB)</li>
+                            <li>The OCR will automatically extract text from the image</li>
+                            <li>You can manually enter text if OCR fails to read the handwriting</li>
+                        </ul>
+                    </div>
+
+                    <form method="post" enctype="multipart/form-data" class="form-horizontal">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label for="{{ form.answer_sheet_image.id_for_label }}" class="col-sm-3 control-label">
+                                {{ form.answer_sheet_image.label }}
+                            </label>
+                            <div class="col-sm-9">
+                                {{ form.answer_sheet_image }}
+                                {% if form.answer_sheet_image.help_text %}
+                                    <p class="help-block">{{ form.answer_sheet_image.help_text }}</p>
+                                {% endif %}
+                                {% if form.answer_sheet_image.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.answer_sheet_image.errors %}
+                                            <small>{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.student.id_for_label }}" class="col-sm-3 control-label">
+                                {{ form.student.label }}
+                            </label>
+                            <div class="col-sm-9">
+                                {{ form.student }}
+                                {% if form.student.help_text %}
+                                    <p class="help-block">{{ form.student.help_text }}</p>
+                                {% endif %}
+                                {% if form.student.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.student.errors %}
+                                            <small>{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.question.id_for_label }}" class="col-sm-3 control-label">
+                                {{ form.question.label }}
+                            </label>
+                            <div class="col-sm-9">
+                                {{ form.question }}
+                                {% if form.question.help_text %}
+                                    <p class="help-block">{{ form.question.help_text }}</p>
+                                {% endif %}
+                                {% if form.question.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.question.errors %}
+                                            <small>{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.manual_text_override.id_for_label }}" class="col-sm-3 control-label">
+                                {{ form.manual_text_override.label }}
+                            </label>
+                            <div class="col-sm-9">
+                                {{ form.manual_text_override }}
+                                {% if form.manual_text_override.help_text %}
+                                    <p class="help-block">{{ form.manual_text_override.help_text }}</p>
+                                {% endif %}
+                                {% if form.manual_text_override.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.manual_text_override.errors %}
+                                            <small>{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fa fa-cog fa-spin" style="display:none;" id="processing-icon"></i>
+                                    <i class="fa fa-upload" id="upload-icon"></i>
+                                    Process Answer Sheet
+                                </button>
+                                <a href="{% url 'student_index' %}" class="btn btn-default btn-lg ml-2">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <i class="fa fa-info-circle"></i> How OCR Processing Works
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <ol>
+                        <li><strong>Upload:</strong> Select and upload a clear image of the handwritten answer sheet</li>
+                        <li><strong>OCR Processing:</strong> The system sends the image to our OCR API to extract text</li>
+                        <li><strong>Text Extraction:</strong> Handwritten text is converted to digital text</li>
+                        <li><strong>Assessment:</strong> The extracted text is processed by the assessment algorithms</li>
+                        <li><strong>Scoring:</strong> Automatic scoring and feedback generation based on the answer</li>
+                        <li><strong>Review:</strong> Teachers can review and manually adjust results if needed</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.querySelector('form').addEventListener('submit', function() {
+    document.getElementById('upload-icon').style.display = 'none';
+    document.getElementById('processing-icon').style.display = 'inline';
+    document.querySelector('button[type="submit"]').disabled = true;
+    document.querySelector('button[type="submit"]').innerHTML = 
+        '<i class="fa fa-cog fa-spin"></i> Processing...';
+});
+</script>
+{% endblock %}

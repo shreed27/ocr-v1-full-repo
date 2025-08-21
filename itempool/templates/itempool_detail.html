@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Itempool Detail" %}{% endblock%}
+{% block head %}
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/datatable_custom.css">
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/itempool_detail.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/zTreeStyle.css" type="text/css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/zTreeStyle_custom.css" type="text/css">
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.core-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.excheck-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.exedit-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/django.csrf.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/intemass.util.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/itempool_detail.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.blockUI.min.js"></script>
+<script type="text/javascript">
+    var add_question_url='{% url question_add %}';
+    var csrfvalue='{{ csrf_token }}';
+</script>
+<style type="text/css">
+#zTreeBackground{
+    float: right !important;
+    margin-top: 10px;
+}
+#teacher_list{
+    height: 220px !important;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container_12">
+	<div id="content" style="min-height:220px;height:330px">
+    <div class="form" style="height:680px">
+        <h1 >{% trans "Item Pool Detail" %}</h1>
+        <form class="content" method="post" action="">{% csrf_token %}
+            <p style="float:left;">
+            <label class="title1" for="id_itempoolid">{% trans "Item Pool ID" %}:</label>
+            {{ form.itempoolid }}
+            {%if form.itempoolid.errors %}
+            {% for error in form.itempoolid.errors %}
+            <div class="warning">{{ error }}</div>
+            {% endfor %}
+            {% endif %}
+            </p>
+
+            <p style="float:left;"><label class="title1" for="id_itempoolname" style="float:left;margin-top:0;">{% trans "Item Pool Name" %}:</label>
+            {{ form.itempoolname }}
+            <span type="text" width="100" maxlength="100" class="editable" style="display:block;width:180px;height:20px;float:left;padding:3px 0 0 0;"></span>
+            </p>
+
+            <p style="float:left;"><label class="title1" for="id_description" style="float:left;margin-top:0;">{% trans "Description" %}:</label>
+            {{ form.description }}
+            </p>
+
+            <label class="title1" for="zTreeBackground" style="float:left;margin-top:0;">{% trans "Teacher" %}:</label>
+                <div id="zTreeBackground">
+                    <span id="zTreeHeader">{% trans "All Teacher" %}</span>
+                    <ul id="teacher_list" class="ztree"></ul>
+                    <span id="zTreeFooter">{% trans "Teacher" %}:<span id='qnum' style="width:60px;padding:0 5px;"></span>{% trans ", Selected" %}:<span id='snum' style="width:60px;padding:0 5px;"></span></span>
+                </div>
+            <p style="float: right; " class="addteacher_btn">
+                <a style="float: right;" href="javascript:submitform()" class="greenBtn" id="button_teacher">{% trans "Add Teacher" %}</a>
+            </p>
+        </form>
+    </div>
+    </div>
+
+    <div class="grid_12 alpha omega" style="margin-bottom:1px;padding-bottom:1px;text-align:right;">
+        <h1 style="margin-bottom:1px;padding-bottom:1px;"><a href="#" id="add_question_a" class = "addBtn">{% trans "Add Question" %}</a></h1>
+    </div>
+    <div class="grid_12 alpha omega">
+        <table id="questions" class="datatable_display">
+            <thead>
+                <tr>
+                    <th>{% trans "QUESTION" %}</th>
+                    <th>{% trans "ACTION" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div style='display:none;'  id="dialog-confirm" title="Are you sure?">
+		<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "You will delete this question" %}.</p>
+</div>
+{% endblock %}

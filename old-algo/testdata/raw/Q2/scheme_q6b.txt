@@ -1,0 +1,1 @@
+only P1 or P2,1,only P1 and P2,2,only P3 and P4,2,only P3 or P4,1

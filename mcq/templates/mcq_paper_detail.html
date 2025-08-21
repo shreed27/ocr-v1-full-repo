@@ -1,0 +1,132 @@
+{% extends "mcq_base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Paper Modification" %}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/zTreeStyle.css" type="text/css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/zTreeStyle_custom.css" type="text/css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui-timepicker-addon.css" type="text/css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/paper_detail.css" type="text/css">
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.core-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.excheck-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.exedit-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.blockUI.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/mcq_paper_detail.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/django.csrf.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container_12">
+    <div id='content'>	
+        <div class="form" style="height:550px;">
+            <h1>{% trans "(MCQ) Paper Detail" %}</h1>
+            <form id="paper_detail_form" class="content"  method="post" action="">{% csrf_token %}
+
+                <div id="zTreeBackground">
+                    <span id="zTreeHeader">{% trans "All Questions" %}</span>
+                    <ul id="questions" class="ztree"></ul>
+                    <span id="zTreeFooter">{% trans "Questions:" %}<span id='qnum' style="width:60px;padding:0 5px;"></span>, {% trans "Selected" %}:<span id='snum' style="width:60px;padding:0 5px;"></span></span>
+                </div>
+
+                <div style="width:250px;float:left;">
+                    <p>
+                    <label for="id_paperid">ID:</label>
+                    {{ form.paperid }}
+                    {%if form.paperid.errors %}
+                    {% for error in form.paperid.errors %}
+                    <div class="warning">{{ error }}</div>
+                    {% endfor %}
+                    {% endif %}
+                    </p>
+
+                    <p>
+                    <label for="id_papername">{% trans "Name:" %}</label>
+                    {{ form.papername }}
+                    <span id="papername" type="text" maxlength="100" class="editable"></span>
+                    </p>
+
+
+                    <p>
+                    <label for="id_ptype" class="title1"> {% trans "Type:" %}</label>
+                    {{ form.ptype }}
+                    {% if form.ptype.errors %}
+                    {% for e in form.ptype.errors %}
+                    <div class="warning">{{ e }}</div>
+                    {% endfor %}
+                    {% endif %}
+                    </p>
+
+                    <p>
+                    <label for="id_duration" class="title1">{% trans "Duration:" %}</label>
+                    {{ form.duration }}
+                    {% if form.duration.errors %}
+                    {% for e in form.duration.errors %}
+                    <div class="warning">{{ e }}</div>
+                    {% endfor %}
+                    {% endif %}
+                    </p>
+
+                    <p>
+                    <label for="id_passpoint" class="title1">{% trans "PassMin:" %}</label>
+                    {{ form.passpoint }}
+                    {% if form.passpoint.errors %}
+                    {% for e in form.passpoint.errors %}
+                    <div class="warning">{{ e }}</div>
+
+                    {% endfor %}
+                    {% endif %}
+                    </p>
+
+ 
+                    <p>
+                    <label for="id_year" class="title1">{% trans "Year:" %}</label>
+                    {{ form.year }}
+                    {% if form.year.errors %}
+                    {% for e in form.year.errors %}
+                    <div class="warning">{{ e }}</div>
+                    {% endfor %}
+                    {% endif %}
+                    </p>
+
+                    <p>
+                    <label for="id_level" class="title1"> {% trans "Level:" %}</label>
+                    {{ form.level }}
+                    {% if form.level.errors %}
+                    {% for e in form.level.errors %}
+                    <div class="warning">{{ e }}</div>
+                    {% endfor %}
+                    {% endif %}
+                    </p>
+
+                    <p>
+                    <label for="id_subject" class="title1"> {% trans "Subject:" %}</label>
+                    {{ form.subject }}
+                    {% if form.subject.errors %}
+                    {% for e in form.subject.errors %}
+                    <div class="warning">{{ e }}</div>
+                    {% endfor %}
+                    {% endif %}
+                    </p>
+
+
+                    <p style="display:none">
+                    {{ form.questionlist }}
+                    </p>
+                    <p>
+                    <a href=javascript:submitform() class="greenBtn" id="button">{% trans "Save" %}</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="messages_div" style="display:none">
+    {% if messages %}
+    {% for message in messages %}
+    <span{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</span>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

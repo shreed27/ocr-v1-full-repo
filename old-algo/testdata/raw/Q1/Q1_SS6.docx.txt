@@ -1,0 +1,25 @@
+(9 marks)
+
+Short Answer Question: 
+
+[After scrutinising the question – highlight the key words in the question]
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+The Production Possibilities Curve (PPC) or frontier is a graph which compares the production rate of two commodities, such as capital goods and consumer goods, both of which are dependent on the same fixed total of the factors of production.
+
+The concept of scarcity is that humans have unlimited wants, but there are limited and insufficient resources which can be used to produce consumer or capital goods. Scarcity also means that not all of society’s goals can be met simultaneously, and certain tradeoffs have to made as a results. Scare resources include land and other goods. 
+
+Choice refers to the decision that people make to increase the production of certain goods at the expense of others, such as increasing the production of capital goods which will result in the decrease of production of capital goods. 
+
+Opportunity Cost refers to the cost of any activity and is measured in terms of the next best alternative which is forgone when a decision. For example, if there is a choice between A and B, and a person chooses A, the person would have given up B as a result of his decision, and that would be the opportunity cost of his decision.
+
+The (((diagram W))) illustrates the concept of the PPC
+
+The graph above shows a production possibilities curve (PPC) of capital goods against consumer goods. Point E is an example of scarcity as it out of the PPC and represents a point which is unattainable with the current resources available. Thus, Point E would only be attainable if the level of technology and productivity rate is increased. An example of scarcity would be the construction of houses which is limited by the amount of land available and suitable for construction.
+
+ Point A,B and C are points along the PPC and represent the different rates of production that can be obtained when the available resources are fully utilized. Point A shows the point where more resources are allocated to producing capital goods, which results in lesser consumer goods being produced as result. Point B shows the point where resources are equally allocated for the production of capital goods and consumer goods and thus there is an equal rate of production. Point C shows a point where more resources are allocated for the production of consumer goods which results in lesser capital goods being produced. This is an example of choice made, as an increase in the production of one would result in the decrease in production of another. 
+
+The opportunity cost also increases with the increase in gradient of the graph, such as the comparison between Point A and C, where C would have a higher opportunity cost due to the steeper gradient and the greater cost sacrificed as a result of the choice to produce consumer goods instead of capital goods. For example, if a factory spends $100 on the purchase of raw materials to produce their product, the opportunity cost would be $100 which could have been spent producing other goods. However, if the factory spends $1000 instead, the opportunity cost would now be $1000 which could have been spend on other factors of production.

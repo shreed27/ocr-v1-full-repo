@@ -1,0 +1,33 @@
+(6 marks)
+
+Short Answer Question: 
+
+[After scrutinising the question – highlight the key words in the question]
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+Define the key words
+
+Explain what is a PPC.
+
+Diagram (fully labelled)
+
+Explain what is scarcity and how is it shown using the PPC (with examples/real life examples if possible)
+
+Explain how choice arises and how is it shown using the PPC (with examples/real life examples if possible)
+
+Explain what is opportunity cost and how is it shown using the PPC (with examples/real life examples if possible)
+
+A production possibilities curve is a graph that shows the combination of two goods that the society can produce, and which combination would best satisfy the needs of the society. The production possibilities curve can be used to illustrate the basic ideas of scarcity, choice and opportunity cost.
+
+Scarcity could be defined as the lack of resources, due to limited resources, which prevents the society from meeting unlimited human wants. Choice would refer to the need to select a certain combination of goods that would satisfy the needs of the society, for example, whether to produce more capital goods or more consumer goods for the society. Opportunity cost is the cost of the next best alternative forgone.
+
+The (((diagram W))) illustrates the concept of the PPC
+
+Scarcity could be defined as the lack of resources, due to limited resources, which prevents the society from meeting unlimited human wants. Scarcity is show through Point E on the PPC, a point outside the PPC. Point E is unattainable due to the lack of resources available, and this illustrates the problem of scarcity as there is a certain point at which the society is unable to reach. In Singapore, the problem of scarcity is shown through land constraints, as the country is unable to create unlimited house developments to house its growing population. 
+
+Choice arises when the society has to choose what goods to produce, to best meet the needs of the society. The PPC simplifies this idea of choice and what to produce by comparing two goods that can be produced, for example, “consumer goods” and “capital goods” as shown above. Any points on the PPC (A,B,C) show an efficient use of resources, as that is the maximum combination of goods the society can produce. The matter of choice comes into play when the government has to choose between building a new MRT station in a plot of land, or to use the area to build new housing developments. The government has to make the decision that best satisfies the needs of the people, such as whether to make the lives of the people more convenient, or to allow more people to live in the area.
+
+Opportunity cost is the cost of the next best alternative forgone. Opportunity cost is shown through the gradient of the PPC. When the society wishes to produce more consumer goods, more capital goods have to be sacrificed (gradient between A and B as compared to gradient between B and C). As the amount of consumer goods produced increases, it becomes more costly to produce consumer goods, and hence, more capital goods have to be forgone. A real-life situation would be when the government chooses to invest in improving healthcare or to improve the military. As the government increases its investment into the area of healthcare, more resources that could have been used for the military, are instead used on healthcare. The cost of improving the healthcare sector would also have to include the cost of forgoing investment into the military, which for example, could include leaving the country more susceptible to attack.

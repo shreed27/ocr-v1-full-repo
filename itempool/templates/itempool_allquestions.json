@@ -1,0 +1,11 @@
+{ "aaData": [
+	{% for q in questions %}
+        {% if forloop.last %}
+        ["{{ q.qname }}",
+            "&nbsp;&nbsp;&nbsp;&nbsp;<a href=javascript:deletequestion('{{q.id}}') class='delBtn'><font color=black>Delete</font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='/question/add/?questionid={{ q.id }}&itempoolid={{ q.itempool.id }}' class='modBtn'><font color=black>Modify</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='/question/add/?questionid={{ q.id }}&itempoolid={{ q.itempool.id }}&view=1' class='viewBtn'><font color=black>View</font></a>"]
+        {% else %}
+        ["{{ q.qname }}",
+            "&nbsp;&nbsp;&nbsp;&nbsp;<a href=javascript:deletequestion('{{q.id}}') class='delBtn'><font color=black>Delete</font></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='/question/add/?questionid={{ q.id }}&itempoolid={{ q.itempool.id }}' class='modBtn'><font color=black>Modify</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='/question/add/?questionid={{ q.id }}&itempoolid={{ q.itempool.id }}&view=1' class='viewBtn'><font color=black>View</font></a>"],
+        {% endif %}
+    {% endfor %}
+] }

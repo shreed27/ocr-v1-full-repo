@@ -1,0 +1,38 @@
+#tabs3{
+    width: 1000px;
+    height: 1500px;
+}
+#tabs3 > ul li{
+    width:200px;
+}
+.management {
+    margin-bottom:1px;
+    padding-bottom:1px;
+    margin-top:5em;
+}
+.management > h1{
+    margin-bottom:1px;
+    padding-bottom:1px;
+}
+.optionform {
+    margin-bottom:1px;
+    padding-bottom:1px;
+    margin-top:5em;
+}
+.floatxy {
+    float: left;
+}
+.same_padding {
+    margin-left: 100px;
+}
+#s2id_id_year, #s2id_id_subject, #s2id_id_level {
+    width: 560px;
+}
+.btn {
+    float:right;
+    margin:8em 10em 0 0;
+}
+.warning {
+    float:left;
+    margin:0 7px 20px 0;
+}

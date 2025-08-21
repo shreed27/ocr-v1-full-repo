@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Assignment Summary{% endblock%}
+{% block head%}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/zTreeStyle.css" type="text/css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/zTreeStyle_custom.css" type="text/css">
+<script type="text/javascript" src="{{ STATIC_URL }}js/django.csrf.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.blockUI.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/student_summarize.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container_12">
+  <div id="content">
+    <div class="form" style="height:500px;">
+      <h1>Paper Summary</h1>
+      <form class="content" method="post" action="">{% csrf_token %}
+        <div style="width:250px;float:left;padding-top:2em;padding-left:10em;">
+          <p>
+          <label for="id_paper"  style="width:100px;margin-left:2px;">Paper:</label>
+		  <span type="text"  maxlength="30" readonly=true>{{paper.papername}}</span> 
+          </p><p>
+          <label for="id_subject"  style="width:100px;margin-left:2px;">Subject:</label>
+		  <span type="text"  maxlength="30" readonly=true>{{paper.subject.subjectname}}</span> 
+          </p><p>
+          <label for="id_year"  style="width:100px;margin-left:2px;">Year:</label>
+		  <span type="text"  maxlength="30" readonly=true>{{paper.year.yearname}}</span> 
+          </p><p>
+          <label for="id_level"  style="width:100px;margin-left:2px;">Level:</label>
+		  <span type="text"  maxlength="30" readonly=true>{{paper.level.levelname}}</span> 
+          </p><p>
+          <label for="id_mark"  style="width:100px;margin-left:2px;">Mark:</label>
+		  <span type="text"  maxlength="30" readonly=true>{{mark}}</span> 
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="messages_div" style="display:none">
+  {% if messages %}
+  {% for message in messages %}
+  <span{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</span>
+  {% endfor %}
+  {% endif %}
+</div>
+{% endblock %}
+
+

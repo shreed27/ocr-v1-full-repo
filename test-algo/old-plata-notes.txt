@@ -1,0 +1,93 @@
+Sat 8 Dec 12
+
+Integrating WordNet synonym and hyperpym checks into Essay grading algorithm.
+
+Oveview:
+
+The essay grading doesn't account for synonyms when doing the term matching of student answers versus the teacher's. Therfore, the same terms must be used in each, and the system just checks for equality with respect to simple word variation (e.g., written and write will match). 
+
+A new extension has been added that checks for synoyms as well as more general terms, using using from the WordNet lexicon (via NLTK). At a conceptual level will be analagous to the way term expansion works in information retrieval. With no expansion enabled, queries are matched argainst target documents as is. With synonym expansion, the query is augmented with the list of all the synonms for the query terms. 
+% TODO: find good example using query expansion (e.g., publically availavle web search)
+This is parameterized according to the existing strict, moderate, and loose mode as follows:
+
+    strict: no synonym nor general terms considered
+    moderate: synonyms considered when comparing student and teacher answers
+    loose: both synynyms and general terms also consider
+
+Strict mode is just the way the ssytem currenly works. In moderate mode, comparisons of the student's answer versus the teacher's account for synonyms of each of the student terms.
+Likewise, in loose mode, comparisons of the student's answer versus the teacher's account for synonyms of each of the student terms.
+
+Implementation:
+
+The current system uses a straight term vector model wuth  cosine measure for determining how close a studnet's answer is to the teacher's key. 
+(For details on the vector model, see http://en.wikipedia.org/wiki/Cosine_similarity.)
+
+Words are used as dimensions, so the matching is based on term equality across all dimensions.
+
+Cosine theta = a . b / |a| * |b|, where theta is the angle between vectors a and b,
+    # a . b is their dot product, and |v| is vector length:
+
+    Let 
+    	V_stu be term vectors for terms from student answer
+	V_key be term vectors for terms from teacher's key
+	Theta be the angle between V_stu and V_key in the vector space.
+
+    similarity(V_stu, V_key) = cosine(Theta) = V_stu . V_key / |V_stu| * |V_key|
+    
+      \sum w in all-words (student_freq(w) * teacher_freq(w))
+    = -------------------------------------------------------
+      sqrt(\sum w student_freq(w)**2) * sqrt(\sum w teahcer_freq(w)**2)
+
+To account for synonym expansion (i.e., in moderate mode), the dot product (i.e.,  V_stu . V_key) will be modified to use the maximum frequency for any synonym of the teacher's word):
+   = \sum w in all-words (max (student_freq(s) * teacher_freq(w)) for s in synonyms(w))
+
+Similarliy, for general-term expansion (i.e., in loose mode), the dot product (i.e.,  V_stu . V_key) will be modified to use the maximum frequency for any synonym of the teacher's word):
+   = \sum w in all-words (max (student_freq(g) * teacher_freq(w)) for g in general-terms(w))
+
+Currently, general terms expansion is only done on the teacher terms, under the assumption they use the most precise term in the answer key. (Synonym is a symmetric relationship, so there is no need to apply it to the student term as well.) In addition, there is a limit how high up in the WordNet the expansion goes to avoid use of overly general terms (e.g., living-thing for lawyer).
+
+TODO: Show detailed example for term vector calculations in all three modes
+
+key:	Attorneys are legal professional authorized to practice law
+answer: Lawyers are legal people who practice law
+
+	WordNet
+	lawyer#1, attorney#1 -- (a professional person authorized to practice law; conducts lawsuits or gives legal advice)
+	lawyer => professional => adult => person => organism => living-thing => whole => physical-entity => entity
+
+TODO: see whether is makes sense to check for less general terms of the teacher's response.
+      student: a hound is a dog used for hunting
+      teacher: a hound is a canine used for hunting
+      where dog => canine
+
+------------------------------------------------------------------------
+
+from mail to Tom S. (Wed, Nov 21, 2012 at 4:29 PM):
+
+How about if we work in an extension to the system as well as doing documentation? The essay grading doesn't account for synonyms when doing the term matching, so I can add checks against WordNet. The system already uses WordNet but only for deriving the base form of words (e.g., 'moved' to 'move'). We could also do checks for more general terms (e.g., 'animal' for 'dog'). This could be parameterized according the three levels of grading in Intemass as follows: strict mode uses exact word matching; moderate mode uses synonyms; and loose mode uses more general terms as well as synonyms.
+
+
+------------------------------------------------------------------------
+Sun 9 Dec 12
+
+
+$ pwd
+/d/cartera-de-tomas/python/django/mysite
+
+$ APPLY_WORDNET_EXPANSION=1 DEBUG_LEVEL=4 DJANGO_SETTINGS_MODULE=settings PYTHONPATH="$PWD/mysite:$PATH" python algo/tests.py >| test-algo.syn.log 2>&1
+
+-----
+
+$ EXCLUDE_LONG_TESTS=1 APPLY_WORDNET_EXPANSION=1 DEBUG_LEVEL=4 DJANGO_SETTINGS_MODULE=settings PYTHONPATH="$PWD/mysite:$PATH" python algo/tests.py >| test-algo.quick.syn.log 2>&1
+
+$ grep Using test-algo.quick.syn.log | perlgrep -v 'word (\w+).* word \1' | wc -l
+5067
+
+------------------------------------------------------------------------
+Sun 9 Dec 12
+
+$ USE_PART_OF_SPEECH=1 APPLY_WORDNET_EXPANSION=1 EXCLUDE_LONG_TESTS=1 DEBUG_LEVEL=4 DJANGO_SETTINGS_MODULE=settings PYTHONPATH="$PWD/mysite:$PATH" python algo/tests.py >| test-algo.pos.log2 2>&1
+
+-----
+
+$ DEBUG_LEVEL=7 python ./wordnet.py >| wordnet.debug.log 2>&1

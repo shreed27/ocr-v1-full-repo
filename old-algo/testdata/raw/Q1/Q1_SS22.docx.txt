@@ -1,0 +1,29 @@
+Brennan Foo
+
+5.07
+
+Short Answer Question: 
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+Scarcity is the problem of unlimited wants with limited resources. 
+
+Choice refers to choosing the different uses of resources.
+
+Opportunity cost is the loss made in choosing one of two ways of utilising resources.
+
+The production possibility curve refers to a point where an economy is allocating its resources in the best way and producing goods most efficiently. It is the maximum production an economy can achieve given its fixed resources.
+
+Scarcity is the problem of unlimited wants with limited resources. It is shown by the point E on the diagram below, where it is out of the Production Possibility Curve. Due to lack of resources, the point E cannot be reached even with any allocation of resources between capital and consumer goods. An example is Singapore’s land, because Singapore has a small land space, therefore housing is limited in Singapore. To produce more housing estates, more factories and buildings have to be removed in order to make way for the houses.
+
+The (((diagram W))) illustrates the concept of the PPC.
+
+Choice arises when there are different possible allocations of resources. Due to limited resources, a choice has to be made in deciding where the resources should go, as well as the quantity. Choice is represented on the Production Possibility Curve by the curve itself, as it shows the maximum output given the different allocations of resources between capital goods and consumer goods. It is shown as the points A, B, C and anywhere else on the curve in the diagram below.
+
+An example of choice is Singapore choosing what to use its limited land space for, whether more housing estates should be built to support the growing population, or more factories to support the economy.
+
+Opportunity cost is the benefit of the alternative choice of resource allocation. An example is an office using its funds to purchase new computers, but the opportunity cost is using the funds to purchase a fax machine instead of purchasing new computers. Opportunity cost is represented on the Production Possibility Curve by the gradient of a point along the curve. The gradient represents how much you are losing for every unit more of that resource used.
+
+In the Production Possibility Curve below, the gradient at Point A represents how many units of capital goods lost as opportunity cost for every unit of consumer goods used from Point A onwards.

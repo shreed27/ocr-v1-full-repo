@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://127.0.0.1:8080/student/custompaper/?view=1&paperid=28" />
+<title>3.3_student_custompaper</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">3.3_student_custompaper</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/student/custompaper/?view=1&amp;paperid=28</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=questions_5_span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=questions_3_check</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=questions_2_check</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=questions_2_check</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=questions_6_ico</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=questions_6_ico</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=questions_11_ico</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=id_paperid</td>
+	<td>label=New Paper</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=span.editable</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=value</td>
+	<td>p99</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

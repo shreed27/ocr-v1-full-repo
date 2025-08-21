@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <!-- <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/reset.css" /> -->
+    <link type="text/css" rel="stylesheet" href="/static/css/reset.css" />
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/text.css" />
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/960.css" />
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui-1.8.23.custom.css" />
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/intemass.ui.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/intemass.util.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/intemass.common.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>{% block title %}{% endblock %}</title>
+	{% block head %}{% endblock %}
+</head>
+<body>
+	{% include 'head.html' %}
+	{% block content %}{% endblock %}
+	{% include 'foot.html' %}
+</body>
+</html>

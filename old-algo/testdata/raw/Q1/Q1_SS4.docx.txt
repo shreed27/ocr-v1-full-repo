@@ -1,0 +1,69 @@
+(6 marks)
+
+Denise Fung 
+
+5.07
+
+ 
+
+HL Economics Assignment 1 (Short Answer Question): 
+
+ 
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+ 
+
+A production possibility curve is a graph that compares the production rates of two commodities that use the same fixed total of the factors of production. It shows a possible specified production level of one commodity that results given the production level of the other. By doing so, it defines productive efficiency, such that production of one commodity is maximised given the production level of the other commodity.
+
+ 
+
+A production possibility curve (PPC) can be used to show the concepts of scarcity, choice and opportunity cost. In terms of economics, scarcity can be defined by the amount of resources available. It refers to the insufficiency or shortness of a certain supply. Choice, on the other hand, is the power given to a consumer to make demands of what they want. It is the freedom and right given to an individual to make his or her own decision based on their wants. And by definition, opportunity cost is the cost of any action measured in terms of the best alternative that is sacrificed to the second best choice. 
+
+ 
+
+Here is an example of a production possibility curve.
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+The (((diagram W))) illustrates the concept of the PPC 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Looking at the graph, we can tell that point E is at an unattainable stage. This is due to scarcity of resources. From the fact that point E is on the outside of the curved line, it can be inferred that a country is unable to attain a certain standard of level of production whereby both capital goods and consumer goods are at high amounts. Point E is just the most ideal scenario but it is not possible to achieve due to the lack of resources available. Because of human nature, there are unlimited wants. However, resources are limited. Thus, point E describes the fact that there is a limit, and hence, scarcity of consumer goods and capital goods that will never meet the unrealistic demands of the economy. Therefore, this in turn affects the production of a country.
+
+ 
+
+Different choices that are made can be shown through points D, B and E. Point B, which lies on the line of the graph shows an efficient usage of resources. Hence, the choice made by the country is very ideal given the amount of resources they have. This shows good management of the country’s resources, a choice the country has made to sustain a good level of production. Point D on the other hand shows how choices made by the country are not good at all. Resources are wasted because of its underutilization. Both capital and consumer goods are not wisely spread out and used. Therefore, if a country were to be ar a state of point E, we can tell that resources have been misused. Finally, point E shows a choice that is over ambitious as there is not enough capital and consumer goods to satisfy the demands. Therefore, the country would face a difficulty in attaining what they want due to an unwise choice made. Therefore, a PPC can show how different choices will affect the production of a country because of the way resources are managed.
+
+ 
+
+Referring to the graph, opportunity cost can be inferred using the gradient of the curve. The bigger the gradient of the graph, the bigger the opportunity cost. This also means more resources have to be given up. For example, the gradient from point A to B is smaller than point B and C. Therefore, it can be told that less capital goods will be compromised (on AB) compared to consumer goods (on BC). The idea of opportunity cost is important in ensuring the efficient use of scarce resources. Opportunity cost is not entirely restricted to monetary cost but the real cost of the sacrificed output.
+
+ 
+
+In conclusion, the PPC is a useful data to compare the productivity of a country because it can cover the three main basic concepts of scarcity, choice and opportunity cost. It can also indicate the level of development and efficiency of the decisions made in managing resources.

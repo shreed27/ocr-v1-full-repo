@@ -1,0 +1,86 @@
+{% load i18n %}
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/popupstyle.css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}css/colorbox.css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}css/datatable_custom.css" />
+<script type="text/javascript" src="{{ STATIC_URL }}js/report_popup.js"></script>
+ <script type="text/javascript">
+    $(function(){
+                
+
+           $("#fb_submit_{{pid}}_{{stuid}}").bind("click", function(event){
+                 event.preventDefault();
+                 $.ajax({
+                        url: "/mcq/report/popup/{{pid}}/{{stuid}}/?question_id={{qid}}",
+                        type: "POST",
+                        data: $("#teacher_fb_form").serialize(),
+                        dataType: 'json',
+                        success: function(data){
+                            if (data.success){
+                                alert("Feedback given successfully!");
+                               $(this).colorbox.close();   
+                            }
+                            else{
+                                  alert("Fields are empty!");
+                            }
+                         //$(this).colorbox.close();   
+                       } 
+                       
+                 });	
+           });  
+     });
+ </script>
+
+<div style="height:380px; width:560px; padding: 5px; text-align: left;" class='box'>
+            <style type="text/css">
+                ul.errorlist{
+                    color: red;
+                    list-style: none;
+                    font-style: oblique;
+                    -webkit-padding-start: 0px;
+    
+                }
+            </style>
+ <span style="float: right; font-size: 15px;"><b>Time Taken:</b> {{fb.sta_timestamp|date:"D, d M Y" %}}</span>
+ <h1>{% trans "Add Your Feedback" %}</h1>
+  
+  <form id="teacher_fb_form" action="/mcq/report/popup/{{pid}}/{{stuid}}/" method="POST">{%csrf_token%}
+  <table cellspacing="100" border="0">
+      <tr>
+          <th>{% trans "Add Feedback:" %}</th>
+          <th>
+            <textarea rows="10" cols="50" name="Add_Feedback">{{fb.sta_feedback}}</textarea>
+          </th>
+      </tr>
+      <tr>
+          <td></td>
+          <td>{{form.Add_Feedback.errors}}</td>
+      </tr>
+      <tr>
+        <td>&nbsp</td>
+        <td>&nbsp</td>
+      </tr>
+      <tr>
+          <td>{% trans "Add Feedback Code:" %}</td>
+          <td>
+            <textarea rows="1" cols="50" name="Add_Feedback_Code">{{fb.sta_feedback_code}}</textarea>
+          </td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>{{form.Add_Feedback_Code.errors}} </td>
+      </tr>
+      <tr>
+        <td>&nbsp</td>
+        <td>&nbsp</td>
+      </tr>
+      <tr>
+      <td></td>
+         <td>&nbsp;&nbsp;&nbsp;
+              <input id="fb_submit_{{pid}}_{{stuid}}" style="width: 50px; height: 35px" type="submit"  class="blueBtn" value="Submit">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <input type="reset" class="blueBtn" style="width: 50px; height: 35px" name="reset" value="Cancel">  
+         </td>
+      </tr>
+  </table>
+  </form>
+</div>

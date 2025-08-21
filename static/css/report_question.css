@@ -1,0 +1,20 @@
+#thumbnails{
+  width: 250px; 
+  padding: 1%;
+  min-height: 200px;
+  height:300px;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+* html #thumbnails{
+  height:300px;
+}
+
+.iframe html body{
+  user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select:none;
+}

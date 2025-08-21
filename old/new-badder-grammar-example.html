@@ -1,0 +1,60 @@
+<!-- test for grammar editor control in report/templates/report_studentanswer.html -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>new badder grammar example</title>
+    <script type="text/javascript" src="static/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="static/js/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="static/js/ckeditor/ckeditor.adapter.jquery.js"></script>
+<!--
+    <script type="text/javascript" src="static/js/report_reviewquestion.js"></script>
+    <script type="text/javascript">
+      var csrfvalue = 'TsLPBVNmdKrxiftwDc6OwV7K0ghn9kX7';
+      var pids = [85];
+      var stuids = [213];
+      var group = 'students';
+      var paperid = '';
+      var studentid = '';
+    </script>
+-->
+  </head>
+
+  <body>
+    <h2>Grammatical Errors</h2>
+    <div id="grammar_issues">
+      <textarea id="grammar_editor" name="grammar_editor">
+	<small>
+	  <pre>
+	    1.) Line 1, column 16, Rule ID: ENGLISH_WORD_REPEAT_RULE
+	    Message: Possible typo: you repeated a word
+	    Suggestion: over
+	    This be me car over over there. You seen it? 
+                           ^^^^^^^^^                     
+	  </pre>
+	</small>
+      </textarea>
+      <script>
+	var alt_config = {
+        	toolbar: [],
+		//
+		// autoGrow_maxHeight: 300,
+		// autoGrow_maxHeight: 100,
+	        // autoGrow_minHeight: 100,
+	        // autoGrow_minWidth: 100,
+		// autoGrow_onStartup: true,
+		resize_enabled: true,
+	        resize_minHeight: 100,
+	        resize_minWidth: 100,
+		//
+	        toolbarStartupExpanded: false,
+	        readOnly: false,
+	        font_style: {
+	        	styles: {'font-size': '10px'}
+		},
+	        pasteFromWordRemoveStyles : true
+		};
+	CKEDITOR.replace('grammar_editor', alt_config);
+      </script>
+  </body>
+</html>

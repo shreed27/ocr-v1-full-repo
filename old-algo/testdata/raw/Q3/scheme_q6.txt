@@ -1,0 +1,3 @@
+
+
+all,2,only P1 or P2 ,1,only P3,2 

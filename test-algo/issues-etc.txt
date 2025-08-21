@@ -1,0 +1,15 @@
+Fri 14 Dec 12
+
+Issues with algorithm code:
+- vastly underdocumented
+- tests in test.py don't check results (i.e., cases just run as examples)
+- no assert's in the code(i.e., lack of sanity checks)
+- module interface is not clean (spaghetti interactions)
+- convoluted data structures (oveuse of hashes for passing around information)
+- excessive use of generators in scheme parser (in scheme_lang.py)
+- test code uses customized version of classes (i.e., not testing entirely against production system)
+- most test cases ignored due to "taking too much time"
+- a bunch of obsolete code
+- keyword match overlap not factored into score
+- document frequency based on key not student text
+- student sentences can be matched more than once

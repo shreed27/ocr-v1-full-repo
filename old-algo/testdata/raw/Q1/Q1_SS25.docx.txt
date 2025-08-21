@@ -1,0 +1,33 @@
+(5 marks)
+
+Kimberly Liau 5.18
+
+Short Answer Question: 
+
+[After scrutinising the question – highlight the key words in the question]
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+Define the key words
+
+Scarcity is when human needs exceed the existing human resources.
+
+Choice is a decision between different economic resources that are scarce. 
+
+Opportunity cost refers to the cost of the next best alternative forgone.
+
+The (((diagram W))) illustrates the concept of the PPC
+
+Explain what is scarcity and how is it shown using the PPC (with examples/real life examples if possible)
+
+Scarcity is when human needs exceed the existing human resources. It is shown by the PPC by the fact that you cannot produce at any point beyond the PPC which means you’re confined to your productive capacity. Scarcity is therefore represented on the PPC by the point E. For example, land is a scarcity in Singapore, and thus there is insufficient land to support the housing demand. 
+
+Explain how choice arises and how is it shown using the PPC (with examples/real life examples if possible)
+
+Choice arises when a decision must be made between two or more resources to utilize only one alternative.  This is represented on the PPC at points A, B, and C on the curve; where there are three different ways to full utilize the resource.  For example, in Singapore, land is a scarce resource and thus the government has to make a choice on how to use the land to its maximum potential; such as for housing and industries.
+
+Explain what is opportunity cost and how is it shown using the PPC (with examples/real life examples if possible)
+
+Opportunity cost measures the cost of any choice in terms of the next best alternative forgone.  Opportunity cost is measured by the gradient of the slope on the PPC. This is represented on the PPC at point A, B and C on the curve. Between point A and C, point C has a higher opportunity cost compared to point A.  This is because on point A, there is a restriction on the productive capacity. 

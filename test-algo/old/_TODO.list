@@ -1,0 +1,41 @@
+answer.py:91:    # TODO: Use common auxiliary function for vector computation.
+answer.py:92:    # TODO: See why stop words are not removed here as in CalVector from standard.py.
+answer.py:101:        # TODO: See if NLTK sentence tokenizer works better
+answer.py:111:            # TODO: Isolate text preprocessing code in a separate function 
+answer.py:166:            # TODO: Rework the already-matched check to be in terms of words not sentences (e.g., in case student just gives one long sentence).
+answer.py:182:                # TODO: Scale ancestor weight by degree of generality.
+answer.py:266:                    # TODO: Include synonym check for keyword (ancestor check would likely be too approximate)
+answer.py:304:                    # TODO: Track down when not defined
+answer.py:320:        # TODO: See why keyword rate is not considered
+answer.py:330:    # TODO: Rename to something more indicative of the function's behavior (e.g., DetermineGrade)
+answer.py:352:    # TODO: Rename to something more indicative of the function's behavior (e.g., EvaluatePointRules)
+answer.py:375:    # TODO: Correct callers to base the global_freq_dist argument on the answer text not standard (see tests.ty and ../student/views.py).
+answer.py:440:# TODO: Straighten out convoluted invocation sequence (bowl of spaghetti module inter-dependencies).
+common.py:8:# TODO:
+common.py:52:    # TODO: work out shorter name (e.g., debug_print_no_eol)
+common.py:57:                # Get time-proper from timestamp (TODO: find standard way to do this)
+common.py:80:    # TODO: Have version that just prints complete stacktrace (i.e., without breaking).
+markscheme.py:6:# TODO: Make MarkScheme a class embedded in tests.py (to avoid confusion)???
+markscheme.py:29:    ## TODO: remove following unused method 
+scheme_lang.py:40:# TODO: Cut down on excessive use of generators as efficiency is memory overhead
+scheme_lang.py:263:        # TODO: remove following old code
+scheme_lang.py:406:    # TODO: Do this via unit testing framework (Python or Django)
+scheme_lang.py:468:    data += [("any 2 combinations of P1;P3 ; P5 ;P99; P7 and any 1 combinations of P4;P6 and any 3 combinations of P2;P3.24", 1)]	# TODO: make negative
+scheme_lang.py:469:    data += [("less 2 combinations of P1;P3 ; P5 ;P99; P7 and less 1 combinations of P4;P6 and less 3 combinations of P2;P3.24", 1)]	# TODO: make negative
+scheme_lang.py:471:    data += [("all less -1 combinations of P1;P3;P5;P9", 1)]   # TODO: make negative
+standard.py:32:        # TODO: use re.MULTILINE
+standard.py:101:                   '""': ''}			# TODO: See if this should be '"'
+standard.py:131:                         # TODO: allow for comparatives and particles (e.g., back/RP)
+tests.py:36:# TODO: Just define if not already defined
+tests.py:117:    # TODO: Use same settings!!!
+tests.py:168:            # TODO: Move this elsewhere
+tests.py:294:        # TODO: Create helper function for reading question info as same code sequence used elsewhere.
+tests.py:312:        # TODO: Just do an assignment for crying out loud! Such needless code repetiton!
+tests.py:335:        # TODO: Always use freq dist for student text (not standard).
+tests.py:341:        # TODO: Raise an exception if the result is not as expected
+tests.py:386:        # TODO: Remove abAnswer method overrides altogether and do everything via proper subclassing (RTFM!!!).
+tests.py:428:        # TODO: Always use freq dist for student text (not standard).
+tests.py:452:            # TODO: Remove abAnswer method overrides altogether and do everything via proper subclassing (RTFM!!!).
+tests.py:474:                    # TODO: Always use freq dist for student text (not standard)
+tests.py:533:                                # TODO: Always use freq dist for student text (not standard)
+text.py:3:# TODO:

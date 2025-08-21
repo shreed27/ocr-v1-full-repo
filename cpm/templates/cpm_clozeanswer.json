@@ -1,0 +1,12 @@
+{ "aaData": [
+	{% for i in clozelisting %}
+            {% if forloop.last %}
+	["{{ i.ans_code}}","{{ i.ans_answer|safe}}",
+		"<a href=javascript:deletecloze('{{i.id}}') class='delBtn'><font color=black>Delete</font></a><a href='/cpm/clozelist/add/?clozelistid={{i.id}}&questionid={{i.question_id}}' class='modBtn'><font color=black>Modify</font></a><a href= '/cpm/clozelist/add/?view=1&clozelistid={{i.id}}&questionid={{i.question_id}}' class='viewBtn'><font color=black>View</font>"]
+            {% else %}
+	["{{ i.ans_code}}","{{ i.ans_answer|safe}}",
+        "<a href=javascript:deletecloze('{{i.id}}') class='delBtn'><font color=black>Delete</font></a><a href='/cpm/clozelist/add/?clozelistid={{i.id}}&questionid={{i.question_id}}' class='modBtn'><font color=black>Modify</font></a><a href= '/cpm/clozelist/add/?view=1&clozelistid={{i.id}}&questionid={{i.question_id}}' class='viewBtn'><font color=black>View</font>"],
+            {% endif %}
+    {% endfor %}
+	
+] }

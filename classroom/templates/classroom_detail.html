@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Class Modification" %}{% endblock%}
+
+{% block head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/zTreeStyle.css" type="text/css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/zTreeStyle_custom.css" type="text/css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/classroom_detail.css" type="text/css">
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.core-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.excheck-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/django.csrf.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.blockUI.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/classroom_detail.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container_12">
+    <div id="content">
+        <div class="form" style="height:500px;">
+            <h1>{% trans "Class Information" %}</h1>
+            <form id="class_mod_form" class="content" method="post" action="">{% csrf_token %}
+                <div id="zTreeBackground">
+                    <span id="zTreeHeader">{% trans "All Students" %}</span>
+                    <ul id="students" class="ztree"></ul>
+                    <span id="zTreeFooter">{% trans "Teachers" %}:<span id='tnum' style="width:60px;padding:0 5px;"></span>{% trans ", Students:" % }<span id='snum' style="width:60px;padding:0 5px;"></span></span>
+                </div>
+                <div style="width:250px;float:left;padding-top:2em;">
+                    <p>
+                    <label for="id_classid"  style="width:100px;margin-left:2px;">{% trans "ID" %}:</label>
+                    {{ form.classid }}
+                    {%if form.classid.errors %}
+                    {% for error in form.classid.errors %}
+                    <div class="warning">{{ error }}</div>
+                    {% endfor %}
+                    {% endif %}
+                    </p>
+                <p>
+                <label for="id_classname" style="width:100px;margin-left:2px;">{% trans "Name" %}:</label>
+                {{ form.classname }}
+                <span id="classnameedit" type="text" maxlength="100" class="editable" style="display:block;width:140px;float:left;padding:3px 0 0 3px;"></span>
+                {%if form.classname.errors %}
+                {% for error in form.classname.errors %}
+                <div class="warning">{{ error }}</div>
+                {% endfor %}
+                {% endif %}
+                </p>
+
+                <p>
+                <label for="id_volume" style="width:100px;margin-left:2px;">{% trans "Volume" %}:</label>
+                {{ form.volume }}
+                {%if form.volume.errors %}
+                {% for error in form.volume.errors %}
+                <div class="warning">{{ error }}</div>
+                {% endfor %}
+                {% endif %}
+                </p>
+
+                <p style="display:none;">
+                {{form.stulist}}
+                </p>
+                <p style="clear:both;width:250px;">
+                <a href=javascript:submitform() class="greenBtn" id="button" style="float:right;margin-top:5em;">Save</a>
+                </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="messages_div" style="display:none">
+    {% if messages %}
+    {% for message in messages %}
+    <span{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</span>
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}
+

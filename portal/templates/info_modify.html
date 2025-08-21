@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Information Modification" %}{% endblock %}
+{% block head %}
+<script type='text/javascript'>
+    function submitform(){
+        document.forms[0].submit();}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container_12">
+    <div id='content'>
+        <div class='form'>
+            <h1>{% trans "Information Modification" %}</h1>
+            <form class="content" action="" method="post">{% csrf_token %}
+                <p>
+                <label for="id_username" class="title1">{% trans "Username" %}:</label>
+                {{ form.username }}		
+                {%if form.username.errors %}
+                {% for error in form.username.errors %}
+                <div class="warning">{{ error }}</div>
+                {% endfor %}
+                {% endif %}
+                </p>
+                <p>
+                <label for="id_newpassword" class="title1">{% trans "Password" %}:</label>
+                {{ form.newpassword }}
+                {%if form.newpassword.errors %}
+                {% for error in form.newpassword.errors %}
+                <div class="warning">{{ error }}</div>
+                {% endfor %}
+                {% endif %}
+                </p>
+                <p>
+                <label for="id_newpasswordc" class="title1">{% trans "Password Confirm" %}:</label>
+                {{ form.newpasswordc}}
+                {%if form.newpasswordc.errors %}
+                {% for error in form.newpasswordc.errors %}
+                <div class="warning">{{ error }}</div>
+                {% endfor %}
+                {% endif %}
+                </p>
+                <p>
+                <label for="id_email" class="title1">{% trans "Email" %}:</label>
+                {{ form.email }}
+                {%if form.email.errors %}
+                {% for error in form.email.errors %}
+                <div class="warning">{{ error }}</div>
+                {% endfor %}
+                {% endif %}
+                </p>
+                <p><a class='blueBtn' href=javascript:submitform() id="signup" style='margin-right:2em' >{% trans "Modify Profile" %}</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+

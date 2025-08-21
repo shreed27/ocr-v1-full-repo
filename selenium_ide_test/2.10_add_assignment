@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://127.0.0.1:8080/assignment/add/" />
+<title>2.10_add_assignment</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">2.10_add_assignment</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/assignment/add/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=members_12_check</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=members_12_check</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=id_assignmentid</td>
+	<td>label=New Assignment</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;-1&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=editable</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=value</td>
+	<td>assignment_xxx</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_testdate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=29</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='button'])[36]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=id_deadline</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=span.ui-icon.ui-icon-circle-triangle-e</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=28</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='button'])[36]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=id_description</td>
+	<td>assignment_xxx_test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//button[@type='button'])[34]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=ui-multiselect-id_papers-option-0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=ui-multiselect-id_papers-option-1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=ui-multiselect-id_papers-option-2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

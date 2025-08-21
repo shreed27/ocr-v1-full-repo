@@ -1,0 +1,43 @@
+{% extends "mcq_basev2.html" %}
+{% block title %}Option List Detail{% endblock%}
+{% block head %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/django.csrf.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/intemass.util.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.easytree.js"></script>
+<script type="text/javascript">
+    var add_question_url='{% url mcq_question_add %}';
+    var csrfvalue='{{ csrf_token }}';
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="container_12">
+	<div id="content" style="min-height:220px;height:630px">
+		<div class="form" style="height:640px">
+		<h1 >(MCQ) Question Category</h1>
+		<p><button class="blueBtn" onclick="window.location = '/mcq/questioncategory/add/?id=0&seq=0';return false;">Create</button>
+		Click <u>arrow icon</u> to expand, click <u>wording</u> to edit. </p>
+		<div id="demo1_menu" style="text-align:left;height:540px;overflow:auto;">
+			{{ testtree }}
+		</div>
+
+
+		<script>
+		$( document ).ready(function() {
+		    $('#demo1_menu').easytree();
+		});
+		</script>
+
+		</div>
+	</div>
+</div>
+
+
+<div style='display:none;'  id="dialog-confirm" title="Are you sure?">
+		<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>You will delete this question.</p>
+</div>
+<div style='display:none;' id="dialog-add-error" title="Add Record">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Do not use "New Option" as your new name, please use other.</p>
+</div>
+{% endblock %}

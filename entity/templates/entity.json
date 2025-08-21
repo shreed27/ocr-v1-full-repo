@@ -1,0 +1,33 @@
+{aoColumns:[
+    {type:"select",
+     values:[
+        {%for y in years%}
+            {%if forloop.last%}
+                '{{y.yearname}}']},
+            {%else%}
+                '{{y.yearname}}',
+            {%endif%}
+        {%endfor%}
+    {type:"select",
+     values:
+        [
+        {%for s in subjects%}
+            {%if forloop.last%}
+                '{{s.subjectname}}']},
+            {%else%}
+            '{{s.subjectname}}',
+            {%endif%}
+        {%endfor%}
+    {type:"select",
+     values:
+        [
+        {%for l in levels%}
+            {%if forloop.last%}
+                '{{l.levelname}}']}
+            {%else%}
+                '{{l.levelname}}',
+            {%endif%}
+        {%endfor%}
+    ]}
+
+

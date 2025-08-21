@@ -1,0 +1,139 @@
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+
+/*copy from style.css and remove conflict part*/
+div#assignment_mod_div a.note{
+	color:#1b1b1b;
+	text-decoration:underline;
+	float:right;
+	padding-right:65px;
+	font-size: 12px;
+}
+div#assignment_mod_div a.note:hover{
+	color:#333;
+	float:right;
+	font-size: 12px;
+}
+div#assignment_mod_div h1{
+	font-size: 24px;
+	text-transform: uppercase;
+	padding-top:30px;
+	font-weight: normal;
+}
+div#assignment_mod_div p{
+	display: block;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after:1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	height: 40px;
+	width: 500px;
+	margin: 10px 0;
+	padding: 0;
+	text-align: left;
+}
+div#assignment_mod_div p:hover label{
+	color: #336699;
+}
+div#assignment_mod_div p:hover label:after{
+	cursor: pointer;
+	content: " >>";
+	color: #336699;
+}
+div#assignment_mod_div label{
+	cursor: pointer;
+	display: block;
+	float: left;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 28px;
+	margin-bottom: 5px;
+	width: 190px;
+	text-align: left;
+	margin-left: 50px;
+}
+div#assignment_mod_div form{
+	padding-top: 10px;
+	padding-bottom: 40px;
+}
+
+div#assignment_mod_div h1 {
+    margin-bottom:1px;
+    padding:0 0 1em 0;
+    text-align:center;
+}
+input:focus { 
+  -webkit-box-shadow: 0px 0px 5px #007eff; 
+  -moz-box-shadow: 0px 0px 5px #007eff; 
+  box-shadow: 0px 0px 5px #007eff;
+  behavior: url(./PIE.htc);
+}
+/*style.css part copied*/
+
+
+
+/* page spefic*/
+form#assignment_mod_form{
+    width:940px;
+}
+form#assignment_mod_form p{
+    float:left;
+}
+form#assignment_mod_form label{
+    width:180px;
+    margin-left:50px;
+}
+
+form#assignment_mod_form select{
+    width:234px;
+    margin-left:0;
+}
+form#assignment_mod_form #paper_p{
+    width:650px;
+}
+form#assignment_mod_form #id_papers{
+    width:340px;
+}
+
+div.ui-multiselect-menu li{
+    margin-left:1px;
+}
+
+form#assignment_mod_form span#editable{
+    float:left;
+    display:block;
+    width:228px;
+    margin-left:0;
+    padding:0;
+    height: 28px;
+    line-height: 28px;
+    //overflow: hidden;
+}
+
+form#assignment_mod_form div.zTreeBackground{
+    float:left;
+    width:250px;
+    margin-left:0;
+}
+
+form#assignment_mod_form a#button{
+    float:right;
+}
+
+form#assignment_mod_form div.warning{
+    float:left;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+}
+
+TEXTAREA   {
+       resize: none; 
+    }
+

@@ -1,0 +1,1733 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-12 04:59+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: assignment/templates/assignment_detail.html:3
+#: assignment/templates/assignment_detail.html:23
+#: mcq/templates/mcq_assignment_detail.html:3
+#: report/templates/exam_detail.html:3 report/templates/exam_detail.html:22
+msgid "Assignment Detail"
+msgstr "课后习题详情"
+
+#: assignment/templates/assignment_detail.html:27
+#: classroom/templates/classroom_detail.html:24
+#: mcq/templates/mcq_assignment_detail.html:27
+#: report/templates/exam_detail.html:26
+msgid "All Students"
+msgstr "所有学生"
+
+#: assignment/templates/assignment_detail.html:33
+#: classroom/templates/classroom_detail.html:30
+#: paper/templates/paper_detail.html:35 report/templates/exam_detail.html:32
+msgid "ID"
+msgstr "ID"
+
+#: assignment/templates/assignment_detail.html:42
+#: report/templates/exam_detail.html:41
+#: report/templates/report_studentanswer.html:83
+msgid "Assignment"
+msgstr "课后习题"
+
+#: assignment/templates/assignment_detail.html:48
+#: report/templates/exam_detail.html:46
+msgid "Assignment Date"
+msgstr "课后习题布置时间"
+
+#: assignment/templates/assignment_detail.html:52
+msgid "Assignment Due"
+msgstr "课后习题提交时间"
+
+#: assignment/templates/assignment_detail.html:57
+#: report/templates/exam_detail.html:61
+msgid "Papers"
+msgstr "试卷"
+
+#: assignment/templates/assignment_detail.html:62
+#: itempool/templates/itempool_detail.html:55
+#: mcq/templates/mcq_questioncategory_add.html:42
+#: mcq/templates/mcq_questioncategory_edit.html:49
+#: mcq/templates/mcq_student_index.html:65
+#: mcq/templates/mcq_student_index.html:86
+#: report/templates/exam_detail.html:51
+#: student/templates/student_index.html:63
+msgid "Description"
+msgstr "描述"
+
+#: classroom/templates/classroom_detail.html:3
+msgid "Class Modification"
+msgstr "修改班级"
+
+#: classroom/templates/classroom_detail.html:21
+msgid "Class Information"
+msgstr "班级信息"
+
+#: classroom/templates/classroom_detail.html:26
+#: report/templates/exam_detail.html:28
+msgid "Teachers"
+msgstr "教师"
+
+#: classroom/templates/classroom_detail.html:39
+#: paper/templates/paper_detail.html:45
+msgid "Name"
+msgstr "姓名"
+
+#: classroom/templates/classroom_detail.html:50
+msgid "Volume"
+msgstr "总人数"
+
+#: common/templates/head.html:7 mcq/templates/mcq_head.html:7
+msgid "Integrated Assignment and Examination System - INTEMASS"
+msgstr "课后作业与考试系统 －－ INTEMASS"
+
+#: common/templates/head.html:13 mcq/templates/mcq_head.html:13
+msgid "Logout"
+msgstr "注销"
+
+#: common/templates/head.html:14 mcq/templates/mcq_head.html:14
+msgid "Welcome"
+msgstr "欢迎"
+
+#: common/templates/head.html:17 common/templates/head.html.py:20
+#: mcq/templates/mcq_head.html:17 mcq/templates/mcq_head.html.py:20
+msgid "Sign up as teacher"
+msgstr "教师登陆"
+
+#: common/templates/head.html:31 common/templates/head.html.py:34
+#: common/templates/head.html:38 mcq/templates/mcq_head.html:31
+#: mcq/templates/mcq_head.html.py:34 mcq/templates/mcq_head.html:38
+msgid "Home"
+msgstr "主页"
+
+#: common/templates/head.html:32 common/templates/head.html.py:35
+#: mcq/templates/mcq_head.html:32 mcq/templates/mcq_head.html.py:35
+msgid "Report"
+msgstr "报告"
+
+#: common/templates/head.html:40 mcq/templates/mcq_head.html:40
+msgid "Help"
+msgstr "帮助"
+
+#: itempool/templates/itempool_detail.html:3
+#: mcq/templates/mcq_itempool_detail.html:3
+msgid "Itempool Detail"
+msgstr "题库详情"
+
+#: itempool/templates/itempool_detail.html:38
+msgid "Item Pool Detail"
+msgstr "题库详情"
+
+#: itempool/templates/itempool_detail.html:41
+msgid "Item Pool ID"
+msgstr "题库ID"
+
+#: itempool/templates/itempool_detail.html:50
+msgid "Item Pool Name"
+msgstr "题库名字"
+
+#: itempool/templates/itempool_detail.html:59
+#: itempool/templates/itempool_detail.html:63
+#: mcq/templates/mcq_student_index.html:64
+#: mcq/templates/mcq_student_index.html:85
+#: student/templates/student_index.html:62
+msgid "Teacher"
+msgstr "教师"
+
+#: itempool/templates/itempool_detail.html:61
+msgid "All Teacher"
+msgstr "全部教师"
+
+#: itempool/templates/itempool_detail.html:63
+#: paper/templates/paper_detail.html:30
+msgid ", Selected"
+msgstr "选中的"
+
+#: itempool/templates/itempool_detail.html:66
+msgid "Add Teacher"
+msgstr "增加教师"
+
+#: itempool/templates/itempool_detail.html:73
+#: mcq/templates/mcq_itempool_detail.html:48
+msgid "Add Question"
+msgstr "增加问题"
+
+#: itempool/templates/itempool_detail.html:79
+#: mcq/templates/mcq_itempool_detail.html:54
+msgid "QUESTION"
+msgstr "问题"
+
+#: itempool/templates/itempool_detail.html:80 mcq/templates/index.html:86
+#: mcq/templates/index.html.py:103 mcq/templates/index.html:127
+#: mcq/templates/index.html.py:145 mcq/templates/index.html:164
+#: mcq/templates/mcq_itempool_detail.html:55
+#: mcq/templates/mcq_question_detail.html:189
+#: report/templates/report_student.html:22
+#: student/templates/student_index.html:85
+#: teacher/templates/teacher_index.html:84
+#: teacher/templates/teacher_index.html:101
+#: teacher/templates/teacher_index.html:121
+#: teacher/templates/teacher_index.html:139
+#: teacher/templates/teacher_index.html:158
+msgid "ACTION"
+msgstr "执行"
+
+#: itempool/templates/itempool_detail.html:91
+msgid "You will delete this question"
+msgstr "你将删除这个问题"
+
+#: mcq/templates/index.html:3
+msgid "Multi Choice Question Main"
+msgstr "多选题"
+
+#: mcq/templates/index.html:64 mcq/templates/mcq_student_index.html:56
+#: student/templates/student_index.html:54
+#: teacher/templates/teacher_index.html:62
+msgid "Exam Type"
+msgstr "考试类型"
+
+#: mcq/templates/index.html:65 mcq/templates/mcq_student_index.html:57
+#: student/templates/student_index.html:55
+#: teacher/templates/teacher_index.html:63
+msgid "Structured Question"
+msgstr "判断题"
+
+#: mcq/templates/index.html:66 mcq/templates/mcq_student_index.html:58
+#: student/templates/student_index.html:56
+#: teacher/templates/teacher_index.html:64
+msgid "Multiple Choice Question"
+msgstr "多选题"
+
+#: mcq/templates/index.html:69 mcq/templates/index.html.py:76
+#: mcq/templates/mcq_student_achod.html:3
+#: mcq/templates/mcq_student_index.html:3
+#: student/templates/student_index.html:3
+#: teacher/templates/teacher_index.html:67
+#: teacher/templates/teacher_index.html:74
+msgid "Student Management"
+msgstr "学生管理"
+
+#: mcq/templates/index.html:70 teacher/templates/teacher_index.html:68
+msgid "Assignment Management"
+msgstr "习题管理"
+
+#: mcq/templates/index.html:71 teacher/templates/teacher_index.html:69
+msgid "Option Management"
+msgstr "选项管理"
+
+#: mcq/templates/index.html:77 teacher/templates/teacher_index.html:75
+msgid "Add Student"
+msgstr "添加学生"
+
+#: mcq/templates/index.html:83 mcq/templates/mcq_report_paper.html:89
+#: report/templates/report_paper.html:84
+#: teacher/templates/teacher_index.html:81
+msgid "STUDENT"
+msgstr "学生"
+
+#: mcq/templates/index.html:84 teacher/templates/teacher_index.html:82
+msgid "E-MAIL"
+msgstr "邮件"
+
+#: mcq/templates/index.html:85 teacher/templates/teacher_index.html:83
+msgid "LAST LOGIN"
+msgstr "上一次登陆"
+
+#: mcq/templates/index.html:94 teacher/templates/teacher_index.html:92
+msgid "Class Management"
+msgstr "班级管理"
+
+#: mcq/templates/index.html:95 teacher/templates/teacher_index.html:93
+msgid "Add Class"
+msgstr "添加班级"
+
+#: mcq/templates/index.html:101 teacher/templates/teacher_index.html:99
+msgid "CLASSNAME"
+msgstr "班级"
+
+#: mcq/templates/index.html:102 teacher/templates/teacher_index.html:100
+msgid "VOLUME"
+msgstr "人数"
+
+#: mcq/templates/index.html:114
+msgid "(MCQ) Question Category "
+msgstr "多选题问题类别"
+
+#: mcq/templates/index.html:114
+#, fuzzy
+msgid "MCQ Question Category"
+msgstr "问题名称"
+
+#: mcq/templates/index.html:118
+#, fuzzy
+msgid "(MCQ) Item Pool Management"
+msgstr "图库管理"
+
+#: mcq/templates/index.html:119
+#, fuzzy
+msgid "Add MCQ Item Pool"
+msgstr "增加题库"
+
+#: mcq/templates/index.html:125 teacher/templates/teacher_index.html:119
+msgid "POOLNAME"
+msgstr "题库名"
+
+#: mcq/templates/index.html:126 mcq/templates/index.html.py:163
+#: teacher/templates/teacher_index.html:120
+#: teacher/templates/teacher_index.html:157
+msgid "DESCRIPTION"
+msgstr "描述"
+
+#: mcq/templates/index.html:136
+#, fuzzy
+msgid "(MCQ) Paper Management"
+msgstr "试卷管理"
+
+#: mcq/templates/index.html:137
+#, fuzzy
+msgid "Add MCQ Paper"
+msgstr "增加试卷"
+
+#: mcq/templates/index.html:143 teacher/templates/teacher_index.html:137
+msgid "PAPERNAME"
+msgstr "试卷名"
+
+#: mcq/templates/index.html:144 mcq/templates/mcq_report_paper.html:90
+#: mcq/templates/mcq_report_teacher.html:65
+#: report/templates/report_paper.html:85
+#: report/templates/report_teacher.html:59
+#: report/templates/report_teacher.html:150
+#: teacher/templates/teacher_index.html:138
+msgid "ASSIGNMENT"
+msgstr "作业"
+
+#: mcq/templates/index.html:154
+msgid " (MCQ) Assignment Management"
+msgstr "习题管理"
+
+#: mcq/templates/index.html:155
+msgid "Add MCQ Assignment"
+msgstr "增加多选习题"
+
+#: mcq/templates/index.html:161 teacher/templates/teacher_index.html:155
+msgid "NAME"
+msgstr "姓名"
+
+#: mcq/templates/index.html:162 teacher/templates/teacher_index.html:156
+msgid "DATE"
+msgstr "日期"
+
+#: mcq/templates/index.html:176 mcq/templates/mcq_paper_detail.html:84
+#: mcq/templates/mcq_report_paper.html:37
+#: mcq/templates/mcq_report_studentanswer.html:125
+#: mcq/templates/mcq_report_teacher.html:28
+#: mcq/templates/mcq_student_assignmentretakesummarize.html:26
+#: mcq/templates/mcq_student_assignmentsummarize.html:26
+msgid "Year:"
+msgstr "年"
+
+#: mcq/templates/index.html:180 mcq/templates/mcq_paper_detail.html:104
+#: mcq/templates/mcq_report_paper.html:48
+#: mcq/templates/mcq_report_studentanswer.html:84
+#: mcq/templates/mcq_report_studentanswer.html:118
+#: mcq/templates/mcq_report_teacher.html:36
+#: mcq/templates/mcq_student_assignmentretakesummarize.html:23
+#: mcq/templates/mcq_student_assignmentsummarize.html:23
+msgid "Subject:"
+msgstr "科目"
+
+#: mcq/templates/index.html:184 mcq/templates/mcq_paper_detail.html:94
+#: mcq/templates/mcq_report_studentanswer.html:126
+#: mcq/templates/mcq_report_teacher.html:45
+#: mcq/templates/mcq_student_assignmentretakesummarize.html:29
+#: mcq/templates/mcq_student_assignmentsummarize.html:29
+#, fuzzy
+msgid "Level:"
+msgstr "级别"
+
+#: mcq/templates/index.html:198 mcq/templates/mcq_student_index.html:97
+#: student/templates/student_index.html:95
+#: teacher/templates/teacher_index.html:192
+msgid "USER PROFILE"
+msgstr "用户资料"
+
+#: mcq/templates/index.html:201 mcq/templates/mcq_student_index.html:100
+#: student/templates/student_index.html:98
+#: teacher/templates/teacher_index.html:195
+msgid "REPORT"
+msgstr "报告"
+
+#: mcq/templates/index.html:208 teacher/templates/teacher_index.html:202
+msgid "You will delete this student."
+msgstr "你将删除这个学生"
+
+#: mcq/templates/index.html:212 teacher/templates/teacher_index.html:206
+msgid "You will delete this classroom."
+msgstr "你将删除这个班级"
+
+#: mcq/templates/index.html:216 teacher/templates/teacher_index.html:210
+msgid "You will delete this itempool."
+msgstr "你将删除这个题库"
+
+#: mcq/templates/index.html:220 teacher/templates/teacher_index.html:214
+msgid "You will delete this paper."
+msgstr "你将删除这个试卷"
+
+#: mcq/templates/index.html:224 teacher/templates/teacher_index.html:218
+msgid "You will delete this assignment."
+msgstr "你将删除这个习题"
+
+#: mcq/templates/mcq_assignment_detail.html:23
+#, fuzzy
+msgid "(MCQ) Assignment Detail"
+msgstr "课后习题详情"
+
+#: mcq/templates/mcq_assignment_detail.html:29
+#, fuzzy
+msgid "Teachers:"
+msgstr "教师"
+
+#: mcq/templates/mcq_assignment_detail.html:29
+#, fuzzy
+msgid "Students"
+msgstr "学生"
+
+#: mcq/templates/mcq_assignment_detail.html:42
+#: mcq/templates/mcq_report_studentanswer.html:117
+#: mcq/templates/mcq_student_retakeassignment.html:118
+#: mcq/templates/mcq_student_takeassignment.html:127
+#, fuzzy
+msgid "Assignment:"
+msgstr "课后习题"
+
+#: mcq/templates/mcq_assignment_detail.html:48
+#, fuzzy
+msgid "Assignment Date:"
+msgstr "课后习题布置时间"
+
+#: mcq/templates/mcq_assignment_detail.html:52
+#, fuzzy
+msgid "Assignment Due:"
+msgstr "课后习题提交时间"
+
+#: mcq/templates/mcq_assignment_detail.html:57
+#, fuzzy
+msgid "Papers:"
+msgstr "试卷"
+
+#: mcq/templates/mcq_assignment_detail.html:62
+#: mcq/templates/mcq_itempool_detail.html:40
+#: mcq/templates/mcq_optionlist_detail.html:53
+#, fuzzy
+msgid "Description:"
+msgstr "描述"
+
+#: mcq/templates/mcq_assignment_detail.html:77
+#: mcq/templates/mcq_paper_detail.html:118
+#: mcq/templates/mcq_questioncategory_add.html:31
+#: mcq/templates/mcq_questioncategory_edit.html:38
+#: paper/templates/paper_detail.html:117
+#: question/templates/question_detail.html:260
+#: question/templates/question_detail.html:376
+#: report/templates/exam_detail.html:67
+msgid "Save"
+msgstr "保存"
+
+#: mcq/templates/mcq_fb_popup.html:44 report/templates/fb_popup.html:44
+msgid "Add Your Feedback"
+msgstr "添加反馈"
+
+#: mcq/templates/mcq_fb_popup.html:49
+#, fuzzy
+msgid "Add Feedback:"
+msgstr "添加反馈"
+
+#: mcq/templates/mcq_fb_popup.html:63
+#, fuzzy
+msgid "Add Feedback Code:"
+msgstr "添加反馈代码"
+
+#: mcq/templates/mcq_itempool_detail.html:26
+#, fuzzy
+msgid "Item Pool ID:"
+msgstr "题库ID"
+
+#: mcq/templates/mcq_itempool_detail.html:35
+#, fuzzy
+msgid "Item Pool Name:"
+msgstr "题库名字"
+
+#: mcq/templates/mcq_itempool_detail.html:66
+#, fuzzy
+msgid "You will delete this question."
+msgstr "你将删除这个问题"
+
+#: mcq/templates/mcq_optionlist_detail.html:3
+#: mcq/templates/mcq_questioncategory_add.html:3
+#: mcq/templates/mcq_questioncategory_edit.html:3
+#, fuzzy
+msgid "Option List Detail"
+msgstr "问题描述"
+
+#: mcq/templates/mcq_optionlist_detail.html:28
+#, fuzzy
+msgid "(MCQ) Option List Detail"
+msgstr "问题描述"
+
+#: mcq/templates/mcq_optionlist_detail.html:33
+msgid "Option List ID :"
+msgstr "选项ID"
+
+#: mcq/templates/mcq_optionlist_detail.html:35
+#, fuzzy
+msgid "New Option"
+msgstr "新问题"
+
+#: mcq/templates/mcq_optionlist_detail.html:43
+#, fuzzy
+msgid "Option List Name:"
+msgstr "问题名称"
+
+#: mcq/templates/mcq_optionlist_detail.html:48
+msgid "is correct:  the correct value "
+msgstr "是正确答案：回答正确"
+
+#: mcq/templates/mcq_optionlist_detail.html:49
+#, fuzzy
+msgid "Correct"
+msgstr "正确图表"
+
+#: mcq/templates/mcq_optionlist_detail.html:50
+msgid "Incorrect"
+msgstr "错误"
+
+#: mcq/templates/mcq_optionlist_detail.html:57
+msgid "Option:"
+msgstr "选项"
+
+#: mcq/templates/mcq_optionlist_detail.html:73
+msgid "Do not use \"New Option\" as your new name, please use other."
+msgstr "请不要使用新选项/New Option作为名字，请使用其他名字"
+
+#: mcq/templates/mcq_paper_detail.html:3 paper/templates/paper_detail.html:3
+msgid "Paper Modification"
+msgstr "修改试卷"
+
+#: mcq/templates/mcq_paper_detail.html:24
+#, fuzzy
+msgid "(MCQ) Paper Detail"
+msgstr "试卷详情"
+
+#: mcq/templates/mcq_paper_detail.html:28 paper/templates/paper_detail.html:28
+msgid "All Questions"
+msgstr "全部问题"
+
+#: mcq/templates/mcq_paper_detail.html:30
+#: mcq/templates/mcq_student_custompaper.html:27
+msgid "Questions:"
+msgstr "问题"
+
+#: mcq/templates/mcq_paper_detail.html:30
+msgid "Selected"
+msgstr "选中的"
+
+#: mcq/templates/mcq_paper_detail.html:45
+#: mcq/templates/mcq_student_custompaper.html:43
+#, fuzzy
+msgid "Name:"
+msgstr "姓名"
+
+#: mcq/templates/mcq_paper_detail.html:52
+#, fuzzy
+msgid "Type:"
+msgstr "类型"
+
+#: mcq/templates/mcq_paper_detail.html:62
+#: mcq/templates/mcq_student_custompaper.html:54
+msgid "Duration:"
+msgstr "考试时间"
+
+#: mcq/templates/mcq_paper_detail.html:72
+msgid "PassMin:"
+msgstr "经过时间"
+
+#: mcq/templates/mcq_question_detail.html:3
+#: question/templates/question_detail.html:3
+#: report/templates/report_question.html:19
+msgid "Question Detail"
+msgstr "问题描述"
+
+#: mcq/templates/mcq_question_detail.html:55
+#, fuzzy
+msgid "(MCQ) Question, List of Option"
+msgstr "问题描述"
+
+#: mcq/templates/mcq_question_detail.html:70
+#, fuzzy
+msgid "Question ID :"
+msgstr "问题ID"
+
+#: mcq/templates/mcq_question_detail.html:73
+#: question/templates/question_detail.html:53
+msgid "New Question"
+msgstr "新问题"
+
+#: mcq/templates/mcq_question_detail.html:82
+#: question/templates/question_detail.html:123
+#: question/templates/question_detail.html:172
+msgid "Choose some images"
+msgstr "选择图片"
+
+#: mcq/templates/mcq_question_detail.html:89
+#: question/templates/question_detail.html:130
+#: question/templates/question_detail.html:179
+msgid "Cancel"
+msgstr "取消"
+
+#: mcq/templates/mcq_question_detail.html:91
+#: question/templates/question_detail.html:132
+#: question/templates/question_detail.html:181
+msgid "Uploaded Images"
+msgstr "上传图片"
+
+#: mcq/templates/mcq_question_detail.html:100
+#, fuzzy
+msgid "Question Name:"
+msgstr "问题名称"
+
+#: mcq/templates/mcq_question_detail.html:108
+#, fuzzy
+msgid "Question Description:"
+msgstr "问题描述"
+
+#: mcq/templates/mcq_question_detail.html:116
+#, fuzzy
+msgid "Question Mark:"
+msgstr "问题"
+
+#: mcq/templates/mcq_question_detail.html:124
+#, fuzzy
+msgid "Question Type:"
+msgstr "问题类型"
+
+#: mcq/templates/mcq_question_detail.html:128
+#: question/templates/question_detail.html:72
+msgid "Review"
+msgstr "复习"
+
+#: mcq/templates/mcq_question_detail.html:129
+#: question/templates/question_detail.html:73
+msgid "Formal"
+msgstr "标准"
+
+#: mcq/templates/mcq_question_detail.html:135
+#, fuzzy
+msgid "Question Category:"
+msgstr "问题名称"
+
+#: mcq/templates/mcq_question_detail.html:156
+#: question/templates/question_detail.html:139
+#: question/templates/question_detail.html:188
+#: question/templates/question_detail.html:303
+msgid "Submit"
+msgstr "提交"
+
+#: mcq/templates/mcq_question_detail.html:180
+#, fuzzy
+msgid "Option List"
+msgstr "分数列表"
+
+#: mcq/templates/mcq_question_detail.html:181
+#, fuzzy
+msgid "Add Option"
+msgstr "增加选项"
+
+#: mcq/templates/mcq_question_detail.html:187
+#, fuzzy
+msgid "Option"
+msgstr "选项"
+
+#: mcq/templates/mcq_question_detail.html:188
+#, fuzzy
+msgid "is Answer"
+msgstr "标准答案"
+
+#: mcq/templates/mcq_question_detail.html:203
+#: mcq/templates/mcq_report_studentanswer.html:223
+#: mcq/templates/mcq_student_takeassignment.html:201
+#, fuzzy
+msgid "Processing your request..."
+msgstr "问题处理中"
+
+#: mcq/templates/mcq_question_detail.html:207
+#: question/templates/question_detail.html:390
+msgid "You have successfully uploaded the question."
+msgstr "你已经成功提交问题"
+
+#: mcq/templates/mcq_question_detail.html:210
+#: question/templates/question_detail.html:393
+msgid "Please check: questionname and content can't be null."
+msgstr "请检查： 问题和内容不能为空"
+
+#: mcq/templates/mcq_question_detail.html:213
+#: question/templates/question_detail.html:396
+msgid "Please check: questionname and id must be valid."
+msgstr "请检查： 问题名称和ID不能为空"
+
+#: mcq/templates/mcq_question_detail.html:216
+#: question/templates/question_detail.html:399
+msgid "Please check: standard answer image must in questionimage."
+msgstr "请检查： 标准答案图形必须在问题图形中选取"
+
+#: mcq/templates/mcq_question_detail.html:219
+#: question/templates/question_detail.html:402
+msgid "You have successfully uploaded the standard answer."
+msgstr "你已经成功上传标准答案"
+
+#: mcq/templates/mcq_question_detail.html:223
+#, fuzzy
+msgid "You will delete this option list."
+msgstr "你将删除这个问题"
+
+#: mcq/templates/mcq_questioncategory_add.html:30
+#: mcq/templates/mcq_questioncategory_edit.html:37
+#, fuzzy
+msgid "(MCQ) Question Category"
+msgstr "问题名称"
+
+#: mcq/templates/mcq_questioncategory_add.html:31
+#: mcq/templates/mcq_questioncategory_edit.html:38
+msgid "Return"
+msgstr "返回"
+
+#: mcq/templates/mcq_questioncategory_add.html:39
+#: mcq/templates/mcq_questioncategory_edit.html:46
+#, fuzzy
+msgid "Question Category"
+msgstr "问题名称"
+
+#: mcq/templates/mcq_questioncategory_add.html:45
+msgid "seq"
+msgstr "序列"
+
+#: mcq/templates/mcq_questioncategory_add.html:48
+#: mcq/templates/mcq_questioncategory_edit.html:55
+msgid "parent id"
+msgstr "父节点编号"
+
+#: mcq/templates/mcq_questioncategory_add.html:61
+#: mcq/templates/mcq_questioncategory_edit.html:67
+msgid "Your record save successfully."
+msgstr "您的记录成功保存"
+
+#: mcq/templates/mcq_questioncategory_edit.html:38
+msgid "Add New Sub"
+msgstr "添加学科"
+
+#: mcq/templates/mcq_questioncategory_edit.html:75
+msgid "Description can not be blank."
+msgstr "描述不能为空"
+
+#: mcq/templates/mcq_questioncategory_edit.html:81
+msgid "Category can not be blank."
+msgstr "描述不能为空"
+
+#: mcq/templates/mcq_questioncategory_edit.html:85
+msgid "Confirm delete?"
+msgstr "确认删除？"
+
+#: mcq/templates/mcq_report_feedback_report.html:6
+#: report/templates/report_feedback_report.html:7
+#: report/templates/report_feedback_report_download.html:7
+msgid "Student's Report"
+msgstr "学生报告"
+
+#: mcq/templates/mcq_report_feedback_report.html:60
+#, fuzzy
+msgid "Time Taken:"
+msgstr "花费时间"
+
+#: mcq/templates/mcq_report_feedback_report.html:63
+#, fuzzy
+msgid "Assignment Number"
+msgstr "作业编号"
+
+#: mcq/templates/mcq_report_feedback_report.html:64
+#, fuzzy
+msgid "Student Index Number"
+msgstr "学生学号"
+
+#: mcq/templates/mcq_report_feedback_report.html:69
+#: paper/templates/paper_feedback_report.html:64
+#: question/templates/question_detail.html:42
+#: report/templates/report_feedback_report.html:59
+#: report/templates/report_feedback_report_download.html:73
+#: report/templates/report_studentanswer.html:95
+#: report/templates/report_studentanswer.html:123
+#: report/templates/report_teacher.html:182
+msgid "Question"
+msgstr "问题"
+
+#: mcq/templates/mcq_report_feedback_report.html:70
+#: mcq/templates/mcq_report_studentanswer.html:193
+#: paper/templates/paper_feedback_report.html:65
+#: report/templates/report_feedback_report.html:60
+#: report/templates/report_feedback_report_download.html:74
+msgid "Student Answer"
+msgstr "学生答案"
+
+#: mcq/templates/mcq_report_feedback_report.html:71
+#: paper/templates/paper_feedback_report.html:66
+#: report/templates/report_feedback_report.html:61
+#: report/templates/report_feedback_report_download.html:75
+msgid "Actual Answer"
+msgstr "标准答案"
+
+#: mcq/templates/mcq_report_feedback_report.html:72
+#: paper/templates/paper_feedback_report.html:68
+#: report/templates/report_feedback_report.html:63
+#: report/templates/report_feedback_report_download.html:77
+msgid "Attained Marks"
+msgstr "成绩"
+
+#: mcq/templates/mcq_report_feedback_report.html:73
+#: paper/templates/paper_feedback_report.html:69
+#: report/templates/report_feedback_report.html:64
+#: report/templates/report_feedback_report_download.html:78
+msgid "Teacher's Feedback"
+msgstr "教师反馈"
+
+#: mcq/templates/mcq_report_feedback_report.html:74
+#: paper/templates/paper_feedback_report.html:70
+#: report/templates/report_feedback_report.html:65
+#: report/templates/report_feedback_report_download.html:79
+msgid "FBcode"
+msgstr "反馈编号"
+
+#: mcq/templates/mcq_report_feedback_report.html:107
+#: paper/templates/paper_feedback_report.html:88
+#: report/templates/report_feedback_report.html:135
+#: report/templates/report_feedback_report_download.html:114
+msgid "Total"
+msgstr "总计"
+
+#: mcq/templates/mcq_report_feedback_report.html:117
+#: report/templates/report_feedback_report.html:146
+#: report/templates/report_feedback_report_download.html:125
+msgid "Feedback Report"
+msgstr "反馈报告"
+
+#: mcq/templates/mcq_report_feedback_report.html:123
+#, fuzzy
+msgid ""
+"Note: The underlined points are points which you have left out in your "
+"answer script."
+msgstr "说明: 有下划线的分数是完成答题后的分数，以百分比表示 "
+
+#: mcq/templates/mcq_report_feedback_report.html:130
+#: paper/templates/paper_feedback_report.html:98
+#: report/templates/report_feedback_report.html:158
+msgid "Print"
+msgstr "打印"
+
+#: mcq/templates/mcq_report_paper.html:3
+msgid "Students' Assignment Report"
+msgstr "学生 作业报告"
+
+#: mcq/templates/mcq_report_paper.html:27
+msgid "(MCQ) STUDENTS ASSIGNMENT RECORD"
+msgstr "学生 作业纪录"
+
+#: mcq/templates/mcq_report_paper.html:72
+#: mcq/templates/mcq_report_teacher.html:54
+#: report/templates/report_paper.html:63
+#: report/templates/report_studentanswer.html:69
+#: report/templates/report_teacher.html:48
+#: report/templates/report_teacher.html:127
+msgid "Please Select"
+msgstr "请选择"
+
+#: mcq/templates/mcq_report_paper.html:86
+#: mcq/templates/mcq_report_teacher.html:62
+#: report/templates/report_paper.html:81
+#: report/templates/report_teacher.html:56
+#: report/templates/report_teacher.html:147
+msgid "YEAR"
+msgstr "年"
+
+#: mcq/templates/mcq_report_paper.html:87
+#: mcq/templates/mcq_report_teacher.html:63
+#: report/templates/report_paper.html:82
+#: report/templates/report_teacher.html:57
+#: report/templates/report_teacher.html:148
+msgid "SUBJECT"
+msgstr "科目"
+
+#: mcq/templates/mcq_report_paper.html:88
+#: mcq/templates/mcq_report_teacher.html:64
+#: report/templates/report_paper.html:83
+#: report/templates/report_teacher.html:58
+#: report/templates/report_teacher.html:149
+msgid "LEVEL"
+msgstr "级别"
+
+#: mcq/templates/mcq_report_paper.html:91
+#: report/templates/report_paper.html:86
+#: report/templates/report_student.html:21
+msgid "MARK"
+msgstr "成绩"
+
+#: mcq/templates/mcq_report_paper.html:92
+#: report/templates/report_paper.html:87
+msgid "CLOSE"
+msgstr "关闭"
+
+#: mcq/templates/mcq_report_paper.html:93
+#: report/templates/report_paper.html:88
+msgid "VIEW"
+msgstr "视图"
+
+#: mcq/templates/mcq_report_paper.html:104
+#: mcq/templates/mcq_report_teacher.html:73
+#: report/templates/report_paper.html:99
+#: report/templates/report_teacher.html:67
+msgid "Select All"
+msgstr "全选"
+
+#: mcq/templates/mcq_report_paper.html:107
+#: mcq/templates/mcq_report_teacher.html:76
+#: report/templates/report_paper.html:102
+#: report/templates/report_studentanswer.html:96
+#: report/templates/report_teacher.html:70
+#: report/templates/report_teacher.html:162
+msgid "Process"
+msgstr "处理中"
+
+#: mcq/templates/mcq_report_studentanswer.html:3
+#, fuzzy
+msgid "Assignment Record"
+msgstr " 作业成绩"
+
+#: mcq/templates/mcq_report_studentanswer.html:91
+#, fuzzy
+msgid "Select"
+msgstr "选中的"
+
+#: mcq/templates/mcq_report_studentanswer.html:93
+msgid "Back"
+msgstr "返回"
+
+#: mcq/templates/mcq_report_studentanswer.html:98
+#: mcq/templates/mcq_report_studentanswer.html:131
+#: mcq/templates/mcq_student_assignmentretakesummarize.html:20
+#: mcq/templates/mcq_student_assignmentsummarize.html:20
+#, fuzzy
+msgid "Paper:"
+msgstr "试卷"
+
+#: mcq/templates/mcq_report_studentanswer.html:105
+#: mcq/templates/mcq_report_studentanswer.html:122
+#: mcq/templates/mcq_student_retakeassignment.html:130
+#: mcq/templates/mcq_student_takeassignment.html:139
+#, fuzzy
+msgid "Student:"
+msgstr "学生"
+
+#: mcq/templates/mcq_report_studentanswer.html:129
+#: mcq/templates/mcq_student_retakeassignment.html:120
+#: mcq/templates/mcq_student_takeassignment.html:129
+#, fuzzy
+msgid "Question:"
+msgstr "问题"
+
+#: mcq/templates/mcq_report_studentanswer.html:130
+#: mcq/templates/mcq_student_retakeassignment.html:126
+#: mcq/templates/mcq_student_takeassignment.html:135
+#, fuzzy
+msgid "Process:"
+msgstr "处理中"
+
+#: mcq/templates/mcq_report_studentanswer.html:150
+#: mcq/templates/mcq_report_studentanswer.html:152
+#, fuzzy
+msgid "Feedback !"
+msgstr "反馈"
+
+#: mcq/templates/mcq_report_studentanswer.html:163
+#, fuzzy
+msgid "Question [Attained Mark"
+msgstr "成绩"
+
+#: mcq/templates/mcq_report_studentanswer.html:170
+#: report/templates/report_studentanswer.html:134
+msgid "Question Diagrams"
+msgstr "问题图表"
+
+#: mcq/templates/mcq_report_studentanswer.html:197
+#: question/templates/question_detail.html:43
+#: question/templates/question_detail.html:169
+#: report/templates/report_studentanswer.html:172
+msgid "Standard Answer"
+msgstr "标准答案"
+
+#: mcq/templates/mcq_report_studentanswer.html:209
+#: mcq/templates/mcq_student_retakeassignment.html:170
+#: mcq/templates/mcq_student_takeassignment.html:184
+#: report/templates/report_studentanswer.html:215
+msgid "First"
+msgstr "第一页"
+
+#: mcq/templates/mcq_report_studentanswer.html:210
+#: mcq/templates/mcq_student_retakeassignment.html:171
+#: mcq/templates/mcq_student_takeassignment.html:185
+#: report/templates/report_studentanswer.html:216
+msgid "Previous"
+msgstr "上一页"
+
+#: mcq/templates/mcq_report_studentanswer.html:211
+#: mcq/templates/mcq_student_retakeassignment.html:172
+#: mcq/templates/mcq_student_takeassignment.html:186
+#: report/templates/report_studentanswer.html:217
+msgid "Next"
+msgstr "下一页"
+
+#: mcq/templates/mcq_report_studentanswer.html:212
+#: mcq/templates/mcq_student_retakeassignment.html:173
+#: mcq/templates/mcq_student_takeassignment.html:187
+#: report/templates/report_studentanswer.html:218
+msgid "Last"
+msgstr "最后一页"
+
+#: mcq/templates/mcq_report_studentanswer.html:215
+#: report/templates/report_studentanswer.html:221
+msgid "Previous Paper"
+msgstr "上一个试卷"
+
+#: mcq/templates/mcq_report_studentanswer.html:216
+#: report/templates/report_studentanswer.html:222
+msgid "Next Paper"
+msgstr "下一个试卷"
+
+#: mcq/templates/mcq_report_teacher.html:3
+#: report/templates/report_teacher.html:3
+msgid " Teacher's Assignment Overview "
+msgstr "教师作业概述"
+
+#: mcq/templates/mcq_report_teacher.html:20
+#, fuzzy
+msgid "(MCQ)  Teacher's Assignment Record "
+msgstr "教师作业记录"
+
+#: mcq/templates/mcq_report_teacher.html:66
+#: report/templates/report_teacher.html:60
+msgid "VIEW DETAILED MARKS"
+msgstr "查看详细分数"
+
+#: mcq/templates/mcq_student_achod.html:54
+#, fuzzy
+msgid "(MCQ) Achod Paper"
+msgstr "增加试卷"
+
+#: mcq/templates/mcq_student_assignmentretakesummarize.html:3
+#: mcq/templates/mcq_student_assignmentsummarize.html:3
+#, fuzzy
+msgid "(MCQ) Assignment Summary"
+msgstr "作业总结"
+
+#: mcq/templates/mcq_student_assignmentretakesummarize.html:16
+#, fuzzy
+msgid "(MCQ) [RE-TAKE] Paper Summary"
+msgstr "试卷总结"
+
+#: mcq/templates/mcq_student_assignmentretakesummarize.html:32
+#: mcq/templates/mcq_student_assignmentsummarize.html:32
+#, fuzzy
+msgid "Mark:"
+msgstr "分数"
+
+#: mcq/templates/mcq_student_assignmentsummarize.html:16
+#, fuzzy
+msgid "(MCQ) Paper Summary"
+msgstr "试卷总结"
+
+#: mcq/templates/mcq_student_custompaper.html:3
+msgid "Custom Assignment"
+msgstr "定制作业"
+
+#: mcq/templates/mcq_student_custompaper.html:21
+#, fuzzy
+msgid "(MCQ) Custom Paper"
+msgstr "定制试卷"
+
+#: mcq/templates/mcq_student_custompaper.html:25
+msgid "All Itempools"
+msgstr "所有题库"
+
+#: mcq/templates/mcq_student_custompaper.html:27
+#, fuzzy
+msgid "Selected:"
+msgstr "选中的"
+
+#: mcq/templates/mcq_student_custompaper.html:67
+msgid "Generate and Start Assignment"
+msgstr "生成练习题"
+
+#: mcq/templates/mcq_student_index.html:53
+msgid "(MCQ) Assignments Assigned By Teacher"
+msgstr "教师布置练习题"
+
+#: mcq/templates/mcq_student_index.html:62
+#: mcq/templates/mcq_student_index.html:83
+#: student/templates/student_index.html:60
+msgid "Assignment/Paper"
+msgstr "练习题／试卷"
+
+#: mcq/templates/mcq_student_index.html:63
+#: mcq/templates/mcq_student_index.html:84
+#: student/templates/student_index.html:61
+msgid "Test_Due"
+msgstr "测试时间"
+
+#: mcq/templates/mcq_student_index.html:66
+#: student/templates/student_index.html:64
+msgid "Status"
+msgstr "状态"
+
+#: mcq/templates/mcq_student_index.html:67
+#: mcq/templates/mcq_student_index.html:87
+#: student/templates/student_index.html:65
+msgid "Action"
+msgstr "执行"
+
+#: mcq/templates/mcq_student_index.html:76
+#, fuzzy
+msgid "Re-take Papers"
+msgstr "可选的试卷"
+
+#: mcq/templates/mcq_student_retakeassignment.html:3
+#: mcq/templates/mcq_student_takeassignment.html:3
+#, fuzzy
+msgid "Taking an Assigned Assignment"
+msgstr "课后作业"
+
+#: mcq/templates/mcq_student_retakeassignment.html:114
+#: mcq/templates/mcq_student_takeassignment.html:123
+#, fuzzy
+msgid "(MCQ) Assigned Assignment"
+msgstr "课后作业"
+
+#: mcq/templates/mcq_student_retakeassignment.html:132
+#: mcq/templates/mcq_student_takeassignment.html:141
+#, fuzzy
+msgid "Time:"
+msgstr "时间"
+
+#: mcq/templates/mcq_student_retakeassignment.html:150
+#: mcq/templates/mcq_student_takeassignment.html:159
+msgid "No Option Available"
+msgstr "没有可选项"
+
+#: mcq/templates/mcq_student_retakeassignment.html:157
+#: mcq/templates/mcq_student_takeassignment.html:166
+#: report/templates/report_question.html:40
+msgid "Possible Diagrams"
+msgstr "可能的图形"
+
+#: mcq/templates/mcq_student_retakeassignment.html:174
+#: mcq/templates/mcq_student_takeassignment.html:188
+#: report/templates/report_feedback_report.html:66
+#: report/templates/report_feedback_report_download.html:80
+msgid "Close"
+msgstr "关闭"
+
+#: mcq/templates/mcq_student_retakeassignment.html:179
+#: question/templates/question_detail.html:386
+#: report/templates/report_studentanswer.html:233
+msgid "Processing your request"
+msgstr "问题处理中"
+
+#: mcq/templates/mcq_student_retakeassignment.html:186
+#: mcq/templates/mcq_student_takeassignment.html:208
+msgid "Once selected. Answer can not be change."
+msgstr "选中后，答案不能更改"
+
+#: mcq/templates/mcq_student_takeassignment.html:133
+#, fuzzy
+msgid "Teacher:"
+msgstr "教师"
+
+#: mcq/templates/mcq_student_takeassignment.html:189
+msgid "End and view report"
+msgstr "结束并查看成绩报告"
+
+#: paper/templates/paper_detail.html:24
+msgid "Paper Detail"
+msgstr "试卷详情"
+
+#: paper/templates/paper_detail.html:30
+msgid "Questions"
+msgstr "问题"
+
+#: paper/templates/paper_detail.html:52
+msgid " Type"
+msgstr "类型"
+
+#: paper/templates/paper_detail.html:62
+msgid "Duration"
+msgstr "考试时间"
+
+#: paper/templates/paper_detail.html:72
+msgid "PassMin"
+msgstr "PassMin"
+
+#: paper/templates/paper_detail.html:83 report/templates/report_paper.html:37
+#: report/templates/report_studentanswer.html:91
+#: report/templates/report_teacher.html:29
+#: report/templates/report_teacher.html:93
+#: teacher/templates/teacher_index.html:170
+msgid "Year"
+msgstr "年"
+
+#: paper/templates/paper_detail.html:93
+msgid " Level"
+msgstr "级别"
+
+#: paper/templates/paper_detail.html:103
+msgid " Subject"
+msgstr "科目"
+
+#: paper/templates/paper_feedback_report.html:59
+#: report/templates/report_feedback_report.html:53
+#: report/templates/report_feedback_report_download.html:67
+msgid "Assignment Number "
+msgstr "作业编号"
+
+#: paper/templates/paper_feedback_report.html:60
+#: report/templates/report_feedback_report.html:54
+#: report/templates/report_feedback_report_download.html:68
+msgid "Student Index Number "
+msgstr "学生学号"
+
+#: paper/templates/paper_feedback_report.html:67
+#: report/templates/report_feedback_report.html:62
+#: report/templates/report_feedback_report_download.html:76
+msgid "Max. Marks"
+msgstr "最高成绩"
+
+#: portal/templates/forgot_password.html:3
+#: portal/templates/forgot_password.html:17 portal/templates/login.html:43
+msgid "Forgot Password"
+msgstr "忘记密码"
+
+#: portal/templates/forgot_password.html:20
+#: portal/templates/info_modify.html:18 portal/templates/login.html:26
+#: portal/templates/register.html:27
+msgid "Username"
+msgstr "用户名"
+
+#: portal/templates/forgot_password.html:29
+#: portal/templates/info_modify.html:45
+msgid "Email"
+msgstr "Email"
+
+#: portal/templates/forgot_password.html:37
+msgid "Send Email"
+msgstr "发送邮件"
+
+#: portal/templates/info_modify.html:3 portal/templates/info_modify.html:15
+msgid "Information Modification"
+msgstr "修改信息"
+
+#: portal/templates/info_modify.html:27 portal/templates/login.html:35
+#: portal/templates/register.html:36
+msgid "Password"
+msgstr "密码"
+
+#: portal/templates/info_modify.html:36 portal/templates/register.html:45
+msgid "Password Confirm"
+msgstr "确认密码"
+
+#: portal/templates/info_modify.html:53
+msgid "Modify Profile"
+msgstr "修改资料"
+
+#: portal/templates/login.html:5 portal/templates/login.html.py:23
+msgid "Welcome To INTEMASS"
+msgstr "欢迎使用INTEMASS"
+
+#: portal/templates/login.html:44
+msgid "Login as Teacher"
+msgstr "教师登陆"
+
+#: portal/templates/login.html:46
+msgid "Login as Student"
+msgstr "学生登陆"
+
+#: portal/templates/register.html:4
+msgid "Register"
+msgstr "注册"
+
+#: portal/templates/register.html:23
+msgid "Sign up as Teacher"
+msgstr "教师登陆"
+
+#: portal/templates/register.html:54
+msgid "Invite Code"
+msgstr "邀请码"
+
+#: portal/templates/register.html:63
+msgid "E-Mail"
+msgstr "邮件"
+
+#: portal/templates/register.html:71
+msgid "Sign up"
+msgstr "登陆"
+
+#: question/templates/question_detail.html:37
+msgid "Question, Standard Answer, Mark Scheme"
+msgstr "问题， 标准答案， 评分"
+
+#: question/templates/question_detail.html:44
+msgid "Mark Scheme"
+msgstr "评分"
+
+#: question/templates/question_detail.html:45
+#: question/templates/question_detail.html:280
+msgid "Alternate Standard Answer"
+msgstr "其他标准答案"
+
+#: question/templates/question_detail.html:46
+msgid "Alternate Mark Scheme"
+msgstr "其他评分"
+
+#: question/templates/question_detail.html:51
+msgid "Question ID "
+msgstr "问题ID"
+
+#: question/templates/question_detail.html:60
+msgid "Question Name"
+msgstr "问题名称"
+
+#: question/templates/question_detail.html:65
+msgid "Question Description"
+msgstr "问题描述"
+
+#: question/templates/question_detail.html:70
+msgid "Question Type"
+msgstr "问题类型"
+
+#: question/templates/question_detail.html:78
+msgid "Item Pool"
+msgstr "题库"
+
+#: question/templates/question_detail.html:91
+msgid "Question Graph"
+msgstr "问题图形"
+
+#: question/templates/question_detail.html:109
+#: question/templates/question_detail.html:163
+msgid "Graph"
+msgstr "图"
+
+#: question/templates/question_detail.html:114
+msgid "Min. Closeness Band"
+msgstr "最接近的等级"
+
+#: question/templates/question_detail.html:146
+msgid "StandardAnswer Graph"
+msgstr "标准答案图形"
+
+#: question/templates/question_detail.html:194
+msgid "Standard Graph Answer Rules"
+msgstr "Standard Graph Answer Rules"
+
+#: question/templates/question_detail.html:198
+msgid "Point"
+msgstr "分数"
+
+#: question/templates/question_detail.html:199
+#: question/templates/question_detail.html:208
+#: question/templates/question_detail.html:220
+#: question/templates/question_detail.html:231
+#: question/templates/question_detail.html:336
+#: question/templates/question_detail.html:347
+msgid "Content"
+msgstr "内容"
+
+#: question/templates/question_detail.html:204
+msgid "Graphrule Scheme Templates"
+msgstr "图表模版"
+
+#: question/templates/question_detail.html:209
+#: question/templates/question_detail.html:221
+#: question/templates/question_detail.html:232
+#: question/templates/question_detail.html:337
+#: question/templates/question_detail.html:348
+msgid "Mark"
+msgstr "分数"
+
+#: question/templates/question_detail.html:210
+#: question/templates/question_detail.html:222
+#: question/templates/question_detail.html:338
+msgid "Delete"
+msgstr "删除"
+
+#: question/templates/question_detail.html:216
+#: question/templates/question_detail.html:332
+msgid "Mark Scheme Templates"
+msgstr "评分系统模版"
+
+#: question/templates/question_detail.html:227
+#: question/templates/question_detail.html:343
+msgid "Converted Rules"
+msgstr "转换规则"
+
+#: question/templates/question_detail.html:239
+#: question/templates/question_detail.html:355
+msgid "ALL POINTS LESS X.X OR X.X"
+msgstr "分数少于 X.X 或者 X.X"
+
+#: question/templates/question_detail.html:243
+#: question/templates/question_detail.html:359
+msgid "ALL POINTS LESS X.X AND X.X"
+msgstr "分数少于 X.X 和 X.X"
+
+#: question/templates/question_detail.html:247
+#: question/templates/question_detail.html:363
+msgid "ALL POINTS LESS TWO COMBINATION OF X.X AND X.X AND X.X AND X.X"
+msgstr "ALL POINTS LESS TWO COMBINATION OF X.X AND X.X AND X.X AND X.X"
+
+#: question/templates/question_detail.html:251
+#: question/templates/question_detail.html:367
+msgid "ONLY TWO COMBINATION OF X.X AND X.X AND X.X"
+msgstr "ONLY TWO COMBINATION OF X.X AND X.X AND X.X"
+
+#: question/templates/question_detail.html:255
+#: question/templates/question_detail.html:371
+msgid "CUSTOM TEMPLATE"
+msgstr "定制膜拜"
+
+#: question/templates/question_detail.html:405
+msgid "You have successfully uploaded the Alternate standard answer."
+msgstr "你已经成功上传其他标准答案"
+
+#: report/templates/exam_detail.html:28
+msgid ", Students"
+msgstr "， 学生"
+
+#: report/templates/fb_popup.html:43
+#: report/templates/report_feedback_report.html:50
+#: report/templates/report_feedback_report_download.html:64
+msgid "Time Taken"
+msgstr "花费时间"
+
+#: report/templates/fb_popup.html:49
+msgid "Add Feedback"
+msgstr "添加反馈"
+
+#: report/templates/fb_popup.html:63
+msgid "Add Feedback Code"
+msgstr "添加反馈代码"
+
+#: report/templates/report_feedback_report.html:82
+msgid " Your Graph "
+msgstr " 您的图表 "
+
+#: report/templates/report_feedback_report.html:101
+msgid " Standard Graph "
+msgstr "学生图形"
+
+#: report/templates/report_feedback_report.html:152
+#: report/templates/report_feedback_report_download.html:131
+msgid ""
+"Note: The underlined points are points which you have left out in your "
+"answer script. Close is in percentage, for your answer script."
+msgstr "说明: 有下划线的分数是完成答题后的分数，以百分比表示 "
+
+#: report/templates/report_paper.html:3
+msgid " Students' Assignment Report "
+msgstr "学生 作业报告"
+
+#: report/templates/report_paper.html:27
+msgid " STUDENTS ASSIGNMENT RECORD "
+msgstr "学生 作业纪录"
+
+#: report/templates/report_paper.html:45
+#: report/templates/report_studentanswer.html:43
+#: report/templates/report_studentanswer.html:84
+#: report/templates/report_teacher.html:35
+#: report/templates/report_teacher.html:104
+#: teacher/templates/teacher_index.html:174
+msgid "Subject"
+msgstr "科目"
+
+#: report/templates/report_paper.html:53
+#: report/templates/report_studentanswer.html:92
+#: report/templates/report_teacher.html:42
+#: report/templates/report_teacher.html:116
+#: teacher/templates/teacher_index.html:178
+msgid "Level"
+msgstr "级别"
+
+#: report/templates/report_paper.html:90
+msgid "FEEDBACK"
+msgstr "反馈"
+
+#: report/templates/report_paper.html:117
+msgid " SUMMARIZATION CLOSENESS REPORT "
+msgstr "小结"
+
+#: report/templates/report_paper.html:122
+msgid "BAND"
+msgstr "分数等级"
+
+#: report/templates/report_paper.html:123
+msgid "PERCENT"
+msgstr "百分比"
+
+#: report/templates/report_paper.html:124
+msgid "STUDENTS"
+msgstr "学生"
+
+#: report/templates/report_question.html:3
+msgid " Question Detail"
+msgstr "问题描述"
+
+#: report/templates/report_question.html:23
+#: report/templates/report_studentanswer.html:59
+#: report/templates/report_studentanswer.html:88
+msgid "Student"
+msgstr "学生"
+
+#: report/templates/report_question.html:26
+msgid "Question ID"
+msgstr "问题ID"
+
+#: report/templates/report_question.html:48
+msgid "mark"
+msgstr "分数"
+
+#: report/templates/report_question.html:69
+#: report/templates/report_studentanswer.html:150
+msgid "Selected Diagrams"
+msgstr "选中的图形"
+
+#: report/templates/report_student.html:3
+msgid " Student Reports Overview "
+msgstr "学生报告概述"
+
+#: report/templates/report_student.html:13
+msgid "Exam Report"
+msgstr "考试报告"
+
+#: report/templates/report_student.html:20
+msgid "ASSIGNMENT/PAPER"
+msgstr "作业／试卷"
+
+#: report/templates/report_studentanswer.html:3
+msgid "  Assignment Record "
+msgstr " 作业成绩"
+
+#: report/templates/report_studentanswer.html:51
+#: report/templates/report_studentanswer.html:97
+msgid "Paper"
+msgstr "试卷"
+
+#: report/templates/report_studentanswer.html:70
+msgid "Back to Teacher's Assignment Record"
+msgstr "返回教师作业纪录"
+
+#: report/templates/report_studentanswer.html:116
+#: report/templates/report_studentanswer.html:118
+msgid "Feedback"
+msgstr "反馈"
+
+#: report/templates/report_studentanswer.html:143
+msgid "StudentAnswer"
+msgstr "学生答案"
+
+#: report/templates/report_studentanswer.html:164
+msgid "Attained Mark"
+msgstr "成绩"
+
+#: report/templates/report_studentanswer.html:173
+msgid ""
+"Note: Red colored points are points which student has left out in his/her "
+"answer script. Green colored points are points the student has included. "
+"Some green points may not appear as exactly as in student's script but may "
+"have been edited or amended for clarity of explanation."
+msgstr ""
+"说明: 红色分数是学生完成/离开考试后的得分，绿色分数是学生的完成分 部分绿色分"
+"数可能不能完全反映学生答题情况 但是可以编辑/修正来反映学生答题的真实分数 "
+
+#: report/templates/report_studentanswer.html:180
+msgid "Correct Diagrams"
+msgstr "正确图表"
+
+#: report/templates/report_studentanswer.html:190
+msgid "Summarization"
+msgstr "总结"
+
+#: report/templates/report_studentanswer.html:198
+msgid "Grammatical Errors"
+msgstr "语法错误"
+
+#: report/templates/report_teacher.html:21
+msgid " Teacher's Assignment Record "
+msgstr "教师作业记录"
+
+#: report/templates/report_teacher.html:85
+msgid " Closeness Reports "
+msgstr " Closeness Reports "
+
+#: report/templates/report_teacher.html:151
+msgid "CLOSENESS REPORT"
+msgstr "Closeness Reports"
+
+#: report/templates/report_teacher.html:159
+msgid "Download All"
+msgstr "全部下载"
+
+#: report/templates/report_teacher.html:174
+msgid " Closeness Report Summary"
+msgstr "Closeness 报告"
+
+#: report/templates/report_teacher.html:183
+msgid "Point List"
+msgstr "分数列表"
+
+#: report/templates/report_teacher.html:184
+msgid "Correctly Answered"
+msgstr "正确答案"
+
+#: report/templates/report_teacher.html:185
+msgid "Wrongly Answered"
+msgstr "错误答案"
+
+#: student/templates/student_index.html:52
+msgid "Assignments Assigned By Teacher"
+msgstr "教师布置练习题"
+
+#: student/templates/student_index.html:74
+#, fuzzy
+msgid "Selective Papers"
+msgstr "添加可选试卷"
+
+#: student/templates/student_index.html:78
+msgid "Add Selective Paper"
+msgstr "添加可选试卷"
+
+#: student/templates/student_index.html:84
+msgid "PAPER NAME"
+msgstr "试卷名称"
+
+#: teacher/templates/teacher_index.html:3
+msgid "Management"
+msgstr "管理"
+
+#: teacher/templates/teacher_index.html:112
+msgid "Item Pool Management"
+msgstr "图库管理"
+
+#: teacher/templates/teacher_index.html:113
+msgid "Add Item Pool"
+msgstr "增加题库"
+
+#: teacher/templates/teacher_index.html:130
+msgid "Paper Management"
+msgstr "试卷管理"
+
+#: teacher/templates/teacher_index.html:131
+msgid "Add Paper"
+msgstr "增加试卷"
+
+#: teacher/templates/teacher_index.html:148
+msgid " Assignment Management"
+msgstr "习题管理"
+
+#: teacher/templates/teacher_index.html:149
+msgid "Add Assignment"
+msgstr "增加习题"
+
+#, fuzzy
+#~ msgid "Assignment Management (MCQ)"
+#~ msgstr "多选习题管理（MCQ）"
+
+#~ msgid "Do not use "
+#~ msgstr "不要使用"
+
+#~ msgid "is correct:"
+#~ msgstr "正确"
+
+#~ msgid "checked"
+#~ msgstr "选中"
+
+#~ msgid "hello, Django!"
+#~ msgstr "您好 "
+
+#~ msgid "addressbook"
+#~ msgstr "地址簿"
+
+#~ msgid "Student Information"
+#~ msgstr "学生信息"
+
+#~ msgid "Account Name"
+#~ msgstr "账户名称"
+
+#~ msgid "Gender"
+#~ msgstr "性别"
+
+#~ msgid "Class"
+#~ msgstr "班级"
+
+#~ msgid "Back To View"
+#~ msgstr "返回浏览"
+
+#~ msgid "Student Profile"
+#~ msgstr "学生资料"
+
+#~ msgid "Classroom"
+#~ msgstr "班级"
+
+#~ msgid "Address"
+#~ msgstr "地址"
+
+#~ msgid "More details"
+#~ msgstr "更多详情"
+
+#~ msgid "According to the question, You may want to add answer graph here"
+#~ msgstr "本题要求在此附加图表"
+
+#~ msgid " Taking an Selective Assignment  "
+#~ msgstr "课后作业"
+
+#~ msgid "Question number"
+#~ msgstr "问题序号"
+
+#~ msgid "here is question description"
+#~ msgstr "问题描述"
+
+#~ msgid "Item-Pool"
+#~ msgstr "Item-Pool"
+
+#~ msgid " itme-pool N3 "
+#~ msgstr "Item-Pool N3"
+
+#~ msgid " Input Number"
+#~ msgstr "输入序号"
+
+#~ msgid "CKEditor requires JavaScript to run"
+#~ msgstr "CKEditor 需要JavaScript来运行"

@@ -1,0 +1,19 @@
+.title1{
+	font-weight:bold;
+	text-align:right;
+	width:60px;
+	font-size:15px;
+}
+#id_year,#id_subject,#id_level{
+	width:100px;
+}
+#buttonselect,#buttonprocess{ 
+    text-align:center;
+    margin-top:5em;
+    min-width:100px;
+    width:100px;
+}
+div > .grid_4{
+    text-align:center;
+}
+

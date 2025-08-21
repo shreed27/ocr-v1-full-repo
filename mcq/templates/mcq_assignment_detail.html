@@ -1,0 +1,90 @@
+{% extends "mcq_base.html" %}
+{% load i18n%}
+{% block title %}{% trans "Assignment Detail" %}{% endblock%}
+
+{% block head%}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/zTreeStyle.css" type="text/css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/zTreeStyle_custom.css" type="text/css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.multiselect.css" type="text/css">
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.core-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.excheck-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.blockUI.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.multiselect.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-timepicker-addon.js"></script>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/assignment_detail.css" type="text/css">
+<script type="text/javascript" src="{{ STATIC_URL }}js/mcq_assignment_detail.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/django.csrf.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container_12">
+    <div id="assignment_mod_div">
+        <h1 class="grid_12 alpha omega">{% trans "(MCQ) Assignment Detail" %}</h1>
+        <form id="assignment_mod_form" class="content" method="post" action="">{% csrf_token %}
+
+            <div class="zTreeBackground">
+                <span id="zTreeHeader">{% trans "All Students" %}</span>
+                <ul id="members" class="ztree" style="height:350px;"></ul>
+                <span id="zTreeFooter">{% trans "Teachers:" %}<span id='tnum' style="width:60px;padding:0 5px;"></span>, {% trans "Students" %}:<span id='snum' style="width:60px;padding:0 5px;"></span></span>
+            </div>
+
+            <p>
+            <label for="id_assignmentid">ID:</label>
+            {{ form.assignmentid }}
+            </p>
+            {%if form.assignmentid.errors %}
+            {% for error in form.assignmentid.errors %}
+            <div class="warning">{{ error }}</div>
+            {% endfor %}
+            {% endif %}
+
+            <p><label class="title1">{% trans "Assignment:" %}</label>
+            <span class="editable" id="editable" type="text" maxlength="100"></span></p>
+            <div class="grid_6" style="display:none">
+                {{ form.assignmentname }}
+            </div>
+
+            <p><label for="id_testdate" class="title1">{% trans "Assignment Date:" %}</label>
+            {{ form.testdate }}
+            </p>
+
+            <p><label for="id_deadline" class="title1">{% trans "Assignment Due:" %}</label>
+            {{ form.deadline }}
+            </p>
+
+            <p id="paper_p">
+            <label for="id_papers">{% trans "Papers:" %}</label>
+            {{ form.papers }}
+            </p>
+
+            <p style="width:600px;height:100px">
+            <label for="id_description">{% trans "Description:" %}</label>
+            {{ form.description }}
+            </p>
+            {%if form.description.errors %}
+            {% for error in form.description.errors %}
+            <div class="warning">{{ error }}</div>
+            {% endfor %}
+            {% endif %}
+
+
+            <div class="grid_6" style="display:none">
+                {{ form.students }}
+            </div>
+
+            <p class="grid_12 alpha omega" style="float:right">
+            <a href=javascript:submitform() class="greenBtn" id="button" style="float:right;margin:0 8em">{% trans "Save" %}</a>
+            </p>
+
+        </form>
+    </div>
+</div>
+<div id="messages_div" style="display:none">
+    {% if messages %}
+    {% for message in messages %}
+    <span{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</span>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

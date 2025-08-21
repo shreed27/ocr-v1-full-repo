@@ -1,0 +1,136 @@
+{% load paper_tags %}
+{% load i18n %}
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>{% trans "Student's Report" %}</title>
+    <script src="{{ STATIC_URL }}js/jquery.printPage.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".btnPrint").printPage();
+        });
+    </script>
+    <style>
+    table, th, td
+    {
+     
+        border:2px solid #000000;
+        border-spacing: 0;
+        border-color: #000000;
+      /*  border-width:1 1px 1px 1 !important;*/
+        page-break-after: auto;
+        font-family:"Times New Roman",Georgia,Serif;
+        font-size: 21px;
+    }
+    th
+    {
+ 
+        padding:2px;
+        
+    }
+    td{
+        border-color:#000000 ;
+        border-left: 1px solid;
+        border-bottom:1px solid ;
+        border-top:1px solid ;
+        padding: 20px;
+       
+    }
+     @page {  
+    size: 11in 17in;  
+    margin-left: 1in;  
+    margin-right: 1in;  
+    margin-top: 1in;  
+    margin-bottom: 1in;  
+    } 
+  
+    </style>  
+</head>    
+
+<body>
+    <!--{% for st in stu %}
+     {% if forloop.first %}
+    <span style="float: right; font-size: 15px;"><b>Time Taken:</b> {{ st.timestamp|date:"D, d M Y" }}</span>
+    {% endif %}
+    {% endfor %}-->
+    <div class = 'box' id="box1" style="height:600px; width:900px;" >
+    <p style="font-family:Times New Roman;font-size: 20px">
+    {% for st in stu %}
+    {% if forloop.first %}
+    <span style="float: right; font-size: 15px;"><b>{% trans "Time Taken:" %}</b> {{ st.sta_timestamp|date:"D, d M Y" }}</span>
+    {% endif %}
+    {% endfor %}<br>
+    <span style="float: left">{% trans "Assignment Number" %} : {{paper.ppr_papername}}</span>
+    <span style="float: right">{% trans "Student Index Number" %} : {{user}}</span><br>
+    </p> 
+    <table>
+        <thead>
+        <tr>
+            <th><b><center>{% trans "Question" %}</center></b></th>
+            <th><b><center>{% trans "Student Answer" %}</center></b></th>
+            <th><b><center>{% trans "Actual Answer" %}</center></b></th>
+            <th><b><center>{% trans "Attained Marks" %}</center></b></th>
+            <th><b><center>{% trans "Teacher's Feedback" %}</center></b></th>
+            <th><b><center>{% trans "FBcode" %}</center></b></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for s in lst_allanswer %}
+        <tr>
+		<td>{{s.question}}</td>
+		<td>
+{% if s.correct == "Y" %}
+	<font color="blue">{{s.student_answer|safe}}</font>
+{%else%}
+	<font color="red">{{s.student_answer|safe}}</font>
+{% endif %}
+
+</td>
+		<td>{{ s.actual_answer|safe }}</td>
+		<td>{{s.mark}}</td>
+
+		{% if s.feedback %}
+			<td>{{s.feedback}}</td>
+		{%else%}
+			<td>&nbsp</td>
+		{% endif %}
+		{%if s.feedback_code %}
+			<td>{{s.feedback_code}}</td>
+		{%else%}
+			<td>&nbsp</td>
+		{% endif %}
+         </tr>
+         {%endfor%}
+
+
+    <tr>
+        <td colspan=2><center><b>{% trans "Total" %}</b></center></td>
+        <td><center><b></b></center></td>
+        <td><center><b>{{smark}}</b></center></td>
+        <td>&nbsp</td>
+        <td>&nbsp</td>
+    </tr>
+
+    </tbody>
+    <tfoot>
+         <tr>
+            <td colspan = 7><center>{% trans "Feedback Report" %}</center></td>
+         </tr>
+    </tfoot>
+    </table>
+    <br>
+    <p align = "left" style="font-family:Times New Roman;font-size: 20px">
+         <span style="float: left">{% trans "Note: The underlined points are points which you have left out in your answer script." %}</span>
+    </p>
+    <br>
+
+
+    {% if print %}
+    <p align="center">
+        <a class="btnPrint blueBtn" href="/mcq/report/feedback_report/{{paper.id}}/{{user.id}}/">{% trans "Print" %}</a>
+    </p>
+    {% endif %}
+    
+    </div>
+    </body>
+</html>

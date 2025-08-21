@@ -1,0 +1,3 @@
+;(function($, undef) {
+    
+})(jQuery);

@@ -1,0 +1,5 @@
+Name	Value	Desciption
+dist_threshold	0.25	cosine similarity threshold for single sentence match
+sen_threshold	0.33	similarity threshold for entire question
+multisen_matchrate	0.30	percentage of sentences that must mtach
+multisen_threshold	0.40	similarity threshold when multile sentences involved

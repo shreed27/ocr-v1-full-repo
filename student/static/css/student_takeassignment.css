@@ -1,0 +1,67 @@
+#cke_answer_editor{
+    top:-5px;
+}
+
+#cke_question_editor{
+    top:-5px;
+}
+
+#assignmenthead label{
+    font-weight:bold;
+}
+
+.gallery li { float: left; width: 96px; padding: 0.4em; margin: 0 0.4em 0.4em 0; text-align: center; }
+.gallery li h6 { margin: 0 0 0.4em; cursor: move; }
+.gallery li a { float: right; }
+.gallery li a.ui-icon-zoomin { float: left; }
+.gallery li img { width: 100%; cursor: move; }
+
+
+#possible_diagrams { 
+    width: 238px; 
+    padding: 1%;
+    min-height: 500px;
+} 
+
+* html #possible_diagrams{
+    height:500px;
+}
+
+#thumbnails{
+    height:510px;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+#thumbnails_header { 
+    line-height: 32px;
+    margin:0;
+    width:232px;
+    padding:0 5px;
+}
+
+#selected_diagrams { 
+    width: 238px; 
+    padding: 1%;
+    min-height: 510px;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+* html #selected_diagrams{
+    height:510px;
+}
+#selected_header { 
+    line-height: 32px;
+    margin:0;
+    width:232px;
+    padding: 0 5px;
+}
+
+.ui-progressbar .ui-progressbar-value { background-image: url(../images/pbar-ani.gif); }
+
+.ui-dialog-titlebar-close{
+ }
+
+
+

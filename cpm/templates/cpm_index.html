@@ -1,0 +1,230 @@
+{% extends "cpm_base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Cloze Passage Question Main" %}{% endblock%}
+{% block head %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/select2.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/cpm_index.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/django.csrf.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.form.js"></script>
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/datatable_custom.css">
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/select2.css">
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/mcq_index.css">
+<script type="text/javascript">
+    var STUDENTDELETE_URL = "{% url student_delete %}";
+    var CLASSROOMDELETE_URL = "{% url classroom_delete %}";
+    var ITEMPOOLDELETE_URL = "{% url cpm_itempool_del %}";
+    var PAPERDELETE_URL = "{% url cpm_paper_delete %}";
+    var ASSIGNMENTDELETE_URL = "{% url cpm_assignment_delete %}";
+</script>
+<style>
+.styled-select {
+   background: #444;
+   color:white;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px; 
+   text-align:left;
+   -webkit-appearance: none;
+   }
+.styled-label {
+   
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   font-weight:bold;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px; 
+   text-align:left;
+   -webkit-appearance: none;
+   }
+</style>
+<script>
+
+$( document ).ready(function() {
+		$('#btnStructure').click(function(){
+				window.location.href="/teacher/index/";
+		});
+		$('#btnMCQ').click(function(){
+				window.location.href="/mcq/main/";
+		});
+		
+	});
+</script>
+{% endblock%}
+
+{% block content %}
+
+
+<div class="container_12">
+    <div class="grid_12">
+    <span class="styled-label">{% trans "Exam Type" %}:</span>
+	<button id="btnStructure" class="blueBtn">{% trans "Structured Question" %}</button>
+	<button id="btnMCQ" class="blueBtn">{% trans "Multiple Choice Question" %}</button>
+	<button id="btnCPM" class="greenBtn">{% trans "Cloze Passage Question" %}</button>
+        <div id="tabs3" class="tab">
+            <ul>
+                <li><a href="#tabs3-1">{% trans "Student Management" %}</a></li>
+                <li><a href="#tabs3-2">{% trans "Assignment Management" %}(CPM)</a></li>
+                <li><a href="#tabs3-3">{% trans "Option Management" %}</a></li>
+            </ul>
+
+            <div id="tabs3-1">
+                <div class="grid_12 alpha omega">
+                    <h1 class="grid_6 alpha">{% trans "Student Management" %}</h1>
+                    <h1 class="grid_6 omega"><a href="{% url student_add %}" class='addBtn'>{% trans "Add Student" %}</a></h1>
+                </div>
+                <div class="grid_12 alpha omega">
+                    <table id="students" class="datatable_display">
+                        <thead>
+                            <tr>
+                                <th width="20%">{% trans "STUDENT" %}</th>
+                                <th width="20%">{% trans "E-MAIL" %}</th>
+                                <th width="30%">{% trans "LAST LOGIN" %}</th>
+                                <th width="30%">{% trans "ACTION" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="grid_12 alpha omega management" style="margin-bottom:1px;padding-bottom:1px;margin-top:5em;">
+                    <h1 class="grid_6 alpha" >{% trans "Class Management" %}</h1>
+                    <h1 class="grid_6 omega"><a href="{% url classroom_add %}" class='addBtn'>{% trans "Add Class" %}</a></h1>
+                </div>
+                <div class="grid_12 alpha omega" >
+                    <table id="classrooms" class="datatable_display">
+                        <thead>
+                            <tr>
+                                <th >{% trans "CLASSNAME" %}</th>
+                                <th >{% trans "VOLUME" %}</th>
+                                <th >{% trans "ACTION" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="tabs3-2" style="height: 600px;">
+		 <div class="grid_12 alpha omega management">
+                    <h1 class="grid_6 alpha" >{% trans "(CPM) Question Category " %}<br/><a style="float:left;" href="{% url cpm_questioncategory_view %}" class='addBtn'>{% trans "CPM Question Category" %}</a></h1>
+                    
+                </div>
+                <div class="grid_12 alpha omega management">
+                    <h1 class="grid_6 alpha" >{% trans "(CPM) Item Pool Management" %}</h1>
+                    <h1 class="grid_6 omega" ><a href="{% url cpm_itempool_add %}" class='addBtn'>{% trans "Add CPM Item Pool" %}</a></h1>
+                </div>
+                <div class="grid_12 alpha omega" >
+                    <table id="itempools" class="datatable_display">
+                        <thead>
+                            <tr>
+                                <th>{% trans "POOLNAME" %}</th>
+                                <th>{% trans "DESCRIPTION" %}</th>
+                                <th>{% trans "ACTION" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid_12 alpha omega management">
+                    <h1 class="grid_6 alpha">{% trans "(CPM) Paper Management" %}</h1>
+                    <h1 class="grid_6 omega"><a href="{% url cpm_paper_add %}" class='addBtn'>{% trans "Add CPM Paper" %}</a></h1>
+                </div>
+                <div class="grid_12 alpha omega" >
+                    <table id="papers" class="datatable_display">
+                        <thead>
+                            <tr>
+                                <th>{% trans "PAPERNAME" %}</th>
+                                <th>{% trans "ASSIGNMENT" %}</th>
+                                <th>{% trans "ACTION" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid_12 alpha omega management">
+                    <h1 class="grid_6 alpha">{% trans " (CPM) Assignment Management" %}</h1>
+                    <h1 class="grid_6 omega"><a href="{% url cpm_assignment_add %}" class='addBtn'>{% trans "Add CPM Assignment" %}</a></h1>
+                </div>
+                <div class="grid_12 alpha omega" >
+                    <table id="assignments" class="datatable_display">
+                        <thead>
+                            <tr>
+                                <th width="20%">{% trans "NAME" %}</th>
+                                <th width="30%">{% trans "DATE" %}</th>
+                                <th width="20%">{% trans "DESCRIPTION" %}</th>
+                                <th width="30%">{% trans "ACTION" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="tabs3-3">
+                <div class="content grid_12 alpha omega optionform"> 
+                    <form id="optionform"  method="post" action='{% url teacher_index %}'>{% csrf_token %}
+                        <p class="floatxy"><label for="id_year">{% trans "Year:" %}</label></p>
+                        <p class="same_padding">
+                        {{ form.year }}
+                        </p>
+                        <p class="floatxy"><label for="id_subject">{% trans "Subject:" %}</label></p>
+                        <p class="same_padding">
+                        {{ form.subject }}
+                        </p>
+                        <p class="floatxy"><label for="id_level">{% trans "Level:" %}</label></p>
+                        <p class="same_padding">
+                        {{ form.level }}
+                        </p>
+                        <p>
+                        <input class="greenBtn btn" type='submit' style="" value='Save'}></input>
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="grid_6 alpha" style="margin-top:2em;">
+            <center><a  class="blueBtn" href="{% url info_modify %}">{% trans "USER PROFILE" %}</a></center>
+        </div>
+        <div class="grid_6 omega" style="margin-top:2em;">
+            <center><a class="blueBtn" href="{% url cpm_report_teacher %}">{% trans "REPORT" %}</a></center>
+        </div>
+    </div>
+</div>
+</div>
+
+<div style='display:none;'  id="dialog-confirm" title="Are you sure?">
+    <p><span class="ui-icon ui-icon-alert warning"></span>{% trans "You will delete this student." %}</p>
+</div>
+
+<div style='display:none;' id="dialog-confirm2" title="Are you sure?">
+    <p><span class="ui-icon ui-icon-alert warning"></span>{% trans "You will delete this classroom." %}</p>
+</div>
+
+<div style='display:none;' id="dialog-confirm3" title="Are you sure?">
+    <p><span class="ui-icon ui-icon-alert warning"></span>{% trans "You will delete this itempool." %}</p>
+</div>
+
+<div style='display:none;' id="dialog-confirm4" title="Are you sure?">
+    <p><span class="ui-icon ui-icon-alert warning"></span>{% trans "You will delete this paper." %}</p>
+</div>
+
+<div style='display:none;' id="dialog-confirm5" title="Are you sure?">
+    <p><span class="ui-icon ui-icon-alert warning"></span>{% trans "You will delete this assignment." %}</p>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>Test Suite</title>
+</head>
+<body>
+<table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
+<tr><td><b>Test Suite</b></td></tr>
+<tr><td><a href="register">1.2_register_teacher_F</a></td></tr>
+<tr><td><a href="register_as_teacher_true">1.2_register_teacher</a></td></tr>
+<tr><td><a href="login_student_F">1.1_login_student_F</a></td></tr>
+<tr><td><a href="login_as_teacher2">1.1_login_teacher_F</a></td></tr>
+<tr><td><a href="login_as_teacher">1.1_login_teacher</a></td></tr>
+<tr><td><a href="forget_password_F">1.4_forgetpassword_F</a></td></tr>
+<tr><td><a href="forgetpassword">1.4_forgetpassword</a></td></tr>
+<tr><td><a href="teacher_profile_modify_F">1.3_teacher_profile_modify_F</a></td></tr>
+<tr><td><a href="teacher_profile_modify">1.3_teacher_profile_modify</a></td></tr>
+<tr><td><a href="2.1_teacher_index_F">2.1_teacher_index_F</a></td></tr>
+<tr><td><a href="teacher_index_true">2.1_teacher_index</a></td></tr>
+<tr><td><a href="add_student">2.2_add_student</a></td></tr>
+<tr><td><a href="2.2_add_student_F">2.2_add_student_F</a></td></tr>
+<tr><td><a href="2.3_add_classroom_F">2.3_add_classroom_F</a></td></tr>
+<tr><td><a href="add_classroom">2.3_add_classroom</a></td></tr>
+<tr><td><a href="2.5_add_itempool_F">2.5_add_itempool_F</a></td></tr>
+<tr><td><a href="add_itempool">2.5_add_itempool</a></td></tr>
+<tr><td><a href="2.9_add_paper_f">2.9_add_paper_F</a></td></tr>
+<tr><td><a href="add_paper">2.9_add_paper</a></td></tr>
+<tr><td><a href="add_assignment">2.10_add_assignment_F</a></td></tr>
+<tr><td><a href="2.10_add_assignment">2.10_add_assignment</a></td></tr>
+<tr><td><a href="student_view_profile">2.2_student_view_profile</a></td></tr>
+<tr><td><a href="2.2_student_view_profile_F">2.2_student_view_profile_F</a></td></tr>
+<tr><td><a href="classroom_view">2.4_classroom_view</a></td></tr>
+<tr><td><a href="classroom_view_F">2.4_classroom_view_F</a></td></tr>
+<tr><td><a href="add_question">2.7_teacher_add_question</a></td></tr>
+<tr><td><a href="teacher_view_question">2.8_teacher_view_question</a></td></tr>
+<tr><td><a href="teacher_view_question_F">2.8_teacher_view_question_F</a></td></tr>
+<tr><td><a href="login_student">1.1_login_student</a></td></tr>
+<tr><td><a href="student_index">3.1_student_index</a></td></tr>
+<tr><td><a href="take_teacherassignment">3.2_take_teacherassignment</a></td></tr>
+<tr><td><a href="student_custompaper">3.3_student_custompaper</a></td></tr>
+<tr><td><a href="student_custompaper2">3.3_student_custompaper_add_F</a></td></tr>
+<tr><td><a href="student_custompaper_add">3.3_student_custompaper_add</a></td></tr>
+<tr><td><a href="paper_summary">2.16_paper_summary</a></td></tr>
+<tr><td><a href="report_teacher">2.11_report_teacher_F</a></td></tr>
+<tr><td><a href="report_teacher_true">2.11_report_teacher</a></td></tr>
+</tbody></table>
+</body>
+</html>

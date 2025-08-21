@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Add Student{% endblock%}
+{% block head %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.blockUI.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/intemass.ui.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/student_add.js"></script>
+<script type="text/javascript" >
+    var csrfvalue = '{{csrf_token}}';
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container_12">
+    <div id="content">
+        <div class="form">
+            <h1>Student Information</h1>
+
+            <form class="content"  method="post" action="">{% csrf_token %}
+
+                <p><label for="id_username">Account Name:</label>
+                {{ form.username }}
+                {%if form.username.errors %}
+                {% for error in form.username.errors %}
+                <div class="warning">{{ error }}</div>
+                {% endfor %}
+                {% endif %}
+                </p>
+                <p>
+                <label for="id_password1" class="title1">Password:</label>
+                {{ form.password1 }}
+                {%if form.password1.errors %}
+                {% for error in form.password1.errors %}
+                <div class="warning">{{ error }}</div>
+                {% endfor %}
+                {% endif %}
+                </p>
+                <p>
+                <label for="id_password2" class="title1">Password Confirm:</label>
+                {{ form.password2 }}
+                {%if form.password2.errors %}
+                {% for error in form.password2.errors %}
+                <div class="warning">{{ error }}</div>
+                {% endfor %}
+                {% endif %}
+                </p>
+
+                <p><label for="id_gender">Gender:</label>
+                {{ form.gender }}
+                {%if form.gender.errors %}
+                {% for error in form.gender.errors %}
+                <div class="warning">{{ error }}</div>
+                {% endfor %}
+                {% endif %}
+                </p>
+
+                <p>
+                <label for="id_email" class="title1">E-Mail:</label>
+                {{ form.email }}
+                {%if form.email.errors %}
+                {% for error in form.email.errors %}
+                <div class="warning">{{ error }}</div>
+                {% endfor %}
+                {% endif %}
+                </p>
+                <p>
+                <label for="id_clazz" class="title1">Class:</label>
+                {{ form.clazz }}
+                {%if form.clazz.errors %}
+                {% for error in form.clazz.errors %}
+                <div class="warning">{{ error }}</div>
+                {% endfor %}
+                {% endif %}
+                </p>
+                <p><a href=javascript:submitform(); class="greenBtn" id="signup" style="margin:0 25px 0 0;">Sign up</a>
+                <a href="{% url teacher_index %}" class="blueBtn">Back To View</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="messages_div" style="display:none">
+    {% if messages %}
+    {% for message in messages %}
+    <span{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</span>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

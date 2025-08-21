@@ -1,0 +1,15 @@
+(2 marks)
+
+Josh Han
+
+Scarcity refers to the fundamental economic problem where humans have limited resources but unlimited wants. Choice refers to the act of choosing different scarce resources, which leads to different outcomes and effects. Opportunity cost refers to the benefits one would receive should a different or alternative solution be chosen over the present or current one. A PPC, or production possibility curve, is a graph that compares the production rates of two commodities using fixed inputs.
+
+The (((diagram W))) illustrates the concept of the PPC
+
+Scarcity is the economic problem in which there are unlimited wants, but limited resources to meet that wants. This problem is shown on the PPC at point D, or whenever the production falls below the curve. This is due to the limited resources, which actually causes more inefficiency in relation to the capital goods given in exchange for consumer goods. Although point E would be ideal, it is unobtainable due to scarcity. One real life example would be the lack of water in Africa, in which more capital must be spent exponentially to obtain enough water.
+
+Choice is the act of choosing different scarce resources, which leads to different outcomes and effects. This can be illustrated on the PPC in terms of the multiple points in which the rates of production are at. For example, points A, B and C would produce different results and due to limited resources, one must make a choice in how much capital goods shall be spent. This can be shown in the act of budgeting, where due to limited resources, in this case money, one has to make a decision in which how much shall be spent and on what.
+
+Opportunity cost refers to the benefits one would receive should a different or alternative solution be chosen over the present or current one. It can be illustrated on the PPC curve where the gradients from A to B and B to C would become steeper and steeper, showing that more capital must be spent to obtain slightly more consumer goods. This means that capital could be saved should less consumer goods be required. A real life example would be due to the scarcity of land in Singapore, where each plot of land would have to be carefully thought over in terms of its use. Hence, having a public football field instead of a shopping mall would produce a high opportunity cost. 
+
+In conclusion, the PPC is a brilliant tool in which to investigate and illustrate the scarcity, opportunity cost and choices made.

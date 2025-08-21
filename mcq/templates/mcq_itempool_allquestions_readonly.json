@@ -1,0 +1,11 @@
+{ "aaData": [
+	{% for q in questions %}
+        {% if forloop.last %}
+        ["{{ q.qname }}",
+            "<a href='/question/add/?view=1&questionid={{ q.id }}&itempoolid={{ q.itempool.id }}' class='viewBtn'><font color=black>View</font></a>"]
+        {% else %}
+        ["{{ q.qname }}",
+            "<a href='/question/add/?view=1&questionid={{ q.id }}&itempoolid={{ q.itempool.id }}' class='viewBtn'><font color=black>View</font></a>"],
+        {% endif %}
+    {% endfor %}
+] }

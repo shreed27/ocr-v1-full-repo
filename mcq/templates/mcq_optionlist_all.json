@@ -1,0 +1,12 @@
+{ "aaData": [
+	{% for i in optionlisting %}
+            {% if forloop.last %}
+	["{{ i.opl_name}}","{{ i.opl_description|safe}}",
+		"<a href=javascript:deleteoption('{{i.id}}') class='delBtn'><font color=black>Delete</font></a><a href='/mcq/optionlist/add/?optionlistid={{i.id}}&questionid={{i.opl_question_id}}' class='modBtn'><font color=black>Modify</font></a><a href= '/mcq/optionlist/add/?view=1&optionlistid={{i.id}}&questionid={{i.opl_question_id}}' class='viewBtn'><font color=black>View</font>"]
+            {% else %}
+	["{{ i.opl_name}}","{{ i.opl_description|safe}}",
+        "<a href=javascript:deleteoption('{{i.id}}') class='delBtn'><font color=black>Delete</font></a><a href='/mcq/optionlist/add/?optionlistid={{i.id}}&questionid={{i.opl_question_id}}' class='modBtn'><font color=black>Modify</font></a><a href= '/mcq/optionlist/add/?view=1&optionlistid={{i.id}}&questionid={{i.opl_question_id}}' class='viewBtn'><font color=black>View</font>"],
+            {% endif %}
+    {% endfor %}
+	
+] }

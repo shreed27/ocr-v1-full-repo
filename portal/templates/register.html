@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}
+{% trans "Register" %}
+{% endblock %}
+
+{% block head %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.blockUI.min.js"></script>
+<script type="text/javascript">
+function submitform(){
+    if ($("#id_password1").val()==$("#id_password2").val()){
+        document.forms[0].submit();}
+    else {
+        intemass.ui.showclientmsg("The passwords you entered twice must be same.");}
+}
+</script>
+{% endblock%}
+
+{% block content %}
+<div id="content">
+
+    <div class="form">
+        <h1>{% trans "Sign up as Teacher" %}</h1>
+
+        <form id="teacherSignup" class="content" action="" method="POST">{% csrf_token %}
+
+            <p><label for="id_username">{% trans "Username" %}:</label>
+            {{ form.username }}
+            {%if form.username.errors %}
+            {% for error in form.username.errors %}
+            <div class="warning">{{ error }}</div>
+            {% endfor %}
+            {% endif %}
+            </p>
+            <p>
+            <label for="id_password1" class="title1">{% trans "Password" %}:</label>
+            {{ form.password1 }}
+            {%if form.password1.errors %}
+            {% for error in form.password1.errors %}
+            <div class="warning">{{ error }}</div>
+            {% endfor %}
+            {% endif %}
+            </p>
+            <p>
+            <label for="id_password2" class="title1">{% trans "Password Confirm" %}:</label>
+            {{ form.password2 }}
+            {%if form.password2.errors %}
+            {% for error in form.password2.errors %}
+            <div class="warning">{{ error }}</div>
+            {% endfor %}
+            {% endif %}
+            </p>
+            <p>
+            <label for="id_invitecode" class="title1">{% trans "Invite Code" %}:</label>
+            {{ form.invitecode }}
+            {%if form.invitecode.errors %}
+            {% for error in form.invitecode.errors %}
+            <div class="warning">{{ error }}</div>
+            {% endfor %}
+            {% endif %}
+            </p>
+            <p>
+            <label for="id_email" class="title1">{% trans "E-Mail" %}:</label>
+            {{ form.email }}
+            {%if form.email.errors %}
+            {% for error in form.email.errors %}
+            <div class="warning">{{ error }}</div>
+            {% endfor %}
+            {% endif %}
+            </p>
+            <p><a href=javascript:submitform(); class="greenBtn" id="signup">{% trans "Sign up" %}</a></p>
+
+        </form>	
+    </div>
+</div>
+{% endblock %}
+

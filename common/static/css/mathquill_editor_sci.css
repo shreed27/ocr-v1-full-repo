@@ -1,0 +1,458 @@
+/*
+ * LaTeX Sci in pure HTML and CSS -- No images whatsoever
+ * v0.xa
+ * by Jay and Han
+ * Lesser GPL Licensed: http: //www.gnu.org/licenses/lgpl.html
+ * 
+ * This file is automatically included by sciquill.js
+ * 
+ */
+
+@font-face {
+  font-family: Symbola;
+  src: url(font/Symbola.eot);
+  src: local("Symbola Regular"), local("Symbola"),
+    url(font/Symbola.ttf) format("truetype"),
+    url(font/Symbola.otf) format("opentype"),
+    url(font/Symbola.svg#webfont7MzkO3xs) format("svg");
+}
+
+.sciquill-editable, .sciquill-embedded-latex .sciquill-editable {
+  display: -moz-inline-box;
+  display: inline-block;
+  border: 1px solid gray;
+  padding: 2px;
+}
+.sciquill-embedded-latex .sciquill-editable {
+  margin: 1px;
+}
+.sciquill-textbox {
+  overflow-x: auto;
+  overflow-y: hidden; /*so IE8 won't show a vertical scrollbar*/
+}
+.sciquill-editable.empty, .sciquill-editable * {
+  cursor: text;
+}
+
+.sciquill-editable .textarea {
+  position: relative;
+  display: inline; /*so Firefox 3.6 (Gecko 1.9.2) won't wrap the box to 2 lines*/
+}
+.sciquill-editable .textarea textarea {
+  position: absolute;
+  z-index: -1;
+  height: 1px;
+  width: 1px;
+  opacity: 0;
+  border: none;
+  outline: none;
+}
+
+.sciquill-editable .cursor {
+  border-left: 1px solid black;
+  margin-right: -1px;
+  display: inline;
+  position: relative;
+  z-index: 1;
+}
+.sciquill-editable .cursor.blink {
+  visibility: hidden;
+}
+.sciquill-editable.empty:after, .sciquill-textbox:after, .sciquill-rendered-sci .empty:after {
+  visibility: hidden;
+  content: 'c';
+}
+/*separated from above because unrecognized pseudoclasses invalidate the entire selector*/
+.sciquill-editable .cursor:only-child:after,
+.sciquill-editable .textarea+.cursor:last-child:after {
+  visibility: hidden;
+  content: 'c';
+}
+
+.sciquill-editable .selection,
+.sciquill-editable .selection .sciquill-rendered-sci,
+.sciquill-editable .selection sup, .sciquill-editable .selection sub {
+  background: #B4D5FE;
+  background: Highlight;
+  color: HighlightText;
+  border-color: HighlightText;
+}
+.sciquill-editable .selection.blur,
+.sciquill-editable .selection.blur .sciquill-rendered-sci,
+.sciquill-editable .selection.blur sup,.sciquill-editable .selection.blur sub {
+  background: #CCC;
+  background: rgba(0, 0, 0, .2);
+  color: black;
+  border-color: black;
+}
+.sciquill-editable .selection .selection.blur,
+.sciquill-editable .selection .selection.blur sup,
+.sciquill-editable .selection .selection.blur sub {
+  background: #ABF;
+}
+.sciquill-editable .selection.blur .selection.blur,
+.sciquill-editable .selection.blur .selection.blur sup,
+.sciquill-editable .selection.blur .selection.blur sub {
+  background: #AAA;
+  background: rgba(0, 0, 0, .2);
+}
+
+.sciquill-textbox, .sciquill-rendered-sci {
+  white-space: pre-wrap;
+  font-family: Symbola, "Times New Roman", serif;
+}
+.sciquill-rendered-sci {
+  font-variant: normal;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 115%;
+  line-height: 1;
+  display: -moz-inline-box;
+  display: inline-block;
+  -moz-user-select: none;
+}
+.sciquill-rendered-sci var, .sciquill-rendered-sci .nonSymbola {
+  font-family: "Times New Roman", serif;
+}
+.sciquill-rendered-sci * {
+  font-size: inherit;
+  line-height: inherit;
+  display: -moz-inline-box;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border-color: black;
+}
+.sciquill-editable.hasCursor,
+.sciquill-rendered-sci .latex-command-input.hasCursor {
+  border-color: ActiveBorder;
+}
+.sciquill-editable.hasCursor, .sciquill-editable .hasCursor {
+  -webkit-box-shadow: #68B4DF 0 0 3px 2px;
+  -moz-box-shadow: #68B4DF 0 0 3px 2px;
+  box-shadow: #68B4DF 0 0 3px 2px;
+}
+
+.sciquill-rendered-sci .empty {
+  background: #ccc;
+}
+.sciquill-rendered-sci.empty {
+  background: transparent;
+}
+
+.sciquill-rendered-sci .text {
+  display: inline;
+  font-size: 87%;
+}
+
+.sciquill-rendered-sci var { /* variables, in case the user does something weird to their <var>'s */
+  font-style: italic;
+  font-weight: normal;
+}
+.sciquill-rendered-sci var.florin { /* florin looks so much better than italic f */
+  margin: 0 -.1em;
+}
+
+.sciquill-rendered-sci big {
+  font-size: 125%;
+}
+
+.sciquill-rendered-sci sup, .sciquill-rendered-sci sub {
+  position: relative;
+  font-size: 90%;
+}
+.sciquill-rendered-sci sup {
+  vertical-align: .5em;
+}
+.sciquill-rendered-sci sub {
+  vertical-align: -.4em;
+}
+.sciquill-rendered-sci sup.nthroot {
+  margin-right: -.6em;
+  margin-left: .2em;
+  min-width: .5em;
+}
+.sciquill-rendered-sci sup.limit, .sciquill-rendered-sci sub.limit,
+.sciquill-rendered-sci sup.nthroot {
+  font-size: 80%;
+}
+.sciquill-rendered-sci sup.limit, .sciquill-rendered-sci sup.nthroot {
+  vertical-align: .8em;
+}
+.sciquill-rendered-sci sub.limit {
+  vertical-align: -.6em;
+}
+
+.sciquill-rendered-sci .binary-operator {
+  padding: 0 .2em;
+}
+.sciquill-rendered-sci .unary-operator {
+  padding-left: .2em;
+}
+.sciquill-rendered-sci sup .binary-operator,
+.sciquill-rendered-sci sub .binary-operator {
+  padding: 0 .1em;
+}
+.sciquill-rendered-sci sup .unary-operator,
+.sciquill-rendered-sci sub .unary-operator {
+  padding-left: .1em;
+}
+
+.sciquill-rendered-sci .fraction {
+  font-size: 90%;
+  text-align: center;
+  vertical-align: -.5em;
+  padding: 0 .1em;
+}
+.sciquill-rendered-sci .fraction, x:-moz-any-link { /* Firefox 2 (and older?) only */
+  display: -moz-groupbox; /* because display:inline-block is FUBAR in Gecko < 1.9.0 */
+}
+.sciquill-rendered-sci .fraction, x:-moz-any-link, x:default { /* Firefox 3+ (Gecko 1.9.0+) */
+  display: inline-block;
+}
+.sciquill-rendered-sci .numerator, .sciquill-rendered-sci .denominator {
+  display: block;
+}
+.sciquill-rendered-sci .numerator {
+  border-bottom: 1px solid; /* black is too black, contrasts with antialised text */
+  padding: 0 .1em;
+}
+.sciquill-rendered-sci .denominator {
+  border-top: 1px solid;
+  float: right; /* take out of normal flow to manipulate baseline */
+  width: 100%;
+}
+
+.sciquill-rendered-sci sup .fraction, .sciquill-rendered-sci sub .fraction {
+  font-size: 70%;
+  vertical-align: -.4em;
+}
+.sciquill-rendered-sci sup .numerator, .sciquill-rendered-sci sub .numerator {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.sciquill-rendered-sci sup .denominator, .sciquill-rendered-sci sub .denominator {
+  padding-top: 0;
+}
+
+.sciquill-rendered-sci .latex-command-input {
+  color: inherit;
+  font-family: "Courier New", monospace;
+  border: 1px solid gray;
+  padding-right: 1px;
+  margin-right: 1px;
+  margin-left: 2px;
+}
+.sciquill-rendered-sci .latex-command-input:before {
+  content: '\\';
+}
+.sciquill-rendered-sci .latex-command-input.empty {
+  background: transparent;
+}
+
+.sciquill-rendered-sci .sqrt-prefix {
+  vertical-align: top;
+  position: relative;
+  top: 2px;
+}
+.sciquill-rendered-sci .sqrt-stem {
+  border-top: 1px solid;
+  margin-top: 1px;
+  padding-left: 2px;
+  padding-right: .2em;
+  margin-right: .1em;
+}
+
+.sciquill-rendered-sci .paren {
+  vertical-align: bottom;
+  position: relative;
+}
+
+.sciquill-rendered-sci .array {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.sciquill-rendered-sci .array > span {
+  display: block;
+}
+
+.sciquill-rendered-sci .non-italicized-function {
+  padding-right: .2em;
+}
+
+/*.sciquill-rendered-sci .not {
+  margin-right: -.75em;
+}*/
+
+
+/*
+ * editor/toolbar styles
+ */
+.sciquill-editor {
+  padding: 0 4px 10px;
+  width: 680px;
+  display: inline-block;
+}
+.sciquill-toolbar {
+  font-family: sans-serif, Arial, Verdana;
+  font-size: 1em;
+  margin: 0 -4px 10px;
+  position: relative;
+  overflow: hidden;
+  z-index: 101;
+}
+.sciquill-tab-bar {
+  padding: 8px 8px 2px 16px;
+  margin: 0 0 -2px;
+  line-height: 1.5;
+  font-size: 9pt;
+  list-style: none;
+  overflow: hidden;
+  display: block;
+  background: #aaa;
+}
+.sciquill-tab-bar li {
+  color: #555;
+  background: #ccc;
+  border-color: #999;
+  border-width: 1px 1px 0 1px;
+  border-style: solid;
+  -moz-border-radius-topright: 4px;
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-radius-topright: 4px;
+  -webkit-border-radius-topleft: 4px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  margin: 0 4px 0 0;
+  float: left;
+  top: 1px;
+  height: 2em;
+  overflow: hidden;
+  position: relative;
+}
+.sciquill-tab-bar li.sciquill-tab-selected {
+  background: #e8e8e8;
+  border-color: #999;
+}
+.sciquill-toolbar .sciquill-tab-bar li a {
+  padding: 0 8px;
+  line-height: 2em;
+  color: #000;
+  text-decoration: none;
+  cursor: default;
+  display: block;
+}
+*:first-child+html .sciquill-tab-bar li a { /* IE7 only */
+  padding: 0 7px;
+}
+.sciquill-tab-bar a span {
+  padding: 0 6px 0 0;
+  line-height: inherit;
+  font-weight: bold;
+}
+.sciquill-toolbar .sciquill-toolbar-panes {
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #aaa;
+  background: #e8e8e8;
+}
+#sciedit-latex-input-field-0
+{
+   min-height:185px;
+   height:auto;
+   font-size:20px;
+   text-align:Center;
+}
+.cke_dialog_body .sciquill-toolbar-panes .sciquill-tab-pane {
+  margin: 0 -100% 0 0;
+  width: 100%;
+  visibility: hidden;
+  float: left;
+}
+.cke_dialog_body .sciquill-toolbar-panes .sciquill-tab-pane-selected {
+  visibility: visible;
+  margin: 0;
+}
+.sciquill-toolbar-panes .sciquill-tab-pane ul {
+  margin: 0;
+  padding: 6px 12px;
+  overflow: hidden;
+  line-height: 1;
+  list-style: none;
+}
+.sciquill-toolbar-panes .sciquill-tab-pane li {
+  overflow: hidden;
+  display: block;
+  float: left;
+  height: 1.5em;
+  margin: 0 -4px 3px;
+  padding: 6px;
+  text-align: center;
+  background: #eee;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #ccc;
+}
+.sciquill-toolbar-panes .sciquill-tab-pane li.sciquill-button-spacer {
+  background: transparent;
+  border-color: transparent;
+  width: 10px;
+}
+.sciquill-toolbar .sciquill-toolbar-panes .sciquill-tab-pane li a.sciquill-rendered-sci {
+  display: block;
+  font-size:15px !important;
+  font-weight: bold;
+  /*width: 2em;*/
+  width: 1.5em;
+  height: 1.4em;
+  text-align:center;
+  cursor:normal;
+}
+.sciquill-toolbar .sciquill-toolbar-panes .sciquill-tab-pane li a.sciquill-rendered-sci  .fraction
+{
+  font-size:10px !important;
+}
+.sciquill-toolbar .sciquill-toolbar-panes .sciquill-tab-pane li a.sciquill-rendered-sci span, .sciquill-toolbar .sciquill-toolbar-panes .sciquill-tab-pane li 
+{
+
+}
+.sciquill-toolbar-panes .sciquill-tab-pane li a:hover {
+  background-color: #adcddf;
+}
+.sciquill-toolbar-panes .sciquill-toolbar * {
+  cursor: default !important;
+}
+.sciquill-toolbar *{cursor:default !important;}
+
+.sciquill-rendered-sci .overline{
+display: -moz-inline-box;
+  display: inline-block;
+
+}
+.sciquill-rendered-sci .selection .overline{
+background: #B4D5FE !important; /* We expect rules overriding .matrixed background, don't let them override selected .matrixed background. See wiki page Transforms. */
+  background: Highlight !important;
+  color: HighlightText;
+  border-color: HighlightText;
+}
+.sciquill-rendered-sci .selection.blur .overline{
+  background: #D4D4D4 !important;
+  color: black;
+  border-color: black;
+}
+.sciquill-rendered-sci .selection .selection.blur .overline{
+background: #ABF !important;
+}
+.sciquill-rendered-sci .selection.blur .selection.blur .overline{
+  background: #AAA !important;
+  background: rgba(0, 0, 0, .15) !important;
+}
+
+.sciquill-rendered-sci .overline {
+  border-top: 1px solid black;
+  margin-top: 1px;
+  min-width: 20px;
+}
+#chemistry_tab_sci,#sciedit-latex-input-field-1-01{text-align:center;}
+#chemistry_tab_sci .chemistry_text{height:auto;}
+#select2-drop .select2-results li{margin:0 5px}
+#chemistry_tab_sci .chemistry_text .select2-search-choice{ height:auto; padding:5px;}

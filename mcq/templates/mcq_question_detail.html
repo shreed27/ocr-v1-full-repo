@@ -1,0 +1,243 @@
+{% extends "mcq_base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Question Detail" %}{% endblock %}
+{% block head %}
+
+
+
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.dataTables.min.js"></script>
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/datatable_custom.css">
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/mcq_question_detail.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/nyroModal.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/select2.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/mathquill_editor.css " />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/mathquill_editor_sci.css " />
+<!--<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/mathquill.css " />-->
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui-1.8.23.custom.css" />
+<script type="text/javascript" src="{{ STATIC_URL }}js/swfupload/swfupload.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/swfupload/swfupload.queue.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/swfupload/fileprogress.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/swfupload/handlers.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/ckeditor.adapter.jquery.js"></script>
+<!--<script type="text/javascript" src="{{ STATIC_URL }}js/mathquill.js"></script>-->
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.json-2.3.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/select2.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.maskedinput-1.3.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.nyroModal.custom.min.js"></script>
+<script type="text/javascript">
+    var csrfvalue = '{{ csrf_token }}';
+</script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/intemass.util.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/mcq_question_detail.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/mathquill_editor.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/mathquill_editor_sci.js"></script>
+
+
+<script type="text/javascript">
+    var csrfvalue = '{{ csrf_token }}';
+</script>
+<style>
+.dataTables_filter label {
+	font-size: 12px;
+	font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serifarial;
+	font-weight: bold;
+}
+</style>
+<script type="text/javascript" src="{{ STATIC_URL }}js/intemass.util.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/mcq_question_detail.js"></script>
+<style>
+	.label{
+		margin: 0px;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="samples" style="float:left">
+        {% trans "(MCQ) Question, List of Option" %}
+    </h1>
+
+<div class="container_12">
+<div class="grid_12">
+    <div id="question_detail_tabs" style="width:1024px;">
+        <ul>
+            <li><a href="#question_detail_tabs-1">Question</a></li>
+            <li><a href="#question_detail_tabs-2" id="tab-optionlist">List of option</a></li>
+        </ul>
+        <div id="question_detail_tabs-1">
+            <div id="question_info">
+
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td><label for="question_id">{% trans "Question ID :" %}</label></td>
+				<td> 
+					<select  style="width:100%;" id="question_id">
+						<option value='-1'>{% trans "New Question" %}</option>
+						{% for question in questions %}  
+						<option value="{{ question.id }}">{{ question.qtn_name }}</option>
+						{% endfor %}
+					</select>
+				</td>
+				
+				<td  rowspan="6">
+						<div class="qupload_div" >
+						    <h4 class="ui-widget-header" id="choose_some_images_1">{% trans "Choose some images" %}</h4>
+						    <div class="fieldset flash" id="fsUploadProgress">
+							<span class="legend"></span>
+						    </div>
+						    <!--<div id="divStatus">0 Files Uploaded</div>-->
+						    <div style="margin:1em 0 1em 0;">
+							<span id="qupload"></span>
+							<a id="btnCancel" class="btnCancel" href="javaScript:swfu.cancelQueue();">{% trans "Cancel" %}</a>
+						    </div>
+						    <h4 class="ui-widget-header">{% trans "Uploaded Images" %}</h4>
+						    <div id="thumbnails" class="ui-widget-content ui-state-default">
+							<ul class="gallery ui-helper-reset ui-helper-clearfix"> </ul>
+						    </div>
+						</div>
+					</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="question_name">{% trans "Question Name:" %}</label>
+				</td>
+				<td> 
+					<span id="question_name" type="text" width="100" maxlength="100" class="editable"></span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="question_description" >{% trans "Question Description:" %}</label>
+				</td>
+				<td> 
+					<textarea id="question_description" style="width:100%;" rows='5' type="text" value={{ question.qtn_description }}></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					 <label for="question_mark">{% trans "Question Mark:" %}</label>
+				</td>
+				<td> 
+					 <textarea id="question_mark" style="width:100%;" rows='1' type="text" value={{ question.qtn_mark }}></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="question_type">{% trans "Question Type:" %}</label> 
+				</td>
+				<td> 
+					<select  style="width:100%;" id="question_type" >
+					    <option value='Review'>{% trans "Review" %}</option>
+					    <option value='Formal'>{% trans "Formal" %}</option>
+					</select> 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>{% trans "Question Category:" %}</label> 
+				</td>
+				<td> 
+					 <select style="width:100%;" id="questioncategory_id" style="width:300px;">
+						<option value="0" selected="selected"> </option>
+						{% for row in questioncategorys%}  
+						{% if row.0 == selected_questioncategory %}
+						<option value="{{row.0}}" selected="selected">{{ row.1 }}</option>
+						{% else %}
+						<option value="{{row.0}}">{{ row.1}}</option>
+						{% endif %}
+						{% endfor %}
+					</select>
+				</td>
+			</tr>
+			<tr  >
+				<td>
+					<label for="question_type">{% trans "Question Graph:" %}</label> 
+				</td>
+				<td> 
+					<p>
+               
+		      <a id="question_canvas" style="width: 43px; height: 16px;" class="populate greenBtn" href="#">{% trans "Graph" %}</a>
+		
+                </p>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td><textarea id="question_editor"></textarea></td>
+			
+				<td >
+					<a class="blueBtn" id="submit1">{% trans "Submit" %}</a>
+				</td>
+			</tr>
+		</table>
+
+		<p style="display:none;">
+			<label>Item Pool:</label>
+			<select id="itempool_id" >
+			{% for itempool in itempools%}  
+			{% if itempool.id == selitempoolid %}
+			<option value="{{itempool.id}}" selected="selected">{{ itempool.poolname }}</option>
+			{% else %}
+			<option value="{{itempool.id}}">{{ itempool.poolname}}</option>
+			{% endif %}
+			{% endfor %}
+			</select>
+		</p>
+
+            </div>
+
+        </div>
+
+        <div id="question_detail_tabs-2">
+		<div class="grid_12 alpha omega">
+			<h1 class="grid_6 alpha">{% trans "Option List" %}</h1>
+			<h1 class="grid_6 omega"><a href="#" onclick="onAddOptionList('{% url mcq_optionlist_add %}');return false;" class='addBtn'>{% trans "Add Option" %}</a></h1>
+		</div>
+		<div class="grid_12 alpha omega">
+			<table width="100%" id="optionlist" style="width:100%;" class="datatable_display">
+			<thead>
+			    <tr>
+				<th width="20%">{% trans "Option" %}</th>
+				<th width="20%">{% trans "is Answer" %}</th>
+				<th width="30%">{% trans "ACTION" %}</th>
+			    </tr>
+			</thead>
+			<tbody>
+			</tbody>
+			</table>
+		</div>
+        </div>
+
+        
+    </div>
+    </div>
+</div>
+<div style='display:none;' id="dialog-process" title="Processing">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "Processing your request..." %}</p>
+    <div id="progressbar"></div>
+</div>
+<div style='display:none;' id="dialog-success" title="Successfully Upload Question">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "You have successfully uploaded the question." %}</p>
+</div>
+<div style='display:none;' id="dialog-failure" title="Question Content Incomplete">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "Please check: questionname and content can't be null." %}</p>
+</div>
+<div style='display:none;' id="dialog-canvas-failure" title="Questionid Not Correct">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "Please check: questionname and id must be valid." %}</p>
+</div>
+<div style='display:none;' id="dialog-failure-image" title="Upload Unmatched StandardAnswer Image">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "Please check: standard answer image must in questionimage." %}</p>
+</div>
+<div style='display:none;' id="dialog-success-stdanswer" title="Successfully Upload Question">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "You have successfully uploaded the standard answer." %}</p>
+</div>
+
+<div style='display:none;'  id="dialog-confirm" title="Are you sure?">
+		<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "You will delete this option list." %}</p>
+</div>
+{% endblock %}

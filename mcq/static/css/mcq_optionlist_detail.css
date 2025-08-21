@@ -1,0 +1,259 @@
+.question_detail_clear_left{
+    clear:left;
+}
+
+.btnCancel {
+    display:block;
+    background:url('/static/css/swfimages/XPButtonNoText_61x22.png') no-repeat;
+    height:20px;
+    width:61px;
+    text-decoration:none;
+    font: 15px arial;
+    color:#000;
+    text-align:center;
+    padding-top:2px;
+    float:right;
+    margin-right:2em;
+}
+
+#question_info{
+    width:800px;
+    float:left;
+}
+
+#question_detail_tabs{
+    width:930px;
+    float:left;
+}
+
+#question_detail_tabs p{
+    float:left;
+}
+
+#question_detail_tabs-1 label{
+  cursor: pointer;
+	display: block;
+	float: left;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 28px;
+	margin:0 0 0px 0px;
+	
+	text-align: left;
+	clear:left;
+}
+
+#question_detail_tabs-1 input{
+    float:left;
+}
+
+##question_detail_tabs textarea{
+    float:left;
+    //width:200px;
+    margin:1em 0 0 0;
+    //overflow-x:hidden;
+    //vertical-align:text-bottom;
+}
+
+#question_info #question_id{
+    float:left;
+    width:300px;
+    //clear:both;
+}
+#question_info #itempool_id{
+    float:left;
+    width:300px;
+    //clear:both;
+}
+
+#question_content{
+    width:800px;
+    float:left;
+    margin-top: 2em;
+}
+
+#cke_question_editor{
+    float:left;
+}
+
+.qupload_div{
+    width:180px;  
+}
+
+#submit1{
+    float:right;
+    color:#fff;
+}
+
+#submit2{
+    float:right;
+    margin:-3em 5em 0 0;
+    color:#fff;
+}
+
+#question_detail_tabs span.editable{
+    display:block;
+    width:300px;
+    height:20px;
+    float:left;
+    padding:0 0 0 0;
+}
+
+#standard_content{
+    width:800px;
+    float:left;
+    margin-top: 1em;
+}
+
+#standard_content label{
+    width:300px;
+    margin:0 0 1em 0;
+}
+
+#cke_standard_editor{
+    float:left;
+    clear:left;
+}
+
+.supload_div{
+    width:180px;
+    float:right;
+}
+
+#question_content #thumbnails{
+    width:260px;
+    height:300px;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+#question_content img{
+    cursor: pointer;
+}
+
+#standard_content #std_thumbnails{
+    width:260px;
+    height:300px;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+#standard_content img{
+    cursor: pointer;
+}
+
+.templates{
+    color: black;
+    font-size:15px;
+    width: 80%;
+    border: solid 1px grey;
+    border-collapse:collapse;
+    margin: 1em auto;
+}
+
+.templates th{
+    font-weight:bold;
+}
+
+.templates th,td{
+    /* border:solid 1px grey;
+    border-width:0 1px 1px 0; */
+    padding:2px;
+    text-align: center;
+}
+
+.templates td.action{
+    width:50px;
+}
+
+.templates td input{
+    margin:0 1em;
+}
+
+#rules_table {
+    color: black;
+    font-size:15px;
+    width: 80%;
+    /* border: solid 1px grey;
+    border-collapse:collapse; */
+    margin: 1em auto;
+}
+#rules_table th{
+    font-weight:bold;
+}
+#rules_table th,td{
+    /* border:solid 1px grey;
+    border-width:0 1px 1px 0;*/
+    padding:2px;
+    text-align: center;
+}
+
+#rule_templates label{
+    width:500px;
+    margin:0 0 1px 5em;
+    font-size: 12px;	
+}
+
+#rule_templates input.left{
+    clear:both;
+    margin:0 0 1em 4em;
+    width:600px;
+    height:20px;
+}
+#rule_templates input.right{
+    //clear:both;
+    margin:0 0 1em 1em;
+    width:50px;
+    height:20px;
+}
+#question_detail_tabs-3 #submit3{
+    color:#fff;
+    clear:both;
+    height:20px;
+    font-size:12pt;
+    padding:10px 25px;
+    float:right;
+    margin: 0 9em 0 0;
+}
+#question_detail_tabs-3 h5{
+    margin: 0 auto;
+    text-align:center;
+}
+
+.gallery li { float: left; width: 96px; padding: 0.4em; margin: 0 0.4em 0.4em 0; text-align: center; }
+.gallery li h6 { margin: 0 0 0.4em; cursor: move; }
+.gallery li a { float: right; }
+.gallery li a.ui-icon-zoomin { float: left; }
+.gallery li img { width: 100%; cursor: move; }
+
+#thumbnails{
+    width: 265px; 
+    padding: 1%;
+    min-height: 200px;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+* html #thumbnails{
+    height:300px;
+}
+
+.qupload_div h4 { 
+    line-height: 32px; 
+    margin:0;
+    padding-left:15px;
+    font-size:10pt;
+    width:250px;
+}
+
+.supload_div h4 { 
+    line-height: 32px; 
+    margin:0;
+    padding:0 0 0 4px;
+    font-size:10pt;
+    width:255px;
+}
+
+.ui-progressbar .ui-progressbar-value { background-image: url(../images/pbar-ani.gif); }
+
+.ui-dialog-titlebar-close{
+ }

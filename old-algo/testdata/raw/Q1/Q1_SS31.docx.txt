@@ -1,0 +1,29 @@
+(3 marks)
+
+Tan Wen Bin 5.07 Ruth Economics HL
+
+Short Answer Question: 
+
+[After scrutinising the question – highlight the key words in the question]
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+Production possibility curve: It represents the point at which an economy is most efficiently producing its goods and services, allocating its resources in the best way possible.
+
+Scarcity: It represents the condition when the needs and wants of human beings exceed the available resources that are required to fulfill these needs.
+
+Choice: It is a concept where people have unlimited wants but limited resources which results in two outcomes, satisfaction or dissatisfaction, depending on the amount of available resources.
+
+Opportunity cost: It is the cost of any activity measured in terms of the value of the next best alternative.
+
+  
+
+The (((diagram W))) illustrates the concept of the PPC
+
+The concept of scarcity can be understood by analyzing point E of the production possibility curve. Production possibility curve is the point when resources are allocated in the best way to produce maximum efficiency. However, point E depicts an economy where Capital and Consumer goods are required at a very high level but there are not enough resources to attain that level thus there is a scarcity/lack of resources.
+
+Choice can be interpreted through different economies. We shall compare economy D, B and E. Economy D does not have very high level of needs, but it is not using their resources efficiently to the maximum to satisfy the needs and wants of the people thus there will be dissatisfaction as not all available resources are used thus there will be wastage. Economy B is using their resources to the maximum to fulfill the needs and wants of people thus there will be a mixture of satisfaction and dissatisfaction as some peoples level of needs are low while others are higher. From Economy E we can infer that there will be dissatisfaction as the people have a very high level of needs and wants which requires high capital and consumer goods but there aren’t enough available resources due to scarcity.  
+
+Opportunity cost can be interpreted from the graph through the gradient of the curve, and we shall be comparing economy A and C. Economy A has more capital goods and less consumer goods while economy C has more consumer goods and less capital goods. However, the opportunity cost of A is lower than C as the gradient of point A is less than the gradient of point C. Thus we can conclude that point A has a lower opportunity cost and thus it gives up less resources by having more capital goods than consumer goods while C has a higher opportunity cost as it decides to have more consumer goods than capital goods.

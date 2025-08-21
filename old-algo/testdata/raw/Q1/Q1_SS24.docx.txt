@@ -1,0 +1,33 @@
+(8 marks)
+
+Nguyen Dang Minh (18)
+
+5.18
+
+Short Answer Question: 
+
+[After scrutinising the question – highlight the key words in the question]
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+Define the key words
+
+Production possibility curve is a graph that compares the amount of goods possibly produced if resources are used up.
+
+Scarcity refers to the situation where resources are limited but human wants are infinite.
+
+Choice is made on how to use the limited resources to produce a balanced amount of different types of goods for the optimal need.
+
+Opportunity cost is the cost of having to give up a choice one did not choose when deciding on another.
+
+The (((diagram W))) illustrates the concept of the PPC
+
+Scarcity is the situation where resources are limited but human wants are infinite. Looking at point E, E is an unattainable point within available resources due to scarcity in resources.
+
+E is in the same vertical level with point A, which means that the same amount of capital goods is produced but E is farther horizontally which means at E more consumer goods are produced which is impossible as the maximum amount is presented at A.
+
+Choice arises when man has to decide the amount of resources to spend on certain kinds of goods. At point A, resources are spent more on the production of capital goods than on consumer goods. This shows a rather highly developed industry with a relatively small population size as a lot of resources are used to make capital goods like machineries but fewer resources are used to produce consumer goods to serve a small-size population. A good example would be Germany. However at point C, resources are spent more on the production of consumer goods than on capital goods. At point B, however, the production of capital goods and consumer goods are balanced.
+
+Opportunity cost is the cost of forgoing the next best alternative upon the decision on another alternative. Within a limited available amount of resources, one has to give up on the production of a type of goods to leave resources to produce another type. The slope along the PPC tells us of the increasing opportunity cost of producing consumer goods. The gradient of the curve at point A is higher than that at point C, that is to say the cost of producing more consumer goods is higher at point C. More simply put, to produce 1 more unit of consumer goods at point C, more units of capital goods must be sacrificed.

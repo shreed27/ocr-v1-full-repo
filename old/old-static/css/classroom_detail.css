@@ -1,0 +1,31 @@
+#id_volume{
+    width:100px;
+}
+
+.ztreefooter{
+  width:60px;
+  padding:0 5px;
+}
+
+.classinfoform{
+  width:250px;
+  float:left;
+  padding-top:2em;
+}
+
+.classinfolabel{
+  width:100px;
+  margin-left:2px;
+}
+
+.classname{
+  display:block;
+  width:140px;
+  float:left;
+  padding:3px 0 0 3px;
+}
+
+.submitbutton{
+  clear:both;
+  width:250px;
+}

@@ -1,0 +1,37 @@
+<<<<<<< HEAD
+
+=======
+(3 marks)
+
+Short Answer Question: (queenie)
+
+[After scrutinising the question – highlight the key words in the question]
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+>>>>>>> 72745d7d037a6ba7ae1e70975f215807b33918b7
+
+A production possibility curve is a graph that compares the production rates of two commodities that use the same fixed total of the factors of production. It shows a possible specified production level of one commodity that results given the production level of the other. By doing so, it defines productive efficiency, such that production of one commodity is maximised given the production level of the other commodity. 
+
+The PPC is a curve that shows the limit of what an economy can produce with a given amount of scarce resources. Anything beyond the boundary cannot be produced because there are not enough resources available. This is how it shows scarcity.
+
+It shows choice because it is a set of many points, not just one point. Any point along the PPC can be achieved by moving resources from one use to another.It shows opportunity cost by its slope. When resources are used for one purpose, they are not being used for another purpose. In order to switch the resources to another use, the production of the original use must be decreased. The amount is determined by the slope of the curve between two points. Some resources are more efficient at one use than another. So when resources are diverted, the ones that are most efficient at the new use will be diverted first. As more and more of one product is produced at the expense of the other, then less and less efficient resources will be diverted. So the opportunity cost is increasing, giving the PPC its convex (bowed out) shape.
+
+Diagram (fully labelled)
+
+The (((diagram W))) illustrates the concept of the PPC
+
+Explain what is scarcity and how is it shown using the PPC (with examples/real life examples if possible)
+
+Scarcity is shown as point E on the graph. The point E is unattainable; it is when the needs and wants of consumer goods are so high that the capital available is unable to satisfy that. 
+
+Explain how choice arises and how is it shown using the PPC (with examples/real life examples if possible)
+
+The concept of choice can be illustrated by points D, A and E. Should point D be chosen, it will lead to under utilisation. Despite the abundant capital available, the capital is not efficiently utilised to produce the desired amount of consumer goods, leading to a lack of goods in spite of sufficient capital. Should point A be chosen, the capital is efficiently used to produce the proportionate amount of consumer goods, resulting in a efficient utilisation which leads to a moderate level of satisfaction. Should point E be taken, it is simply unattainable as the amount of capital is insufficient to satisfy the enormous demand of consumer goods, leading to an impossibly large need to fulfil, resulting in dissatisfaction. 
+
+Explain what is opportunity cost and how is it shown using the PPC (with examples/real life examples if possible)
+
+<<<<<<< HEAD
+Opportunity cost is is the cost of any activity measured in terms of the value of the next best alternative foregone (that is not chosen). The opportunity cost is also the cost of the foregone products after making a choice. The gradient of the slope between points A and B can be used to illustrate this. The more gentle the gradient, the lower the opportunity cost and thus less sacrifice is required in taking this choice.  
+=======
+Opportunity cost is is the cost of any activity measured in terms of the value of the next best alternative foregone (that is not chosen). The opportunity cost is also the cost of the foregone products after making a choice. The gradient of the slope between points A and B can be used to illustrate this. The more gentle the gradient, the lower the opportunity cost and thus less sacrifice is required in taking this choice.  
+>>>>>>> 72745d7d037a6ba7ae1e70975f215807b33918b7

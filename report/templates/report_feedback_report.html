@@ -1,0 +1,228 @@
+{% load i18n %}
+{% load paper_tags %}
+
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>{% trans "Student's Report" %}</title>
+
+    <link type="text/css" rel="stylesheet" href="/static/css/jquery-ui-1.8.23.custom.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/nyroModal.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/feedback_popup.css" />
+    <link rel="stylesheet" href="/static/css/colorbox.css" />
+
+    <script type="text/javascript" src="/static/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="/static/js/intemass.ui.js"></script>
+    <script type="text/javascript" src="/static/js/intemass.util.js"></script>
+    <script type="text/javascript" src="/static/js/intemass.common.js"></script>
+    <script type = "text/javascript" src="/static/js/jquery.colorbox-min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.nyroModal.custom.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.jeditable.js"></script>
+    <script src="/static/js/jquery.printPage.js"></script>
+    <script type="text/javascript" src="/static/js/report_feedback.js"></script>
+
+
+     <!--<link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">-->
+
+  <!-- If you'd like to support IE8 -->
+  <!--<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>-->
+
+
+    <script type="text/javascript">
+        $(function(){
+            $(".btnPrint").printPage();
+        });
+        
+        $(document).ready(function() {
+
+            $("#remspace").find("p:first").remove();
+
+        });
+        
+        
+    </script>
+
+
+    <style>
+
+        td {
+        font-size:15px;
+        }
+
+        th {
+        width:200px;
+        }
+
+    </style>
+</head>
+
+<body>
+    {% comment %}
+    <!--{% for st in stu %}
+     {% if forloop.first %}
+    <span style="float: right; font-size: 15px;"><b>Time Taken:</b> {{ st.timestamp|date:"D, d M Y" }}</span>
+    {% endif %}
+    {% endfor %}-->
+    {% endcomment %}
+    <div class = 'box' id="box1" style="height:600px; width:1200px;" >
+    <p style="font-family:Times New Roman;font-size: 20px">
+    {% for st in stu %}
+    {% if forloop.first %}
+    <span style="float: right; font-size: 15px;"><b>{% trans "Time" %}:</b> {{ st.timestamp|date:"D" }}</span>
+    <br>
+    <span style="float: right; font-size: 15px;"><b>{% trans "Date" %}:</b> {{ st.timestamp|date:"d M Y" }}</span>
+    {% endif %}
+    {% endfor %}<br>
+    <!--<span style="float: left">{% trans "Assignment Number " %}: {{paper.papername}}</span>-->
+    <span style="float: right">{% trans "Student Index Number " %}: {{user}}</span><br>
+    </p>
+    <table class="main_table" width="1190">
+            <col style="width:3%">
+            <col style="width:9%">
+            <col style="width:30%">
+            <col style="width:32%">
+            <col style="width:4%">
+            <col style="width:4%">
+            <col style="width:10%">
+            <col style="width:8%">
+
+        <thead>
+        <tr>
+            <th><b><center>{% trans "No." %}</center></b></th>
+            <th><b><center>{% trans "Question" %}</center></b></th>
+            <th><b><center>{% trans "Student Answer" %}</center></b></th>
+            <th><b><center>{% trans "Actual Answer" %}</center></b></th>
+            <th><b><center>{% trans "Max. Marks" %}</center></b></th>
+            <th><b><center>{% trans "Scored" %}</center></b></th>
+            <th><b><center>{% trans "Teacher's Feedback" %}</center></b></th>
+            <th><b><center>{% trans "Answer Explanation" %}</center></b></th>
+            <!--<th><b><center>{% trans "FBcode" %}</center></b></th>-->
+            <!--<th><b><center>{% trans "Close" %}<br>(in %)</center></b></th>-->
+        </tr>
+        </thead>
+        <tbody>
+        {% for s, v in stu %}
+        <tr>
+            <td>
+                {{paper.papername}}
+                
+            </td>
+            {% autoescape off %}
+            <td valign="top">
+                {{s.question.qhtml}}
+            </td>
+            <td id="remspace">
+                {{s.html_answer}}
+                <!--<font color="red">{{s.html_answer}}</font>-->
+
+                <br>
+                <br>
+                <div class="extra_ans">
+                    {% if s|has_canvas %}
+                        <a class="nyroModal greenBtn" target="_blank" href="/canvas/?canvasname=1&questionid={{s.question.id}}&stuanswerid={{s.id}}&view=1" style="width: 80px; height: 16px;" >{% trans " Your Graph " %}</a>
+                        <br>
+                    {% endif %}
+                    <div id="stu_thumbnails" class="ui-widget-content ui-state-default">
+                        <ul class="gallery ui-helper-reset ui-helper-clearfix">
+                            {{s|thumbnails}}
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <td class="actual_ans_td">
+            {% if s.omitted %}
+                    {{s.omitted|point_text:s.question.markscheme}}
+            {% else %}
+                    {{s.question.stdanswertext|format_stdanswer}}
+            {% endif %}
+            <br>
+            <div class="extra_ans">
+                {% if s|has_canvas:s.question.stdanswer %}
+                    <a class="nyroModal greenBtn" target="_blank" href="/canvas/?canvasname=1&questionid={{s.question.id}}&stdanswerid={{s.question.stdanswer.id}}&view=1" style="width: 110px; height: 16px;" >{% trans " Standard Graph " %}</a>
+                    <br>
+                {% endif %}
+                <div id="std_thumbnails" class="ui-widget-content ui-state-default">
+                    <ul class="gallery ui-helper-reset ui-helper-clearfix">
+                        {{s|thumbnails:'True'}}
+                    </ul>
+                </div>
+            </div>
+            </td>
+            {% endautoescape %}
+            <td valign="top" align="left">
+                {{s|actual_mark}}
+            </td>
+            <td valign="top" align="left">
+                {{s.mark}}
+            </td>
+
+            {% if s.feedback %}
+              <td valign="top" align="left">{{s.feedback}}</td>
+            {%else%}
+                <td valign="top" align="left">&nbsp</td>
+
+                <td>
+
+
+                 <!--<video id="my-video" class="video-js" controls preload="auto" width="264" height="264"-->
+                  <!--poster="MY_VIDEO_POSTER.jpg" data-setup="{}">-->
+                    <!--<source src="https://r2-&#45;&#45;sn-hunpoqp5-h55e.googlevideo.com/videoplayback?expire=1474500494&ei=LsPiV-GVGdKGogORzoP4Ag&initcwndbps=4678750&dur=124.064&ms=au&mv=m&mt=1474478405&requiressl=yes&ip=163.47.15.36&ipbits=0&pl=24&mime=video%2Fmp4&id=o-AMzWpkGc1roisJ-doYncIxwoRhjhgPqpmqmqMFaqlnjd&mn=sn-hunpoqp5-h55e&mm=31&itag=22&pcm2cms=yes&lmt=1474434752458890&key=yt6&ratebypass=yes&upn=5V9rwp8rc6o&source=youtube&sparams=dur%2Cei%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpcm2cms%2Cpl%2Cratebypass%2Crequiressl%2Csource%2Cupn%2Cexpire&signature=BA644C9534C705FA411ABF30F67C85F4DBC2BDB1.BB25A0021D554A12D34E450F2F0D1D059C543F2E&title=Remo+Official+Tamil+Trailer++-+Sivakarthikeyan%2C+Keerthi+Suresh+-+Anirudh+Ravichander" type='video/mp4'>-->
+                    <!--<source src="MY_VIDEO.webm" type='video/webm'>-->
+                    <!--<p class="vjs-no-js">-->
+                      <!--To view this video please enable JavaScript, and consider upgrading to a web browser that-->
+                      <!--<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>-->
+                    <!--</p>-->
+                  <!--</video>-->
+                    {% if v %}
+                    <video controls width="150" height="150" src="{{v.src}}"></video>
+                    {% endif %}
+
+                </td>
+            {% endif %}
+            {%if s.feedback_code == '0' %}
+               <td>&nbsp</td>
+            {%else%}
+                  <!--<td valign="top" align="left">{{s.feedback_code}}</td>-->
+            {% endif %}
+                <!--<td valign="top" align="left">{{s.closeness|closeness}}</td>-->
+         </tr>
+         {%endfor%}
+
+    <tr>
+        <td colspan=3><center><b>{% trans "Total" %}</b></center></td>
+        <td><center><b>{{sum}}</b></center></td>
+        <td><center><b>{{smark}}</b></center></td>
+        <td>&nbsp</td>
+        <td>&nbsp</td>
+        <td>&nbsp</td>
+
+    </tr>
+
+    </tbody>
+    <tfoot>
+         <tr>
+            <td colspan = 8><center>{% trans "Feedback Report" %}</center></td>
+         </tr>
+    </tfoot>
+    </table>
+    <br>
+         <!--<p align = "left" style="font-family:Times New Roman;font-size: 20px">-->
+    <!--<span style="float: left">{% trans "Note: The underlined points are points which you have left out in your answer script. Close is in percentage, for your answer script." %}</span>-->
+    <!--</p>-->
+    <br>
+
+    <p align="center">
+    {% if print %}
+        <a class="btnPrint blueBtn" href="/report/feedback_report/{{paper.id}}/{{user.id}}/">{% trans "Print" %}</a>
+    {% endif %}
+    {% comment %}
+       <a class="btnPrint1 blueBtn" href="/report/popup_pdf/{{paper.id}}/{{user.id}}/">{% trans "Download" %}</a>
+    {% endcomment %}
+    </p>
+
+    </div>
+
+ <!--<script src="http://vjs.zencdn.net/5.8.8/video.js"></script>-->
+    </body>
+</html>

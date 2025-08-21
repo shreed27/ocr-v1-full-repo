@@ -1,0 +1,16 @@
+Metadata-Version: 1.0
+Name: django-pdb
+Version: 0.3.2
+Summary: Easier pdb debugging for Django
+Home-page: https://github.com/tomchristie/django-pdb
+Author: Tom Christie
+Author-email: tom@tomchristie.com
+License: Public Domain
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: Public Domain
+Classifier: Framework :: Django
+Classifier: Operating System :: OS Independent

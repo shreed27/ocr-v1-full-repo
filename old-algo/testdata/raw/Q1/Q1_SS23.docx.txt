@@ -1,0 +1,23 @@
+(3 marks)
+
+Hilman Iskandar Wong Sheng En 5.07
+
+Short Answer Question: 
+
+[After scrutinising the question – highlight the key words in the question]
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+Scarcity - it is what can be obtainable from the limited resources you have
+
+Choice – an alternative action or possibility
+
+Opportunity cost – the amount of resources that is no longer available after choosing an                          opportunity
+
+Production possibility curve is a graph that compares the production rates of two commodities that use the same fixed total of the factors of production.
+
+  Production possibility curve represents the point at which an economy is most efficiently producing its goods and services and, therefore, allocating its resources in the best way possible. The points along the curve A,B and C show that the amount of capital goods and amount of consumer goods used to the maximum level of efficiency. However, the points can show how much of the resources are used in production of different kind of goods. For example, point A show that the amount of capital goods produced is more than the amount of consumer goods produced. Point B shows the amount of capital and consumer goods produced equally as it is in the middle point in the production possibility curve. Point C shows that the amount of capital goods is lesser than the amount of consumer goods produced. But all points A, B and C show that they maximise their resources in the most efficient manner as not to waste any resource. The graph also shows the opportunity cost of the points by measuring the gradient of the point. The steeper the gradient, the more capital goods lost by producing consumer goods. With reference to point A and C, the opportunity cost on point C is larger than point A as the gradient in point C is steeper. Therefore C is losing more of its resources than A.
+
+  Point E on the graph shows a high demand of capital and consumer goods but low production rate. Therefore this shows that point E is very scarce as there very little available resources for production

@@ -1,0 +1,21 @@
+[			
+{% if inum > 0 %}
+{"qnum":{{qnum}}},
+{% else %}
+{"qnum":{{qnum}}}
+{% endif %}
+        {% for itempool, questions in questiontree %}
+            {% if not questions and forloop.last %}
+            { "id": {{ forloop.counter }}, "pId":0, "name":"{{ itempool.name }}", "open":true, "checked":{{itempool.checked}}, "chkDisabled":{{itempool.disabled}}, "nochecked":true, "drag":true},
+{% else %}
+                { "id": {{ forloop.counter }}, "pId":0, "name":"{{ itempool.name }}", "open":true, "checked":{{itempool.checked}}, "chkDisabled":{{itempool.disabled}}, "nochecked":true, "drag":true},
+                {% for q in questions %}
+                    {% if forloop.last and forloop.parentloop.last %}
+                        { "id": {{ forloop.parentloop.counter }}{{ forloop.counter }}, "pId":{{ forloop.parentloop.counter }}, "name":"{{ q.node.qname }}", "qid":"{{q.node.id}}", "open":true, "checked":{{q.checked}}, "chkDisabled":{{q.disabled}}, "icon":"{{STATIC_URL}}images/paper-icon.png", "drag":true}
+                    {% else %}
+                        { "id": {{ forloop.parentloop.counter }}{{ forloop.counter }}, "pId":{{ forloop.parentloop.counter }}, "name":"{{ q.node.qname }}", "qid":"{{q.node.id}}","open":true, "checked":{{q.checked}}, "chkDisabled":{{q.disabled}}, "icon":"{{STATIC_URL}}images/paper-icon.png", "drag":true},
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+]

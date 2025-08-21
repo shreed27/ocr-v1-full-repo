@@ -1,0 +1,11 @@
+{ "aaData": [
+	{% for a, taked, p, action in assignment_list %}
+    {% if forloop.last %}
+	["{{ a.assignmentname }}/{{ p.papername }}","{{ a.deadline }}","{{ a.teacher.user.username }}","{{a.description}}","{{taked}}/{{p.total}}",
+	"{{action|safe}}"]
+    {% else %}
+	["{{ a.assignmentname }}/{{ p.papername }}","{{ a.deadline }}","{{ a.teacher.user.username }}","{{a.description}}","{{taked}}/{{p.total}}",
+	"{{action|safe}}"],
+    {% endif %}
+    {% endfor %}
+] }

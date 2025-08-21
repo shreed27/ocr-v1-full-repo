@@ -1,0 +1,33 @@
+(2 marks)
+
+Short Answer Question: sarah
+
+[After scrutinising the question – highlight the key words in the question]
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+Define the key words
+
+A production possibility curve is a graph that displays the rate of production between 2 goods. Scarcity refers to the level of availability of the goods, the choice refers to the option chosen to undertake and opportunity cost is the cost of the next alternative and in the possibility curve, it is represented by the gradient.
+
+Explain what is a PPC.
+
+PPC is the acronym for the production possibility curve which is a graph that shows the rate of production between 2 goods. 
+
+Diagram (fully labelled)
+
+The (((diagram W))) illustrates the concept of the PPC
+
+Explain what is scarcity and how is it shown using the PPC (with examples/real life examples if possible)
+
+Scarcity means that people want more than is available. Scarcity limits us both as individuals and as a society. As individuals, limited income (and time and ability) keep us from doing and having all that we might like. As a society, limited resources (such as manpower, machinery, and natural resources) fix a maximum on the amount of goods and services that can be produced. For an example, E is the point on the graph which represents scarcity as it exceeds the limits on the PPC.  
+
+Explain how choice arises and how is it shown using the PPC (with examples/real life examples if possible)
+
+Choice refers to the option chosen in respect to availability of resources. However, our choices are determined by scarcity. For an example, point A, B and C on the graph is attainable as it lies on the PPC. Hence they are options that can be considered. However, point E is cannot be an option because it is unattainable as it does not lie on the PPC. 
+
+Explain what is opportunity cost and how is it shown using the PPC (with examples/real life examples if possible)
+
+It is the cost of the next best alternative and it is represented in the graph above as the gradient of the PPC. The opportunity cost is also the cost of the foregone products after making a choice. The opportunity cost of any choice is the option or options that a person gives up. It usually refers to the benefits that can be obtained from the other option. If one chooses point A on the graph, he is giving up choice B, C, D, E. 

@@ -1,0 +1,74 @@
+{% extends "mcq_base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Student Management" %}{% endblock %}
+{% block head %}
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/datatable_custom.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/student_index.css" />
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.blockUI.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/mcq_student_achod.js"></script>
+
+<style>
+.styled-select {
+   background: #444;
+   color:white;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px; 
+   text-align:left;
+   -webkit-appearance: none;
+   }
+.styled-label {
+   
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   font-weight:bold;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px; 
+   text-align:left;
+   -webkit-appearance: none;
+   }
+</style>
+<script>
+	$( document ).ready(function() {
+		$('#menuSelection').change(function(){
+			if(this.value=="1")
+				window.location.href="/student/index/";
+		});
+	
+	});
+</script>
+{% endblock%}
+
+{% block content %}
+<div class="container_12">
+
+    <div style="text-align:left;margin:0;float:left;clear:both;">
+        <h1 style="float:left">{% trans "(MCQ) Achod Paper"%}</h1>
+    </div>
+
+<div>
+	<div><span>Option </span> <span> </span> </div>
+</div>
+	
+
+
+</div>
+<div style='display:none;'  id="dialog-warning" title="Assignment Due Warning">
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{ message|safe }}</p>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
+{% block tail %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/mcq_student_index.js"></script>
+{% endblock%}

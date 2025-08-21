@@ -1,0 +1,11 @@
+{ "aaData": [
+	{% for c in classrooms %}
+    {% if forloop.last %}
+	["{{ c.roomname}}","{{ c.volume }}",
+	"<a href=javascript:deleteclassroom({{c.id}}) class='delBtn'>Delete</a><a href={% url classroom_add %}?classid={{c.id}} class='modBtn'>Modify</a><a href={% url classroom_add %}?view=1&classid={{c.id}} class='viewBtn'>View</a>"]
+    {% else %}
+	["{{ c.roomname}}","{{ c.volume }}",
+	"<a href=javascript:deleteclassroom({{c.id}}) class='delBtn'>Delete</a><a href={% url classroom_add %}?classid={{c.id}} class='modBtn'>Modify</a><a href={% url classroom_add %}?view=1&classid={{c.id}} class='viewBtn'>View</a>"],
+    {% endif %}
+    {% endfor %}
+]}

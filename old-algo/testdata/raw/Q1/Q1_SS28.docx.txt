@@ -1,0 +1,21 @@
+(8 marks)
+
+Chua Jin Wen 5.18
+
+Short Answer Question: 
+
+[After scrutinising the question – highlight the key words in the question]
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+The production possibility curve is a hypothetical representation of the amount of two different goods that can be obtained by shifting resources from the production of one, to the production of the other. The curve is used to describe a society’s choice between two different goods. The point where more resources were used to produce consumption goods than capital goods is point C. The point where more resources were used to produce capital goods than consumer goods is point A.
+
+The (((diagram W))) illustrates the concept of the PPC
+
+Scarcity determines the limit of the production output, thus making E an unattainable point due to the lack of resources, etc. to reach that level of production.  Scarcity means that people want more than is available. Scarcity limits us both as individuals and as a society, and fix a maximum on the amount of goods and services that can be produced.
+
+Scarcity results in choice. People must choose which of their desires they will satisfy and which they will leave unsatisfied. When we, either as individuals or as a society, choose more of something, scarcity forces us to take less of something else. For example, the production of consumer goods have to be sacrificed in order to increase the production of capital goods, as can be seen on the graph from point C to A.
+
+The opportunity cost of any choice is the option or options that are given up. For example, an increase in production of consumer goods would result in the decrease in production of capital goods, and the loss of production in capital goods is the opportunity cost, seen when production shifts from point A to C.  These costs could be financial, but they could include time and other intangibles. The production possibility curve only shows the opportunity cost of not being able to produce as much of the other type of goods. It is shown as the gradient on the curve, with the opportunity cost of increasing production of consumer goods at C greater than the opportunity cost of producing more consumer goods at A, as the gradient at A is gentler at A than C, implying less of the production of capital goods has to be sacrificed at A than C.

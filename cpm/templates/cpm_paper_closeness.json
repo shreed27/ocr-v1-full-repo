@@ -1,0 +1,15 @@
+{% comment %}
+   Row information for Data Table for Summarization Closeness Report.
+
+   See report_paper.html and report_paper_closeness.js.
+{% endcomment %}
+
+
+{ "aaData": [
+    {% for band, pct_in_band, student_names in closeness_band_info %}
+        [ {{band}}, {{pct_in_band}}, "{{student_names}}" ]
+	{% if not forloop.last %}
+	      ,
+	{% endif %}
+    {% endfor %}
+] }

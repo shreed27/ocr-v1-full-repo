@@ -1,0 +1,1 @@
+only P2 or P3 or P4,0,only P1,1,all less P1,1

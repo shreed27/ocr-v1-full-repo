@@ -1,0 +1,65 @@
+<<<<<<< HEAD
+=======
+Assignment:1 (0 marks)
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m] 
+
+Assignment: 2
+
+Product AProduct A
+
+Product A
+
+>>>>>>> 72745d7d037a6ba7ae1e70975f215807b33918b7
+Product A
+
+The (((diagram W))) illustrates the concept of the PPC
+
+<<<<<<< HEAD
+=======
+Product BProduct B
+
+Product B
+
+>>>>>>> 72745d7d037a6ba7ae1e70975f215807b33918b7
+Product B
+
+Production Possibility Curve:
+
+The PPC is a graph that enlightens us the possibility of the combination of two products, producing at the same time and same resources are being consumed in the production. 
+
+If we see the graph, we will see that there are many points, letting us know the economic condition of the economy. 
+
+These points can be described as follows:
+
+X Point:
+
+The X point is below the Production Possibility Curve, this is actually because the economy is producing two goods or services at the same time but having inefficient resources. Economy is suffering unemployment or uncertain political environment.
+
+Y Point:
+
+Y point in the Production Possibility curve is the representation of greater production and better economic situation because of efficiency in production due to any technological advancement in the process of production which leads to greater productivity.
+
+B Point:
+
+Point B is the point where ratio of the combination of two products in the production is 1. This means that no alternative change takes place in the production and quantity. 
+
+Point A and C:
+
+ At this point, quantity, cost and the worth of choice can be calculated, because of scarcity, lets suppose at the point B, where capital goods is produced 1000 unit and consumer goods is 1000. If point B moves from B to A, this means Product A (capital goods) are being produced more and consumer goods are chosen to reduced. At the point C, economy influenced to produce more consumer goods and reduce the capital goods. 
+
+Scarcity:
+
+In the graph, the slop is due to limited resources and unlimited wants which is scarcity. We are in failure condition to meet the demanded goods and services because we are constrained to produce all demanded goods and services at the same time while other goods and services are being produced because our limited resources do not allow us to do this. 
+
+Choice:
+
+Choice is the substitutive action which you take to satisfy your unlimited wants with your limited resources. This can be seen on Production Possibility Curve from point A and C. 
+
+Opportunity Cost: 
+
+<<<<<<< HEAD
+This is the cost of an opportunity that you avail. Because of this availed opportunity you have to sacrifice and that sacrifice is the cost of it. In the example of A and C point in the Production Possibility Curve, the quantity of Consumer goods that economy reduced in the production to produce the Capital goods is the cost of producing more capital goods.
+=======
+This is the cost of an opportunity that you avail. Because of this availed opportunity you have to sacrifice and that sacrifice is the cost of it. In the example of A and C point in the Production Possibility Curve, the quantity of Consumer goods that economy reduced in the production to produce the Capital goods is the cost of producing more capital goods.
+>>>>>>> 72745d7d037a6ba7ae1e70975f215807b33918b7

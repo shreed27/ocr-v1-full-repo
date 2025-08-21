@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title%}{% trans "  Assignment Record " %}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/student_takeassignment.css" type="text/css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}css/report_studentanswer.css" type="text/css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/nyroModal.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/popupstyle.css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}css/colorbox.css" />
+<script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/ckeditor.adapter.jquery.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.js"></script>
+<script type = "text/javascript" src="{{ STATIC_URL }}js/jquery.colorbox-min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/report_popup.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.nyroModal.custom.min.js"></script>
+<script type="text/javascript">
+  var csrfvalue = '{{ csrf_token }}';
+  var pids = {{ pids }};
+  var stuids = {{ stuids }};
+  var group = '{{group}}';
+  var paperid = '{{paper.id}}';
+  var studentid = '{{student.user.id}}';
+
+</script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/report_reviewquestion.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container_12" >
+  <div class="grid_12">
+    <table> 
+      <tbody>
+        <tr>
+          <td>
+	    <!-- Subject/Paper/Student filtering listbox -->
+            <div class="form">
+              <form class="content" method="post" action="" style="float:left;width:140px;">{% csrf_token %}
+                <table style="float:left">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <label class="title1" for="id_subject"style="float:left;margin-top:0;margin-left: 0px;width:55px;font-size:13px">{% trans "Subject" %}:</label>
+                      </td>
+                      <td>
+                        {{ form.subject }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label class="title1" for="id_paper" style="float:left;margin-top:0;margin-left: 0px;width:55px;font-size:13px">{% trans "Paper" %}:</label>
+                      </td>
+                      <td>
+                        {{ form.paper }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label class="title1" for="id_level" style="float:left;margin-top:0;margin-left: 0px;width:55px;font-size:13px">{% trans "Student" %}:</label>
+                      </td>
+                      <td>
+                        {{ form.student }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <input type="hidden" id='stuids'  name="stuids"/> <input type="hidden" id='pids' name="pids"/>
+
+                <a href=javascript:submitform() class="blueBtn" id="button" style="float:right;margin-top:1em;">{% trans "Please Select" %}</a>
+                <a href='/report/teacher' class="blueBtn" id="backbutton" style="float:right;margin-top:3em;font-size:13px">{% trans "Back to Teacher's Assignment Record" %}</a>
+		<!-- BOGUS: </p> -->
+		<p style="clear:both;width:250px;">
+		</p>
+	      </form>
+	    </div>
+
+	  <td>
+	    <div class="showList wide" style="float:right;width:760px;background-color:none;background:none;border-width:0px;margin:0;padding:0">
+	      <div class="rttip" style="background:none;"></div>
+	      <table id="assignmenthead" style="float:left;">
+		<tbody>
+		  <tr>
+		    <td><label class="short" for="assignment">{% trans "Assignment" %}:</label><span id="assignment_show"></span></td>
+		    <td><label class="short" for="subject">{% trans "Subject" %}:</label><span id="subject_show"></span></td>
+		  </tr>
+		
+		  <tr>
+		    <td><label for="Student" class="short">{% trans "Student" %}:</label><span id="student_name">{{student.user.username}}</span></td>
+		  </tr>
+		  <tr>
+		    <td><label for="Year" class="short">{% trans "Year" %}:</label><span id="year_show"></span></td>
+		    <td><label for="Level" class="short">{% trans "Level" %}:</label><span id="level_show"></span></td>
+		  </tr>
+		  <tr>
+		    <td><label for="" class="short">{% trans "Question" %}:</label><span id="question_name_show"></span></td>
+		    <td><label for="" class="short">{% trans "Process" %}:</label><span id="question_process_show"></span></td>
+		    <td><label for="" class="short">{% trans "Paper" %}:</label><span id="paper_id_show"></span></td>
+		  </tr>
+		</tbody>
+	      </table>
+	      <table  class="singleContent" oncontextmenu='return false' ondragstart='return false' onselectstart ='return false' onselect='document.selection.empty()'
+		      oncopy='document.selection.empty()' onbeforecopy='return false' onmouseup='document.selection.empty()'>
+		<tbody>
+		  <tr>
+		    
+		    <td class="rtfwrapper">
+<!--		     <input type="button" style="float: right"  onclick='$(this).colorbox()' class="blueBtn" value="Feedback to Student" />-->
+		      {% if group == 'teachers' %}
+		      
+
+<!--		      <a style="float: right;" class='popbox blueBtn' id="feedback_btn" onclick='$(this).colorbox()'  href='/report/popup/{{paper_id}}/{{student_id}}/'>Feedback</a>-->
+
+
+  
+  {% if paper and student %}
+  <a style="float: right;" class='popbox blueBtn' id="feedback_btn" onclick='$(this).colorbox()' href="/report/popup/{{paper.id}}/{{student.user.id}}/">{% trans "Feedback" %}</a>
+  {% else %}
+  <a style="float: right;" class='popbox blueBtn' id="feedback_btn" onclick='$(this).colorbox()' href="#">{% trans "Feedback" %}</a>
+  {% endif %}
+		      
+		     <!--  <span id="question_name_show"></span>-->
+		      {% endif %}
+		      <h2 >{% trans "Question" %}</h2>
+	            <div id="question_content">
+		      <textarea id="question_editor" name="question_editor"></textarea>
+			
+		      </div>
+		      
+		    </td>
+		    <td>&nbsp;</td>
+		    <!-- </td>   bogus??? -->
+
+		    <td>			      	
+		      <h4 class="ui-widget-header" id="thumbnails_header" >{% trans "Question Diagrams" %}</h4>
+		      <div id="questionthumbnails" class="ui-widget-content ui-state-default">
+			<ul id="question_diagrams" class="gallery ui-helper-reset ui-helper-clearfix  ">
+			</ul>
+		      </div>
+		    </td>			     
+		  </tr>  
+		  <tr>
+		    <td class="rtfwrapper">
+		      <h2>{% trans "StudentAnswer" %}</h2>
+		      <div id="stuanswer_content">
+			<textarea id="stuanswer_editor" name="stuanswer_editor"></textarea>
+		      </div>
+		    </td>
+		    <td>&nbsp;</td>
+
+		    <td>
+		      <h4 class="ui-widget-header" id="thumbnails_header">{% trans "Selected Diagrams" %}</h4>
+		      <div id="stuthumbnails" class="ui-widget-content _ui-state-default">
+			<ul id="selected_diagrams" class="gallery _ui-helper-reset _ui-helper-clearfix">
+			</ul>
+		      </div>
+		    </td>			     
+		  </tr>     		
+		  <tr>
+		    <td id="stucanvasbtn">
+		    </td>			     
+		  </tr>
+		  <tr>
+		    <td>
+		      <p>
+			<h2 id="mark">{% trans "Attained Mark" %}:
+			  <span id='editmark'></span>
+			</h2>
+		      </p>
+		    </td>
+		  </tr>
+		  <tr>
+		    <td class="rtfwrapper">
+		      <h2>{% trans "Standard Answer" %}</h2>
+		      <span>{% trans "Note: Red colored points are points which student has left out in his/her answer script. Green colored points are points the student has included. Some green points may not appear as exactly as in student's script but may have been edited or amended for clarity of explanation." %}</span>
+		      <div id="answer_content">
+			<textarea id="omitted_editor" name="omitted_editor"></textarea>
+		      </div>
+		    </td>
+		    <td>&nbsp;</td>
+		    <td>			      	
+		      <h4 class="ui-widget-header" id="thumbnails_header">{% trans "Answer Explanation" %}</h4>
+		      <div id="stdthumbnails" class="ui-widget-content _ui-state-default">
+			<ul id="answer_explanation" class="gallery _ui-helper-reset _ui-helper-clearfix  ">
+
+                    <video id="questionvideo" controls width="250" height="250" src=""></video>
+
+			</ul>
+		      </div>
+		    </td>
+			<td>&nbsp;</td>
+
+		  </tr>
+		  <tr>
+		    <td>
+		      <p>
+			<h2 id="summarization">{% trans "Summarization" %}:
+			  <span id='closeness'></span>% overlap (Band <span id='closeness_band'></span> of <span id='num_closeness_bands'></span>)
+			</h2>
+		      </p>
+		    </td>
+
+		  </tr>
+		  <tr>
+		    <td class="rtfwrapper">
+		      <h2>{% trans "Grammatical Errors" %}</h2>
+		      <div id="grammar_issues">
+			<textarea id="grammar_editor" name="grammar_editor"></textarea>
+		      </div>
+		    </td>
+		    <td>&nbsp;</td>
+			  <td>
+		      <h4 class="ui-widget-header" id="thumbnails_header">{% trans "Correct Diagrams" %}</h4>
+		      <div id="stdthumbnails" class="ui-widget-content _ui-state-default">
+			<ul id="correct_diagrams" class="gallery _ui-helper-reset _ui-helper-clearfix  ">
+			</ul>
+		      </div>
+		    </td>
+		    <!-- Placeholders for remaining columns (e.g., no diagrams for grammar checking) -->
+
+		  </tr>     		
+		  <tr>
+		    <td id="stdcanvasbtn">
+		    </td>			     
+		  </tr>     		
+		</tbody>
+	      </table>
+
+	      <p class="longp btngroup">
+		<a  class="blueBtn shortBtn" id='first'>&lt;&lt; {% trans "First" %}</a>
+		<a  class="blueBtn shortBtn" id='previous'>&lt; {% trans "Previous" %}</a>
+		<a  class="blueBtn shortBtn" id='next'>{% trans "Next" %} &gt;</a>
+		<a  class="blueBtn shortBtn" id='last'>{% trans "Last" %} &gt;&gt;</a>
+	      </p>
+	      <p class="longp btngroup" style="margin-top:3em">
+		<a class="greenBtn" id='pre_paper'>&lt;&lt; {% trans "Previous Paper" %}</a>
+		<a class="greenBtn" id='next_paper'>{% trans "Next Paper" %} &gt;&gt;</a>
+	      </p>
+	    </div>
+  </div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div style='display:none;'  id="dialog-process" title="Processing">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "Processing your request" %}...</p>
+  <div id="progressbar"></div>
+</div>
+
+{% endblock %}

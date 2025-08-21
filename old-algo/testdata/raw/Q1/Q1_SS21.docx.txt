@@ -1,0 +1,21 @@
+Short Answer Question: 
+
+[After scrutinising the question – highlight the key words in the question]
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+Scarcity is when human needs exceed the existing resources
+
+Choice is the decision between different economic resources that are scarce.
+
+Opportunity refers to the cost of the next best alternative forgone.
+
+ The (((diagram W))) illustrates the concept of the PPC.
+
+Scarcity is when human needs exceed the existing resources. It is shown by the ppc by the fact that you cannot produce at any point beyond the ppc, which means you’re confined to your productive capacity, represented by the quadrant under the curve. Scarcity is thus represented by point E, as it lies beyond the ppc and shows the lack of resources to support the demands. A real life example of scarcity in Singapore would be the scarcity of land, a natural resource we lack. The inadequacy of land in Singapore sees a cap in housing development as it disables us from meeting the high demand for houses.
+
+Choice arises when there is a decision to be made between two alternatives because of a lack of resources.
+
+Opportunity cost refers to the cost of sacrificing the next best alternative. As the curve moves along, the opportunity cost increases as the increasing amount of capital goods on one axis has to be sacrificed to produce more of the consumer goods. In the graph, point C shows that you can produce more consumer goods with less capital goods while point A shows that you produce less consumer goods with more capital goods. Thus, there is a higher opportunity cost in choosing A over C because the productive capacity is restricted, meaning there is that much you can produce. This can be seen in the example of using a specific plot of land to build a housing estate (HDB Flats) versus the option of building a school. By choosing the option to build a housing estate, there is a higher opportunity cost as the amount of capital goods lost is much higher than that of the amount of consumer goods which are produced.

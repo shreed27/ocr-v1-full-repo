@@ -1,0 +1,13 @@
+<<<<<<< HEAD
+    1 .  consequential -  significant / of importance /of decisive impact.
+=======
+1 .  consequential -  significant / of importance /of decisive impact.
+>>>>>>> 72745d7d037a6ba7ae1e70975f215807b33918b7
+
+	2 . sublime  &ndash;  most satisfying / feels heavenly / incredibly beautiful.
+
+	3 . sceptical  &ndash;  doubting / does not believe the plan would work / having no faith/confidence  in the plan.
+
+	4 . pronounced &ndash; declared / said confidently.
+
+	5 . deliberation  &ndash;  taking time to consider carefully.

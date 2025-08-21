@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title%}{% trans " Question Detail" %}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/report_question.css" type="text/css" />
+<script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/ckeditor.adapter.jquery.js"></script>
+<script type="text/javascript">
+  var csrfvalue='{{ csrf_token }}';
+  var questionid = '{{ qid }}';
+</script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/report_reviewquestion.js"></script>
+{% endblock %}
+
+{% block content %}
+<div id='content'>
+  <div class="showList wide">
+    <div class="rttip">{% trans "Question Detail" %}</div>
+    <table id="assignmenthead">
+      <tbody>
+        <tr>
+          <td><label for="Student" class="short">{% trans "Student" %}:</label><span>{{ user }}</span></td>
+        </tr>
+        <tr>
+          <td><label for="" class="short">{% trans "Question ID" %}:</label><span id="question_id_show"></span></td>
+        </tr>
+      </tbody>
+    </table>
+    <table  class="singleContent">
+      <tbody>
+        <tr>
+          <td class="rtfwrapper">
+            <div id="question_content">
+              <textarea id="question_editor" name="question_editor"></textarea>
+            </div>
+          </td>
+          <td>&nbsp;</td>
+          <td>			      	
+            <h4 class="ui-widget-header" id="thumbnails_header" >{% trans "Possible Diagrams" %}</h4>
+            <div id="thumbnails" class="ui-widget-content ui-state-default">
+              <ul id="possible_diagrams" class="gallery ui-helper-reset ui-helper-clearfix  ">
+              </ul>
+            </div>
+          </td>			     
+        </tr>     		
+        <tr><td colspan='3'>
+            <label style="#000000;font-size:20px;">{% trans "mark" %}: {{mark}}</label></br>
+            <form>
+              {% for catched in pointmarklist %}
+              <input type="checkbox" checked disabled/>
+              {{ catched }}
+              {% endfor %}
+              {% for omitted in omittedlist %}
+              <input type="checkbox" disabled/>
+              {{ omitted }}
+              {% endfor %}
+            </form>
+        </td></tr>
+        <tr><td colspan='3'> &nbsp;</td></tr>
+        <tr>
+          <td class="rtfwrapper">
+            <div id="answer_content">
+              <textarea id="answer_editor" name="answer_editor"></textarea>
+            </div>
+          </td>
+          <td>&nbsp;</td>
+          <td>			      	
+            <h4 class="ui-widget-header" id="selected_header">{% trans "Selected Diagrams" %}</h4>
+            <div id="selected_diagrams" class="ui-widget-content ui-state-default ">
+            </div>
+          </td>			     
+        </tr>     		
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

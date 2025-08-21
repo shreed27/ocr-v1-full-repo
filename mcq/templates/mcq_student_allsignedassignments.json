@@ -1,0 +1,11 @@
+{ "aaData": [
+	{% for a, taked, p, action in assignment_list %}
+    {% if forloop.last %}
+	["{{ a.asm_assignmentname }}/{{ p.ppr_papername }}","{{ a.asm_deadline }}","{{ a.teacher.user.username }}","{{a.asm_description}}","{{taked}}/{{p.ppr_total}}",
+	"{{action|safe}}"]
+    {% else %}
+	["{{ a.asm_assignmentname }}/{{ p.ppr_papername }}","{{ a.asm_deadline }}","{{ a.teacher.user.username }}","{{a.asm_description}}","{{taked}}/{{p.ppr_total}}",
+	"{{action|safe}}"],
+    {% endif %}
+    {% endfor %}
+] }

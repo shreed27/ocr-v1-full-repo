@@ -1,0 +1,27 @@
+[
+{% if tnum > 0 %}
+{"tnum":{{tnum}}},
+{% else %}
+{"tnum":{{tnum}}}
+{% endif %}
+{% for teacher, students in stu_teacher_list %}
+{ "id": {{ forloop.counter }}, "pId":0, "name":"{{ teacher.name }}", "open":true, "checked":{{teacher.checked}}, "chkDisabled":{{teacher.disabled}},"icon":"{{STATIC_URL}}images/teacher.png", "nochecked":true
+
+},
+{% for s in students %}
+    {% if forloop.last and forloop.parentloop.last %}
+    {% ifequal s.gender "female" %} 
+    { "id": {{ forloop.parentloop.counter }}{{ forloop.counter }}, "pId":{{ forloop.parentloop.counter }}, "name":"{{ s.node.user.username }}", "open":true, "checked":{{s.checked}},"chkDisabled":{{s.disabled}},"icon":"{{STATIC_URL}}images/stu_female.png","sid":{{s.sid}}}
+    {% else %}
+    { "id": {{ forloop.parentloop.counter }}{{ forloop.counter }}, "pId":{{ forloop.parentloop.counter }}, "name":"{{ s.node.user.username }}", "open":true, "checked":{{s.checked}},"chkDisabled":{{s.disabled}},"icon":"{{STATIC_URL}}images/stu_male.png","sid":{{s.sid}}}
+    {% endifequal %}
+    {% else %}
+    {% ifequal s.gender "female" %} 
+    { "id": {{ forloop.parentloop.counter }}{{ forloop.counter }}, "pId":{{ forloop.parentloop.counter }}, "name":"{{ s.node.user.username }}", "open":true, "checked":{{s.checked}},"chkDisabled":{{s.disabled}},"icon":"{{STATIC_URL}}images/stu_female.png","sid":{{s.sid}}},
+    {% else %}
+    { "id": {{ forloop.parentloop.counter }}{{ forloop.counter }}, "pId":{{ forloop.parentloop.counter }}, "name":"{{ s.node.user.username }}", "open":true, "checked":{{s.checked}},"chkDisabled":{{s.disabled}},"icon":"{{STATIC_URL}}images/stu_male.png","sid":{{s.sid}}},
+    {% endifequal %}
+    {% endif %}
+{% endfor %}
+{% endfor %}
+]

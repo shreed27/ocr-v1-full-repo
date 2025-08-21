@@ -1,0 +1,23 @@
+(8 marks)
+
+Short Answer Question: Micheal Leong
+
+[After scrutinising the question – highlight the key words in the question]
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+Production possibility curve is the curve representing the maximum utilization of resources in order to produce to types of goods, where as the resources to produce goods of the x axis increase, the resources to produce the goods of the y axis decreases
+
+Scarcity, with regard to the PPC, is represented by the area covered on top of the curve itself where it is considered an unattainable point as a result of insufficient resources to produce the desired amount of goods. In a practical situation, if Company A wishes to produce a certain amount of goods but is unable to due to a lack of resources, then scarcity is present. With reference to the PPC shown below, point E demonstrates scarcity in the company as the amount of capital and consumer goods desired cannot be actually produced in reality. On the contrary, point D demonstrates the underutilization of resources to produce goods as the point is below the PPC itself.
+
+For example, in Singapore, land resources are scarce due to her relatively minute geography, as such, not many factories or agriculture that relies on land (soil) can be developed. As a result, we cannot rely on local produce and manufacturing goods alone and there is an essential need to import and export to assist the existing land scarcity and hence food scarcity.
+
+Choice arises where the party producing the two types of goods (e.g. capital goods and consumer goods as shown in the diagram) have the option of producing more capital goods and hence less consumer goods and vice versa, producing more consumer goods and hence less capital goods. The party has to decide the balance of the goods being produced when factors of production available are suited to producing only a certain total amount of goods of capital and consumer goods. 
+
+The Singapore government has a plethora of choices when it comes to land resources. For example, they have to decide between building public transport such as the Mass Rapid Transit or buildings such as housing estates. If more MRT stations are built, then fewer housing estates will be present and vice versa.
+
+Opportunity cost is defined as the cost of the next best alternative forgone by the party involved with the production of the goods. With regard to the PPC, it is represented by the gradient of the PPC. The higher the gradient, the higher the units of goods of the y axis must be sacrificed to produce 1 unit of goods of the x axis. Point A in the diagram is a point of the tangent in the PPC which demonstrates lower opportunity cost (where less units of capital goods are sacrificed to produce consumer goods) while Point C in the PPC is a point of the tangent which demonstrates higher opportunity cost (where a higher number of units of capital goods are sacrificed to produce consumer goods).
+
+Opportunity cost is interrelated to choice in the sense it arises as a result of the choice of the parties involved in determining the opportunity cost. As aforementioned, if the Singapore government decides to build more MRT stations and fewer housing estates, then the opportunity cost will be heavier in terms of the housing estates which were not built. Moreover, as more MRT stations are built, the higher the units of housing estates are sacrificed (opportunity cost is higher).

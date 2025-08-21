@@ -1,0 +1,12 @@
+{ "aaData": [
+	{% for p in papers %}
+    {% if forloop.last %}
+	["{{ p.papername }}","{{ p.assignment.assignmentname }}",
+		"<a href=javascript:deletepaper('{{ p.id }}') class='delBtn'><font color=black>Delete</font></a><a href='/paper/add?paperid={{ p.id }}' class='modBtn'><font color=black>Modify</font></a><a href='/paper/add/?view=1&paperid={{ p.id }}' class='viewBtn'><font color=black>View</font></a>"]
+    {% else %}
+	["{{ p.papername }}","{{ p.assignment.assignmentname }}",
+		"<a href=javascript:deletepaper('{{ p.id }}') class='delBtn'><font color=black>Delete</font></a><a href='/paper/add?paperid={{ p.id }}' class='modBtn'><font color=black>Modify</font></a><a href='/paper/add/?view=1&paperid={{ p.id }}' class='viewBtn'><font color=black>View</font></a>"],
+    {% endif %}
+    {% endfor %}
+	
+] }

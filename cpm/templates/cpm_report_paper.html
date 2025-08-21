@@ -1,0 +1,151 @@
+{% extends "cpm_base.html" %}
+{% load i18n %}
+{% block title %} {% trans "Students' Assignment Report" %} {% endblock %}
+{% block head %}
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/datatable_custom.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/report_paper.css" />
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.dataTables.columnFilter.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/cpm_report_paper.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/cpm_report_paper_closeness.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/django.csrf.js"></script>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/colorbox.css" />
+<script src="{{ STATIC_URL }}js/jquery.colorbox-min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.printPage.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/cpm_report_popup.js"></script>
+<script type="text/javascript">
+  var pids = "{{ pids }}";
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container_12">
+
+  <!-- Top section for individual student marks -->
+  <div class="grid_12">
+    <div style="text-align:center;margin:0;clear:both;">
+      <h1> {% trans "(CPM) STUDENTS ASSIGNMENT RECORD" %} </h1>      
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div class="grid_12">
+    <div class="grid_12 alpha">
+    <!-- OLD: <div class="grid_3 alpha"> -->
+      <form class="content" method="post" action="">{% csrf_token %}
+	<!-- Year listbox -->
+        <p style="float:left;">
+          <label class="title1" for="id_year" style="float:left;margin-top:0;">{% trans "Year:" %}</label>
+          {{ form.year }}
+          {%if form.year.errors %}
+          {% for error in form.year.errors %}
+          <div class="warning">{{ error }}</div>
+          {% endfor %}
+          {% endif %}
+        </p>
+
+	<!-- Subject listbox -->
+        <p style="float:left;">
+	  <label class="title1" for="id_subject" style="float:left;margin-top:0;width:80px;">{% trans "Subject:" %}</label>
+          {{ form.subject }}
+          {%if form.subject.errors %}
+          {% for error in form.subject.errors %}
+          <div class="warning">{{ error }}</div>
+          {% endfor %}
+          {% endif %}
+        </p>
+
+	<!-- Level listbox -->
+        <p style="float:left;">
+	  <label class="title1" for="id_level" style="float:left;margin-top:0;">Level:</label>
+          {{ form.level }}
+          {%if form.level.errors %}
+          {% for error in form.level.errors %}
+          <div class="warning">{{ error }}</div>
+          {% endfor %}
+          {% endif %}
+        </p>
+
+	<!-- Select button -->
+	<p style="float:left;width:25px;">&nbsp;</p>
+        <p style="float:left;width:250px;">
+        <!-- OLD: <p style="clear:both;width:250px;"> TODO: vertical-align:middle; -->
+          <a href=javascript:submitform() class="blueBtn" id="button" style="min-width:100px;width:100px;" >{% trans "Please Select" %}</a>
+        </p>
+
+      </form>
+    </div>
+
+
+    <!-- Student scores datatable -->
+    
+    <div class="grid_12">
+    <!-- OLD: <div class="grid_8"> -->
+      <table class="datatable_display" id="data_list">
+	<thead>
+          <tr>
+            <th width="5%">{% trans "YEAR" %}</th>
+            <th width="10%">{% trans "SUBJECT" %}</th>
+            <th width="10%">{% trans "LEVEL" %}</th>
+            <th width="10%">{% trans "STUDENT" %}</th>
+            <th width="45%">{% trans "ASSIGNMENT" %}</th>
+            <th width="5%">{% trans "MARK" %}</th>
+            <th width="5%">{% trans "CLOSE" %}</th>
+            <th width="10%">{% trans "VIEW" %}</th>
+	    {% if group == students %}
+	      <th width =10%">FEEDBACK</th>
+	    {% endif %}
+	  </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+      <div class="grid_4 alpha">
+        <a href=javascript:selectall() class="blueBtn" id="buttonselect" style="float:right;margin-top:5em;min-width:100px;width:100px">{% trans "Select All" %}</a>
+      </div>
+      <div class="grid_5 omega">
+        <a href=javascript:checkdetailpaper() class="greenBtn" id="button" style="text-align:center;float:right;margin-top:5em;min-width:100px;width:100px">{% trans "Process" %}</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Force blanks lines prior to summarization -->
+  <div style="margin-top:36px">
+    <p>&nbsp;</p>
+  </div>
+
+  <!-- Optional bottom section activated only for teacher (see report_teacher.js) -->
+  <div class="clear"></div>
+  <div class="misc_info" id="closeness_band_info" hidden>
+    <div class="grid_12">
+      <div style="text-align:center;margin:0;clear:both;">
+        <h1> SUMMARIZATION CLOSENESS REPORT </h1>
+      </div>
+      <table class="datatable_display" id="closeness_data_list">
+        <thead>
+          <tr>
+            <th width="5%">BAND</th>
+            <th width="10%">PERCENT</th>
+            <th width="85%">STUDENTS</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+  <script type="text/javascript">
+    if (pids == "") {
+        $("#closeness_band_info").hide();
+    }
+  </script>
+
+  <!-- Hidden text for paper IDs -->
+  <div class="clear">
+    <form name='formx1' class="content" method="post" action='{% url cpm_report_studentanswer %}'>{% csrf_token %}
+      <input type="hidden" id='paperids' name="paperids" value=''>
+    </form>
+  </div>
+
+</div>
+
+{% endblock %}

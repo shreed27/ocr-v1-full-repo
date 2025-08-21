@@ -1,0 +1,95 @@
+.intemasscanvas{
+    border:#eeeeee solid 1px;
+    width:646px;
+}
+.intemasscanvas-toolbar{
+	width:99%;
+	margin-bottom: 5px;
+    padding: 3px 0;
+}
+.ui-colorpicker-inline{
+    font-size:75% !important;
+}
+
+.intemasscanvas-axis-label{
+    font-family:Times,TimesNR;
+    font-weight:bold;
+    margin-right:5px;
+    width:80px;
+    text-align:right;
+    float:left;
+}
+.intemasscanvas-XYaxis-label{
+    font-family:Times,TimesNR;
+    font-weight:bold;
+    margin-right:5px;
+    width:110px;
+    text-align:right;
+    float:left;
+}
+.intemasscanvas-axis-input{
+    width:200px;
+    float:left;
+}
+.intemasscanvas-axis-select{
+    width:210px;
+    float:left;   
+}
+.spinner-holder{
+    margin-right:0 !important;
+}
+.ui-spinner-button{
+    height:10px !important;
+}
+.ui-spinner{
+   position:static !important;
+   display:inline-block;
+   float:left;
+}
+.intemasscanvas-main{
+  margin:0 auto;
+  border: 1px solid #666;
+}
+.intemasscanvas-main-inner{
+  float: left;
+  width: 100%;
+  border: 1px solid #666;
+}
+label .ui-button .ui-widget .ui-state-default .ui-corner-all .ui-button-icon-only{
+  width:40px;
+  height:40px;}
+
+.dialogue_warning{
+  border: 1px solid blue;
+	color:red;
+}
+
+.intemasscanvas-table {
+  border-collapse:collapse;
+  font-size: 11px;
+}
+
+.intemasscanvas-table tr{
+  border: 1px solid black;
+}
+
+.intemasscanvas-table th {
+  border: 1px solid;
+  padding:3px 7px 2px 7px;
+  text-align:center;
+  background-color:#A7C942;
+  color:#ffffff;
+}
+
+.intemasscanvas-table td {
+  border: 1px solid #98bf21;
+  padding:3px 7px 2px 7px;
+  text-align:left;
+}
+/*over ride ui button for canvass*/
+.ui-button-text{
+	line-height: 0.6 !important;
+}
+.ui-button{
+	margin: 1px;
+}

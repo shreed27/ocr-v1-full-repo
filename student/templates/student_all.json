@@ -1,0 +1,11 @@
+{ "aaData": [
+	{% for s in students %}
+    {% if forloop.last %}
+	["{{ s.user.username}}","{{ s.user.email }}","{{ s.user.last_login }}",
+	"<a href=javascript:deletestudent('{{ s.user.id }}') class='delBtn'>Delete</a> <a href='/student/modify/?studentid={{ s.user.id }}' class='modBtn'>Modify</a> <a href='/student/profile/{{ s.user.id }}' class='viewBtn'>View</a>"]
+    {% else %}
+	["{{ s.user.username}}","{{ s.user.email }}","{{ s.user.last_login }}",
+	"<a href=javascript:deletestudent('{{ s.user.id }}') class='delBtn'>Delete</a> <a href='/student/modify/?studentid={{ s.user.id }}' class='modBtn'>Modify</a> <a href='/student/profile/{{ s.user.id }}' class='viewBtn'>View</a>"],
+    {% endif %}
+    {% endfor %}
+] }

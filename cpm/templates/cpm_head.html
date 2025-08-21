@@ -1,0 +1,46 @@
+{% load i18n %}
+<div id="header">
+ <div id="left"></div>
+ <div id="right"></div>
+ <div id="mid" align="center">
+	<div id="title">
+        <div id="subtitle_bk" style="font-size:14pt;">{% trans "Integrated Assignment and Examination System - INTEMASS" %}</div>
+        <div id="subtitle_coner"></div>
+        <div id="subtitle_bl">
+            {% if user %}
+                {% if user.is_authenticated %}
+                <div>
+                    <a href="{% url logout %}">{% trans "Logout" %}</a>
+                    <a style="color:white;font-size:15px">{% trans "Welcome"%} {{user.username}}</a>
+                </div>	
+			    {% else %}
+                <div><a href="{% url register %}">{% trans "Sign up as teacher" %}</a></div>
+			    {% endif %}
+			{% else %}
+            <div><a href="{% url register %}">{% trans "Sign up as teacher" %}</a></div>
+			{% endif %}
+        </div>
+    </div>
+    <div id="navi">            
+    	<div id="navi_corner1"></div>
+        <div class="menu">
+        <ul>
+
+			{% if user.is_authenticated %}
+			    {% if user.groups.all|first|stringformat:"s" == "teachers" %}
+                    <li><a id='mcq_teacher_home_link' href="{% url cpm_index %}">{% trans "Home" %}</a></li>
+                    <li><a href="{% url cpm_report_teacher %}">{% trans "Report" %} </a></li>
+			    {% else %}
+                    <li><a id='mcq_student_home_link' href='/cpm/student/index'>{% trans "Home" %}</a></li>
+                    <li><a href="{% url cpm_report_student %}">{% trans "Report" %}</a></li>
+			    {% endif %}
+			{% else %}
+                    <li><a id='home_link' href='/'>{% trans "Home" %}</a></li>
+			{% endif %}
+            <li><a href="#">{% trans "Help" %}</a></li>
+        </ul>
+        </div>
+        <div id="navi_corner2"></div> 
+   </div>     
+ </div>      
+</div>

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Student Profile{% endblock %}
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<div class="container_12">
+    <div id='content'>
+        <div class='form'>
+         <h1>{{ object.user.username }}</h1>
+        <form class="content" action="" method="post">{% csrf_token %}
+        <p><label>Email:</label>
+        <input class="box" type="text" value= "{{object.user.email}}" maxlength="30" readonly=true disabled=true>
+        </p>
+        <p><label>Gender:</label>
+        <input class="box" type="text" value= "{{object.gender}}" maxlength="30" readonly=true disabled=true> 
+        </p>
+        <p><label>Classroom:</label>
+        <input class="box" type="text" value= "{{object.classroom}}" maxlength="30" readonly=true disabled=true> 
+        </p>
+        <p><label>Address:</label>
+        <input class="box" type="text" value= "{{object.address}}" maxlength="30" readonly=true disabled=true> 
+        </p>
+        <p><label>More details:</label>
+        <input class="box" type="text" value= "{{object.addtion}}" maxlength="30" readonly=true disabled=true>  
+        </p>
+        </form>	
+        </div>
+    </div>
+</div>
+{% endblock %}

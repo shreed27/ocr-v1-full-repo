@@ -1,0 +1,135 @@
+{% extends "cpm_base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Option List Detail" %}{% endblock%}
+{% block head %}
+
+
+
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/datatable_custom.css">
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/mcq_question_detail.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/nyroModal.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/select2.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/mathquill_editor.css " />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/mathquill_editor_sci.css " />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui-1.8.23.custom.css" />
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.nyroModal.custom.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.json-2.3.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.nyroModal.custom.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/intemass.util.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/swfupload/swfupload.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/swfupload/swfupload.queue.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/swfupload/fileprogress.js"></script> 
+<script type="text/javascript" src="{{ STATIC_URL }}js/django.csrf.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/select2.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/intemass.util.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/mathquill_editor.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/mathquill_editor_sci.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/ckeditor.adapter.jquery.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/cpm_clozelist_detail.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.blockUI.min.js"></script>
+<script type="text/javascript">
+    var add_question_url='{% url mcq_question_add %}';
+    var csrfvalue='{{ csrf_token }}';
+</script>
+<style>
+	#content{
+		width:900px;
+	}
+
+	.qupload_div {
+	    /* width: 180px; */
+	    float: right;
+	}
+	#cke_clozelist_option{
+    float:left;
+}
+#content .form1 {
+    text-align: center;
+    margin: 0 auto 10px auto;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff url(../images/long_form_bg.gif) repeat-x;
+    -webkit-box-shadow: 0px 1px 2px #888;
+    -moz-box-shadow: 0px 1px 2px #888;
+    box-shadow: 0 1px 2px #888;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    height: auto;
+    color: #333;
+    text-shadow: 0 1px 0 white;
+    font-size: 16px;
+    background-position: center;
+    behavior: url(./PIE.htc);
+}
+
+.tablelist label{
+	text-align:right;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class=" ">
+
+	<div id="content" style="min-height:220px;height:1100px;width:100%;">
+		<div class="form1" style="height:1100px;width:100%;">
+			<table style="width:100%;">
+				<tr>
+					<td style="font-size:25px;text-weight:bold;">{% trans "(CPM) Cloze Entry Detail" %}</td>
+				</tr>
+				<tr>
+					<td><button id="btnSave" class="blueBtn">Save</button><button id="btnReturn" onclick="window.history.back();" class="blueBtn">Return</button></td>
+				</tr>
+			</table>
+			<p></p>
+			<p style="border:solid 1px black;width:90%;margin-left:auto;margin-right:auto;"></p>
+			<table style="width:100%;padding:20px;margin-left:auto;margin-right:auto;"> 
+				<tr>
+					<td>
+					<table  style="width:100%;"  class="tablelist">
+						<tr>
+						<td  style="width:30%;"><label for="clozelist_id">{% trans "Cloze List ID :" %}</label></td>
+						<td style="width:70%;" ><select style="width:80%;"  id="clozelist_id">
+						<option value='-1'>{% trans "New Cloze" %}</option>
+						{% for clozelst1 in clozelisting %}  
+						<option value="{{ clozelst1.id }}"  {% if clozelst1.id == clozelst.id %} selected='true' {% endif %}  >{{ clozelst1.ans_code }}</option>
+						{% endfor %}
+						</select></td>
+						</tr>
+						<tr>
+						<td><label for="clozelist_name">{% trans "Cloze Code:" %}</label></td>
+						<td><span id="clozelist_name" type="text" style="width:80%;" maxlength="100" class="editable">{{ clozelst.ans_code }}</span></td>
+						</tr>
+						
+						<tr>
+						<td><label for="clozelist_mark" >{% trans "Mark:" %}</label></td>
+						<td><input type="number"  style="width:80%;" id="clozelist_mark" value="{{ clozelst.ans_mark }}"></input></td>
+						</tr>
+						
+						<tr>
+							<td><label for="clozelist_answer" >{% trans "Answer:" %}</label></td>
+							<td><input type="text"  style="width:80%;"  value="{{ clozelst.ans_answer }}" id="clozelist_answer"></input></td>
+						</tr>
+					</table> 
+					</td>
+					 
+				</tr>
+			</table>
+
+		</div>
+	</div>
+
+</div>
+
+
+<div style='display:none;'  id="dialog-confirm" title="Are you sure?">
+		<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>You will delete this question.</p>
+</div>
+<div style='display:none;' id="dialog-add-error" title="Add Record">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% blocktrans %}Cloze Code can not be blank.{% endblocktrans %}</p>
+</div>
+{% endblock %}

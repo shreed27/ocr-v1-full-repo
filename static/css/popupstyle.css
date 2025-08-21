@@ -1,0 +1,12 @@
+
+input.popupbox{
+    height:110px;
+    width:290px;
+    text-align:left;
+    font: 15px arial;
+    color:#000;
+    text-align:left;
+    padding-top:2px;
+    float:left;
+    margin-right:2em;
+}

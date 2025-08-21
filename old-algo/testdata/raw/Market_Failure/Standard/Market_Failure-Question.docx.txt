@@ -1,0 +1,5 @@
+TOPIC: MARKET FAILURE
+
+“Beijing has settled on a plan to ground half of its cars to alleviate air pollution and traffic congestion in the Chinese capital during the August Olympic Games. The temporary limit barred cars with licence plate numbers ending in odd or even numbers from entering the city on alternate days”
+
+QA. Explain how the situation described above is an externality.

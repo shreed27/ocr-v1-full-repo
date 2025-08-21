@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <link type="text/css" rel="stylesheet" href="static/css/reset.css" />
+    <link type="text/css" rel="stylesheet" href="static/css/text.css" />
+    <link type="text/css" rel="stylesheet" href="static/css/960.css" />
+    <link type="text/css" rel="stylesheet" href="static/css/jquery-ui-1.8.23.custom.css" />
+    <link type="text/css" rel="stylesheet" href="static/css/style.css">
+	<script type="text/javascript" src="/static/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/static/js/jquery-ui-1.8.23.custom.min.js"></script>
+	<script type="text/javascript" src="/static/js/intemass.ui.js"></script>
+	<script type="text/javascript" src="/static/js/intemass.util.js"></script>
+	<script type="text/javascript" src="/static/js/intemass.common.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>test grammar Assignment Record </title>
+	
+<link rel="stylesheet" href="static/css/student_takeassignment.css" type="text/css" />
+<link rel="stylesheet" href="static/css/report_studentanswer.css" type="text/css" />
+<link type="text/css" rel="stylesheet" href="static/css/nyroModal.css" />
+<script type="text/javascript" src="/static/js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/static/js/ckeditor/ckeditor.adapter.jquery.js"></script>
+<script type="text/javascript" src="/static/js/jquery.jeditable.js"></script>
+<script type="text/javascript" src="/static/js/jquery.nyroModal.custom.min.js"></script>
+<script type="text/javascript">
+    var csrfvalue = 'TsLPBVNmdKrxiftwDc6OwV7K0ghn9kX7';
+    var pids = [85];
+    var stuids = [213];
+    var group = 'students';
+    var paperid = '';
+    var studentid = '';
+</script>
+<!-- <script type="text/javascript" src="static/js/report_reviewquestion.js"></script> -->
+<script type="text/javascript" src="test-report_reviewquestion.js"></script>
+
+</head>
+<body>
+	<div id="header">
+ <div id="left"></div>
+ <div id="right"></div>
+ <div id="mid" align="center">
+	<div id="title">
+        <div id="subtitle_bk" style="font-size:14pt;">Integrated Assignment and Examination System - INTEMASS</div>
+        <div id="subtitle_coner"></div>
+        <div id="subtitle_bl">
+            
+                
+                <div>
+                    <a href="/accounts/logout/">Logout</a>
+                    <a style="color:white;font-size:15px">Welcome s4</a>
+                </div>	
+			    
+			
+        </div>
+    </div>
+    <div id="navi">            
+    	<div id="navi_corner1"></div>
+        <div class="menu">
+        <ul>
+
+			
+			    
+                    <li><a id='student_home_link' href='/student/index'>Home</a></li>
+                    <li><a href="/report/student/">Report</a></li>
+			    
+			
+            <li><a href="#">Help</a></li>
+        </ul>
+        </div>
+        <div id="navi_corner2"></div> 
+   </div>     
+ </div>      
+</div>
+
+	
+<div class="container_12" >
+    <div class="grid_12">
+        <table> 
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="form">
+                            <form class="content" method="post" action="" style="float:left;width:140px;"><div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='TsLPBVNmdKrxiftwDc6OwV7K0ghn9kX7' /></div>
+                                <table style="float:left">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label class="title1" for="id_subject"style="float:left;margin-top:0;margin-left: 0px;width:55px;font-size:13px">Subject:</label>
+                                            </td>
+                                            <td>
+                                                <select name="subject" id="id_subject">
+<option value="-1">----</option>
+<option value="4">English</option>
+</select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label class="title1" for="id_paper" style="float:left;margin-top:0;margin-left: 0px;width:55px;font-size:13px">Paper:</label>
+                                            </td>
+                                            <td>
+                                                <select name="paper" id="id_paper">
+<option value="-1">----</option>
+<option value="85">Paper2</option>
+</select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label class="title1" for="id_level" style="float:left;margin-top:0;margin-left: 0px;width:55px;font-size:13px">Student:</label>
+                                            </td>
+                                            <td>
+                                                <select name="student" id="id_student">
+<option value="-1">----</option>
+<option value="213">s4</option>
+</select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <input type="hidden" id='stuids'  name="stuids"/> <input type="hidden" id='pids' name="pids"/>
+
+                                <a href=javascript:submitform() class="blueBtn" id="button" style="float:right;margin-top:1em;">Please Select</a>
+                                <a href='/report/teacher' class="blueBtn" id="backbutton" style="float:right;margin-top:3em;font-size:13px">Back to Teacher's Assignment Record</a>
+                                </p>
+                                <p style="clear:both;width:250px;">
+                                </p>
+                            </form>
+                        </div>
+                        <td>
+                            <div class="showList wide" style="float:right;width:760px;background-color:none;background:none;border-width:0px;margin:0;padding:0">
+                                <div class="rttip" style="background:none;"></div>
+                                <table id="assignmenthead" style="float:left;">
+                                    <tbody>
+                                        <tr>
+                                            <td><label class="short" for="assignment">Assignment:</label><span id="assignment_show"></span></td>
+                                            <td><label class="short" for="subject">Subject:</label><span id="subject_show"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="Student" class="short">Student:</label><span id="student_name"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="Year" class="short">Year:</label><span id="year_show"></span></td>
+                                            <td><label for="Level" class="short">Level:</label><span id="level_show"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="" class="short">Question:</label><span id="question_name_show"></span></td>
+                                            <td><label for="" class="short">Process:</label><span id="question_process_show"></span></td>
+                                            <td><label for="" class="short">Paper:</label><span id="paper_id_show"></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table  class="singleContent" oncontextmenu='return false' ondragstart='return false' onselectstart ='return false' onselect='document.selection.empty()'
+                                    oncopy='document.selection.empty()' onbeforecopy='return false' onmouseup='document.selection.empty()'>
+                                    <tbody>
+                                        <tr>
+                                            <td class="rtfwrapper">
+                                                <h2>Question</h2>
+                                                <div id="question_content">
+                                                    <textarea id="question_editor" name="question_editor"></textarea>
+                                                </div>
+                                            </td>
+                                            <td>&nbsp;</td>
+                                        </td>	<!-- TODO: bogus??? -->
+                                        <td>			      	
+                                            <h4 class="ui-widget-header" id="thumbnails_header" >Question Diagrams</h4>
+                                            <div id="questionthumbnails" class="ui-widget-content ui-state-default">
+                                                <ul id="question_diagrams" class="gallery ui-helper-reset ui-helper-clearfix  ">
+                                                </ul>
+                                            </div>
+                                        </td>			     
+                                    </tr>  
+                                    <tr>
+                                        <td class="rtfwrapper">
+                                            <h2>StudentAnswer</h2>
+                                            <div id="stuanswer_content">
+                                                <textarea id="stuanswer_editor" name="stuanswer_editor"></textarea>
+                                            </div>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>			      	
+                                            <h4 class="ui-widget-header" id="thumbnails_header">Selected Diagrams</h4>
+                                            <div id="stuthumbnails" class="ui-widget-content ui-state-default">
+                                                <ul id="selected_diagrams" class="gallery ui-helper-reset ui-helper-clearfix">
+                                                </ul>
+                                            </div>
+                                        </td>			     
+                                    </tr>     		
+                                    <tr>
+                                        <td id="stucanvasbtn">
+                                        </td>			     
+                                    </tr>     		
+                                    <tr>
+                                        <td>
+                                            <p>
+                                            <h2 id="mark">Attained Mark:
+                                                <span id='editmark'></span>
+                                            </h2>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="rtfwrapper">
+                                            <h2>Standard Answer</h2>
+                                            <span>Note: Red colored points are points which student has left out in his/her answer script. Green colored points are points the student has included. Some green points may not appear as exactly as in student's script but may have been edited or amended for clarity of explanation.</span>
+                                            <div id="answer_content">
+                                                <textarea id="omitted_editor" name="omitted_editor"></textarea>
+                                            </div>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>			      	
+                                            <h4 class="ui-widget-header" id="thumbnails_header">Correct Diagrams</h4>
+                                            <div id="stdthumbnails" class="ui-widget-content ui-state-default">
+                                                <ul id="correct_diagrams" class="gallery ui-helper-reset ui-helper-clearfix  ">
+                                                </ul>
+                                            </div>
+                                        </td>			     
+                                    </tr>     		
+                                     <tr>
+                                        <td class="rtfwrapper">
+                                            <h2>Grammatical Errors</h2>
+                                            <div id="grammar_issues">
+                                                <textarea id="grammar_editor" name="grammar_editor">
+1.) Line 1, column 16, Rule ID: ENGLISH_WORD_REPEAT_RULE
+Message: Possible typo: you repeated a word
+Suggestion: over
+This be me car over over there. You seen it? 
+               ^^^^^^^^^                     
+						</textarea>
+                                            </div>
+                                        </td>
+					<!-- Placeholders for remaining columns (e.g., no diagrams for grammar checking) -->
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>			     
+                                    </tr>     		
+                                    <tr>
+                                        <td id="stdcanvasbtn">
+                                        </td>			     
+                                    </tr>     		
+                                </tbody>
+                            </table>
+                            <p class="longp btngroup">
+                            <a  class="blueBtn shortBtn" id='first'>&lt;&lt; First</a>
+                            <a  class="blueBtn shortBtn" id='previous'>&lt; Previous</a>
+                            <a  class="blueBtn shortBtn" id='next'>Next &gt;</a>
+                            <a  class="blueBtn shortBtn" id='last'>Last &gt;&gt;</a>
+                            </p>
+                            <p class="longp btngroup" style="margin-top:3em">
+                            <a class="greenBtn" id='pre_paper'>&lt;&lt; Previous Paper</a>
+                            <a class="greenBtn" id='next_paper'>Next Paper &gt;&gt;</a>
+                            </p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div style='display:none;'  id="dialog-process" title="Processing">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Processing your request...</p>
+    <div id="progressbar"></div>
+</div>
+
+	<div id="foot">
+  <!--	<div id="copyright" align="center">Copyright @ 2012 ThinkingTOP.COM Inc.</div>      --> 
+</div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+(7 marks)
+
+Chevelle Chia (3)
+
+5.18
+
+Short Answer Question: 
+
+[After scrutinising the question – highlight the key words in the question]
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+A production possibility curve is a graph that compares the production rates of two commodities that use the same fixed total of the factors of production. It defines productive efficiency, such that production of one commodity is maximised given the production level of the other commodity. 
+
+Scarcity is the amount of goods that can be produced given a certain amount resources available. 
+
+Choice is the decision to give up producing a certain amount goods to produce another given a fixed amount of resources available. For example, choice is the decision to give up producing a certain amount of capital goods to increase the production of consumer goods given a fixed amount of resources available.
+
+Opportunity cost is the cost of the next best alternative forgone. For example, if given a choice between option A and option B, and one chooses A, the opportunity cost is the amount of capital lost due to his decision for not choosing option B. 
+
+The (((diagram W))) illustrates the concept of the PPC
+
+In the PPC above, Point E represents the unattainable production of goods given a fixed amount of resources available. At point E, there are insufficient resources to increase the production of goods and hence the resources are said to be scarce. For example, if one wants to increase the production of clothes, there must be an increase in the amount of cloth (resource) required. However, he has only a certain amount of cloth and that quantity is insufficient in increasing the production of clothes. Thus, it is said that the resources are scarce and this is evident in Point E in the graph above.  On the other hand, Point D represents the underutilisation of resources during the production of goods given the exact same amount of resources. This suggests that the resources are not being optimally used and maximum production is not being achieved. 
+
+Choice is the decision to give up producing a certain amount goods to produce another given a fixed amount of resources available. This is evident when comparing points A and B on the graph. The relationship between the production of capital goods and consumer goods is one that is inversely related. To increase the production of consumer goods from point A to point B, the production of capital goods has to decrease given the fix amount of resource. At point A, one chooses to produce more capital goods than consumer goods. However, at point B, one chooses to reduce the amount of capital goods in order to increase the production of consumer goods. For example, to increase the production of clothes, one may choose to clear some of the fixed amount of land to build more factories for production of clothes. However, due to the clearing of land, the agricultural goods that could be harvested from that land would have decreased. Hence, choice plays a part in deciding which goods he wants to increase producing. 
+
+Opportunity cost is the cost of the next best alternative forgone. Opportunity cost is represented by the gradient of the PPC. For example, at Point A, the gradient of the graph is one that is less steep as compared to the gradient of the Point C. This suggests that the opportunity cost at Point C is higher than that of Point A. This indicates that more capital goods are being forgone to produce the same amount of consumer goods. 

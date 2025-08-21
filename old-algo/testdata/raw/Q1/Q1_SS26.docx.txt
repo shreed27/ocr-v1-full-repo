@@ -1,0 +1,27 @@
+(7 marks)
+
+Shaun Low (20)
+
+5.18 Colossians
+
+Short Answer Question: 
+
+[After scrutinising the question – highlight the key words in the question]
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+Scarcity refers to a limited amount of resources leading to the inability to produce the unlimited amount of goods and services desired. Choice is the process of making decisions to decide which of their desires they want to satisfy. Opportunity cost is the cost of forgoing the next best alternative based on the choices made.
+
+A Production Possibility Curve or Production Possibility Frontier is a curve which depicts the maximum output possibilities of two goods based on the factors of production. This represents the points at which an economy is producing its goods and services and maximum efficiency.
+
+The (((diagram W))) illustrates the concept of the PPC
+
+Scarcity is the inability to produce an amount of goods due to limited resources. The PPC is a boundary which by shows the maximum amount of goods producible by the limited amount of resources due to factors of production. Any point out of the curve such as point E is unattainable, while any point inside of the curve such as point D is attainable. Scarcity is illustrated by the unattainable goods, which are the points outside of the boundary. For example, land is scarce in Singapore because we do not have enough land for housing and factories.
+
+Choices arise when resources are scarce, and people are forced to make decisions over what to produce using the limited resources in order to maximise the unlimited wants and desires of the population. Choices are illustrated in the way there are many points along the PPC such as A, B and C, thus showing that there are multiple ways of maximising use of resources in order to satisfy our wants, and thus a choice must be made in order to select quantity of production. An example would be the land in Singapore, which can either be used either for more housing or more factories.
+
+Opportunity Cost is the cost of the next best alternative of produced goods forgone. It is shown on the PPC through the gradient of the curve whereby it gets steeper and we move along the curve from point A to B to C, showing that more of the capital goods have to be forgone in order to produce the same amount of consumer goods. Adding on to the example of choosing land for housing or factories, the opportunity cost would be the other option, whereby factories are forgone to build houses and vice versa.
+
+Thus, in conclusion, the PPC is effective in the illustration of scarcity, choices and the opportunity cost of producing goods.

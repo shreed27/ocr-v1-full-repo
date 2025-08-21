@@ -1,0 +1,58 @@
+
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}
+{% trans "Welcome To INTEMASS" %}
+{% endblock %}
+{% block head %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.blockUI.min.js"></script>
+<script type='text/javascript'>
+	$(function(){
+		$("#id_username").focus();
+	});
+    function submitform(){
+        document.forms[0].submit();
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container_12">
+    <div id="content">
+        <div class="form">
+            <h1>{% trans "Welcome To INTEMASS" %}</h1>
+            <form class="content" id="login" action="" method="post">{% csrf_token %}
+                <p>
+                <label for="id_username" class="title1">{% trans "Username" %}:</label>
+                {{ form.username }}
+                {%if form.username.errors %}
+                {% for error in form.username.errors %}
+                <div class="warning">{{ error }}</div>
+                {% endfor %}
+                {% endif %}
+                </p>
+                <p>
+                <label for="id_password" class="title1">{% trans "Password" %}:</label>
+                {{ form.password }}
+                {%if form.password.errors %}
+                {% for error in form.password.errors %}
+                <div class="warning">{{ error }}</div>
+                {% endfor %}
+                {% endif %}
+                </p>
+                <p><a class="note" href="{% url forgot_password %}">{% trans "Forgot Password" %}?</a></p>
+                <p><a href=javascript:submitform() class="blueBtn twoBtnStart" id="tlogin">{% trans "Login as Teacher" %}</a>
+                <span></span>
+                <a href=javascript:submitform() class="blueBtn" id="slogin">{% trans "Login as Student" %}</a>
+                </p>
+            </form>	
+        </div>
+        <div id="messages_div" style="display:none">
+            {% if messages %}
+            {% for message in messages %}
+            <span{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</span>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    {% endblock %}

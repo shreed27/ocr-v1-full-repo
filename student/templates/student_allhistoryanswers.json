@@ -1,0 +1,12 @@
+{ "aaData": [
+	{% for assignment, p, papermark in paperlist %}
+    {% if forloop.last %}
+	["{{ assignment.assignmentname }}/{{ p.papername}}", "{{ papermark }}",
+	"<a href='{% url report_paper %}?paperid={{p.id}}'><font color=black>View</font></a>"]
+    {% else %}
+	["{{ assignment.assignmentname }}/{{ p.papername}}", "{{ papermark }}",
+	"<a href='{% url report_paper %}?paperid={{p.id}}'><font color=black>View</font></a>"],
+    {% endif %}
+    {% endfor %}
+] }
+

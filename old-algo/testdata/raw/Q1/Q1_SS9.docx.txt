@@ -1,0 +1,39 @@
+(3 marks)
+
+Lee Zhicong
+
+Short Answer Question: 
+
+[After scrutinising the question – highlight the key words in the question]
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+The production possibility curve is a diagram to show the maximum possible amount of one or two goods produced in the present circumstances, using current factors of productions available presently. It shows the amount of goods produced less if another type of goods is produced using the same factors of productions. 
+
+A,B,C – Maximum utilisation of resourcesD – Under-utilisation of resourcesE – Unattainable combination of both goods present with current resourcesA,B,C – Maximum utilisation of resourcesD – Under-utilisation of resourcesE – Unattainable combination of both goods present with current resources
+
+A,B,C – Maximum utilisation of resources
+
+D – Under-utilisation of resources
+
+E – Unattainable combination of both goods present with current resources
+
+A,B,C – Maximum utilisation of resources
+
+D – Under-utilisation of resources
+
+E – Unattainable combination of both goods present with current resources
+
+The (((diagram W))) illustrates the concept of the PPC
+
+Scarcity is the amount of goods produced being limited by the factors of production available. It refers to the infinite wants and limited resources, thus it implies that not all objectives can be pursued at the same time. Point E represents an unattainable combination of both goods present with the factors of production available. It shows how the wants at point E cannot be fulfilled with the limited factors of production available.
+
+Choice is the number of options available, and the best option chosen for maximum utilisation of resources. Point D represents under-utilisation of factors of production and shows amount of resources wasted. It is regarded as a poor choice compared to point B, with both goods produced more than point C despite the same number of goods. Opportunity cost is a quantitative analysis of the cost of the next best alternative available currently forgone. It assumes that the option chosen was the best given the current circumstances and takes into account the benefits lost by pursuing the next best option. Point A,B,C are points on the PPC and show the maximum utilisation of resources. It represents maximum efficiency It shows how as points on the graph vary, more goods is sacrificed for the production of the other goods available.
+
+A good real life example of scarcity is the lack of land and the natural resource sand in Singapore. Sand is required for the production of houses and building. In an ideal situation, everybody would want a large mansion for himself. However, that is not possible due to the limited factors of production; i.e. sand and land. It is an apt example of how society wants cannot be fulfilled in a world with limited resources. To adapt to this reality, alternatives have to be considered. This includes stockpiling sand and building high-rise buildings to save land.
+
+In the same example, the concept of choice and opportunity cost can also be illustrated. Because of the variety of housing available, the consumer is presented with a variety of choices. The consumer would have to judge which option suits his needs and financial situation best. 
+
+Opportunity cost is present on both the part of developers and consumers. Developers have to calculate the opportunity cost of their development. This includes but is not limited to, the cost of constructing another property elsewhere and the corresponding possible profits from the next best development compared to the best option chosen. Consumers have to judge the opportunity cost of their property in terms of money spent on the property spent elsewhere. This can include possible investments using the money spent as well as the impact on the consumer’s financial security from the purchase of this property.

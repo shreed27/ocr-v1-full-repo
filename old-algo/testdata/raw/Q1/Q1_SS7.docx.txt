@@ -1,0 +1,57 @@
+(6 marks)
+
+Short Answer Question: 
+
+[After scrutinising the question – highlight the key words in the question]
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+M08/HP2/Q1
+
+Define the key words
+
+Key Words: “Production possibility curve”, “scarcity”, “choice” and “opportunity cost”
+
+Production possibility curve is the graph comparing between the production of capital goods and consumer goods. The relationship between the two commodities is inverse.
+
+Scarcity is the limit of resources faced that determines the production rate relationship between the two commodities, such as the lack of capital determining the number of consumer goods available from production.
+
+Choice is the process of determining which variables one is willing to forgo, such as more capital goods in favour of producing more consumer goods, though the value given is not provided.
+
+Opportunity cost is the value of the next best alternative not chosen, the sacrifice made in terms of value of the choices foregone.
+
+Diagram (fully labelled)
+
+ 
+
+The (((diagram W))) illustrates the concept of the PPC
+
+The three points A,B and C lying on the curve represent maximum efficient usage of current resources
+
+The point E represents unattainable goals with the current resources given (such as too many consumer goods with too little capital goods)
+
+The point D represents underutilization of the current resources, or inefficient usage of the current resources given.
+
+Explain what is scarcity and how is it shown using the PPC (with examples/real life examples if possible)
+
+Scarcity is the limit of resources faced that determines the production rate relationship between the two commodities, such as the lack of capital determining the number of consumer goods available from production.
+
+In the PPC, scarcity is shown in the maximum combination of both capital and consumer goods that can be produced on the curve.
+
+An example would be the limit of physical resources in a small land space occupied by Singapore. This limit determines how much capital we are able to provide for the production of capital goods, thus determining the consumer goods Singapore is available to produce with our given resources.
+
+Explain how choice arises and how is it shown using the PPC (with examples/real life examples if possible)
+
+Choice arises when determining which variables one is willing to forgo, such as more capital goods in favour of producing more consumer goods, though the value given is not provided.
+
+On the PPC, the choice shown is in the option of choosing either more capital over production of capital goods or vice versa, due to the inverse relationship between the two commodities.
+
+One example of choice would be determining whether capital or consumer goods would be more favourable in determining the optimum production, such as in situations with limited resources or scarcity, such as Singapore’s small land space. 
+
+Explain what is opportunity cost and how is it shown using the PPC (with examples/real life examples if possible)
+
+Opportunity cost is the value of the next best alternative not chosen, the sacrifice made in terms of value of the choices foregone.
+
+In the PPC, the gradient of the tangent on a point on the curve shows the value lost in forgoing a certain choice. The lower the point on a cost, the higher the gradient and subsequently the opportunity cost of producing consumer goods as well as the loss in value of not choosing that option over many mutually exclusive choices.
+
+An example of opportunity cost would be calculating the difference in different points of efficient usage of given resources, such as small capital and more consumer goods vs. More capital and less consumer goods produced.

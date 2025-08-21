@@ -1,0 +1,12 @@
+{ "aaData": [
+	{% for p in paperlist %}
+    {% if forloop.last %}
+	["{{ p.papername }}",
+	"<a href='{% url mcq_student_takeassignment %}?paperid={{p.id}}'><font color=black>Take</font></a>&nbsp;&nbsp;&nbsp;&nbsp;|<a href='{% url  mcq_student_custompaper %}?view=1&paperid={{p.id}}'><font color=black>View</font></a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href='{% url  mcq_student_takeassignment %}?paperid={{p.id}}&retake=1'><font color=black> ReTake</font></a>"]
+    {% else %}
+	["{{ p.papername }}",
+	"<a href='{% url  mcq_student_takeassignment %}?paperid={{p.id}}'><font color=black>Take</font></a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href='{% url  mcq_student_custompaper %}?view=1&paperid={{p.id}}'><font color=black>View</font></a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href='{% url  mcq_student_takeassignment %}?paperid={{p.id}}&retake=1'><font color=black> ReTake</font></a>"],
+    {% endif %}
+    {% endfor %}
+] }
+

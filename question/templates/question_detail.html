@@ -1,0 +1,600 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Question Detail" %}{% endblock %}
+{% block head %}
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/question_detail.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/nyroModal.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/select2.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/mathquill_editor.css " />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/mathquill_editor_sci.css " />
+<!--<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/mathquill.css " />-->
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui-1.8.23.custom.css" />
+<script type="text/javascript" src="{{ STATIC_URL }}js/swfupload/swfupload.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/swfupload/swfupload.queue.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/swfupload/fileprogress.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/swfupload/handlers.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/ckeditor.adapter.jquery.js"></script>
+<!--<script type="text/javascript" src="{{ STATIC_URL }}js/mathquill.js"></script>-->
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.json-2.3.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.23.custom.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/select2.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.maskedinput-1.3.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.nyroModal.custom.min.js"></script>
+<script type="text/javascript">
+    var csrfvalue = '{{ csrf_token }}';
+</script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/intemass.util.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/question_detail.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/mathquill_editor.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/mathquill_editor_sci.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}csrfcookie/js/jquery.cookie.js"></script>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+<script>
+
+
+var csrftoken = $.cookie('csrftoken');
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+
+
+function upload(event) {
+event.preventDefault();
+console.log("I am in upload function!")
+var data = new FormData($('form').get(0));
+data.append("questionid", $("#question_id").val());
+
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+$.ajax({
+    url: $(this).attr("action"),
+    type:$(this).attr("method"),
+    data: data,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function(payload) {
+        alert('success');
+        <!--console.log(payload);-->
+
+                    <!--var fileURL = payload['src'];-->
+                    <!--console.log("logging" + fileURL);-->
+                    <!--var videourl= JSON.stringify(fileURL);-->
+                    <!--if(videourl)-->
+                    <!--{-->
+
+                        <!--var videoNode = document.querySelector('video');-->
+                        <!--videoNode.src = videourl;-->
+                        <!--var videoprev = document.getElementById("preview");-->
+                        <!--videoprev.style.display = "block";-->
+                        <!--location.reload();-->
+
+                    <!--}-->
+
+
+                    var URL = window.URL || window.webkitURL
+                    console.log(window.webkitURL)
+                    var file = document.getElementById("videoupload").files[0]
+                    var type = file.type
+                    var videoNode = document.querySelector('video')
+                    var fileURL = URL.createObjectURL(file)
+                    videoNode.src = fileURL
+                    var videoprev = document.getElementById("preview");
+                    videoprev.style.display = "block";
+
+    }
+});
+return false;
+}
+
+$(function() {
+    $('form').submit(upload);
+});
+
+
+
+                   <!--function onLoadFunct(){-->
+             <!--var inputNode = document.getElementById("videoupload")-->
+             <!--console.log(inputNode)-->
+                <!--inputNode.addEventListener('change', playSelectedFile, false)-->
+    <!--}-->
+
+
+                  <!--var playSelectedFile = function (event) {-->
+                   <!--console.log("im inside playselectedfile !!")-->
+                   <!--'use strict'-->
+                    <!--var URL = window.URL || window.webkitURL-->
+                    <!--console.log(window.webkitURL)-->
+                    <!--var file = document.getElementById("videoupload").files[0]-->
+                    <!--var type = file.type-->
+                    <!--var videoNode = document.querySelector('video')-->
+                    <!--var fileURL = URL.createObjectURL(file)-->
+                    <!--videoNode.src = fileURL-->
+                    <!--var videoprev = document.getElementById("preview");-->
+                    <!--videoprev.style.display = "block";-->
+
+                 <!--}-->
+
+          </script>
+          <script>
+
+               function deleting(){
+               $.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+                                          var quesid = $("#question_id").val();
+                                          console.log("questionid:" + quesid);
+
+                                           $.ajax({
+                                                            url:'/question/deletevideo/',
+                                                            type:'POST',
+                                                            data: {'questionid':quesid},
+                                                            dataType: "json",
+                                                            contentType: "application/json; charset=utf-8",
+                                                           success:function(result)
+                                                           {
+                                                            alert('Video Deleted');
+
+                                                            var videoprev = document.getElementById("preview");
+                                                            videoprev.style.display = "none";
+
+                                                           },
+                                                           error:function(exception){alert('Error');}
+
+
+                                                    });
+
+                                    }
+
+
+</script>
+
+<style>
+
+    aside {
+        float: right;
+        width: 22%;
+}
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+<body>
+<div class="container_12" >
+    <h1 class="samples" style="float:left">
+        {% trans "Question, Standard Answer, Mark Scheme" %}
+    </h1>
+
+    <div id="question_detail_tabs">
+        <ul>
+            <li><a href="#question_detail_tabs-1" id="q_tab1">{% trans "Question" %}</a></li>
+            <li><a href="#question_detail_tabs-2" id="q_tab2">{% trans "Standard Answer" %}</a></li>
+            <li><a href="#question_detail_tabs-3" id="q_tab3">{% trans "Mark Scheme" %}</a></li>
+            <li><a href="#question_detail_tabs-4" id="q_tab4">{% trans "Alternate Standard Answer" %}</a></li>
+            <li><a href="#question_detail_tabs-5" id="q_tab5">{% trans "Alternate Mark Scheme" %}</a></li>
+        </ul>
+        <div id="question_detail_tabs-1">
+            <div id="question_info">
+                <div style="float:left;width:75%;">
+                <p>
+                <label for="question_id">{% trans "Question ID " %}:</label>
+                <select id="question_id">
+                    <option value='-1'>{% trans "New Question" %}</option>
+                    {% for question in questions %}
+                    <option value="{{ question.id }}">{{ question.qname }}</option>
+                    {% endfor %}
+                </select>
+                </p>
+                <p>
+                <label for="question_name">{% trans "Question Name" %}:</label>
+                <span id="question_name" type="text" width="100" maxlength="100" class="editable"></span>
+                </p>
+
+                <p>
+                <label for="question_description" >{% trans "Question Description" %}:</label>
+                <textarea id="question_description" cols='30' rows='7' type="text" value="{{ question.description }}"></textarea>
+                </p>
+
+                <p>
+                <label for="question_type">{% trans "Question Type" %}:</label>
+                <select id="question_type" >
+                    <option value='Review'>{% trans "Review" %}</option>
+                    <option value='Formal'>{% trans "Formal" %}</option>
+                </select>
+                </p>
+
+                <p>
+                <label>{% trans "Item Pool" %}:</label>
+                <select id="itempool_id" >
+                    {% for itempool in itempools%}
+                    {% if itempool.id == selitempoolid %}
+                    <option value="{{itempool.id}}" selected="selected">{{ itempool.poolname }}</option>
+                    {% else %}
+                    <option value="{{itempool.id}}">{{ itempool.poolname}}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+                </p>
+
+                <p>
+                <label>{% trans "Question Graph" %}:</label>
+                {% comment %}
+                <!--
+                <select id='question_canvas' multiple="multiple" style="width:300px;" class="populate">
+                    <option value='1'>Diagram_1</option>
+                    <option value='2'>Diagram_2</option>
+                    <option value='3'>Diagram_3</option>
+                    <option value='4'>Diagram_4</option>
+                    <option value='5'>Diagram_5</option>
+                    <option value='6'>Diagram_6</option>
+                    <option value='7'>Diagram_7</option>
+                    <option value='8'>Diagram_8</option>
+                    <option value='9'>Diagram_9</option>
+                </select>
+                <a id="question_canvas" style="width: 43px; height: 16px;" class="populate greenBtn" href="#">Canvas</a>
+                -->
+                {% endcomment %}
+		 <a id="question_canvas" style="width: 43px; height: 16px;" href="#">{% trans "Graph" %}</a>
+
+                </p>
+
+                <p>
+                <label for="min_closeness_band">{% trans "Min. Closeness Band" %}:</label>
+		<input id="min_closeness_band" type="number" min="0" max="10"  value="{{question.min_closeness_band}}"/>
+                </p>
+          </div>
+
+                <aside style="float:right;width:22%;">
+                    <form name = "form" enctype = "multipart/form-data" action = "/question/saved/" method = "POST" >
+                                  {% csrf_token %}
+                      <div class="qupload_div">
+                        <h4 class="ui-widget-header">{% trans "Uploaded Video" %}</h4>
+                        <div class="ui-widget-content ui-state-default" style="width:141%;">
+                        <!--<ul class="gallery ui-helper-reset ui-helper-clearfix"> </ul>-->
+
+                         <div style = "max-width:470px;">
+                            <center>
+                               <input type = "file" style = "margin-left:5%;margin-top:5%;"
+                                  placeholder = "videoupload" name = "videoupload" id="videoupload"/>
+                            </center>
+                         </div>
+
+
+                            {% if vidobj.src %}
+                                  <div id="preview" style="display:block;">
+                              {% else %}
+                                      <div id="preview" style="display:none;">
+                                      {% endif %}
+                            <center>
+                               <video id="video" controls width="250" height="250" src="{{vidobj.src}}" type="video/mp4"></video>
+                            </center>
+                         </div>
+
+                         <br>
+
+                         <div style = "max-width:470px;">
+
+
+                               <button style = "border:0px;background-color:#4285F4; margin-top:3%;
+                                  height:35px; width:100%;" type = "submit" value = "Upload" id="uploadvid">
+                                  <strong>Upload</strong>
+                               </button>
+
+                         </div>
+                    </div>
+                          </div>
+                      </form>
+
+                                    <button style = "border:0px;background-color:#E74C3C; margin-top:3%;
+                                  height:35px; width:250px;" type = "submit" value = "Delete" id="deletevid"
+                                         onclick="deleting()">
+                                  <strong>Delete</strong>
+                               </button>
+
+                </aside>
+
+            </div>
+
+            <div id="question_content">
+                <textarea id="question_editor"></textarea>
+                <div class="qupload_div">
+                    <h4 class="ui-widget-header" id="choose_some_images_1">{% trans "Choose some Files" %}</h4>
+                    <div class="fieldset flash" id="fsUploadProgress">
+                        <span class="legend"></span>
+                    </div>
+                    <!--<div id="divStatus">0 Files Uploaded</div>-->
+                    <div style="margin:1em 0 1em 0;">
+                        <span id="qupload"></span>
+                        <a id="btnCancel" class="btnCancel" href="javaScript:swfu.cancelQueue();">{% trans "Cancel" %}</a>
+                    </div>
+                    <h4 class="ui-widget-header">{% trans "Uploaded Files and Images" %}</h4>
+                    <div id="thumbnails" class="ui-widget-content ui-state-default" style="width:140%;">
+                        <ul class="gallery ui-helper-reset ui-helper-clearfix"> </ul>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <a class="blueBtn" id="submit1">{% trans "Submit" %}</a>
+            </div>
+        </div>
+
+        <div id="question_detail_tabs-2">
+            <div>
+                <p>
+                <label>{% trans "StandardAnswer Graph" %}:</label>
+                {% comment %}
+                <!--
+                <select id='stdanswer_canvas' multiple="multiple" style="width:300px;" class="populate">
+                    <option value='1'>Diagram_1</option>
+                    <option value='2'>Diagram_2</option>
+                    <option value='3'>Diagram_3</option>
+                    <option value='4'>Diagram_4</option>
+                    <option value='5'>Diagram_5</option>
+                    <option value='6'>Diagram_6</option>
+                    <option value='7'>Diagram_7</option>
+                    <option value='8'>Diagram_8</option>
+                    <option value='9'>Diagram_9</option>
+                </select>
+                -->
+                {% endcomment %}
+		      <a id="stdanswer_canvas" style="width: 43px; height: 16px;" class="populate greenBtn" href="#">{% trans "Graph" %}</a>
+
+                </p>
+            </div>
+
+            <div id="standard_content">
+                <label style="color:black;font-size:20px;">{% trans "Standard Answer" %}:</label>
+                <textarea id="standard_editor"></textarea>
+                <div class="supload_div">
+                    <h4 class="ui-widget-header" id="choose_some_images_2">{% trans "Choose some images" %}</h4>
+                    <div class="fieldset flash" id="fsUploadProgress1">
+                        <span class="legend"></span>
+                    </div>
+                    <!--<div id="divStatus">0 Files Uploaded</div>-->
+                    <div style="margin:1em 0 1em 0;">
+                        <span id="supload"></span>
+                        <a id="btnCancel1" class="btnCancel" href="javaScript:swfu1.cancelQueue();">{% trans "Cancel" %}</a>
+                    </div>
+                    <h4 class="ui-widget-header">{% trans "Uploaded Images" %}</h4>
+                    <div id="std_thumbnails" class="ui-widget-content ui-state-default">
+                        <ul class="gallery ui-helper-reset ui-helper-clearfix"> </ul>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <a class="blueBtn" id="submit2">{% trans "Submit" %}</a>
+            </div>
+        </div>
+
+        <div id="question_detail_tabs-3">
+
+            <h5>{% trans "Standard Graph Answer Rules" %}</h5>
+            <table class="templates">
+                <thead>
+                    <tr>
+                        <th width='20%'>{% trans "Point" %}</th>
+                        <th width='80%'>{% trans "Content" %}</th>
+                    </tr>
+                </thead>
+            </table>
+            <div id="canvasrules" class="templates"></div>
+            <h5>{% trans "Graphrule Scheme Templates" %}</h5>
+            <table id="canvasrule_templates" class="templates">
+                <thead>
+                    <tr>
+                        <th>{% trans "Content" %}</th>
+                        <th>{% trans "Mark" %}</th>
+                        <th>{% trans "Delete" %}</th>
+                    </tr>
+                </thead>
+                <tbody id="canvasruletbody"></tbody>
+            </table>
+
+            <h5>{% trans "Mark Scheme Templates" %}</h5>
+            <table id="templates_table" class="templates">
+                <thead>
+                    <tr>
+                        <th>{% trans "Content" %}</th>
+                        <th>{% trans "Mark" %}</th>
+                        <th>{% trans "Delete" %}</th>
+                    </tr>
+                </thead>
+                <tbody id="markschemetbody"></tbody>
+            </table>
+            <h5 id="rulecount">{% trans "Converted Rules" %}</h5>
+            <table id="rules_table">
+                <thead>
+                    <tr>
+                        <th>{% trans "Content" %}</th>
+                        <th>{% trans "Mark" %}</th>
+                    </tr>
+                </thead>
+                <tbody id="rulestbody"></tbody>
+            </table>
+            <hr/>
+            <div id='rule_templates'>
+                <label>{% trans "ALL POINTS LESS X.X OR X.X" %}</label>
+                <input id="sample_template_t1" class="left" type="text" />
+                <input id="sample_template_mark_1" class="right" type="text" />
+
+                <label>{% trans "ALL POINTS LESS X.X AND X.X" %}</label>
+                <input id="sample_template_t2" class="left" type="text" />
+                <input id="sample_template_mark_2" class="right" type="text" />
+
+                <label>{% trans "ALL POINTS LESS TWO COMBINATION OF X.X AND X.X AND X.X AND X.X" %}</label>
+                <input id="sample_template_t3" class="left" type="text" />
+                <input id="sample_template_mark_3" class="right" type="text" />
+
+                <label>{% trans "ONLY TWO COMBINATION OF X.X AND X.X AND X.X" %}</label>
+                <input id="sample_template_t4" class="left" type="text" />
+                <input id="sample_template_mark_4" class="right" type="text" />
+
+                <label>{% trans "CUSTOM TEMPLATE" %}</label>
+                <input id="cust_template" class="left" type="text" />
+                <input id="cust_template_mark" class="right" type="text" />
+            </div>
+
+            <a type="button" id="submit3" class="greenBtn">{% trans "Save" %}</a>
+        </div>
+        {# newer tabs are implemented here #}
+        {# newer tabs are implemented here #}
+        {# newer tabs are implemented here #}
+        {# newer tabs are implemented here #}
+        {# newer tabs are implemented here #}
+        <div id="question_detail_tabs-4">
+            {# leave this part for now #}
+            {% comment %}
+            <div>
+                <p>
+                <label>{% trans "Alternate StandardAnswer Graph" %}:</label>
+              <a id="alt_stdanswer_canvas" style="width: 43px; height: 16px;" class="populate greenBtn" href="#">{% trans "Graph" %}</a>
+                </p>
+            </div>
+            {% endcomment %}
+
+            <div id="alt_standard_content">
+                <label style="color:black;font-size:20px;">{% trans "Alternate Standard Answer" %}:</label>
+                <textarea id="alt_standard_editor"></textarea>
+                {# leave this for now #}
+                {% comment %}
+                <div class="supload_div">
+                    <h4 class="ui-widget-header" id="choose_some_images_2">{% trans "Choose some images" %}</h4>
+                    <div class="fieldset flash" id="fsUploadProgress1">
+                        <span class="legend"></span>
+                    </div>
+                    <!--<div id="divStatus">0 Files Uploaded</div>-->
+                    <div style="margin:1em 0 1em 0;">
+                        <span id="supload"></span>
+                        <a id="btnCancel1" class="btnCancel" href="javaScript:swfu1.cancelQueue();">{% trans "Cancel" %}</a>
+                    </div>
+                    <h4 class="ui-widget-header">{% trans "Uploaded Images" %}</h4>
+                    <div id="std_thumbnails" class="ui-widget-content ui-state-default">
+                        <ul class="gallery ui-helper-reset ui-helper-clearfix"> </ul>
+                    </div>
+                </div>
+                {% endcomment %}
+            </div>
+            <div>
+                <a class="blueBtn" id="submit4">{% trans "Submit" %}</a>
+            </div>
+        </div>
+
+        <div id="question_detail_tabs-5">
+        {% comment %}
+            <h5>{% trans "Standard Graph Answer Rules" %}</h5>
+            <table class="templates">
+                <thead>
+                    <tr>
+                        <th width='20%'>{% trans "Point" %}</th>
+                        <th width='80%'>{% trans "Content" %}</th>
+                    </tr>
+                </thead>
+            </table>
+            <div id="alt_canvasrules" class="templates"></div>
+            <h5>{% trans "Graphrule Scheme Templates" %}</h5>
+            <table id="alt_canvasrule_templates" class="templates">
+                <thead>
+                    <tr>
+                        <th>{% trans "Content" %}</th>
+                        <th>{% trans "Mark" %}</th>
+                        <th>{% trans "Delete%}</th>
+                    </tr>
+                </thead>
+                <tbody id="alt_canvasruletbody"></tbody>
+            </table>
+        {% endcomment %}
+            <h5>{% trans "Mark Scheme Templates" %}</h5>
+            <table id="alt_templates_table" class="templates">
+                <thead>
+                    <tr>
+                        <th>{% trans "Content" %}</th>
+                        <th>{% trans "Mark" %}</th>
+                        <th>{% trans "Delete" %}</th>
+                    </tr>
+                </thead>
+                <tbody id="alt_markschemetbody"></tbody>
+            </table>
+            <h5 id="alt_rulecount">{% trans "Converted Rules" %}</h5>
+            <table id="alt_rules_table">
+                <thead>
+                    <tr>
+                        <th>{% trans "Content" %}</th>
+                        <th>{% trans "Mark" %}</th>
+                    </tr>
+                </thead>
+                <tbody id="alt_rulestbody"></tbody>
+            </table>
+            <hr/>
+            <div id='alt_rule_templates'>
+                <label>{% trans "ALL POINTS LESS X.X OR X.X" %}</label>
+                <input id="alt_sample_template_t1" class="left" type="text" />
+                <input id="alt_sample_template_mark_1" class="right" type="text" />
+
+                <label>{% trans "ALL POINTS LESS X.X AND X.X" %}</label>
+                <input id="alt_sample_template_t2" class="left" type="text" />
+                <input id="alt_sample_template_mark_2" class="right" type="text" />
+
+                <label>{% trans "ALL POINTS LESS TWO COMBINATION OF X.X AND X.X AND X.X AND X.X" %}</label>
+                <input id="alt_sample_template_t3" class="left" type="text" />
+                <input id="alt_sample_template_mark_3" class="right" type="text" />
+
+                <label>{% trans "ONLY TWO COMBINATION OF X.X AND X.X AND X.X" %}</label>
+                <input id="alt_sample_template_t4" class="left" type="text" />
+                <input id="alt_sample_template_mark_4" class="right" type="text" />
+
+                <label>{% trans "CUSTOM TEMPLATE" %}</label>
+                <input id="alt_cust_template" class="left" type="text" />
+                <input id="alt_cust_template_mark" class="right" type="text" />
+            </div>
+
+            <a type="button" id="submit5" class="greenBtn">{% trans "Save" %}</a>
+        </div>
+        {# newer tab implementation ends here #}
+        {# newer tab implementation ends here #}
+        {# newer tab implementation ends here #}
+        {# newer tab implementation ends here #}
+        {# newer tab implementation ends here #}
+    </div>
+</div>
+<div style='display:none;' id="dialog-process" title="Processing">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "Processing your request" %}...</p>
+    <div id="progressbar"></div>
+</div>
+<div style='display:none;' id="dialog-success" title="Successfully Upload Question">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "You have successfully uploaded the question." %}</p>
+</div>
+<div style='display:none;' id="dialog-failure" title="Question Content Incomplete">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "Please check: questionname and content can't be null." %}</p>
+</div>
+<div style='display:none;' id="dialog-canvas-failure" title="Questionid Not Correct">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "Please check: questionname and id must be valid." %}</p>
+</div>
+<div style='display:none;' id="dialog-failure-image" title="Upload Unmatched StandardAnswer Image">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "Please check: standard answer image must in questionimage." %}</p>
+</div>
+<div style='display:none;' id="dialog-success-stdanswer" title="Successfully Upload Question">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "You have successfully uploaded the standard answer." %}</p>
+</div>
+<div style='display:none;' id="dialog-success-alt-stdanswer" title="Successfully Upload Question">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>{% trans "You have successfully uploaded the Alternate standard answer." %}</p>
+</div>
+</body>
+{% endblock %}

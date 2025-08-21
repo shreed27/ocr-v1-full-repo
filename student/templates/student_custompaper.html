@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Custom Assignment{% endblock%}
+{% block head%}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/zTreeStyle.css" type="text/css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/zTreeStyle_custom.css" type="text/css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui-timepicker-addon.css" type="text/css">
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.core-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.ztree.excheck-3.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jeditable.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/django.csrf.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.blockUI.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/student_custompaper.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container_12">
+  <div id="content">
+    <div class="form" style="height:500px;">
+      <h1>Custom Paper</h1>
+      <form  id="paper_cus_form" class="content" method="post" action="">{% csrf_token %}
+
+        <div id="zTreeBackground">
+          <span id="zTreeHeader">All Itempools</span>
+          <ul id="questions" class="ztree"></ul>
+          <span id="zTreeFooter">Questions:<span id='qnum' style="width:60px;padding:0 5px;"></span>, Selected:<span id='snum' style="width:60px;padding:0 5px;"></span></span>
+        </div>
+
+        <div style="width:250px;float:left;padding-top:2em;">
+
+          <p>
+          <label for="id_paperid"  style="width:100px;margin-left:2px;">ID:</label>
+          {{ form.paperid }}
+          {%if form.paperid.errors %}
+          {% for error in form.paperid.errors %}
+          <div class="warning">{{ error }}</div>
+          {% endfor %}
+          {% endif %}
+          </p>
+
+          <p>
+          <label for="id_papername" style="width:100px;margin-left:2px;">Name:</label>
+          {{ form.papername }}
+          <span type="text" maxlength="100" class="editable" style="display:block;width:140px;float:left;padding:3px 0 0 3px;"></span>
+          {%if form.papername.errors %}
+          {% for error in form.papername.errors %}
+          <div class="warning">{{ error }}</div>
+          {% endfor %}
+          {% endif %}
+          </p>
+
+        <p>
+        <label for="id_duration" class="title1"style="width:100px;margin-left:2px;"> Duration:</label>
+        {{ form.duration }}
+        {% if form.duration.errors %}
+        {% for e in form.duration.errors %}
+        <div class="warning">{{ e }}</div>
+        {% endfor %}
+        {% endif %}
+        </p>
+
+          <p style="display:none;">
+          {{ form.questionlist }}
+          </p>
+          <p style="clear:both;width:250px;">
+          <a href=javascript:submitform() class="blueBtn" id="button" style="float:right;margin-top:5em;">Generate and Start Assignment</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="messages_div" style="display:none">
+  {% if messages %}
+  {% for message in messages %}
+  <span{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</span>
+  {% endfor %}
+  {% endif %}
+</div>
+{% endblock %}
+
+

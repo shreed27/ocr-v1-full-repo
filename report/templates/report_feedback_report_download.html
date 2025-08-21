@@ -1,0 +1,136 @@
+{% load i18n %}
+{% load paper_tags %}
+
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>{% trans "Student's Report" %}</title>
+    <style>
+    table
+    {
+     
+        border:2px solid #000000;
+        border-spacing: 0;
+        border-color: #000000;
+      /*  border-width:1 1px 1px 1 !important;*/
+        page-break-after: auto;
+        font-family:"Times New Roman",Georgia,Serif;
+        font-size: 21px;
+		width:100%;
+    }
+	td{
+		padding:2px;
+	}
+    .non_text{
+        font-size: 15px;
+        width:6%;
+    }
+    .que_text{
+        	width: 13%;
+    }
+	.stu_text{
+		width: 20%;
+	}
+	.std_text{
+		width: 30%;
+	}
+	.point_mark{
+		width:20%;
+	}
+     @page {  
+    size: 11in 17in;  
+    margin-left: 1in;  
+    margin-right: 1in;  
+    margin-top: 1in;  
+    margin-bottom: 1in;
+    } 
+  
+    </style>  
+</head>    
+
+<body>
+    {% comment %}
+    <!--{% for st in stu %}
+     {% if forloop.first %}
+    <span style="float: right; font-size: 15px;"><b>Time Taken:</b> {{ st.timestamp|date:"D, d M Y" }}</span>
+    {% endif %}
+    {% endfor %}-->
+    {% endcomment %}
+    <div class = 'box' id="box1" style="height:600px; width:1200px;" >
+    <p style="font-family:Times New Roman;font-size: 20px">
+    {% for st in stu %}
+    {% if forloop.first %}
+    <span style="float: right; font-size: 15px;"><b>{% trans "Time Taken" %}:</b> {{ st.timestamp|date:"D, d M Y" }}</span>
+    {% endif %}
+    {% endfor %}<br>
+    <span style="float: left;">{% trans "Assignment Number " %}: {{paper.papername}}</span><br>
+    <span style="float: right;">{% trans "Student Index Number " %}: {{user}}</span><br>
+    </p>
+    <table class="main_table">
+        <thead>
+        <tr>
+            <th class="que_text"><b><center>{% trans "Question" %}</center></b></th>
+            <th class="stu_text"><b><center>{% trans "Student Answer" %}</center></b></th>
+            <th class="std_text"><b><center>{% trans "Actual Answer" %}</center></b></th>
+            <th class="non_text"><b><center>{% trans "Max. Marks" %}</center></b></th>
+            <th class="non_text"><b><center>{% trans "Attained Marks" %}</center></b></th>
+            <th class="que_text"><b><center>{% trans "Teacher's Feedback" %}</center></b></th>
+            <th class="non_text"><b><center>{% trans "FBcode" %}</center></b></th>
+            <th class="non_text"><b><center>{% trans "Close" %}<br>(in %)</center></b></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for s in stu %}
+        <tr>
+            {% autoescape off %}
+            <td>{{s.question.qtext|img_add_attr}}</td>
+            <td>{{s.txt_answer|img_add_attr}}</td>
+            {% if s.omitted %}
+                <td>{{s.omitted|point_text_download:s.question.markscheme}}</td>
+            {% else %}
+                <td>{{s.question.stdanswertext|format_stdanswer}}</td>
+            {% endif %}
+            {% endautoescape %}
+            <td>{{s|actual_mark}}</td>
+            <td>{{s.mark}}</td>
+
+            {% if s.feedback %}
+              <td>{{s.feedback}}</td>
+            {%else%}
+                <td>&nbsp</td>
+            {% endif %}
+            {%if s.feedback_code == '0' %}
+               <td>&nbsp</td>
+            {%else%}
+                  <td>{{s.feedback_code}}</td>
+            {% endif %}
+                <td>{{s.closeness|closeness}}</td>
+         </tr>
+         {%endfor%}
+
+
+    <tr>
+        <td colspan=3><center><b>{% trans "Total" %}</b></center></td>
+        <td><center><b>{{sum}}</b></center></td>
+        <td><center><b>{{smark}}</b></center></td>
+        <td>&nbsp</td>
+        <td>&nbsp</td>
+        <td>&nbsp</td>
+    </tr>
+
+    </tbody>
+    <tfoot>
+         <tr>
+            <td colspan = 8><center>{% trans "Feedback Report" %}</center></td>
+         </tr>
+    </tfoot>
+    </table>
+    <br>
+    <p align = "left" style="font-family:Times New Roman;font-size: 20px">
+         <span style="float: left">{% trans "Note: The underlined points are points which you have left out in your answer script. Close is in percentage, for your answer script." %}</span>
+    </p>
+    <br>
+    
+    </div>
+    </body>
+</html>

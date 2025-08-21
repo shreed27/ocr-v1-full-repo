@@ -1,0 +1,4 @@
+{ "aaData": [{% for p in papers %}{% if forloop.last %}["{{ p.year.yearname }}"," {{ p.subject.subjectname }}", "{{ p.level.levelname }}", "{{ p.assignment.assignmentname }}/{{ p.papername }}",
+		"<input type='radio' name ='closeness_report' value='{{p.assignment.id}}' />View","<a {% if p.assignment.id %}href='/report/csv_closeness_report/?assignment_id={{p.assignment.id}}'{%else%}href=javascript:noAssignment(){%endif%}>Download CSV</a>"]{% else %}["{{ p.year.yearname }}"," {{ p.subject.subjectname }}", "{{ p.level.levelname }}", "{{ p.assignment.assignmentname }}/{{ p.papername }}",
+		"<input type='radio' name ='closeness_report' value='{{p.assignment.id}}' />View","<a {% if p.assignment.id %}href='/report/csv_closeness_report/?assignment_id={{p.assignment.id}}'{%else%}href=javascript:noAssignment(){%endif%}>Download CSV</a>"],{% endif %}{% endfor %}	
+] }

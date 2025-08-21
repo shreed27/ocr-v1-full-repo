@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://127.0.0.1:8080/classroom/add/" />
+<title>2.3_add_classroom_F</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">2.3_add_classroom_F</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/classroom/add/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=students_1_check</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=students_1_check</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=span.editable</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=value</td>
+	<td>class_xxx</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=students_1_check</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=button</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

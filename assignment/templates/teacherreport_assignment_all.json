@@ -1,0 +1,11 @@
+{ "aaData": [
+	{% for a in assignments %}
+    {% if forloop.last%}
+	["{{ a.assignmentname }}","{{ a.deadline }}","{{ a.description }}",
+		"<a class='delBtn' href=javascript:deleteassignment('{{a.id}}')><font color=black>Delete</font></a><a href='/assignment/add/?assignmentid={{a.id}}' class='modBtn'><font color=black>Modify</font></a><a class='viewBtn' href='/assignment/add/?view=1&assignmentid={{a.id}}'><font color=black>View</font></a>"]
+    {% else %}
+	["{{ a.assignmentname }}","{{ a.deadline }}","{{ a.description }}",
+		"<a class='delBtn' href=javascript:deleteassignment('{{a.id}}')><font color=black>Delete</font></a><a href='/assignment/add/?assignmentid={{a.id}}' class='modBtn'><font color=black>Modify</font></a><a class='viewBtn' href='/assignment/add/?view=1&assignmentid={{a.id}}'><font color=black>View</font></a>"],
+    {% endif %}
+    {% endfor %}
+] }

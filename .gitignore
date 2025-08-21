@@ -1,0 +1,16 @@
+*.pyc
+.svn
+static/generated_img
+static/questionimages
+static/server_img
+static/thumbnails
+imgaes/generated_img
+images/questionimages
+images/server_img
+images/thumbnails
+*.py.*
+*.log
+*~
+*.pyo
+.idea/
+static/questionvideos

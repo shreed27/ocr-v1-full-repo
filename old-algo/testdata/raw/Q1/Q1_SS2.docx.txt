@@ -1,0 +1,23 @@
+(3 marks)
+
+Economics  Valerie Hew
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+A production possibility curve is a graph that compares the production rate of two commodities that uses the same fixed total of the factors of production.
+
+(http://en.wikipedia.org/wiki/Production%E2%80%93possibility_frontier)
+
+Scarcity is when there are not enough resources to produce the capital goods or the consumer goods. This is due to the fact that there are unlimited wants but limited resources.
+
+Choice refers to the option in which you have to give up when you decide on the other option.
+
+Opportunity cost refers to the cost of the next best alternative forgone.
+
+The (((diagram W))) illustrates the concept of the PPC
+
+In the graph below, in order to produce more consumer goods, less capital goods will be produced. Point A will be when more capital goods are needed, point C will be when more consumer goods are needed and point B will represent the equal production of both consumer goods and capital goods as there is an equal need for both. In order to produce more capital goods or consumer goods, a choice for one over another must be chosen. At point A, the choice is capital goods and at point C, the choice is consumer goods. Point E will show scarcity as the resources as there are limited resources to produce the capital goods and consumer goods. A real life example of scarcity will be the lack of land in Singapore, even though there is a high demand for land for things such as housing. Point D shows that the resources are under-utilized. At A, the opportunity cost of producing more consumer goods at a low level will be, for example, x of capital goods. At C, the opportunity cost of producing more consumer goods will be, for example, y, where y>x. The opportunity cost in the production possibility curve is represented but its gradient at that point. Therefore, the opportunity cost of producing more consumer goods at C is greater than at A.
+
+Name: Valerie Hew
+
+Class: 5.18

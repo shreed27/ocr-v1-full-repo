@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block head %}
+	<script type="text/javascript" src="js/swfconf.js"></script>
+	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="swfupload/swfupload.js"></script>
+	<script type="text/javascript" src="swfupload/js/handlers.js"></script>
+    <link rel="stylesheet" href="css/demo_page.css" />
+    <link rel="stylesheet" href="css/demo_table.css" />
+	<style type="text/css">
+		.myswfupload {margin-left: 120px;}
+	</style>
+
+{% endblock %}
+{% block title%} Taking an Selective Assignment  {% endblock %}
+{% block content %}
+	<div class="container_12">
+		<div class="grid_12">
+
+	<h1 class="samples" style='float:left'>
+		You are taking a selective assignment 
+	</h1>
+	<br>
+		</div>
+		<hr>
+		<div class="grid_12">
+		<label style="color: #FFCC00;font-size:20px;">Question number:</label>
+		<label style="color: #FFCC00;font-size:20px;text-align: center;"> 3 </label>
+		</div>
+		<div class="grid_12">
+			<label style="color: #FFCC00;font-size:20px;">Question Description:</label>
+		    <label style="color: #FFCC00;font-size:20px;">here is question description</label>
+	    </div>
+        <div class="grid_12">
+		<label style="color: #FFCC00;font-size:20px;">Item-Pool:</label>
+		<label style="color: #FFCC00;font-size:20px"> itme-pool N3 </label><br>
+		<label style="color: #FFCC00;font-size:20px"> Input Number: </label><input id="number" type="text"></input>
+		<br><a href="../teachers/manage">Back To View</a>
+		</div>
+	</div>
+	<div id="alerts">
+		<noscript>
+			<p>
+				<strong>CKEditor requires JavaScript to run</strong>. In a browser with no JavaScript
+				support, like yours, you should still see the contents (HTML data) and you should
+				be able to edit it normally, without a rich editor interface.
+			</p>
+		</noscript>
+	</div>
+	</div>
+    <div class="clear"></div>
+	<div class="container_12">
+		<label style="color: #FFCC00;font-size:20px;">Question :</label>
+	<div class="clear"></div>
+	<div class="grid_6">
+		<div class="myswfupload">
+   	<form>
+		{% csrf_token %}
+		<div style="display: inline; border: solid 1px #7FAAFF; background-color: #C5D9FF; padding: 2px;">
+			<span id="spanButtonPlaceholder"></span>
+		</div>
+	</form>
+	<div id="divFileProgressContainer" style="height: 75px;"></div>
+	<div id="thumbnails"></div>
+		</div>
+
+	</div>
+	<div class="grid_6">
+	<form action="/" method="post">
+		{% csrf_token %}
+			<textarea cols="80" id="editor1" name="editor1" rows="10"></textarea>
+			<script type="text/javascript">
+			//<![CDATA[
+              var html1;
+			  var editor1 = CKEDITOR.replace( 'editor1',
+					{
+						fullPage : true,
+						extraPlugins : 'docprops',
+						height: 300
+						});
+
+			//]]>
+			</script>
+		<p>
+			<input type="button" value="Submit" id="submit1" />
+		</p>
+	</form>
+	</div>
+	<div class="container_12" id="instantmark">
+     <table class="marktable" id="marktable">
+     </table>
+	</div>
+	</div>
+
+{% endblock %}
+
+{% block tail %}
+<script type="text/javascript" src="js/django.csrf.js"></script>
+<script type='text/javascript'>
+	$("#submit1").click(function(){
+			html1 = editor1.getData();
+			var number = parseInt($("#number").val());
+            $.ajax({type: "POST",
+				url: "studentsv2/ajax/posttakedassignment",
+				dataType: "json",
+				data: {html: html1, 
+				number: number},
+
+				success: function(payload){
+				//for(var i=0; i<payload.omitted.length-1; i++ )
+				//alert(typeof(payload.omitted[i]));
+				$("#markhead").remove();
+				$("#instantmark").append("<h1 id='markhead'>Your score:  "+payload.mark+"</h1>");
+				$("#marktbody").remove();
+				$("#marktable").append("<tbody id='marktbody'></tbody>");
+				for(var i=0; i<payload.omitted.length-1; i++)
+				$("#marktbody").append("<text style='color: white;font-size:16px;'>"+payload.omitted[i]+"</text>"+"<br>");
+									
+				},
+
+				error: function(MLHttpRequest, textStatus, errorThrown){
+				alert(textStatus);
+				alert(XMLHttpRequest.status);
+				alert(XMLHttpRequest.readyState);
+				this;}});
+})
+
+</script>
+{% endblock %}
+</html>

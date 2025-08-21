@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title%} Taking an Assigned Assignment {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/student_takeassignment.css" type="text/css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/nyroModal.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/select2.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/mathquill_editor.css " />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/mathquill_editor_sci.css " />
+<script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/ckeditor.adapter.jquery.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/select2.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/mathquill_editor.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/mathquill_editor_sci.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.nyroModal.custom.min.js"></script>
+<script type="text/javascript">
+    var csrfvalue='{{ csrf_token }}';
+    var qids = {{qids}};
+    var qnames = {{qnames|safe}};
+    var paperid = {{paper.id}};
+</script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/student_takeassignment.js"></script>
+{% endblock %}
+
+{% block content %}
+<div id='content'>
+    <div class="showList wide">
+        <div class="rttip">Assigned Assignment</div>
+        <table id="assignmenthead" style="float:left;">
+            <tbody>
+                <tr>
+                    <td colspan="3"><label class="short" for="assignment">Assignment:</label><span>{{assignment.assignmentname}}</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><label class="short" for="Teacher">Teacher:</label><span>{{assignment.teacher.user.username}}</span></td>
+                    <td><label for="Student" class="short">Student:</label><span>{{student.user.username}}</span></td>
+                </tr>
+                <tr>
+                    <td><label for="" class="short">Question:</label><span id="question_name_show"></span></td>
+                    <td><label for="" class="short">Process:</label><span id="question_process_show">2/10</span></td>
+                    <td><label for="" class="short">Time:</label><span id="time_show">24/60</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <table  class="singleContent">
+            <tbody>
+                <tr>
+                    <td class="rtfwrapper">
+                        <div id="question_content">
+                            <textarea id="question_editor" name="question_editor"></textarea>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>			      	
+                        <h4 class="ui-widget-header" id="thumbnails_header">Possible Diagrams</h4>
+                        <div id="thumbnails" class="ui-widget-content ui-state-default">
+                            <ul id="possible_diagrams" class="gallery ui-helper-reset ui-helper-clearfix  ">
+                            </ul>
+                        </div>
+                    </td>			     
+                </tr>     		
+                <tr><td colspan='3'> &nbsp;</td></tr>
+                <tr>
+                    <td class="rtfwrapper">
+                        <div id="answer_content">
+                            <textarea id="answer_editor" name="answer_editor"></textarea>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>			      	
+	                    <h4 class="ui-widget-header" id="selected_header">Selected Diagrams</h4>
+                        <div id="stuthumbnails" class="ui-widget-content ui-state-default ">
+                            <ul id="selected_diagrams" class="gallery ui-helper-reset ui-helper-clearfix  ">
+                        </div>
+                    </td>			     
+                </tr>     		
+            </tbody>
+        </table>
+        <h3 width="100%">According to the question, You may want to add answer graph here:</h3>
+        {% comment %}
+        <select id='answer_canvas' multiple="multiple" style="width:300px" class="populate">
+	        <option value='1'>Diagram_1</option>
+            <option value='2'>Diagram_2</option>
+            <option value='3'>Diagram_3</option>
+            <option value='4'>Diagram_4</option>
+            <option value='5'>Diagram_5</option>
+            <option value='6'>Diagram_6</option>
+            <option value='7'>Diagram_7</option>
+            <option value='8'>Diagram_8</option>
+            <option value='9'>Diagram_9</option>
+        </select>-->
+	   {% endcomment %}
+	
+	&nbsp;&nbsp;&nbsp;
+		<p class="longp btngroup">
+        <a id="answer_canvas" style="width: 43px; height: 16px;" class="answer_canvas populate greenBtn" href="#">Graph</a>
+		<a  class="blueBtn shortBtn" id='first'>&lt;&lt; First</a>
+        <a  class="blueBtn shortBtn" id='previous'>&lt; Previous</a>
+        <a  class="blueBtn shortBtn" id='next'>Next &gt;</a>
+        <a  class="blueBtn shortBtn" id='last'>Last &gt;&gt;</a>
+        <a  class="greenBtn" id='submit1'>Submit</a>
+        </p>
+	<p style="margin-top:5px;" class="longp btngroup">
+        <a  class="greenBtn " id='saveanswer'>Save  </a></p>
+    </div>
+</div>
+<div style='display:none;'  id="dialog-process" title="Processing">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Processing your request...</p>
+	<div id="progressbar"></div>
+</div>
+
+{% endblock %}

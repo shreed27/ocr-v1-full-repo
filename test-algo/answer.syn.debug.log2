@@ -1,0 +1,294 @@
+getenv_text: no value for OUTPUT_DEBUG_TIMESTAMPS_DIFF
+getenv_text('OUTPUT_DEBUG_TIMESTAMPS_DIFF') => 
+getenv_text: no value for OUTPUT_DEBUG_TIMESTAMPS
+getenv_text('OUTPUT_DEBUG_TIMESTAMPS') => 
+common.py: debug_level=6
+algo/answer.py: 2013-07-07 04:39:59.359960
+algo/wordnet.py: 2013-07-07 04:39:59.359960
+after importing NLTK: 2013-07-07 04:40:01.434764
+after importing wordnet support: 2013-07-07 04:40:01.434764
+algo/standard.py: 2013-07-07 04:40:05.615571
+algo/standard.py: 2013-07-07 04:40:05.662371
+algo/markscheme.py: 2013-07-07 04:40:05.662371
+Answer()
+logger=<logging.Logger instance at 0xfcc502ec>; __name__=__main__
+algo/algo-settings start: 2013-07-07 04:40:05.740371
+get_property_value(<django.conf.LazySettings object at 0xfcc4df4c>, 'APPLY_SYNONYM_EXPANSION', False) => False
+get_property_value(<django.conf.LazySettings object at 0xfcc4df4c>, 'APPLY_ANCESTOR_EXPANSION', False) => False
+get_property_value(<django.conf.LazySettings object at 0xfcc4df4c>, 'MAX_ANCESTOR_LINKS', 5) => 5
+get_property_value(<django.conf.LazySettings object at 0xfcc4df4c>, 'USE_PART_OF_SPEECH', False) => False
+get_property_value(<django.conf.LazySettings object at 0xfcc4df4c>, 'ONLY_MATCH_SENTENCE_ONCE', False) => False
+get_property_value(<django.conf.LazySettings object at 0xfcc4df4c>, 'ONLY_MATCH_WORD_TOKENS_ONCE', False) => False
+get_property_value(<django.conf.LazySettings object at 0xfcc4df4c>, 'SYNONYM_SCALE_FACTOR', 0.90000000000000002) => 0.9
+get_property_value(<django.conf.LazySettings object at 0xfcc4df4c>, 'ANCESTOR_SCALE_FACTOR', 0.45000000000000001) => 0.45
+get_property_value(<django.conf.LazySettings object at 0xfcc4df4c>, 'USE_TRUE_TF_IDF', False) => False
+get_property_value(<django.conf.LazySettings object at 0xfcc4df4c>, 'APPLY_GRAMMAR_CHECKING', False) => False
+getenv_text('APPLY_SYNONYM_EXPANSION') => 1
+getenv_text: no value for APPLY_ANCESTOR_EXPANSION
+getenv_text('APPLY_ANCESTOR_EXPANSION') => 
+getenv_text: no value for MAX_ANCESTOR_LINKS
+getenv_text('MAX_ANCESTOR_LINKS') => 
+getenv_text: no value for USE_PART_OF_SPEECH
+getenv_text('USE_PART_OF_SPEECH') => 
+getenv_text: no value for ONLY_MATCH_SENTENCE_ONCE
+getenv_text('ONLY_MATCH_SENTENCE_ONCE') => 
+getenv_text: no value for SYNONYM_SCALE_FACTOR
+getenv_text('SYNONYM_SCALE_FACTOR') => 
+getenv_text: no value for ANCESTOR_SCALE_FACTOR
+getenv_text('ANCESTOR_SCALE_FACTOR') => 
+getenv_text: no value for USE_TRUE_TF_IDF
+getenv_text('USE_TRUE_TF_IDF') => 
+getenv_text: no value for APPLY_GRAMMAR_CHECKING
+getenv_text('APPLY_GRAMMAR_CHECKING') => 
+get_property_value(<django.conf.LazySettings object at 0xfcc4df4c>, 'USE_PART_OF_SPEECH', False) => False
+get_property_value(<django.conf.LazySettings object at 0xfcc4df4c>, 'USE_TRUE_TF_IDF', False) => False
+getenv_text: no value for USE_PART_OF_SPEECH
+getenv_text('USE_PART_OF_SPEECH') => 
+getenv_text: no value for USE_TRUE_TF_IDF
+getenv_text('USE_TRUE_TF_IDF') => 
+Standard.PointAnalysis(1 . The attorney chased the ambulance downtown.
+2 . The ambulance chased back.
+) => [{'Point_No': 'P1', 'Start': 0, 'End': 48, 'Point_Text': ' The attorney chased the ambulance downtown. '}, {'Point_No': 'P2', 'Start': 48, 'End': 79, 'Point_Text': ' The ambulance chased back. '}]
+Standard.SentenceAnalysis() => [{'TotalS_No': [1], 'End': 44, 'Start': 0, 'KeyS': ' The attorney chased the ambulance downtown.', 'No': 1, 'Point_No': 'P1', 'KeyBVec': []}, {'TotalS_No': [2], 'End': 75, 'Start': 48, 'KeyS': ' The ambulance chased back.', 'No': 2, 'Point_No': 'P2', 'KeyBVec': []}]
+Standard.CalVector([{'TotalS_No': [1], 'End': 44, 'Start': 0, 'KeyS': ' The attorney chased the ambulance downtown.', 'No': 1, 'Point_No': 'P1', 'KeyBVec': []}, {'TotalS_No': [2], 'End': 75, 'Start': 48, 'KeyS': ' The ambulance chased back.', 'No': 2, 'Point_No': 'P2', 'KeyBVec': []}])
+sentence: {'TotalS_No': [1], 'End': 44, 'Start': 0, 'KeyS': ' The attorney chased the ambulance downtown.', 'No': 1, 'Point_No': 'P1', 'KeyBVec': []}
+Standard.ParseKeyword( The attorney chased the ambulance downtown.) =>  The attorney chased the ambulance downtown
+part_of_speech_tagged_words = [('The', 'DT'), ('attorney', 'NN'), ('chased', 'VBD'), ('the', 'DT'), ('ambulance', 'NN'), ('downtown', 'NN')]
+sentence: {'TotalS_No': [2], 'End': 75, 'Start': 48, 'KeyS': ' The ambulance chased back.', 'No': 2, 'Point_No': 'P2', 'KeyBVec': []}
+Standard.ParseKeyword( The ambulance chased back.) =>  The ambulance chased back
+part_of_speech_tagged_words = [('The', 'DT'), ('ambulance', 'NN'), ('chased', 'VBD'), ('back', 'RP')]
+text_words: ['attorney', 'chased', 'ambulance', 'downtown', 'ambulance', 'chased']
+Standard.CalVector => <FreqDist: 'ambulance': 2, 'chased': 2, 'attorney': 1, 'downtown': 1>
+Standard.SentenceCal([{'TotalS_No': [1], 'SenWords': ['attorney', 'chased', 'ambulance', 'downtown'], 'End': 44, 'Start': 0, 'KeyS': ' The attorney chased the ambulance downtown.', 'No': 1, 'Point_No': 'P1', 'KeyBVec': []}, {'TotalS_No': [2], 'SenWords': ['ambulance', 'chased'], 'End': 75, 'Start': 48, 'KeyS': ' The ambulance chased back.', 'No': 2, 'Point_No': 'P2', 'KeyBVec': []}], <FreqDist with 4 samples and 6 outcomes>)
+Standard.SentenceCal => [{'TotalS_No': [1], 'SenWords': ['attorney', 'chased', 'ambulance', 'downtown'], 'End': 44, 'Start': 0, 'KeyS': ' The attorney chased the ambulance downtown.', 'No': 1, 'Point_No': 'P1', 'KeyBVec': [], 'KeySVec': {'downtown': 2.3472003889562933, 'attorney': 2.3472003889562933, 'chased': 1.1736001944781467, 'ambulance': 1.1736001944781467}}, {'TotalS_No': [2], 'SenWords': ['ambulance', 'chased'], 'End': 75, 'Start': 48, 'KeyS': ' The ambulance chased back.', 'No': 2, 'Point_No': 'P2', 'KeyBVec': [], 'KeySVec': {'downtown': 0, 'attorney': 0, 'chased': 1.1736001944781467, 'ambulance': 1.1736001944781467}}]
+Standard.Analysis => ([{'Point_No': 'P1', 'Start': 0, 'End': 48, 'Point_Text': ' The attorney chased the ambulance downtown. '}, {'Point_No': 'P2', 'Start': 48, 'End': 79, 'Point_Text': ' The ambulance chased back. '}], <FreqDist: 'ambulance': 2, 'chased': 2, 'attorney': 1, 'downtown': 1>, [{'TotalS_No': [1], 'SenWords': ['attorney', 'chased', 'ambulance', 'downtown'], 'End': 44, 'Start': 0, 'KeyS': ' The attorney chased the ambulance downtown.', 'No': 1, 'Point_No': 'P1', 'KeyBVec': [], 'KeySVec': {'downtown': 2.3472003889562933, 'attorney': 2.3472003889562933, 'chased': 1.1736001944781467, 'ambulance': 1.1736001944781467}}, {'TotalS_No': [2], 'SenWords': ['ambulance', 'chased'], 'End': 75, 'Start': 48, 'KeyS': ' The ambulance chased back.', 'No': 2, 'Point_No': 'P2', 'KeyBVec': [], 'KeySVec': {'downtown': 0, 'attorney': 0, 'chased': 1.1736001944781467, 'ambulance': 1.1736001944781467}}])
+Input:
+
+Key: 1 . The attorney chased the ambulance downtown.
+2 . The ambulance chased back.
+
+Scheme: [('all', 10), ('only P1 or P2', 5)]
+Student: 0. Lawyers practice law.
+1 . The lawyer chased the vehicle downtown.
+2 . The vehicle chased back.
+3 . Them lawyers crashes.!
+
+
+MarkScheme(['P1', 'P2'])
+MarkingSchemeLang:clear()
+MarkingSchemeLang:build({})
+MarkingSchemeLang:clear()
+in GetRules([('all', 10), ('only P1 or P2', 5)])
+in MarkingSchemeLang:analysis("all", 10)
+lexical analysis:
+tok=LexToken(ALL,'all',1,0)
+MarkingSchemeLang:clear()
+parsing sent:
+MarkingSchemeLang.calCombinations()
+MarkingSchemeLang:analysis() yields (['P1', 'P2'], 10)
+yielding {'Mark': 10, 'Point': ['P1', 'P2']}
+
+out MarkingSchemeLang:analysis()
+in MarkingSchemeLang:analysis("only P1 or P2", 5)
+lexical analysis:
+tok=LexToken(ONLY,'only',1,0)
+tok=LexToken(POINT,'P1',1,5)
+tok=LexToken(OR,'or',1,8)
+tok=LexToken(POINT,'P2',1,11)
+MarkingSchemeLang:clear()
+parsing sent:
+MarkingSchemeLang.calCombinations()
+MarkingSchemeLang:analysis() yields (['P1'], 5)
+yielding {'Mark': 5, 'Point': ['P1']}
+
+MarkingSchemeLang:analysis() yields (['P2'], 5)
+yielding {'Mark': 5, 'Point': ['P2']}
+
+out MarkingSchemeLang:analysis()
+out GetRules()
+Standard.PointAnalysis(0. Lawyers practice law.
+1 . The lawyer chased the vehicle downtown.
+2 . The vehicle chased back.
+3 . Them lawyers crashes.!
+) => [{'Point_No': 'P', 'Start': 0, 'End': 25, 'Point_Text': '0. Lawyers practice law. '}, {'Point_No': 'P1', 'Start': 25, 'End': 69, 'Point_Text': ' The lawyer chased the vehicle downtown. '}, {'Point_No': 'P2', 'Start': 69, 'End': 98, 'Point_Text': ' The vehicle chased back. '}, {'Point_No': 'P3', 'Start': 98, 'End': 125, 'Point_Text': ' Them lawyers crashes.! '}]
+Standard.SentenceAnalysis() => [{'TotalS_No': [1], 'End': 24, 'Start': 0, 'KeyS': '0. Lawyers practice law.', 'No': 1, 'Point_No': 'P', 'KeyBVec': []}, {'TotalS_No': [2], 'End': 65, 'Start': 25, 'KeyS': ' The lawyer chased the vehicle downtown.', 'No': 2, 'Point_No': 'P1', 'KeyBVec': []}, {'TotalS_No': [3], 'End': 94, 'Start': 69, 'KeyS': ' The vehicle chased back.', 'No': 3, 'Point_No': 'P2', 'KeyBVec': []}, {'TotalS_No': [4], 'End': 120, 'Start': 98, 'KeyS': ' Them lawyers crashes.', 'No': 4, 'Point_No': 'P3', 'KeyBVec': []}]
+Standard.CalVector([{'TotalS_No': [1], 'End': 24, 'Start': 0, 'KeyS': '0. Lawyers practice law.', 'No': 1, 'Point_No': 'P', 'KeyBVec': []}, {'TotalS_No': [2], 'End': 65, 'Start': 25, 'KeyS': ' The lawyer chased the vehicle downtown.', 'No': 2, 'Point_No': 'P1', 'KeyBVec': []}, {'TotalS_No': [3], 'End': 94, 'Start': 69, 'KeyS': ' The vehicle chased back.', 'No': 3, 'Point_No': 'P2', 'KeyBVec': []}, {'TotalS_No': [4], 'End': 120, 'Start': 98, 'KeyS': ' Them lawyers crashes.', 'No': 4, 'Point_No': 'P3', 'KeyBVec': []}])
+sentence: {'TotalS_No': [1], 'End': 24, 'Start': 0, 'KeyS': '0. Lawyers practice law.', 'No': 1, 'Point_No': 'P', 'KeyBVec': []}
+Standard.ParseKeyword(0. Lawyers practice law.) => 0 Lawyers practice law
+part_of_speech_tagged_words = [('0', '-NONE-'), ('Lawyers', 'NNP'), ('practice', 'NN'), ('law', 'NN')]
+sentence: {'TotalS_No': [2], 'End': 65, 'Start': 25, 'KeyS': ' The lawyer chased the vehicle downtown.', 'No': 2, 'Point_No': 'P1', 'KeyBVec': []}
+Standard.ParseKeyword( The lawyer chased the vehicle downtown.) =>  The lawyer chased the vehicle downtown
+part_of_speech_tagged_words = [('The', 'DT'), ('lawyer', 'NN'), ('chased', 'VBD'), ('the', 'DT'), ('vehicle', 'NN'), ('downtown', 'NN')]
+sentence: {'TotalS_No': [3], 'End': 94, 'Start': 69, 'KeyS': ' The vehicle chased back.', 'No': 3, 'Point_No': 'P2', 'KeyBVec': []}
+Standard.ParseKeyword( The vehicle chased back.) =>  The vehicle chased back
+part_of_speech_tagged_words = [('The', 'DT'), ('vehicle', 'NN'), ('chased', 'VBD'), ('back', 'RP')]
+sentence: {'TotalS_No': [4], 'End': 120, 'Start': 98, 'KeyS': ' Them lawyers crashes.', 'No': 4, 'Point_No': 'P3', 'KeyBVec': []}
+Standard.ParseKeyword( Them lawyers crashes.) =>  Them lawyers crashes
+part_of_speech_tagged_words = [('Them', 'PRP'), ('lawyers', 'NNS'), ('crashes', 'NNS')]
+text_words: ['lawyer', 'practice', 'law', 'lawyer', 'chased', 'vehicle', 'downtown', 'vehicle', 'chased', 'lawyer', 'crash']
+Standard.CalVector => <FreqDist: 'lawyer': 3, 'chased': 2, 'vehicle': 2, 'crash': 1, 'downtown': 1, 'law': 1, 'practice': 1>
+Standard.SentenceCal([{'TotalS_No': [1], 'SenWords': ['lawyer', 'practice', 'law'], 'End': 24, 'Start': 0, 'KeyS': '0. Lawyers practice law.', 'No': 1, 'Point_No': 'P', 'KeyBVec': []}, {'TotalS_No': [2], 'SenWords': ['lawyer', 'chased', 'vehicle', 'downtown'], 'End': 65, 'Start': 25, 'KeyS': ' The lawyer chased the vehicle downtown.', 'No': 2, 'Point_No': 'P1', 'KeyBVec': []}, {'TotalS_No': [3], 'SenWords': ['vehicle', 'chased'], 'End': 94, 'Start': 69, 'KeyS': ' The vehicle chased back.', 'No': 3, 'Point_No': 'P2', 'KeyBVec': []}, {'TotalS_No': [4], 'SenWords': ['lawyer', 'crash'], 'End': 120, 'Start': 98, 'KeyS': ' Them lawyers crashes.', 'No': 4, 'Point_No': 'P3', 'KeyBVec': []}], <FreqDist with 7 samples and 11 outcomes>)
+Standard.SentenceCal => [{'TotalS_No': [1], 'SenWords': ['lawyer', 'practice', 'law'], 'End': 24, 'Start': 0, 'KeyS': '0. Lawyers practice law.', 'No': 1, 'Point_No': 'P', 'KeyBVec': [], 'KeySVec': {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}}, {'TotalS_No': [2], 'SenWords': ['lawyer', 'chased', 'vehicle', 'downtown'], 'End': 65, 'Start': 25, 'KeyS': ' The lawyer chased the vehicle downtown.', 'No': 2, 'Point_No': 'P1', 'KeyBVec': [], 'KeySVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 3.5208005834344402, 'lawyer': 1.6606882843475215, 'vehicle': 2.3472003889562933, 'law': 0}}, {'TotalS_No': [3], 'SenWords': ['vehicle', 'chased'], 'End': 94, 'Start': 69, 'KeyS': ' The vehicle chased back.', 'No': 3, 'Point_No': 'P2', 'KeyBVec': [], 'KeySVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}}, {'TotalS_No': [4], 'SenWords': ['lawyer', 'crash'], 'End': 120, 'Start': 98, 'KeyS': ' Them lawyers crashes.', 'No': 4, 'Point_No': 'P3', 'KeyBVec': [], 'KeySVec': {'crash': 3.5208005834344402, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}}]
+Standard.Analysis => ([{'Point_No': 'P', 'Start': 0, 'End': 25, 'Point_Text': '0. Lawyers practice law. '}, {'Point_No': 'P1', 'Start': 25, 'End': 69, 'Point_Text': ' The lawyer chased the vehicle downtown. '}, {'Point_No': 'P2', 'Start': 69, 'End': 98, 'Point_Text': ' The vehicle chased back. '}, {'Point_No': 'P3', 'Start': 98, 'End': 125, 'Point_Text': ' Them lawyers crashes.! '}], <FreqDist: 'lawyer': 3, 'chased': 2, 'vehicle': 2, 'crash': 1, 'downtown': 1, 'law': 1, 'practice': 1>, [{'TotalS_No': [1], 'SenWords': ['lawyer', 'practice', 'law'], 'End': 24, 'Start': 0, 'KeyS': '0. Lawyers practice law.', 'No': 1, 'Point_No': 'P', 'KeyBVec': [], 'KeySVec': {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}}, {'TotalS_No': [2], 'SenWords': ['lawyer', 'chased', 'vehicle', 'downtown'], 'End': 65, 'Start': 25, 'KeyS': ' The lawyer chased the vehicle downtown.', 'No': 2, 'Point_No': 'P1', 'KeyBVec': [], 'KeySVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 3.5208005834344402, 'lawyer': 1.6606882843475215, 'vehicle': 2.3472003889562933, 'law': 0}}, {'TotalS_No': [3], 'SenWords': ['vehicle', 'chased'], 'End': 94, 'Start': 69, 'KeyS': ' The vehicle chased back.', 'No': 3, 'Point_No': 'P2', 'KeyBVec': [], 'KeySVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}}, {'TotalS_No': [4], 'SenWords': ['lawyer', 'crash'], 'End': 120, 'Start': 98, 'KeyS': ' Them lawyers crashes.', 'No': 4, 'Point_No': 'P3', 'KeyBVec': [], 'KeySVec': {'crash': 3.5208005834344402, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}}])
+Answer.SentenceAnalysis(_,_)
+sen: 0. Lawyers practice law. 
+sen: The lawyer chased the vehicle downtown. 
+sen: The vehicle chased back. 
+sen: Them lawyers crashes.! 
+sentence: {'StuS': '0. Lawyers practice law. ', 'End': 25, 'No': 1, 'Start': 0, 'StuWords': ['lawyer', 'practice', 'law']}
+sentence: {'StuS': 'The lawyer chased the vehicle downtown. ', 'End': 67, 'No': 2, 'Start': 27, 'StuWords': ['lawyer', 'chased', 'vehicle', 'downtown']}
+sentence: {'StuS': 'The vehicle chased back. ', 'End': 94, 'No': 3, 'Start': 69, 'StuWords': ['vehicle', 'chased', 'back']}
+sentence: {'StuS': 'Them lawyers crashes.! ', 'End': 119, 'No': 4, 'Start': 96, 'StuWords': ['lawyer']}
+Answer.SentenceAnalysis(0. Lawyers practice law.
+  The lawyer chased the vehicle downtown.
+  The vehicle chased back.
+  Them lawyers crashes.!
+,_) => [{'StuS': '0. Lawyers practice law. ', 'End': 25, 'No': 1, 'StuWords': ['lawyer', 'practice', 'law'], 'StuSVec': {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}, 'Start': 0}, {'StuS': 'The lawyer chased the vehicle downtown. ', 'End': 67, 'No': 2, 'StuWords': ['lawyer', 'chased', 'vehicle', 'downtown'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 3.5208005834344402, 'lawyer': 1.6606882843475215, 'vehicle': 2.3472003889562933, 'law': 0}, 'Start': 27}, {'StuS': 'The vehicle chased back. ', 'End': 94, 'No': 3, 'StuWords': ['vehicle', 'chased', 'back'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}, 'Start': 69}, {'StuS': 'Them lawyers crashes.! ', 'End': 119, 'No': 4, 'StuWords': ['lawyer'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}, 'Start': 96}]
+Answer.CalCosDist([{'StuS': '0. Lawyers practice law. ', 'End': 25, 'No': 1, 'StuWords': ['lawyer', 'practice', 'law'], 'StuSVec': {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}, 'Start': 0}, {'StuS': 'The lawyer chased the vehicle downtown. ', 'End': 67, 'No': 2, 'StuWords': ['lawyer', 'chased', 'vehicle', 'downtown'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 3.5208005834344402, 'lawyer': 1.6606882843475215, 'vehicle': 2.3472003889562933, 'law': 0}, 'Start': 27}, {'StuS': 'The vehicle chased back. ', 'End': 94, 'No': 3, 'StuWords': ['vehicle', 'chased', 'back'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}, 'Start': 69}, {'StuS': 'Them lawyers crashes.! ', 'End': 119, 'No': 4, 'StuWords': ['lawyer'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}, 'Start': 96}], {'TotalS_No': [1], 'SenWords': ['attorney', 'chased', 'ambulance', 'downtown'], 'End': 44, 'Start': 0, 'KeyS': ' The attorney chased the ambulance downtown.', 'No': 1, 'Point_No': 'P1', 'KeyBVec': [], 'KeySVec': {'downtown': 2.3472003889562933, 'attorney': 2.3472003889562933, 'chased': 1.1736001944781467, 'ambulance': 1.1736001944781467}})
+Checking for synonym of standard term 'downtown' among student terms
+list_difference(['business district'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['business district']
+find_most_freq_term(['business district'], {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}) => None
+deltas: q=5.509350 s=0.000000 qs=0.000000
+Checking for synonym of standard term 'attorney' among student terms
+list_difference(['lawyer'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['lawyer']
+find_most_freq_term(['lawyer'], {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}) => lawyer
+Using (student) synonym 'lawyer' to match (standard) word 'attorney'
+deltas: q=5.509350 s=2.233887 qs=3.508171
+Checking for synonym of standard term 'chased' among student terms
+list_difference(['pursued', 'chase', 'chase after', 'trail', 'tail', 'tag', 'give chase', 'dog', 'go after', 'track', 'chase', 'chase after', 'chase', 'furrow', 'chamfer', 'chase'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['chamfer', 'go after', 'pursued', 'chase', 'chase after', 'dog', 'trail', 'tail', 'tag', 'track', 'give chase', 'furrow']
+find_most_freq_term(['chamfer', 'go after', 'pursued', 'chase', 'chase after', 'dog', 'trail', 'tail', 'tag', 'track', 'give chase', 'furrow'], {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}) => None
+deltas: q=1.377337 s=0.000000 qs=0.000000
+Checking for synonym of standard term 'ambulance' among student terms
+list_difference([], ['downtown', 'attorney', 'chased', 'ambulance']) => []
+find_most_freq_term([], {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}) => None
+deltas: q=1.377337 s=0.000000 qs=0.000000
+deltas: q=5.509350 s=12.396037 qs=8.264024
+Checking for synonym of standard term 'attorney' among student terms
+list_difference(['lawyer'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['lawyer']
+find_most_freq_term(['lawyer'], {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 3.5208005834344402, 'lawyer': 1.6606882843475215, 'vehicle': 2.3472003889562933, 'law': 0}) => lawyer
+Using (student) synonym 'lawyer' to match (standard) word 'attorney'
+deltas: q=5.509350 s=2.233887 qs=3.508171
+deltas: q=1.377337 s=5.509350 qs=2.754675
+Checking for synonym of standard term 'ambulance' among student terms
+list_difference([], ['downtown', 'attorney', 'chased', 'ambulance']) => []
+find_most_freq_term([], {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 3.5208005834344402, 'lawyer': 1.6606882843475215, 'vehicle': 2.3472003889562933, 'law': 0}) => None
+deltas: q=1.377337 s=0.000000 qs=0.000000
+Checking for synonym of standard term 'downtown' among student terms
+list_difference(['business district'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['business district']
+find_most_freq_term(['business district'], {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}) => None
+deltas: q=5.509350 s=0.000000 qs=0.000000
+Checking for synonym of standard term 'attorney' among student terms
+list_difference(['lawyer'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['lawyer']
+find_most_freq_term(['lawyer'], {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}) => None
+deltas: q=5.509350 s=0.000000 qs=0.000000
+deltas: q=1.377337 s=5.509350 qs=2.754675
+Checking for synonym of standard term 'ambulance' among student terms
+list_difference([], ['downtown', 'attorney', 'chased', 'ambulance']) => []
+find_most_freq_term([], {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}) => None
+deltas: q=1.377337 s=0.000000 qs=0.000000
+Checking for synonym of standard term 'downtown' among student terms
+list_difference(['business district'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['business district']
+find_most_freq_term(['business district'], {'crash': 0, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}) => None
+deltas: q=5.509350 s=0.000000 qs=0.000000
+Checking for synonym of standard term 'attorney' among student terms
+list_difference(['lawyer'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['lawyer']
+find_most_freq_term(['lawyer'], {'crash': 0, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}) => lawyer
+Using (student) synonym 'lawyer' to match (standard) word 'attorney'
+deltas: q=5.509350 s=2.233887 qs=3.508171
+Checking for synonym of standard term 'chased' among student terms
+list_difference(['pursued', 'chase', 'chase after', 'trail', 'tail', 'tag', 'give chase', 'dog', 'go after', 'track', 'chase', 'chase after', 'chase', 'furrow', 'chamfer', 'chase'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['chamfer', 'go after', 'pursued', 'chase', 'chase after', 'dog', 'trail', 'tail', 'tag', 'track', 'give chase', 'furrow']
+find_most_freq_term(['chamfer', 'go after', 'pursued', 'chase', 'chase after', 'dog', 'trail', 'tail', 'tag', 'track', 'give chase', 'furrow'], {'crash': 0, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}) => None
+deltas: q=1.377337 s=0.000000 qs=0.000000
+Checking for synonym of standard term 'ambulance' among student terms
+list_difference([], ['downtown', 'attorney', 'chased', 'ambulance']) => []
+find_most_freq_term([], {'crash': 0, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}) => None
+deltas: q=1.377337 s=0.000000 qs=0.000000
+Answer.CalCosDist([{'StuS': '0. Lawyers practice law. ', 'End': 25, 'No': 1, 'StuWords': ['lawyer', 'practice', 'law'], 'StuSVec': {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}, 'Start': 0, 'ExpTerms': ['attorney->lawyer']}, {'StuS': 'The lawyer chased the vehicle downtown. ', 'End': 67, 'No': 2, 'StuWords': ['lawyer', 'chased', 'vehicle', 'downtown'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 3.5208005834344402, 'lawyer': 1.6606882843475215, 'vehicle': 2.3472003889562933, 'law': 0}, 'Start': 27, 'ExpTerms': ['attorney->lawyer']}, {'StuS': 'The vehicle chased back. ', 'End': 94, 'No': 3, 'StuWords': ['vehicle', 'chased', 'back'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}, 'Start': 69, 'ExpTerms': []}, {'StuS': 'Them lawyers crashes.! ', 'End': 119, 'No': 4, 'StuWords': ['lawyer'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}, 'Start': 96, 'ExpTerms': ['attorney->lawyer']}],_) => (0.87222794300551354, {'StuS': 'The lawyer chased the vehicle downtown. ', 'End': 67, 'No': 2, 'StuWords': ['lawyer', 'chased', 'vehicle', 'downtown'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 3.5208005834344402, 'lawyer': 1.6606882843475215, 'vehicle': 2.3472003889562933, 'law': 0}, 'Start': 27, 'ExpTerms': ['attorney->lawyer']})
+Point_No: P1
+stdsen: 1 ---  The attorney chased the ambulance downtown.
+stdvec: {'downtown': 2.3472003889562933, 'attorney': 2.3472003889562933, 'chased': 1.1736001944781467, 'ambulance': 1.1736001944781467}
+Max Relevance: 0.872227943006
+max_cos=0.872227943006; sen_rate=0.872227943006; len_match=1; sen_rate_match=0.872227943006; 
+stusen: 2 --- The lawyer chased the vehicle downtown. 
+stuvec: {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 3.5208005834344402, 'lawyer': 1.6606882843475215, 'vehicle': 2.3472003889562933, 'law': 0}
+Relevant Keyword: ['chased', 'downtown', 'lawyer', 'vehicle']
+expansion terms: ['attorney->lawyer']
+Answer.CalCosDist([{'StuS': '0. Lawyers practice law. ', 'End': 25, 'No': 1, 'StuWords': ['lawyer', 'practice', 'law'], 'StuSVec': {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}, 'Start': 0, 'ExpTerms': ['attorney->lawyer']}, {'StuS': 'The lawyer chased the vehicle downtown. ', 'End': 67, 'No': 2, 'StuWords': ['lawyer', 'chased', 'vehicle', 'downtown'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 3.5208005834344402, 'lawyer': 1.6606882843475215, 'vehicle': 2.3472003889562933, 'law': 0}, 'Start': 27, 'ExpTerms': ['attorney->lawyer']}, {'StuS': 'The vehicle chased back. ', 'End': 94, 'No': 3, 'StuWords': ['vehicle', 'chased', 'back'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}, 'Start': 69, 'ExpTerms': []}, {'StuS': 'Them lawyers crashes.! ', 'End': 119, 'No': 4, 'StuWords': ['lawyer'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}, 'Start': 96, 'ExpTerms': ['attorney->lawyer']}], {'TotalS_No': [2], 'SenWords': ['ambulance', 'chased'], 'End': 75, 'Start': 48, 'KeyS': ' The ambulance chased back.', 'No': 2, 'Point_No': 'P2', 'KeyBVec': [], 'KeySVec': {'downtown': 0, 'attorney': 0, 'chased': 1.1736001944781467, 'ambulance': 1.1736001944781467}})
+Checking for synonym of standard term 'downtown' among student terms
+list_difference(['business district'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['business district']
+find_most_freq_term(['business district'], {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}) => None
+deltas: q=0.000000 s=0.000000 qs=0.000000
+Checking for synonym of standard term 'attorney' among student terms
+list_difference(['lawyer'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['lawyer']
+find_most_freq_term(['lawyer'], {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}) => lawyer
+Using (student) synonym 'lawyer' to match (standard) word 'attorney'
+deltas: q=0.000000 s=2.233887 qs=0.000000
+Checking for synonym of standard term 'chased' among student terms
+list_difference(['pursued', 'chase', 'chase after', 'trail', 'tail', 'tag', 'give chase', 'dog', 'go after', 'track', 'chase', 'chase after', 'chase', 'furrow', 'chamfer', 'chase'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['chamfer', 'go after', 'pursued', 'chase', 'chase after', 'dog', 'trail', 'tail', 'tag', 'track', 'give chase', 'furrow']
+find_most_freq_term(['chamfer', 'go after', 'pursued', 'chase', 'chase after', 'dog', 'trail', 'tail', 'tag', 'track', 'give chase', 'furrow'], {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}) => None
+deltas: q=1.377337 s=0.000000 qs=0.000000
+Checking for synonym of standard term 'ambulance' among student terms
+list_difference([], ['downtown', 'attorney', 'chased', 'ambulance']) => []
+find_most_freq_term([], {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}) => None
+deltas: q=1.377337 s=0.000000 qs=0.000000
+deltas: q=0.000000 s=12.396037 qs=0.000000
+Checking for synonym of standard term 'attorney' among student terms
+list_difference(['lawyer'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['lawyer']
+find_most_freq_term(['lawyer'], {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 3.5208005834344402, 'lawyer': 1.6606882843475215, 'vehicle': 2.3472003889562933, 'law': 0}) => lawyer
+Using (student) synonym 'lawyer' to match (standard) word 'attorney'
+deltas: q=0.000000 s=2.233887 qs=0.000000
+deltas: q=1.377337 s=5.509350 qs=2.754675
+Checking for synonym of standard term 'ambulance' among student terms
+list_difference([], ['downtown', 'attorney', 'chased', 'ambulance']) => []
+find_most_freq_term([], {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 3.5208005834344402, 'lawyer': 1.6606882843475215, 'vehicle': 2.3472003889562933, 'law': 0}) => None
+deltas: q=1.377337 s=0.000000 qs=0.000000
+Checking for synonym of standard term 'downtown' among student terms
+list_difference(['business district'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['business district']
+find_most_freq_term(['business district'], {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}) => None
+deltas: q=0.000000 s=0.000000 qs=0.000000
+Checking for synonym of standard term 'attorney' among student terms
+list_difference(['lawyer'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['lawyer']
+find_most_freq_term(['lawyer'], {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}) => None
+deltas: q=0.000000 s=0.000000 qs=0.000000
+deltas: q=1.377337 s=5.509350 qs=2.754675
+Checking for synonym of standard term 'ambulance' among student terms
+list_difference([], ['downtown', 'attorney', 'chased', 'ambulance']) => []
+find_most_freq_term([], {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}) => None
+deltas: q=1.377337 s=0.000000 qs=0.000000
+Checking for synonym of standard term 'downtown' among student terms
+list_difference(['business district'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['business district']
+find_most_freq_term(['business district'], {'crash': 0, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}) => None
+deltas: q=0.000000 s=0.000000 qs=0.000000
+Checking for synonym of standard term 'attorney' among student terms
+list_difference(['lawyer'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['lawyer']
+find_most_freq_term(['lawyer'], {'crash': 0, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}) => lawyer
+Using (student) synonym 'lawyer' to match (standard) word 'attorney'
+deltas: q=0.000000 s=2.233887 qs=0.000000
+Checking for synonym of standard term 'chased' among student terms
+list_difference(['pursued', 'chase', 'chase after', 'trail', 'tail', 'tag', 'give chase', 'dog', 'go after', 'track', 'chase', 'chase after', 'chase', 'furrow', 'chamfer', 'chase'], ['downtown', 'attorney', 'chased', 'ambulance']) => ['chamfer', 'go after', 'pursued', 'chase', 'chase after', 'dog', 'trail', 'tail', 'tag', 'track', 'give chase', 'furrow']
+find_most_freq_term(['chamfer', 'go after', 'pursued', 'chase', 'chase after', 'dog', 'trail', 'tail', 'tag', 'track', 'give chase', 'furrow'], {'crash': 0, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}) => None
+deltas: q=1.377337 s=0.000000 qs=0.000000
+Checking for synonym of standard term 'ambulance' among student terms
+list_difference([], ['downtown', 'attorney', 'chased', 'ambulance']) => []
+find_most_freq_term([], {'crash': 0, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}) => None
+deltas: q=1.377337 s=0.000000 qs=0.000000
+Answer.CalCosDist([{'StuS': '0. Lawyers practice law. ', 'End': 25, 'No': 1, 'StuWords': ['lawyer', 'practice', 'law'], 'StuSVec': {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}, 'Start': 0, 'ExpTerms': ['attorney->lawyer']}, {'StuS': 'The lawyer chased the vehicle downtown. ', 'End': 67, 'No': 2, 'StuWords': ['lawyer', 'chased', 'vehicle', 'downtown'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 3.5208005834344402, 'lawyer': 1.6606882843475215, 'vehicle': 2.3472003889562933, 'law': 0}, 'Start': 27, 'ExpTerms': ['attorney->lawyer']}, {'StuS': 'The vehicle chased back. ', 'End': 94, 'No': 3, 'StuWords': ['vehicle', 'chased', 'back'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}, 'Start': 69, 'ExpTerms': []}, {'StuS': 'Them lawyers crashes.! ', 'End': 119, 'No': 4, 'StuWords': ['lawyer'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}, 'Start': 96, 'ExpTerms': ['attorney->lawyer']}],_) => (0.70710678118654757, {'StuS': 'The vehicle chased back. ', 'End': 94, 'No': 3, 'StuWords': ['vehicle', 'chased', 'back'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}, 'Start': 69, 'ExpTerms': []})
+Point_No: P2
+stdsen: 2 ---  The ambulance chased back.
+stdvec: {'downtown': 0, 'attorney': 0, 'chased': 1.1736001944781467, 'ambulance': 1.1736001944781467}
+Max Relevance: 0.707106781187
+max_cos=0.707106781187; sen_rate=0.707106781187; len_match=1; sen_rate_match=0.707106781187; 
+stusen: 3 --- The vehicle chased back. 
+stuvec: {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}
+Relevant Keyword: ['chased', 'vehicle']
+expansion terms: []
+Answer.Mark(_,_,[{'StuS': '0. Lawyers practice law. ', 'End': 25, 'No': 1, 'StuWords': ['lawyer', 'practice', 'law'], 'StuSVec': {'crash': 0, 'practice': 3.5208005834344402, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 3.5208005834344402}, 'Start': 0, 'ExpTerms': ['attorney->lawyer']}, {'StuS': 'The lawyer chased the vehicle downtown. ', 'End': 67, 'No': 2, 'StuWords': ['lawyer', 'chased', 'vehicle', 'downtown'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 3.5208005834344402, 'lawyer': 1.6606882843475215, 'vehicle': 2.3472003889562933, 'law': 0}, 'Start': 27, 'ExpTerms': ['attorney->lawyer']}, {'StuS': 'The vehicle chased back. ', 'End': 94, 'No': 3, 'StuWords': ['vehicle', 'chased', 'back'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 2.3472003889562933, 'downtown': 0, 'lawyer': 0, 'vehicle': 2.3472003889562933, 'law': 0}, 'Start': 69, 'ExpTerms': []}, {'StuS': 'Them lawyers crashes.! ', 'End': 119, 'No': 4, 'StuWords': ['lawyer'], 'StuSVec': {'crash': 0, 'practice': 0, 'chased': 0, 'downtown': 0, 'lawyer': 1.6606882843475215, 'vehicle': 0, 'law': 0}, 'Start': 96, 'ExpTerms': ['attorney->lawyer']}]) => ['P1', 'P2']
+Answer.Comparison(['P1', 'P2'], [{'Mark': 10, 'Point': ['P1', 'P2']}, {'Mark': 5, 'Point': ['P1']}, {'Mark': 5, 'Point': ['P2']}]) => (10, ['P1', 'P2'])
+Answer.Omitted(_,_,_) => (10, ['C1 The attorney chased the ambulance downtown. ', 'C2 The ambulance chased back. '])
+Answer.Analysis(_,_,_,_,_) => (10, ['P1', 'P2'], ['C1 The attorney chased the ambulance downtown. ', 'C2 The ambulance chased back. '])
+Result:
+
+Mark: 10
+List: ['P1', 'P2']
+Omitted: ['C1 The attorney chased the ambulance downtown. ', 'C2 The ambulance chased back. ']
+stop algo/answer.py: 2013-07-07 03:40:20.731998

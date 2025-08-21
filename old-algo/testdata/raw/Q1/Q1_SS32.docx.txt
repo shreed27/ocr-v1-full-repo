@@ -1,0 +1,21 @@
+(6 marks)
+
+Alfred Li
+
+Q1. Explain what is meant by a production possibility curve and use a production possibility curve diagram to explain the concepts of scarcity, choice and opportunity cost. [10m]
+
+Scarcity is the condition that countries (and also individuals) have to face because productive resources (or factors of production) are insufficient to satisfy people’s unlimited wants and desires. Opportunity cost is defined as the ratio of what is given up divided by what is gained. Choice is defined as the decision in which countries have to make in whether or not to produce more capital goods or the consumer goods.
+
+The production possibility curve is a hypothetical representation of the amount of two different goods that can be obtained by shifting resources from the production of one, to the production of the other.
+
+The (((diagram W))) illustrates the concept of the PPC
+
+Scarcity is the problem in which society faces due to limited resources and unlimited wants. Therefore, due to a lack of resources, it is impossible for countries to be able to reach point E in the graph, or any other point outside of the production possibility curve, also known as the unattainable points. A good example of such goods would be the sale of rare or luxury items such as diamonds, in which there is low amount of availability of the goods in the world, hence production of such goods can never exceed the PPC, such as that in point E, thus prompting the price of such goods to be increased, thus lowering the demand.
+
+Choice is the decision in which countries have to make, in whether they want to produce more capital goods or consumer goods, as the increased production of one kind of goods would result in the decrease of the other, due to limited capital. For example, at point A in the graph, it shows a high production in capital goods, but a low production in consumer goods. This is due to capital being spent more on capital goods, leaving lesser capital for consumer goods. Similarly, at point C in the graph, increased production of consumer goods results in a lower production of capital goods. This is due to the country choosing allocate more funds into consumer goods, sacrificing the production of capital goods. 
+
+Opportunity cost refers to the next best alternative forgone. For example, if you choose to spend time and money going to a movie, you cannot spend that time at home reading a book, and you cannot spend the money on something else. If your next-best alternative to seeing the movie is reading the book, then the opportunity cost of seeing the movie is the money spent plus the pleasure you forgo by not reading the book.
+
+Alfred Li
+
+5.18

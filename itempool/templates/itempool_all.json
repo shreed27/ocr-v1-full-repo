@@ -1,0 +1,12 @@
+{ "aaData": [
+	{% for i in itempools %}
+            {% if forloop.last %}
+	["{{ i.poolname}}","{{ i.description|safe}}",
+		"<a href=javascript:deleteitempool('{{i.id}}') class='delBtn'><font color=black>Delete</font></a><a href='/itempool/add/?itempoolid={{i.id}}' class='modBtn'><font color=black>Modify</font></a><a href= '/itempool/add/?view=1&itempoolid={{i.id}}' class='viewBtn'><font color=black>View</font>"]
+            {% else %}
+	["{{ i.poolname}}","{{ i.description|safe}}",
+        "<a href=javascript:deleteitempool('{{i.id}}') class='delBtn'><font color=black>Delete</font></a><a href='/itempool/add/?itempoolid={{i.id}}' class='modBtn'><font color=black>Modify</font></a><a href= '/itempool/add/?view=1&itempoolid={{i.id}}' class='viewBtn'><font color=black>View</font>"],
+            {% endif %}
+    {% endfor %}
+	
+] }

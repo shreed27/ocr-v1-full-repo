@@ -1,0 +1,11 @@
+{ "aaData": [
+	{% for e in assignments %}
+    {% if forloop.last%}
+	["{{ e.assignmentname }}","{{ e.date_created }}","{{ e.description }}",
+		"<a href='../assignment/editor' class='modBtn'><font color=black>modify</font></a><a class='delBtn' href=#><font color=black>delete</font></a><a class='viewBtn' href='../assignment/viewquestions/{{e.id}}'><font color=black>view</font></a>"]
+    {% else %}
+	["{{ e.assignmentname }}","{{ e.date_created }}","{{ e.description }}",
+		"<a href='../assignment/editor' class='modBtn'><font color=black>modify</font></a><a href=# class='delBtn'><font color=black>delete</font></a><a href='../assignment/viewquestions/{{e.id}} class='viewBtn'><font color=black>view</font></a>"],
+    {% endif %}
+    {% endfor %}
+] }

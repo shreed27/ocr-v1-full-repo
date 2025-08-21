@@ -1,0 +1,103 @@
+{% load i18n %}
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>Student's Report</title>
+    <style>
+    
+    table, th, td
+    {
+        
+       
+        border-collapse:collapse;
+        border:1px solid #000 ;
+        page-break-inside:auto;
+        
+    }
+    tr{
+        page-break-inside:avoid;
+        page-break-after:auto;
+    }
+    th, td
+    {
+        padding:15px;
+    }
+    
+    /*@media print
+        {
+            table
+            {
+                page-break-after: always;
+            }
+        }*/
+    </style>
+    <!--<script type="text/javascript">-->
+    <!--function printDirections() {-->
+    <!--    -->
+    <!--var contents = document.getElementById("paper");-->
+    <!--document.write(contents.innerHTML);-->
+    <!--window.print();-->
+    <!--}-->
+    <!--</script>-->
+    <script src="jquery.printPage.js" type="text/javascript"></script>
+    <!--<script>  -->
+    <!--$(document).ready(function() {-->
+    <!--$(".paper").printPage();-->
+    <!--});-->
+    <!--</script>-->
+    <script>
+        function myfunction()
+        {
+            var contents = document.getElementById("paper");
+            window.print(contents);
+        }
+           
+    </script>
+<body>
+    {% load paper_tags %}
+    <div id="paper">
+    <p>{% trans "Assignment Number " %}: {{assign_no}}</p>
+    <p>{% trans "Student Index Number " %}:&nbsp{{user}}</p>
+    <table>
+        <thead>
+        <tr>
+            <th>{% trans "Question" %}</th>
+            <th>{% trans "Student Answer" %}</th>
+            <th>{% trans "Actual Answer" %}</th>
+            <th>{% trans "Max. Marks" %}</th>
+            <th>{% trans "Attained Marks" %}</th>
+             <th>{% trans "Teacher's Feedback" %}</th>
+            <th>{% trans "FBcode" %}</th>
+        </tr>
+        </thead>
+        {% for s in stu %}
+    
+        <tr>
+            <td>{{s.question.qname}}</td>
+            <td>{{s.txt_answer}}</td>
+            <td>{{s.question.stdanswertext}}</td>
+            <td>{{s.question.markscheme|actual_mark}}</td>
+            <td>{{s.mark}}</td>
+            
+            {% if forloop.first %}
+               <td rowspan={{que|length|add:1}}></td>
+               <td rowspan={{que|length|add:1}}></td>
+            {% endif %}
+            {% if forloop.last %}
+                <tr>
+                <td colspan=3 align="center" >{% trans "Total" %}</td>
+                <td>{{sum}}</td>
+                <td>{{smark}}</td>
+                </tr>
+            {% endif %}
+         </tr>
+        {%endfor%}
+        </table>
+    </div>
+    <p align="center">
+    <button type="button" onclick="myfunction();">{% trans "Print" %}</button>
+    </p>
+   
+   </body>
+    
+</html>

@@ -1,0 +1,30 @@
+#paper_detail_form label{
+width:100px;
+margin:-1em -1em 2px;
+}
+
+#paper_detail_form select{
+width:120px;
+margin:-1em 5em 2px;
+}
+#paper_detail_form input{
+width:120px;
+margin:-1em 5em 2px;
+}
+
+#paper_detail_form #papername{
+display:block;
+width:140px;
+float:left;
+padding:3px 0 0 3px;
+margin:-1em 5em 2px 4em;
+}
+
+#paper_detail_form #papername input{
+margin:0 0;
+}
+
+#paper_detail_form #button{
+
+  margin:-1em 10em 2px;
+}

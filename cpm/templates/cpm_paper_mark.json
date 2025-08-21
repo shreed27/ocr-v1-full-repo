@@ -1,0 +1,10 @@
+{ "aaData": [
+    {% for p,s,m,c in takedpaperlist %}
+	["{{ p.year.yearname }}"," {{ p.subject.subjectname }}", "{{ p.level.levelname }}","{{ s.user.username }}", "{{ p.assignment.asm_assignmentname }}/{{ p.ppr_papername }}", "{{m}}", "{{c}}",
+		"<input type='checkbox' name ='{pid:{{ p.id }}, stuid:{{s.user.id}}}'/>View ",
+		"<a class='popbox' onClick='$(this).colorbox()'  href='/cpm/report/popup/{{p.id}}/{{s.user.id}}/'>Feedback</a>"] 
+	{% if not forloop.last %}
+	      ,
+	{% endif %}
+    {% endfor %}
+] }

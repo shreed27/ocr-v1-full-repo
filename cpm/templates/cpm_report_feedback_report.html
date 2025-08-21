@@ -1,0 +1,117 @@
+{% load paper_tags %}
+{% load i18n %}
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>{% trans "Student's Report" %}</title>
+    <script src="{{ STATIC_URL }}js/jquery.printPage.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".btnPrint").printPage();
+        });
+    </script>
+    <style>
+    table, th, td
+    {
+     
+        border:2px solid #000000;
+        border-spacing: 0;
+        border-color: #000000;
+      /*  border-width:1 1px 1px 1 !important;*/
+        page-break-after: auto;
+        font-family:"Times New Roman",Georgia,Serif;
+        font-size: 21px;
+    }
+    th
+    {
+ 
+        padding:2px;
+        
+    }
+    td{
+        border-color:#000000 ;
+        border-left: 1px solid;
+        border-bottom:1px solid ;
+        border-top:1px solid ;
+        padding: 20px;
+       
+    }
+     @page {  
+    size: 11in 17in;  
+    margin-left: 1in;  
+    margin-right: 1in;  
+    margin-top: 1in;  
+    margin-bottom: 1in;  
+    } 
+  
+    </style>  
+</head>    
+
+<body>
+    <!--{% for st in stu %}
+     {% if forloop.first %}
+    <span style="float: right; font-size: 15px;"><b>Time Taken:</b> {{ st.timestamp|date:"D, d M Y" }}</span>
+    {% endif %}
+    {% endfor %}-->
+    <div class = 'box' id="box1" style="height:600px; width:900px;" >
+    <p style="font-family:Times New Roman;font-size: 20px">
+    {% for st in stu %}
+    {% if forloop.first %}
+    <span style="float: right; font-size: 15px;"><b>{% trans "Time Taken:" %}</b> {{ st.sta_timestamp|date:"D, d M Y" }}</span>
+    {% endif %}
+    {% endfor %}<br>
+    <span style="float: left">{% trans "Assignment Number" %} : {{paper.ppr_papername}}</span>
+    <span style="float: right">{% trans "Student Index Number" %} : {{user}}</span><br>
+    </p> 
+    <table style="width:100%;">
+        <thead>
+        <tr> 
+            <th colspan="3"> </th>
+            <th><b><center>{% trans "Teacher's Feedback" %}</center></b></th>
+            <th><b><center>{% trans "FBcode" %}</center></b></th>
+        </tr>
+        </thead>
+
+	<thead>
+		<tr>
+		<th colspan="5"><b><center>{% trans "Question" %}</center></b></th>
+		 
+		</tr>
+	</thead>
+        <tbody>
+         <tr>
+	<td colspan="5"> {{answer_html|safe}}
+</td>	</tr>
+
+
+    <tr>
+        <td colspan=1><center><b>&#x2612; {% trans "Total" %}</b></center></td>
+        <td><center><b></b></center></td>
+        <td><center><b>{{smark}}</b></center></td>
+        <td>&nbsp</td>
+        <td>&nbsp</td>
+    </tr>
+
+    </tbody>
+    <tfoot>
+         <tr>
+            <td colspan = 7><center>{% trans "Feedback Report" %}</center></td>
+         </tr>
+    </tfoot>
+    </table>
+    <br>
+    <p align = "left" style="font-family:Times New Roman;font-size: 20px">
+         <span style="float: left">{% trans "Note: The underlined points are points which you have left out in your answer script." %}</span>
+    </p>
+    <br>
+
+
+    {% if print %}
+    <p align="center">
+        <a class="btnPrint blueBtn" href="/cpm/report/feedback_report/{{paper.id}}/{{user.id}}/">{% trans "Print" %}</a>
+    </p>
+    {% endif %}
+    
+    </div>
+    </body>
+</html>

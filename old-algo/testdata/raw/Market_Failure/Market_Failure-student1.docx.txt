@@ -1,0 +1,9 @@
+How is the increased usage of cars in Beijing seen to be causing an externality?
+
+The increased usage of cars in Beijing results in negative externalities due to consumption. Externalities refer to a third party spillover effect caused by an economic activity. Prices are not accurate because producers and consumers do not consider the cost or benefit of third parties that are not directly involved in the economic activity. 
+
+Figure 1: Graph of Negative Externalities due to consumption
+
+When there are externalities, this means that there is no social efficiency.  At the point of social efficiency, MSB=MPC. However, the increased usage of cars indicates that there is an over consumption of cars. This activity generates external costs. For example, a spillover cost to third parties include expenditure on medical costs by the government, and also higher health insurance premiums because the usage of cars cause air pollution, which would harm the health of people. Hence, this causes the marginal private benefit to be greater than the marginal social benefit. 
+
+Referring to Figure 1, consumers only consider their private costs and benefit and consume cars at quantity Q1, where MPB=MPC. To reduce the consumption of cars, the Chinese government need to intervene which discourages the consumption of cars. This includes increasing the cost of owning a car by making it compulsory for car owners to purchase certificates of entitlement (COE). These COEs would then make the cars road legal. The government can also make the public transport system more reliable and efficient so that the public would be encouraged to use public transport. Lastly, the government cans subsidies vehicles, which operate using clean fuel. 
