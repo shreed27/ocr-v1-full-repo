@@ -1,7 +1,7 @@
 # wordnet.py: module for WordNet access using NLTK WordNet package
 #
 
-from common import *
+from .common import *
 debug_print("algo/wordnet.py: " + debug_timestamp(), level=3)
 
 import re
@@ -173,7 +173,7 @@ def get_synset_hypernyms(synset, max_dist=1, processed=None, indent=""):
             processed = dict()
         all_hypernyms = hypernyms
         for hypernym in hypernyms:
-            if processed.has_key(hypernym):
+            if hypernym in processed:
                 debug_print("Skipping already processed hypernym: " + str(hypernym), level=8)
                 continue;
             processed[hypernym] = True
@@ -215,5 +215,5 @@ if __name__ == '__main__':
         debug_print("Synset for lawyer.n.01: " + str(get_synset("lawyer.n.01")))
         debug_print("Synonyms of lawyer: " + str(get_synonyms("n:lawyer")))
         debug_print("Immediate hypernym terms of lawyer: " + str(get_hypernym_terms("n:lawyer")))
-        debug_print("All hypernym terms of lawyer: " + str(get_hypernym_terms("n:lawyer", max_dist=sys.maxint)))
+        debug_print("All hypernym terms of lawyer: " + str(get_hypernym_terms("n:lawyer", max_dist=sys.maxsize)))
     debug_print("end: " + debug_timestamp(), level=3)

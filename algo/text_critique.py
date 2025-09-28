@@ -3,9 +3,9 @@
 # critique.py: Peforms qualitative analysis of texts (e.g., grammar checking)
 #
 
-from common import *
+from .common import *
 
-from check_grammar import check_text_grammar  # invokes external grammar checker
+from .check_grammar import check_text_grammar  # invokes external grammar checker
 import nltk                             # NLP toolkit
 
 # OS support
@@ -72,13 +72,13 @@ def normalize(text):
     """Normalize text to account for likely problems with the critiques, mostly with non-ascii characters like smart quotes converted to ascii"""
     debug_print("normalize(): text={\n%s}\ntype=%s: hex=%s\n" % (text, type(text), hex_string(text)), 6)
     text = text.replace("\t", "    ")         # expand tabs
-    if (type(text) == unicode):
-        text = text.replace(u'\u2018', "'")   # opening single quote
-        text = text.replace(u'\u2019', "'")   # closing single quote
-        text = text.replace(u'\u201C', '"')   # opening double quote
-        text = text.replace(u'\u201D', '"')   # closing double quote
-        text = text.replace(u'\u00A0', " ")   # non-breaking space
-        text = text.replace(u'\u2013', "-")   # en dash
+    if (type(text) == str):
+        text = text.replace('\u2018', "'")   # opening single quote
+        text = text.replace('\u2019', "'")   # closing single quote
+        text = text.replace('\u201C', '"')   # opening double quote
+        text = text.replace('\u201D', '"')   # closing double quote
+        text = text.replace('\u00A0', " ")   # non-breaking space
+        text = text.replace('\u2013', "-")   # en dash
     else: 
         text = text.replace("\x91", "'")      # opening single quote (U+2018)
         text = text.replace("\x92", "'")      # closing single quote (U+2019)
@@ -126,10 +126,10 @@ def main():
         text = read_file(sys.argv[1])
         tc.analyze(text)
         ## OLD: print "results: %s" % tc.get_detailed_grammar_results()
-        print "results:"
+        print("results:")
         results = tc.get_detailed_grammar_results()
-        for key in results.keys():
-            print "%s: {\t%s\n}" % (key, results[key].replace("\n", "\n\t"))
+        for key in list(results.keys()):
+            print("%s: {\t%s\n}" % (key, results[key].replace("\n", "\n\t")))
         return
 
     # Otherwise run canned example
@@ -138,9 +138,9 @@ def main():
     # Analyze text and show results
     dawg_text = "1 . My dog has fleas.\n2 . His dawg were me.\n3 . Who dawg you?\n"
     tc.analyze(dawg_text)
-    print("text: {\n%s}" % dawg_text)
-    print("grammar issues: {\n%s}" % tc.get_grammatical_errors())
-    print("grammar percentage: %s" % tc.percent_grammar_errors())
+    print(("text: {\n%s}" % dawg_text))
+    print(("grammar issues: {\n%s}" % tc.get_grammatical_errors()))
+    print(("grammar percentage: %s" % tc.percent_grammar_errors()))
 
     # Run unit tests for expected results
     # TODO: convert assertions into unit tests proper

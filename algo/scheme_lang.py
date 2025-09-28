@@ -49,7 +49,8 @@ import collections
 
 # Load supporting libraries
 #
-from common import *
+from .common import *
+from functools import reduce
 
 class MarkingSchemeLang(object):
 
@@ -128,7 +129,7 @@ class MarkingSchemeLang(object):
             self.allFlag = 2
             self.allNum = p[3]
         else:
-            print "len:%d" % len(p)
+            print("len:%d" % len(p))
 
     def p_onlysent(self, p):
         '''onlysent : ONLY block'''
@@ -175,7 +176,7 @@ class MarkingSchemeLang(object):
         elif len(p) == 2:
             self.pointlistArray.append(p[1])
         else:
-            print p
+            print(p)
 
     def p_block(self, p):
         '''block    : POINT
@@ -187,7 +188,7 @@ class MarkingSchemeLang(object):
         elif len(p) == 2:
             self.blockArray.append((p[1], "last"))
         else:
-            print p
+            print(p)
 
     # Error rule for syntax errors
     def p_error(self, p):
@@ -220,7 +221,7 @@ class MarkingSchemeLang(object):
     def flatten(self, l):
         debug_print("MarkingSchemeLang:flatten(%s)" % l, level=5)
         for el in l:
-            if isinstance(el, collections.Iterable) and not isinstance(el, basestring):
+            if isinstance(el, collections.Iterable) and not isinstance(el, str):
                 for sub in self.flatten(el):
                     yield sub
             else:
@@ -415,20 +416,20 @@ def show_simple_example():
         debug_print("result: %s" % str(result))
     
     # Create the example specification
-    print "Simple example"
-    print
+    print("Simple example")
+    print()
     points = ['P1.1', 'P1.2', 'P2', 'P3', 'P4']
     spec = "all less 2 combinations of P2;P3;P4"
     mark = 70
-    print "Points: %s" % str(points)
-    print "Spec: %s" % spec
-    print "Mark: %d" % mark
+    print("Points: %s" % str(points))
+    print("Spec: %s" % spec)
+    print("Mark: %d" % mark)
 
     # Analyze the specification and display the expanded rules
     msl = MarkingSchemeLang(points)
     for (rule, score) in msl.analysis(spec, mark):
-        print "Rule: %s; Score: %d" % (rule, score)
-    print
+        print("Rule: %s; Score: %d" % (rule, score))
+    print()
 
 
 # Run simple test if invoked from command line
@@ -441,9 +442,9 @@ if __name__ == "__main__":
         show_simple_example()
 
     # Initialize the grading scheme parsing
-    print "Test set"
+    print("Test set")
     allpoints = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P3.24', 'P03.240']
-    print "All Points:%s\n" % allpoints
+    print("All Points:%s\n" % allpoints)
     sc = MarkingSchemeLang(allpoints)
 
     # Create simple test set
@@ -480,7 +481,7 @@ if __name__ == "__main__":
         # Note: generator output expanded here to encapsulate exceptions.
         negative_test = (test_num < num_neg_tests)
         test_num += 1
-        print "Test:%d Sent:'%s' | Score:%d | Negative:%s" % (test_num, sent, score, negative_test)
+        print("Test:%d Sent:'%s' | Score:%d | Negative:%s" % (test_num, sent, score, negative_test))
         try:
             rlist = [tuple for tuple in sc.analysis(sent, score) if tuple]
         except:
@@ -498,15 +499,15 @@ if __name__ == "__main__":
         # Display the result
         debug_print("rlist: %s" % str(rlist))
         if negative_result:
-            print "This sentence cannot fit grammar"
-            print "--------------------------\n"
+            print("This sentence cannot fit grammar")
+            print("--------------------------\n")
             continue
         for rule, score in rlist:
-            print "Rule:%s | Score:%d" % (rule, score)
-            print "--------------------------\n"
+            print("Rule:%s | Score:%d" % (rule, score))
+            print("--------------------------\n")
 
     # Print summary
-    print "%d of %d rules processed as expected" % (num_good, len(data))
+    print("%d of %d rules processed as expected" % (num_good, len(data)))
 
     # End of processing
     debug_print("stop: " + debug_timestamp(), level=2)

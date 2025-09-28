@@ -7,9 +7,9 @@
 
 # Local packages
 #
-from common import *
+from .common import *
 debug_print("algo/standard.py: " + debug_timestamp())
-import wordnet
+from . import wordnet
 
 # Other packages
 #

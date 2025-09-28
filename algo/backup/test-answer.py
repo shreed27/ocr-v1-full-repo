@@ -5,10 +5,10 @@
 
 # Local packages
 #
-from common import *
+from .common import *
 debug_print("algo/answer.py: " + debug_timestamp())
-import wordnet
-import text
+from . import wordnet
+from . import text
 
 # Other packages
 #
@@ -31,7 +31,7 @@ def find_most_freq_term(terms, freq_dist_hash):
     max_freq = 0
     max_word = None
     for word in terms:
-        if (freq_dist_hash.has_key(word) and (freq_dist_hash[word] > max_freq)):
+        if (word in freq_dist_hash and (freq_dist_hash[word] > max_freq)):
             max_freq = freq_dist_hash[word]
             max_word = word
     debug_print("find_most_freq_term%s => %s" % (str((terms, freq_dist_hash)), max_word), level=6)
@@ -126,7 +126,7 @@ class Answer:
         for sentence in ans_sentencelist:
             debug_print("sentence: " + str(sentence), level=6)
             fdist = nltk.FreqDist(sentence['StuWords'])
-            max_freq = max([f for f in fdist.values()])
+            max_freq = max([f for f in list(fdist.values())])
             log_max_freq = math.log(max_freq) if (max_freq > 1) else 1
             senvec = {}
             for word in sorted(textfdist):
@@ -161,11 +161,11 @@ class Answer:
         match_sen = None
         max_cos = 0
         apply_term_expansion = (self.apply_synonym_expansion or self.apply_ancestor_expansion)
-        all_std_words = std_sen['KeySVec'].keys()
+        all_std_words = list(std_sen['KeySVec'].keys())
         for stu_sen in ans_sentencelist:
             # Make sure student sentence not already matched
             # TODO: Rework the already-matched check to be in terms of words not sentences (e.g., in case student just gives one long sentence).
-            if (self.only_match_sentence_once and stu_sen.has_key('Selected')):
+            if (self.only_match_sentence_once and 'Selected' in stu_sen):
                 debug_print("Ingoring already matched sentence %s" % stu_sen['No'])
                 continue
             # Compute measure for current sentence
@@ -182,7 +182,7 @@ class Answer:
                 # Also, expansions omit standard terms to avoid counting evidence twice.
                 # TODO: Scale ancestor weight by degree of generality.
                 std_freq = std_sen['KeySVec'][word]
-                stu_freq = stu_sen['StuSVec'][word] if stu_sen['StuSVec'].has_key(word) else 0
+                stu_freq = stu_sen['StuSVec'][word] if word in stu_sen['StuSVec'] else 0
                 std_word = word
                 if ((stu_freq == 0) and apply_term_expansion):
                     stu_word = std_word
@@ -306,7 +306,7 @@ class Answer:
                     # TODO: Track down when not defined
                     if (self.apply_synonym_expansion or self.apply_ancestor_expansion):
                         ## OLD: debug_print('expansion terms: ' + str(match_sen['ExpTerms']))
-                        exp_terms = match_sen['ExpTerms'] if match_sen.has_key('ExpTerms') else []
+                        exp_terms = match_sen['ExpTerms'] if 'ExpTerms' in match_sen else []
                         debug_print('expansion terms: ' + str(exp_terms))
                 else:
                     debug_print('stusen/stuvec/Relevant Keyword: n/a')
@@ -451,8 +451,8 @@ if __name__ == '__main__':
     scheme = [("all", 10), ("only P1 or P2", 5)]
 
     # Do initialization
-    from standard import *
-    from markscheme import *
+    from .standard import *
+    from .markscheme import *
     ans = Answer()
     std = Standard()
 
@@ -460,7 +460,7 @@ if __name__ == '__main__':
     pointlist, key_freq_dist, key_sentencelist = std.Analysis(key_full_text)
     stu_full_text_proper = re.sub(r"\d+\s\.", " ", stu_full_text)
     #
-    print "Input:\n\nKey: %s\nScheme: %s\nStudent: %s\n" % (key_full_text, str(scheme), stu_full_text)
+    print("Input:\n\nKey: %s\nScheme: %s\nStudent: %s\n" % (key_full_text, str(scheme), stu_full_text))
     text_pointlist = [point['Point_No'] for point in pointlist if 'P0.' not in point['Point_No']]
     ms = MarkScheme(text_pointlist)
     rulelist = [r for r in ms.GetRules(scheme)]
@@ -473,5 +473,5 @@ if __name__ == '__main__':
     # Note: The frequency distribution needs to be done over the question for term expansion to work.
     ## BAD: mark, marklist, omitted = ans.Analysis(stu_full_text_proper, key_freq_dist, key_sentencelist, pointlist, rulelist)
     mark, marklist, omitted = ans.Analysis(stu_full_text_proper, stu_freq_dist, key_sentencelist, pointlist, rulelist)
-    print "Result:\n\nMark: %s\nList: %s\nOmitted: %s" % (str(mark), str(marklist), str(omitted))
+    print("Result:\n\nMark: %s\nList: %s\nOmitted: %s" % (str(mark), str(marklist), str(omitted)))
     debug_print("stop algo/answer.py: " + debug_timestamp())

@@ -13,7 +13,7 @@
 # Copyright (C) 2013 Tom O'Hara
 #
 
-from __future__ import print_function           # enables version 3 print()
+           # enables version 3 print()
 
 # Load required libraries
 #

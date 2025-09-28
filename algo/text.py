@@ -7,10 +7,10 @@
 
 # Local packages
 #
-from common import *                     # common routines (mostly debugging)
+from .common import *                     # common routines (mostly debugging)
 debug_print("algo/standard.py: " + debug_timestamp())
-import wordnet				 # word information (dictionary, thesaurus, etc.)
-from text_critique import TextCritique	 # qualitative critique (e.g., grammar checking)
+from . import wordnet				 # word information (dictionary, thesaurus, etc.)
+from .text_critique import TextCritique	 # qualitative critique (e.g., grammar checking)
 
 # Other packages
 #

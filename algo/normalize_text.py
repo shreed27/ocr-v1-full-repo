@@ -13,8 +13,8 @@
 #------------------------------------------------------------------------
 # Library packages
 
-from common import *
-from text_critique import *
+from .common import *
+from .text_critique import *
 
 # OS support
 import os
@@ -57,7 +57,7 @@ def main():
         elif (args[arg_pos] == "--text"):
             arg_pos += 1
             # Normalize text from command line
-            print("%s" % normalize(args[arg_pos]))
+            print(("%s" % normalize(args[arg_pos])))
             sys.exit()
         else:
             print_stderr("Error: unexpected argument '%s'" % args[arg_pos])
@@ -66,7 +66,7 @@ def main():
     file = args[arg_pos]
 
     # Normalize text file
-    print("%s" % normalize(read_file(file)))
+    print(("%s" % normalize(read_file(file))))
 
     # Cleanup
     debug_print("stop %s: %s" % (__file__, debug_timestamp()), 3)

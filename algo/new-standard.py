@@ -5,11 +5,11 @@
 
 # Local packages
 #
-from common import *                    # common routines (mostly debugging)
+from .common import *                    # common routines (mostly debugging)
 debug_print("algo/standard.py: " + debug_timestamp(), 3)
-import wordnet                          # word information (dictionary, thesaurus, etc.)
-import text                             # text preprocessing
-from text_critique import TextCritique   # qualitative critique (e.g., grammar checking)
+from . import wordnet                          # word information (dictionary, thesaurus, etc.)
+from . import text                             # text preprocessing
+from .text_critique import TextCritique   # qualitative critique (e.g., grammar checking)
 
 # Other packages
 #
@@ -152,7 +152,7 @@ class Standard:
         special = {'<': ' ', '>': '', '(': '',
                    ')': '', '.': '', ',': '',
                    '""': ''}			# TODO: See if this should be '"'
-        for (k, v) in special.items():
+        for (k, v) in list(special.items()):
             text = text.replace(k, v)
         debug_print(" => %s" % text, level=5)
         return text
@@ -218,7 +218,7 @@ class Standard:
             # OLD: # word.lower() + '/' + tag
             fdist = nltk.FreqDist(sentence['SenWords'])
             try:
-                max_freq = max([f for f in fdist.values()])
+                max_freq = max([f for f in list(fdist.values())])
             except:
                 print_stderr("Exception in Standard.SentenceCal: " + str(sys.exc_info()))
                 max_freq = 1
@@ -274,12 +274,12 @@ if __name__ == '__main__':
         if (not re.search(r"^\s*\d+\s.*", full_text)):
             print_stderr("Warning: adding dummy question/point indictors to text")
             full_text = "0 . " + full_text.replace("\n", " ") + "\n"
-    print "Input:\n\n%s\n" % full_text
+    print("Input:\n\n%s\n" % full_text)
     std = Standard()
     (pointlist, textfdist, slist) = std.Analysis(full_text)
     if (full_text == default_full_text):
         assert(['P1', 'P2'] == [hash['Point_No'] for hash in slist])
-    print "Output: \n\nPoints: %s\nDist: %s\nSents: %s\n" % (str(pointlist), str(textfdist), str(slist))
+    print("Output: \n\nPoints: %s\nDist: %s\nSents: %s\n" % (str(pointlist), str(textfdist), str(slist)))
     if __debug__ and std.apply_grammar_checking:
-        print("critique: %s" % std.Critique(full_text))
+        print(("critique: %s" % std.Critique(full_text)))
     debug_print("stop algo/standard.py: " + debug_timestamp())

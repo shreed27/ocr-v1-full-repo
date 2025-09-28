@@ -82,7 +82,7 @@ class EquationCompare(object):
             elif who == "Student":
                 _text = self.stu_sentece_text
         except KeyError as exp:
-            print 'Exception at eqn extraction in get_equation = ', exp
+            print('Exception at eqn extraction in get_equation = ', exp)
             traceback.print_exc()
         else:
             if _text:
@@ -150,18 +150,18 @@ class EquationCompare(object):
         _special_symbol = 0
         non_intersection_value = list()
         # Storing number of * & the value contains *
-        for _val in std_vector.keys():
+        for _val in list(std_vector.keys()):
             if _val.__contains__("*"):
                 _special_symbol += std_vector[_val]
                 non_intersection_value.append(_val)
-        if stu_vector.has_key("*"):
+        if "*" in stu_vector:
             _special_symbol -= stu_vector["*"]
         intersection = set(std_vector.keys()) & set(stu_vector.keys())
         numerator = sum([std_vector[x] * stu_vector[x]
                          for x in intersection])
         non_intersection_sum = 0
         # storing no of non_matched value
-        for _val in stu_vector.keys():
+        for _val in list(stu_vector.keys()):
             if _val not in intersection:
                 non_intersection_sum += stu_vector[_val]
                 non_intersection_value.append(_val)
@@ -171,10 +171,10 @@ class EquationCompare(object):
             non_intersection_value = list()
         # Cosine similarity formula
         _sum1 = sum([std_vector[x]**2
-                     for x in std_vector.keys()
+                     for x in list(std_vector.keys())
                      if x not in non_intersection_value])
         _sum2 = sum([stu_vector[x]**2
-                     for x in stu_vector.keys()
+                     for x in list(stu_vector.keys())
                      if x not in non_intersection_value])
         denominator = math.sqrt(_sum1) * math.sqrt(_sum2)
         if not denominator:
@@ -201,7 +201,7 @@ class EquationCompare(object):
         """
         std_oporater_list = list()
         stu_oporater_list = list()
-        for _symbol in self.oporater.values():
+        for _symbol in list(self.oporater.values()):
             std_oporater_list.append(o_std_eqn.count(_symbol))
             stu_oporater_list.append(o_stu_eqn.count(_symbol))
         if std_oporater_list == stu_oporater_list:
@@ -252,7 +252,7 @@ class EquationCompare(object):
                     # save only maximum match value(should be greater than 0.9)
                     # can be changed as demand
                     if cos_value > self.eqn_threshold and \
-                       not eqn_similar.has_key(_std_eqn):
+                       _std_eqn not in eqn_similar:
                         correct_cos_value += float(cos_value)
                         eqn_similar[_std_eqn] = float(cos_value)
         # Check if total lale of cos values of all equations in

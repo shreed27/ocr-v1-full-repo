@@ -7,10 +7,10 @@
 from django.test import TestCase
 from django.utils import unittest
 import logging
-from standard import Standard
-from markscheme import MarkScheme
+from .standard import Standard
+from .markscheme import MarkScheme
 ## OLD: from algo.answer import Answer
-from answer import Answer
+from .answer import Answer
 import os
 import re
 import nltk
@@ -23,7 +23,7 @@ from django.conf import settings
 # to be compatible with Python versions less than 2.7
 import unittest2
 
-from common import *
+from .common import *
 debug_print("algo/tests.py start: " + debug_timestamp())
 
 # Globals
@@ -181,9 +181,9 @@ class abAnswer(Answer):
                 return r
             debug_print_without_newline("pearson = ")
             try:
-                print pearson(ans_sentencelist, std_sen)
+                print(pearson(ans_sentencelist, std_sen))
             except:
-                print "n/a"
+                print("n/a")
                 debug_print("Exception during pearson calculation: " + str(sys.exc_info()))
 
         for stu_sen in ans_sentencelist:
@@ -234,9 +234,9 @@ class AlgorithmTest(TestCase):
         sinst = Standard()
         pointlist, textfdist, slist = sinst.Analysis(filetext)
         if __debug__:
-            print "Word frequencies"
-            for word,freq in textfdist.items():
-                print "%s:%d" % (word,freq)
+            print("Word frequencies")
+            for word,freq in list(textfdist.items()):
+                print("%s:%d" % (word,freq))
         pprint.pprint(slist)
         self.logger.info("Test Standard Answer Analysis finished")
 
@@ -431,7 +431,7 @@ class AlgorithmTest(TestCase):
             textfdist = get_student_text_distribution(anstext, textfdist)
         mark, marklist, ommited = ans.Analysis(anstext, textfdist, slist, pointlist, rulelist)
         err = mark - manualmark
-        print("%s\t%d\t%s\t%d" % (ansfile, mark, marklist, err))
+        print(("%s\t%d\t%s\t%d" % (ansfile, mark, marklist, err)))
 
     @unittest.skipIf(EXCLUDE_LONG_TESTS, "Too much time")
     def test_Q1_all(self):
@@ -446,7 +446,7 @@ class AlgorithmTest(TestCase):
             var = 0
             rd = random.uniform(0.32, 0.36)
             debug_print_without_newline("rd = ")
-            print rd
+            print(rd)
 
             # Create the appropriate class instance for Answer
             # TODO: Remove abAnswer method overrides altogether and do everything via proper subclassing (RTFM!!!).
@@ -479,13 +479,13 @@ class AlgorithmTest(TestCase):
                     maxerr += math.fabs(err)
                     var += err ** 2
                     errcount += 1 if math.fabs(err) > 3 else 0
-                    print("%s\t%d\t%s\t%d" % (ansfile, mark, marklist, err))
+                    print(("%s\t%d\t%s\t%d" % (ansfile, mark, marklist, err)))
                     if errcount < minerrcount:
                         minerrcount = errcount
                         minmaxerr = maxerr
                         minrd = rd
-            print "maxerr:%d, maxvar:%d, errcount:%d" % (maxerr, var, errcount)
-        print "minmaxerr:%d rd:%d count:%d" % (minmaxerr, minrd, minerrcount)
+            print("maxerr:%d, maxvar:%d, errcount:%d" % (maxerr, var, errcount))
+        print("minmaxerr:%d rd:%d count:%d" % (minmaxerr, minrd, minerrcount))
 
     #__traversal_process(dir): Checks DIR for teacher's key (standard), marking scheme, and one or more student
     # answers, using the following naming convention:
@@ -538,7 +538,7 @@ class AlgorithmTest(TestCase):
                             else:
                                 mark = 0
                                 marklist = []
-                            print("%s\t%d\t%s" % (ansfile, mark, marklist))
+                            print(("%s\t%d\t%s" % (ansfile, mark, marklist)))
 
     @unittest.skipIf(EXCLUDE_LONG_TESTS, "Too much time")
     def test_Q2(self):

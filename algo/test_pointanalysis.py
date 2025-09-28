@@ -9,7 +9,7 @@ def get_property_value(object, property_name, default_value=None):
         value = getattr(object, property_name)
     # debug_print("get_property_value%s => %s" % (str((object, property_name, default_value)), 
     #                                             value), level=4)
-    print "get_property_value%s => %s" % (str((object, property_name, default_value)), value)
+    print("get_property_value%s => %s" % (str((object, property_name, default_value)), value))
     return value
 
 use_part_of_speech = get_property_value(settings, 'USE_PART_OF_SPEECH', False)
@@ -29,7 +29,7 @@ def getenv_boolean (var, default=False):
 def PointAnalysis(fulltext):
     from algo.common import *                    # common routines (mostly debugging)
     # debug_print("algo/standard.py: " + debug_timestamp())
-    print "algo/standard.py: " + debug_timestamp()
+    print("algo/standard.py: " + debug_timestamp())
     from algo.common import get_property_value, getenv_boolean
     from algo import wordnet                          # word information (dictionary, thesaurus, etc.)
     # from algo import text                             # text preprocessing
@@ -48,7 +48,7 @@ def PointAnalysis(fulltext):
     # Perform text normalization, while preserving offsets
     ## OLD: text = fulltext.replace('\t', '')
     text = fulltext.replace('\t', ' ')
-    print "text    =    ",text
+    print("text    =    ",text)
 
     # Find all lines starting with digit, recording offset
     ## OLD: m = self.pointtext_pattern.findall(text)
@@ -70,7 +70,7 @@ def PointAnalysis(fulltext):
         offset += match.end(0)
 
     if (len(m) == 0):
-        print "No points detected in text: %s" % fulltext
+        print("No points detected in text: %s" % fulltext)
         #self.logger.warn("No points detected in text: %s" % fulltext)
 
     # Create hash entries for point/text representation
@@ -91,7 +91,7 @@ def PointAnalysis(fulltext):
 def SentenceAnalysis(pointlist):
     from algo.common import *                    # common routines (mostly debugging)
     # debug_print("algo/standard.py: " + debug_timestamp())
-    print "algo/test_pointanalysis.py: " + debug_timestamp()
+    print("algo/test_pointanalysis.py: " + debug_timestamp())
     from algo.common import get_property_value, getenv_boolean
     from algo import wordnet                          # word information (dictionary, thesaurus, etc.)
     # from algo import text                             # text preprocessing
@@ -106,7 +106,7 @@ def SentenceAnalysis(pointlist):
     import nltk
     import math
 
-    print("Standard.SentenceAnalysis(%s)" % str(pointlist))
+    print(("Standard.SentenceAnalysis(%s)" % str(pointlist)))
     sentencelist = []
     sen_no = 0
     pointsen_no = {}
@@ -161,9 +161,9 @@ def ParseKeyword(text):
     special = {'<': ' ', '>': '', '(': '',
                ')': '', '.': '', ',': '',
                '""': ''}            # TODO: See if this should be '"'
-    for (k, v) in special.items():
+    for (k, v) in list(special.items()):
         text = text.replace(k, v)
-    print(" => %s" % text)
+    print((" => %s" % text))
     return text
 
 
@@ -195,16 +195,16 @@ def CalVector(sentencelist):
     import nltk
     import math
 
-    print("Standard.CalVector(%s)" % sentencelist)
+    print(("Standard.CalVector(%s)" % sentencelist))
     text_words = []
     
     # Gather words from all sentences
     for sentence in sentencelist:
-        print("sentence: " + str(sentence))
+        print(("sentence: " + str(sentence)))
         raw = ParseKeyword(sentence['KeyS'])
         text = nltk.word_tokenize(raw)
         part_of_speech_tagged_words =  nltk.pos_tag(text)
-        print("part_of_speech_tagged_words = %s" % str(part_of_speech_tagged_words))
+        print(("part_of_speech_tagged_words = %s" % str(part_of_speech_tagged_words)))
         stopwords_list = nltk.corpus.stopwords.raw('english').split()
         # OLD: #word.lower() + '/' + tag
         words = list(nltk.corpus.wordnet.morphy(word.lower())
@@ -218,16 +218,16 @@ def CalVector(sentencelist):
             words_proper = [wordnet.get_part_of_speech(tag) + ":" + word
                             for (word, (token, tag)) in zip(words, part_of_speech_tagged_words) 
                             if word]
-        print("words_proper: " + str(words_proper))
+        print(("words_proper: " + str(words_proper)))
 
         # remove empty words and store in SenWords property
         sentence['SenWords'] = words_proper
         text_words += sentence['SenWords']
 
     # Get frequency distribution
-    print("text_words: " + str(text_words))
+    print(("text_words: " + str(text_words)))
     textfdist = nltk.FreqDist(text_words)
-    print("Standard.CalVector => %s" % str(textfdist))
+    print(("Standard.CalVector => %s" % str(textfdist)))
     return textfdist
 
 
@@ -256,7 +256,7 @@ def SentenceCal(sentencelist, textfdist):
     import nltk
     import math           
     # debug_print("Standard.SentenceCal%s" % str((sentencelist, textfdist)), level=5)
-    print "Standard.SentenceCal%s" % str((sentencelist, textfdist))
+    print("Standard.SentenceCal%s" % str((sentencelist, textfdist)))
 
     use_true_tf_idf = getenv_boolean("USE_TRUE_TF_IDF", False)
     for sentence in sentencelist:
@@ -264,9 +264,9 @@ def SentenceCal(sentencelist, textfdist):
         # OLD: # word.lower() + '/' + tag
         fdist = nltk.FreqDist(sentence['SenWords'])
         try:
-            max_freq = max([f for f in fdist.values()])
+            max_freq = max([f for f in list(fdist.values())])
         except:
-            print("Exception in Standard.SentenceCal: " + str(sys.exc_info()))
+            print(("Exception in Standard.SentenceCal: " + str(sys.exc_info())))
             max_freq = 1
             
         log_max_freq = math.log(max_freq) if (max_freq > 1) else 1
@@ -288,7 +288,7 @@ def SentenceCal(sentencelist, textfdist):
             
         sentence['KeySVec'] = senvec
     # debug_print("Standard.SentenceCal => %s" % str(sentencelist), level=5)
-    print "Standard.SentenceCal => %s" % str(sentencelist)
+    print("Standard.SentenceCal => %s" % str(sentencelist))
     return sentencelist
 
 
@@ -300,35 +300,35 @@ if __name__ == "__main__" or __name__ == 'django.core.management.commands.shell'
     text = obj.stdanswertext
 
     stdanswer = obj.stdanswer
-    print
-    print stdanswer.rulelist
+    print()
+    print(stdanswer.rulelist)
     #print text
     # text = "    1 . It captured the vibrancy of India's slums.\n    2 . which are often misperceived as being simply rundown housing areas.\n"
     # # text = "  1.  (x+y)^2=x^2+2xy+y^2  (second power: three terms)    2.  (x+y)^3=x^3+3x^2y+3xy^2+y^3  (third power: four terms)    3.  (x+y)^4=x^4+4x^3y+6x^2y^2+4xy^3+y^4  (fourth power: five terms)    4. Quadratic Formulae:  x\:=\frac{\:-b\mp\sqrt{b^2-4ac}}{2a}    5. Algebraic Equation:  (a+b)^2=a^2+b^2+2ab "
     text = "1 . The attorney chased the ambulance downtown.\n2 . The ambulance chased back.\n"
     text = "1 . (x+y)^2=x^2+2xy+y^2\n"
     point_list = PointAnalysis(text)
-    print
-    print "point_list"
-    print point_list
-    print
+    print()
+    print("point_list")
+    print(point_list)
+    print()
 
     sentence_list = SentenceAnalysis(point_list)
-    print
-    print "sentence_list"
-    print sentence_list
-    print 
+    print()
+    print("sentence_list")
+    print(sentence_list)
+    print() 
     # pointlist = [{'Point_No': 'P3', 'Point_Text': ' The PPC helps elucidate the meaning of (((scarcity))) , (((choice))) and (((opportunity cost))).  '}]
     # y = StdSentenceAnalysis(pointlist)
     # print y
     frequency_dict = CalVector(sentence_list)
-    print
-    print "frequency_dict"
-    print frequency_dict
-    print 
+    print()
+    print("frequency_dict")
+    print(frequency_dict)
+    print() 
 
     sentencecal_result = SentenceCal(sentence_list, frequency_dict)
-    print
-    print "sentencecal_result"
-    print sentencecal_result
-    print
+    print()
+    print("sentencecal_result")
+    print(sentencecal_result)
+    print()

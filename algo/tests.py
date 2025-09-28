@@ -7,10 +7,10 @@
 from django.test import TestCase
 from django.utils import unittest
 import logging
-from standard import Standard
-from markscheme import MarkScheme
+from .standard import Standard
+from .markscheme import MarkScheme
 ## OLD: from algo.answer import Answer
-from answer import Answer
+from .answer import Answer
 import os
 import re
 import nltk
@@ -23,7 +23,7 @@ from django.conf import settings
 # to be compatible with Python versions less than 2.7
 import unittest2
 
-from common import *
+from .common import *
 debug_print("algo/tests.py start: " + debug_timestamp())
 
 #------------------------------------------------------------------------
@@ -126,7 +126,7 @@ class Annotations:
                 if (match):
                     student = match.group(1)
                     key = match.group(2)
-                    if (not self.correspondences.has_key(key)):
+                    if (key not in self.correspondences):
                         self.correspondences[key] = []
                     self.correspondences[key].append(student)
                     debug_print("Adding correspondence: '%s' => '%s'" % (student, key), level=4)
@@ -179,14 +179,14 @@ class Annotations:
         if self.last_label:
             self.end_offset[self.last_label] = len(self.text_proper)
         # Convert start_offset/end_offset info into textual_unit's
-        for unit in self.end_offset.keys():
+        for unit in list(self.end_offset.keys()):
             start = self.start_offset[unit]
             end = self.end_offset[unit]
             self.textual_units[unit] = self.text_proper[start : end]
 
         # Display in order by starting offset
         debug_print("Annotation textual units 'label\t[start, end): text', ...:", level=2)
-        units = self.textual_units.keys()
+        units = list(self.textual_units.keys())
         for unit in sorted(units, key=lambda k: self.start_offset[k]):
             debug_print("%s\t[%s, %s): { %s }" % (unit, self.start_offset[unit], self.end_offset[unit], self.textual_units[unit]), level=2)
         debug_print("text_proper={\n%s\n\t}" % self.text_proper, level=7)
@@ -213,7 +213,7 @@ def evaluate_linkages(answer_annotations, detailed_mark_list, good_points):
 
         # Check student answer annotations linkages that map into standard with corresponding (correct) key
         ## standard_point_labels = [label for label in answer_annotations.correspondences.keys() if (label.find(point_label_prefix) != -1)]
-        standard_point_labels = [label for label in answer_annotations.correspondences.keys() if (label.find(point_label_prefix) == 0)]
+        standard_point_labels = [label for label in list(answer_annotations.correspondences.keys()) if (label.find(point_label_prefix) == 0)]
         for std_label in standard_point_labels:
             debug_print("Standard label: %s" % std_label, level=4)
             
@@ -269,14 +269,14 @@ def calculate_fscore (case, num_good, num_manual, num_system):
     recall = 0
     precision = 0
     f_score = 0
-    print "%s: Num good %d; num manual %d; num system %d" % (case, num_good, num_manual, num_system)
+    print("%s: Num good %d; num manual %d; num system %d" % (case, num_good, num_manual, num_system))
     if num_manual > 0:
         recall = float(num_good) / num_manual
     if num_system > 0:
         precision = float(num_good) / num_system
     if (recall > 0) or (precision > 0):
         f_score = 2 * (precision * recall) / (precision + recall)
-    print "Recall %.3f; Precision %.3f; F-Score %.3f" % (round(recall, 3), round(precision, 3), round(f_score, 3))
+    print("Recall %.3f; Precision %.3f; F-Score %.3f" % (round(recall, 3), round(precision, 3), round(f_score, 3)))
 
 
 # WARNING: The following overrides the classes for an unapparent testing purpose
@@ -414,9 +414,9 @@ class abAnswer(Answer):
                 return r
             debug_print_without_newline("pearson = ")
             try:
-                print pearson(ans_sentencelist, std_sen)
+                print(pearson(ans_sentencelist, std_sen))
             except:
-                print "n/a"
+                print("n/a")
                 debug_print("Exception during pearson calculation: " + str(sys.exc_info()))
 
         for stu_sen in ans_sentencelist:
@@ -474,12 +474,12 @@ class AlgorithmTest(TestCase):
         sinst = Standard()
         pointlist, textfdist, slist = sinst.Analysis(filetext)
         if __debug__:
-            print "Word frequencies"
-            for word,freq in textfdist.items():
-                print "%s:%d" % (word,freq)
+            print("Word frequencies")
+            for word,freq in list(textfdist.items()):
+                print("%s:%d" % (word,freq))
         pprint.pprint(slist)
         if __debug__ and sinst.apply_grammar_checking:
-            print("standard critique: %s" % sinst.critique_results)
+            print(("standard critique: %s" % sinst.critique_results))
         self.logger.info("Test Standard Answer Analysis finished")
 
     # Derives frequency distribution and shows old vs. new.
@@ -682,7 +682,7 @@ class AlgorithmTest(TestCase):
             textfdist = get_student_text_distribution(anstext, textfdist)
         mark, marklist, ommited = ans.Analysis(anstext, textfdist, slist, pointlist, rulelist)
         err = mark - manualmark
-        print("%s\t%d\t%s\t%d" % (ansfile, mark, marklist, err))
+        print(("%s\t%d\t%s\t%d" % (ansfile, mark, marklist, err)))
 
     # test_Q1_all(): grade each of the 32 student papers against the standard key, comparing the system
     # score to that of manual grading.
@@ -727,7 +727,7 @@ class AlgorithmTest(TestCase):
             if RANDOM_THRESHOLDS:
                 rd = random.uniform(0.32, 0.36)
                 debug_print_without_newline("rd = ")
-                print rd
+                print(rd)
                 ans.dist_threshold=rd
                 ans.multisen_matchrate=0.3
                 ans.sen_threshold=rd
@@ -777,19 +777,19 @@ class AlgorithmTest(TestCase):
 
                     # Check grammar, etc.
                     if ans.apply_grammar_checking:
-                        print("answer critique: %s" % ans.text_critique)
+                        print(("answer critique: %s" % ans.text_critique))
 
                     # Update statistics
                     maxerr += math.fabs(err)
                     var += err ** 2
                     errcount += 1 if math.fabs(err) > 3 else 0
-                    print("%s\t%d\t%s\t%d" % (ansfile, mark, marklist, err))
+                    print(("%s\t%d\t%s\t%d" % (ansfile, mark, marklist, err)))
                     if errcount < minerrcount:
                         minerrcount = errcount
                         minmaxerr = maxerr
                         minrd = rd
-            print "maxerr:%d, maxvar:%d, errcount:%d" % (maxerr, var, errcount)
-        print "minmaxerr:%d rd:%d count:%d" % (minmaxerr, minrd, minerrcount)
+            print("maxerr:%d, maxvar:%d, errcount:%d" % (maxerr, var, errcount))
+        print("minmaxerr:%d rd:%d count:%d" % (minmaxerr, minrd, minerrcount))
 
         # Summarize answer/standard correspondences with respect to manual annotations
         if CHECK_LINKAGES:
@@ -846,7 +846,7 @@ class AlgorithmTest(TestCase):
                             else:
                                 mark = 0
                                 marklist = []
-                            print("%s\t%d\t%s" % (ansfile, mark, marklist))
+                            print(("%s\t%d\t%s" % (ansfile, mark, marklist)))
 
     @unittest.skipIf(EXCLUDE_LONG_TESTS, "Too much time")
     def test_Q2(self):

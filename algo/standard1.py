@@ -7,7 +7,7 @@
 #
 from algo.common import *                    # common routines (mostly debugging)
 # debug_print("algo/standard.py: " + debug_timestamp())
-print "algo/standard.py: " + debug_timestamp()
+print("algo/standard.py: " + debug_timestamp())
 from algo.common import get_property_value, getenv_boolean
 from algo import wordnet                          # word information (dictionary, thesaurus, etc.)
 from algo import text                             # text preprocessing
@@ -39,7 +39,7 @@ def get_property_value(object, property_name, default_value=None):
         value = getattr(object, property_name)
     # debug_print("get_property_value%s => %s" % (str((object, property_name, default_value)), 
     #                                             value), level=4)
-    print "get_property_value%s => %s" % (str((object, property_name, default_value)), value)
+    print("get_property_value%s => %s" % (str((object, property_name, default_value)), value))
     return value
 
 class Standard:
@@ -96,10 +96,10 @@ class Standard:
     # TODO: revise example to show Start&End offsets
     #
     def PointAnalysis(self, fulltext):
-        print "called in standard1.py PointAnalysis\n}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}"
+        print("called in standard1.py PointAnalysis\n}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
         from algo.common import *                    # common routines (mostly debugging)
         # debug_print("algo/standard.py: " + debug_timestamp())
-        print "algo/standard1.py: " + debug_timestamp()
+        print("algo/standard1.py: " + debug_timestamp())
         from algo.common import get_property_value, getenv_boolean
         from algo import wordnet                          # word information (dictionary, thesaurus, etc.)
         from algo import text                             # text preprocessing
@@ -126,10 +126,10 @@ class Standard:
         m = []
         starts = []
         ends = []
-        print text
+        print(text)
         while (len(text) > 0):
             match = self.pointtext_pattern.search(text)
-            print 'match = ', match
+            print('match = ', match)
             if not match:
                 break
             m.append(match.group(0).strip())
@@ -137,9 +137,9 @@ class Standard:
             ends.append(offset + match.end(0))
             text = text[match.end(0) : ]
             offset += match.end(0)
-        print 'mmmmmmmmmmmmmmmm', m
+        print('mmmmmmmmmmmmmmmm', m)
         if (len(m) == 0):
-            print "No points detected in text: %s" % fulltext
+            print("No points detected in text: %s" % fulltext)
             #self.logger.warn("No points detected in text: %s" % fulltext)
 
         # Create hash entries for point/text representation
@@ -151,7 +151,7 @@ class Standard:
                               'Point_Text': m[i][len(num):].replace('\n', ' ').strip(),
                               'Start': starts[i], 'End': ends[i]})
         # debug_print("Standard.PointAnalysis(%s) => %s" % (fulltext, str(pointlist)), level=5)
-        print "Standard.PointAnalysis(%s) => %s" % (fulltext, str(pointlist))
+        print("Standard.PointAnalysis(%s) => %s" % (fulltext, str(pointlist)))
         return pointlist
 
     # SentenceAnalysis(pointlist): Expands the question (point) information to include the sentence keywords and some accumulators.
@@ -166,7 +166,7 @@ class Standard:
     def SentenceAnalysis(self, pointlist):
         from algo.common import *                    # common routines (mostly debugging)
         # debug_print("algo/standard.py: " + debug_timestamp())
-        print "algo/standard1.py: " + debug_timestamp()
+        print("algo/standard1.py: " + debug_timestamp())
         from algo.common import get_property_value, getenv_boolean
         from algo import wordnet                          # word information (dictionary, thesaurus, etc.)
         from algo import text                             # text preprocessing
@@ -181,14 +181,14 @@ class Standard:
         import nltk
         import math        
         # debug_print("Standard.SentenceAnalysis(%s)" % str(pointlist), level=7)
-        print "Standard.SentenceAnalysis(%s)" % str(pointlist)
+        print("Standard.SentenceAnalysis(%s)" % str(pointlist))
         sentencelist = []
         sen_no = 0
         pointsen_no = {}
         for point in pointlist:
             pointsen_no.setdefault(point['Point_No'], [])
-            print "pointsen_no",
-            print pointsen_no
+            print("pointsen_no", end=' ')
+            print(pointsen_no)
             point_text = point['Point_Text']
 
             # Extract sentences, recording offsets in original
@@ -221,7 +221,7 @@ class Standard:
         for sen in sentencelist:
             sen.setdefault('TotalS_No', pointsen_no.get(sen['Point_No']))
         # debug_print("Standard.SentenceAnalysis() => %s" % str(sentencelist), level=5)
-        print "Standard.SentenceAnalysis() in standard1.py=> %s" % str(sentencelist)
+        print("Standard.SentenceAnalysis() in standard1.py=> %s" % str(sentencelist))
         return sentencelist
 
     # ParseKeyword(text): Normalize TEXT with respect to special characters.
@@ -231,13 +231,13 @@ class Standard:
     #
     def ParseKeyword(self, text):
         # debug_print_without_newline("Standard.ParseKeyword(%s)" % text, level=5)
-        print "Standard.ParseKeyword(%s)" % text
+        print("Standard.ParseKeyword(%s)" % text)
         special = {'<': ' ', '>': '', '(': '',
                    ')': '', '.': '', ',': '',
                    '""': ''}			# TODO: See if this should be '"'
-        for (k, v) in special.items():
+        for (k, v) in list(special.items()):
             text = text.replace(k, v)
-        print " => %s" % text
+        print(" => %s" % text)
         return text
 
     # CalVector(sent_list): Returns frequency counts for content words from KeyS property ro each dict in SENT_LIST.
@@ -267,20 +267,20 @@ class Standard:
         import nltk
         import math        
         # debug_print("Standard.CalVector(%s)" % sentencelist, level=5)
-        print "Standard.CalVector(%s)" % sentencelist
+        print("Standard.CalVector(%s)" % sentencelist)
 
-        print "call vector called here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1"
+        print("call vector called here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
         text_words = []
         
         # Gather words from all sentences
         for sentence in sentencelist:
             # debug_print("sentence: " + str(sentence), level=6)
-            print "sentence: " + str(sentence)
+            print("sentence: " + str(sentence))
             raw = self.ParseKeyword(sentence['KeyS'])
             text = nltk.word_tokenize(raw)
             part_of_speech_tagged_words =  nltk.pos_tag(text)
             # debug_print("part_of_speech_tagged_words = %s" % str(part_of_speech_tagged_words), level=4)
-            print "really? part_of_speech_tagged_words = %s" % str(part_of_speech_tagged_words)
+            print("really? part_of_speech_tagged_words = %s" % str(part_of_speech_tagged_words))
             stopwords_list = nltk.corpus.stopwords.raw('english').split()
             # OLD: #word.lower() + '/' + tag
 
@@ -299,7 +299,7 @@ class Standard:
                     words.append(corpus_word) if corpus_word else words.append(word)
 
             words_proper = list(word for word in words if word)
-            print words_proper, "words proper"
+            print(words_proper, "words proper")
             if True: #self.use_part_of_speech:
                 # Prefix each word with wordnet part-of-speech indicator (e.g., ['fast', 'car'] => ['a:fast', 'n:car'])
 
@@ -307,7 +307,7 @@ class Standard:
                                 for (word, (token, tag)) in zip(words, part_of_speech_tagged_words) 
                                 if word]
             # debug_print("words_proper: " + str(words_proper), level=7)
-            print "words_proper: " + str(words_proper)
+            print("words_proper: " + str(words_proper))
 
             # remove empty words and store in SenWords property
             sentence['SenWords'] = words_proper
@@ -315,11 +315,11 @@ class Standard:
 
         # Get frequency distribution
         # debug_print("text_words: " + str(text_words), level=6)
-        print "text_words: " + str(text_words)
+        print("text_words: " + str(text_words))
         textfdist = nltk.FreqDist(text_words)
         # debug_print("Standard.CalVector => %s" % str(textfdist), level=5)
         # debug_print("Standard.CalVector => %s" % str(textfdist), level=5)
-        print "Standard.CalVector => %s" % str(textfdist)
+        print("Standard.CalVector => %s" % str(textfdist))
         return textfdist
 
     # SentenceCal(sent_list, overall_freq_dist): computes TF/IDF-style frequency distribution for
@@ -346,30 +346,30 @@ class Standard:
         import nltk
         import math           
         # debug_print("Standard.SentenceCal%s" % str((sentencelist, textfdist)), level=5)
-        print "Standard.SentenceCal%s" % str((sentencelist, textfdist))
-        print '\n'*10
-        print "sentencelist======>: {}".format(sentencelist)
+        print("Standard.SentenceCal%s" % str((sentencelist, textfdist)))
+        print('\n'*10)
+        print("sentencelist======>: {}".format(sentencelist))
         for sentence in sentencelist:
             # OLD: text = nltk.word_tokenize(sentence['KeyS'])
             # OLD: # word.lower() + '/' + tag
             fdist = nltk.FreqDist(sentence['SenWords'])
-            print "fdist======>: {}".format(fdist.items())
+            print("fdist======>: {}".format(list(fdist.items())))
             try:
-                max_freq = max([f for f in fdist.values()])
-                print "max_freq======: {}".format(max_freq)
+                max_freq = max([f for f in list(fdist.values())])
+                print("max_freq======: {}".format(max_freq))
             except:
-                print("Exception in Standard.SentenceCal: " + str(sys.exc_info()))
+                print(("Exception in Standard.SentenceCal: " + str(sys.exc_info())))
                 max_freq = 1
                 
             log_max_freq = math.log(max_freq) if (max_freq > 1) else 1
-            print "log_max_freq======: {}".format(log_max_freq)
+            print("log_max_freq======: {}".format(log_max_freq))
             senvec = {}
             sen_len = len(sentencelist)
             for word in sorted(textfdist):
                 if fdist[word]:
                     # the frequency of sentence which contains this word in all sentencelist
                     sentencefreq = sum(1 for senten in sentencelist if word in senten['SenWords'])
-                    print "sentencefreq======>: {}".format(sentencefreq)
+                    print("sentencefreq======>: {}".format(sentencefreq))
                     if (self.use_true_tf_idf):
                         tf = 1 + math.log(fdist[word]) / log_max_freq
                         idf = 1 + math.log(sen_len / sentencefreq)
@@ -380,8 +380,8 @@ class Standard:
                     senvec[word] = 0
             sentence['KeySVec'] = senvec
         # debug_print("Standard.SentenceCal => %s" % str(sentencelist), level=5)
-        print '\n'*10
-        print "Standard.SentenceCal => %s" % str(sentencelist)
+        print('\n'*10)
+        print("Standard.SentenceCal => %s" % str(sentencelist))
         return sentencelist
 
     # Analysis(full_text): Analyzes the text by breaking it into questions (points), isolating keywords,
@@ -392,9 +392,9 @@ class Standard:
     def Analysis(self, fulltext):
         #debug_print("Standard.Analysis(%s)" % fulltext, level=99)
         pointlist = self.PointAnalysis(fulltext)
-        print pointlist, "(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((("
+        print(pointlist, "((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((")
         sentencelist = self.SentenceAnalysis(pointlist)
-        print sentencelist, ")))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))"
+        print(sentencelist, ")))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))")
         textfdist = self.CalVector(sentencelist)
         slist = self.SentenceCal(sentencelist, textfdist)
         #debug_print("Standard.Analysis => (%s, %s, %s)" % (pointlist, textfdist, slist), level=6)
@@ -408,10 +408,10 @@ class Standard:
 # If invoked standalone, show analysis of simple hard-coded example (see tests.py for detailed examples).
 #
 if __name__ == '__main__' or __name__ == 'django.core.management.commands.shell':
-    print 111111111111111111111111111111111111111
+    print(111111111111111111111111111111111111111)
     import re
     # debug_print("Running simple test for %s" % __file__)
-    print "Running simple test for %s" % __file__
+    print("Running simple test for %s" % __file__)
     force_console_logging(__name__)
     # full_text = "	1 . It captured the vibrancy of India's slums.\n	2 . which are often misperceived as being simply rundown housing areas.\n"
     # full_text = "1. The attorney chased the ambulance downtown.\\frac{11}{3}\n    2.The ambulance chased back.\\frac{12}{13} \n"
@@ -426,17 +426,17 @@ if __name__ == '__main__' or __name__ == 'django.core.management.commands.shell'
  5 . Algebraic Equation: (a+b)^2=a^2+b^2+2ab"""
     # full_text = " 1 . It captured the vibrancy of India's slums.\n    2 . which are often misperceived as being simply rundown housing areas.\n"
     # full_text = "1. The attorney chased the ambulance downtown.\\frac{11}{3}\n    2.The ambulance chased back.\\frac{12}{13} \n"    
-    print sys.argv
+    print(sys.argv)
     if (len(sys.argv) > 3):
         full_text = open(sys.argv[1], 'r').read()
         if (not re.search(r"^\s*\d+\s.*", full_text)):
             print("Warning: adding dummy question/point indictors to text")
             full_text = "0 . " + full_text.replace("\n", " ") + "\n"
-    print "Input:\n\n%s\n" % full_text
+    print("Input:\n\n%s\n" % full_text)
     std = Standard()
     (pointlist, textfdist, slist) = std.Analysis(full_text)
-    print "Output: \n\nPoints: %s\nDist: %s\nSents: %s\n" % (str(pointlist), str(textfdist), str(slist))
+    print("Output: \n\nPoints: %s\nDist: %s\nSents: %s\n" % (str(pointlist), str(textfdist), str(slist)))
     if __debug__ and std.apply_grammar_checking:
-        print("critique: %s" % std.Critique(full_text))
+        print(("critique: %s" % std.Critique(full_text)))
     # debug_print("stop algo/standard.py: " + debug_timestamp())
     # print"stop algo/standard.py: " + debug_timestamp()

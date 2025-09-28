@@ -8,9 +8,9 @@
 
 # Local packages
 #
-from common import *
+from .common import *
 debug_print("algo/markscheme.py: " + debug_timestamp())
-from scheme_lang import *
+from .scheme_lang import *
 
 # Other packages
 #
@@ -52,8 +52,8 @@ class MarkScheme(object):
 if __name__ == "__main__":
     debug_print("start: " + debug_timestamp())
     #
-    print "Simple example"
-    print
+    print("Simple example")
+    print()
 
     # Initialize simple rule scheme spcification and display
     points = ['P7', 'P2', 'P13']
@@ -61,16 +61,16 @@ if __name__ == "__main__":
                  ("any two combinations of P7 ; P2 ; P13", 67.7),
                  ("only P7 or P2 or P13", 33.3),
                  ("none", 0)]
-    print "Input:"
-    print "\tpoints: %s" % points
-    print
-    print "\ttemplates:\n\t%s\n" % "\n\t".join([str(t) for t in templates])
-    print
+    print("Input:")
+    print("\tpoints: %s" % points)
+    print()
+    print("\ttemplates:\n\t%s\n" % "\n\t".join([str(t) for t in templates]))
+    print()
 
     # Run through scheme parser
     # Note: generator output expanded here to traps exceptions
     #
-    print "Output:"
+    print("Output:")
     try:
         ms = MarkScheme(points)
         rules = [r for r in ms.GetRules(templates)]
@@ -84,6 +84,6 @@ if __name__ == "__main__":
     # Show result
     #
     for rule_hash in rules:
-        for key in rule_hash.keys():
-            print "%s: %s" % (key, rule_hash[key]),
-        print
+        for key in list(rule_hash.keys()):
+            print("%s: %s" % (key, rule_hash[key]), end=' ')
+        print()

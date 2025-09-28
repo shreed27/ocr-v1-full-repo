@@ -8,13 +8,13 @@
 
 # Local packages
 #
-from common import *                    # common routines (mostly debugging)
+from .common import *                    # common routines (mostly debugging)
 from portal.common import latex_to_img, remove_latex
 #debug_print("algo/answer.py: " + debug_timestamp())
-import wordnet                          # word information (dictionary, thesaurus, etc.)
-import text                             # text preprocessing
-from text_critique import TextCritique   # qualitative critique (e.g., grammar checking)
-from equationcompare import EquationCompare
+from . import wordnet                          # word information (dictionary, thesaurus, etc.)
+from . import text                             # text preprocessing
+from .text_critique import TextCritique   # qualitative critique (e.g., grammar checking)
+from .equationcompare import EquationCompare
 
 # Other packages
 #
@@ -39,7 +39,7 @@ def find_most_freq_term(terms, freq_dist_hash):
     max_freq = 0
     max_word = None
     for word in terms:
-        if (freq_dist_hash.has_key(word) and (freq_dist_hash[word] > max_freq)):
+        if (word in freq_dist_hash and (freq_dist_hash[word] > max_freq)):
             max_freq = freq_dist_hash[word]
             max_word = word
     #debug_print("find_most_freq_term%s => %s" % (str((terms, freq_dist_hash)), max_word), level=6)
@@ -174,7 +174,7 @@ class Answer:
             #debug_print("sentence: " + str(sentence), level=6)
             fdist = nltk.FreqDist(sentence['StuWords'])
             try:
-                max_freq = max([f for f in fdist.values()])
+                max_freq = max([f for f in list(fdist.values())])
             except ValueError:
                #print_stderr("Exception in Answer.SentenceAnalysis: " + str(sys.exc_info()))
                 max_freq = 1
@@ -219,7 +219,7 @@ class Answer:
         max_cos = 0
         best_matching_stu_words = []
         apply_term_expansion = (self.apply_synonym_expansion or self.apply_ancestor_expansion)
-        all_std_words = std_sen['KeySVec'].keys()
+        all_std_words = list(std_sen['KeySVec'].keys())
         # Setup the hash key to use for looking up student frequencies
         stu_freq_master_key = 'StuSVec'
         stu_freq_lookup_key = 'StuSVecTemp' if self.only_match_word_tokens_once else stu_freq_master_key
@@ -231,12 +231,12 @@ class Answer:
             # Note: new temp hash used (e.g., 'StuSVecTemp'), which shadows the input version during calaculations.
             if self.only_match_word_tokens_once and (not stu_sen.has_key[stu_freq_lookup_key]):
                 stu_sen[stu_freq_lookup_key] = dict()
-                for word in stu_sen[stu_freq_lookup_key].keys():
+                for word in list(stu_sen[stu_freq_lookup_key].keys()):
                     stu_sen[stu_freq_lookup_key][word] = stu_sen[stu_freq_lookup_key]
             # Make sure student sentence not already matched
             # TODO: Rework the already-matched check to be in terms of words not sentences (e.g., in case student just gives one long sentence).
-            if (self.only_match_sentence_once and stu_sen.has_key('Selected')):
-                print "Ignoreing already matched sentence %s" % stud_sen['No']
+            if (self.only_match_sentence_once and 'Selected' in stu_sen):
+                print("Ignoreing already matched sentence %s" % stud_sen['No'])
                 ##debug_print("Ingoring already matched sentence %s" % stu_sen['No'], 4)
                 continue
             # Compute measure for current sentence
@@ -254,7 +254,7 @@ class Answer:
                 # Also, expansions omit standard terms to avoid counting evidence twice.
                 # TODO: Scale ancestor weight by degree of generality.
                 std_freq = std_sen['KeySVec'][word]
-                stu_freq = stu_sen[stu_freq_lookup_key][word] if stu_sen[stu_freq_lookup_key].has_key(word) else 0
+                stu_freq = stu_sen[stu_freq_lookup_key][word] if word in stu_sen[stu_freq_lookup_key] else 0
                 std_word = word
                 stu_word = std_word
                 if ((stu_freq == 0) and apply_term_expansion):
@@ -318,7 +318,7 @@ class Answer:
                 for word in best_matching_stu_words:
                     match_sen[stu_freq_lookup_key][word] = 0
         ##debug_print("Answer.CalCosDist(%s,_) => %s" % (str(ans_sentencelist), str((max_cos, match_sen, best_matching_stu_words))), level=6)
-        print "Answer.CalCosDist(%s,_) => %s" % (str(ans_sentencelist), str((max_cos, match_sen, best_matching_stu_words)))
+        print("Answer.CalCosDist(%s,_) => %s" % (str(ans_sentencelist), str((max_cos, match_sen, best_matching_stu_words))))
         return max_cos, match_sen, best_matching_stu_words
 
 
@@ -356,16 +356,16 @@ class Answer:
 
             std_senlist = [x for x in std_sen['KeyS'].split('.') if x]
             keyword_sum += len(std_sen['KeyBVec'])
-            print '\n'
-            print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Equation compare started ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+            print('\n')
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Equation compare started ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
             eqn_result = eqn_obj.compare(std_sen)
-            print 'eqn_result = ', eqn_result
-            print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Equation compare Ended ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-            print '\n'
+            print('eqn_result = ', eqn_result)
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Equation compare Ended ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+            print('\n')
 
             no_text_point = True if not remove_latex(std_sen['KeyS']) else False
-            print 'no_text_point = ', no_text_point
-            print '\n'
+            print('no_text_point = ', no_text_point)
+            print('\n')
             if eqn_result['EqnResult'] and not no_text_point:
                 # Calculate distance max between any of the student answer sentences and the key sentence
                 # Note: when only_match_word_tokens_once set, the hash gets modified to record tokens used
@@ -374,9 +374,9 @@ class Answer:
                     sen_match += max_cos
                     len_match += 1
                     # Check for matches against specified keywords
-                    print "\n**************************************************************************" * 12
-                    print "std_sen['KeyBVec'] = ", std_sen['KeyBVec']
-                    print "self.ans_full_text.lower() = ", self.ans_text.lower()
+                    print("\n**************************************************************************" * 12)
+                    print("std_sen['KeyBVec'] = ", std_sen['KeyBVec'])
+                    print("self.ans_full_text.lower() = ", self.ans_text.lower())
                     if std_sen['KeyBVec']:
                         # TODO: Include synonym check for keyword (ancestor check would likely be too approximate)
                         # keyword_freq = sum(1 for keyword in std_sen['KeyBVec']
@@ -384,12 +384,12 @@ class Answer:
                         keyword_freq = 0
                         for keyword in std_sen['KeyBVec']:
                             if keyword.lower() in self.ans_text.lower():
-                                print 'match keyword = ', keyword.lower()
+                                print('match keyword = ', keyword.lower())
                                 keyword_freq += 1
                         keyword_num += keyword_freq
                         keyword_match = 1.0 * keyword_freq / len(std_sen['KeyBVec'])
-                        print 'keyword_match @ final = ', keyword_match
-                        print 'keyword_match >= self.keyword_threshold = ', keyword_match >= self.keyword_threshold
+                        print('keyword_match @ final = ', keyword_match)
+                        print('keyword_match >= self.keyword_threshold = ', keyword_match >= self.keyword_threshold)
                         #HACK SKB
                         KeywordBVec = True if keyword_match >= self.keyword_threshold else False
                     else:
@@ -427,7 +427,7 @@ class Answer:
                         # TODO: Track down when not defined
                         if (self.apply_synonym_expansion or self.apply_ancestor_expansion):
                             ## OLD: ##debug_print('expansion terms: ' + str(match_sen['ExpTerms']))
-                            exp_terms = match_sen['ExpTerms'] if match_sen.has_key('ExpTerms') else []
+                            exp_terms = match_sen['ExpTerms'] if 'ExpTerms' in match_sen else []
                             ##debug_print('expansion terms: ' + str(exp_terms))
             elif eqn_result['EqnResult'] and no_text_point:
                 only_eqn_no_text = True
@@ -463,24 +463,24 @@ class Answer:
                         # if (point['Sentence_Rate'] > self.sen_threshold and point['KeywordBVecResult'])
                         # or (point['Sentence_Rate_Match'] > self.multisen_threshold and point['KeywordBVecResult'])
                         # or point['Only_eqn_no_text'])  # New added as point can have only equation
-        print "\n " * 2
+        print("\n " * 2)
         marklist = []
         for point in self.detailedmarklist:
-            print "(point['Sentence_Rate'] > self.sen_threshold and point['KeywordBVecResult']) = ", (point['Sentence_Rate'] > self.sen_threshold and point['KeywordBVecResult'])
-            print "(point['Sentence_Rate_Match'] > self.multisen_threshold and point['KeywordBVecResult']) = ", (point['Sentence_Rate_Match'] > self.multisen_threshold and point['KeywordBVecResult'])
-            print "point['Only_eqn_no_text'] = ", point['Only_eqn_no_text']
+            print("(point['Sentence_Rate'] > self.sen_threshold and point['KeywordBVecResult']) = ", (point['Sentence_Rate'] > self.sen_threshold and point['KeywordBVecResult']))
+            print("(point['Sentence_Rate_Match'] > self.multisen_threshold and point['KeywordBVecResult']) = ", (point['Sentence_Rate_Match'] > self.multisen_threshold and point['KeywordBVecResult']))
+            print("point['Only_eqn_no_text'] = ", point['Only_eqn_no_text'])
             if (point['Sentence_Rate'] > self.sen_threshold and point['KeywordBVecResult']):
-                print "Eureka 1= ", point['Point_No']
+                print("Eureka 1= ", point['Point_No'])
                 marklist.append(point['Point_No'])
             elif (point['Sentence_Rate_Match'] > self.multisen_threshold and point['KeywordBVecResult']):
-                print "Eureka 2= ", point['Point_No']
+                print("Eureka 2= ", point['Point_No'])
                 marklist.append(point['Point_No'])
             elif point['Only_eqn_no_text']:
-                print "Eureka 3= ", point['Point_No']
+                print("Eureka 3= ", point['Point_No'])
                 marklist.append(point['Point_No'])
 
-        print "\n" * 2
-        print "marklist = ", marklist
+        print("\n" * 2)
+        print("marklist = ", marklist)
         ##debug_print("detailedmarklist: %s" % str(self.detailedmarklist), level=7)
         ##debug_print("Answer.Mark(_,_,%s) => %s" % (str(ans_sentencelist), str(marklist)), level=6)
         return marklist
@@ -557,12 +557,12 @@ class Answer:
         for sentence in std_sentencelist:
             std_document['SenWords'] += sentence['SenWords']
             std_document['KeyS'] += "\n" + sentence['KeyS']
-            for w in sentence['KeySVec'].keys():
-                if not std_document['KeySVec'].has_key(w):
+            for w in list(sentence['KeySVec'].keys()):
+                if w not in std_document['KeySVec']:
                     std_document['KeySVec'][w] = 0
                 std_document['KeySVec'][w] += sentence['KeySVec'][w]
         ##debug_print("std_doc_keys: %s" % (std_document['KeySVec'].keys()), 6)
-        total_std_words = len(std_document['KeySVec'].keys())
+        total_std_words = len(list(std_document['KeySVec'].keys()))
         ##debug_print("std_document=%s" % std_document, 5)
 
         # Likewise merge sentences from student answer into single sentence
@@ -571,12 +571,12 @@ class Answer:
         for sentence in self.ans_sentencelist:
             ans_document['StuWords'] += sentence['StuWords']
             ans_document['StuS'] += "\n" + sentence['StuS']
-            for w in sentence['StuSVec'].keys():
-                if not ans_document['StuSVec'].has_key(w):
+            for w in list(sentence['StuSVec'].keys()):
+                if w not in ans_document['StuSVec']:
                     ans_document['StuSVec'][w] = 0
                 ans_document['StuSVec'][w] += sentence['StuSVec'][w]
         ##debug_print("ans_doc_keys: %s" % (ans_document['StuSVec'].keys()), 6)
-        total_ans_words = len(ans_document['StuSVec'].keys())
+        total_ans_words = len(list(ans_document['StuSVec'].keys()))
         ##debug_print("ans_document=%s" % ans_document, 5)
 
         # Calculate the closeness metric
@@ -716,8 +716,8 @@ if __name__ == '__main__':
             scheme.append(points_spec.split(","))
 
     # Do initialization
-    from standard import *
-    from markscheme import *
+    from .standard import *
+    from .markscheme import *
     ans = Answer()
     std = Standard()
 
@@ -736,7 +736,7 @@ if __name__ == '__main__':
     if ans.apply_grammar_checking:
        #print("answer critique: %s" % ans.critique_results)
         if (key_full_text != stu_full_text):
-            print("key critique: %s" % std.Critique(key_full_text))
+            print(("key critique: %s" % std.Critique(key_full_text)))
 
     # Do the answer analysis and show the result
     # Note: The frequency distribution needs to be done over the question for term expansion to work.

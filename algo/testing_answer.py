@@ -41,7 +41,7 @@ def find_most_freq_term(terms, freq_dist_hash):
     max_freq = 0
     max_word = None
     for word in terms:
-        if (freq_dist_hash.has_key(word) and (freq_dist_hash[word] > max_freq)):
+        if (word in freq_dist_hash and (freq_dist_hash[word] > max_freq)):
             max_freq = freq_dist_hash[word]
             max_word = word
     # print "find_most_freq_term%s => %s %s" % (terms, freq_dist_hash,
@@ -87,7 +87,7 @@ class Answer:
         import logging
         import sys
 
-        print "Answer()"
+        print("Answer()")
         # Intermediary results
         self.ans_sentencelist = None
         self.detailedmarklist = None
@@ -179,13 +179,13 @@ class Answer:
         from django.conf import settings
         import logging
         import sys
-        print "Answer.SentenceAnalysis(_,_)"
+        print("Answer.SentenceAnalysis(_,_)")
         ans_sentencelist = []
         # Perform text normalization, while preserving offsets
         text = fulltext.replace('\n', ' ')
         # text = fulltext
 
-        print "\n\n testing_answer.py SentenceAnalysis \n {}".format(text)
+        print("\n\n testing_answer.py SentenceAnalysis \n {}".format(text))
 
         # Separate text into sentences
         # TODO: See if NLTK sentence tokenizer works better
@@ -204,7 +204,7 @@ class Answer:
             if not match:
                 break
             keysen.append(match.group(0)) # .strip())
-            print "\nkeysen ====> {}".format(keysen)
+            print("\nkeysen ====> {}".format(keysen))
             starts.append(offset + match.start(0))
             ends.append(offset + match.end(0))
             text = text[match.end(0):]
@@ -212,9 +212,9 @@ class Answer:
 
         # Create hash entries for each sentence
         sen_no = 0
-        print "\n\nkeysen\n{}".format(keysen)
+        print("\n\nkeysen\n{}".format(keysen))
         for sen in keysen:
-            print "sen: " + str(sen)
+            print("sen: " + str(sen))
             sen_no += 1
             # Tokenize text, part-of-speech tag, derive WordNet base word (lemma), and then add information for words found.
             # Note: An optional part-of-speech tag prefix can be included.
@@ -234,14 +234,14 @@ class Answer:
                                      'StuWords': text_words_proper,
                                      'No': sen_no, 'Start': starts[sen_no - 1], 'End': ends[sen_no - 1]})
 
-        print "\n\nans_sentencelist before TF/IDF weighting scheme\n{}".format(ans_sentencelist)
+        print("\n\nans_sentencelist before TF/IDF weighting scheme\n{}".format(ans_sentencelist))
 
         # Compute TF/IDF-style weighting scheme
         for sentence in ans_sentencelist:
-            print "sentence: " + str(sentence)
+            print("sentence: " + str(sentence))
             fdist = nltk.FreqDist(sentence['StuWords'])
             try:
-                max_freq = max([f for f in fdist.values()])
+                max_freq = max([f for f in list(fdist.values())])
             except ValueError:
                 print_stderr(
                     "Exception in Answer.SentenceAnalysis: " + str(sys.exc_info()))
@@ -262,9 +262,9 @@ class Answer:
                 else:
                     senvec[word] = 0
             sentence['StuSVec'] = senvec
-        print "Answer.SentenceAnalysis(%s,_) => %s" % (str(fulltext), str(ans_sentencelist))
-        print "\t_ [textfdist]: %s" % str(textfdist)
-        print "\n\n\nans_sentencelist\n{}".format(ans_sentencelist)
+        print("Answer.SentenceAnalysis(%s,_) => %s" % (str(fulltext), str(ans_sentencelist)))
+        print("\t_ [textfdist]: %s" % str(textfdist))
+        print("\n\n\nans_sentencelist\n{}".format(ans_sentencelist))
         return ans_sentencelist
 
     # CalCosDist(answer_sentence_list, standard_sentence): Calculates the cosine distance between
@@ -283,7 +283,7 @@ class Answer:
     #
     def CalCosDist(self, ans_sentencelist, std_sen):
 
-        print "inside algo/testing_answer.py\n{}.................{}\n\n".format(ans_sentencelist, std_sen)
+        print("inside algo/testing_answer.py\n{}.................{}\n\n".format(ans_sentencelist, std_sen))
         from algo.common import *
         from django.conf import settings
         # word information (dictionary, thesaurus, etc.)
@@ -300,14 +300,14 @@ class Answer:
         from django.conf import settings
         import logging
         import sys
-        print "Answer.CalCosDist%s" % str((ans_sentencelist, std_sen))
+        print("Answer.CalCosDist%s" % str((ans_sentencelist, std_sen)))
         from algo.answer1 import list_difference, find_most_freq_term
         match_sen = None
         max_cos = 0
         best_matching_stu_words = []
         apply_term_expansion = (
             self.apply_synonym_expansion or self.apply_ancestor_expansion)
-        all_std_words = std_sen['KeySVec'].keys()
+        all_std_words = list(std_sen['KeySVec'].keys())
         # Setup the hash key to use for looking up student frequencies
         stu_freq_master_key = 'StuSVec'
         stu_freq_lookup_key = 'StuSVecTemp' if self.only_match_word_tokens_once else stu_freq_master_key
@@ -318,15 +318,15 @@ class Answer:
             # input version during calaculations.
             if self.only_match_word_tokens_once and (not stu_sen.has_key[stu_freq_lookup_key]):
                 stu_sen[stu_freq_lookup_key] = dict()
-                for word in stu_sen[stu_freq_lookup_key].keys():
+                for word in list(stu_sen[stu_freq_lookup_key].keys()):
                     stu_sen[stu_freq_lookup_key][
                         word] = stu_sen[stu_freq_lookup_key]
             # Make sure student sentence not already matched
             # TODO: Rework the already-matched check to be in terms of words
             # not sentences (e.g., in case student just gives one long
             # sentence).
-            if (self.only_match_sentence_once and stu_sen.has_key('Selected')):
-                print "Ingoring already matched sentence %s" % stu_sen['No']
+            if (self.only_match_sentence_once and 'Selected' in stu_sen):
+                print("Ingoring already matched sentence %s" % stu_sen['No'])
                 continue
             # Compute measure for current sentence
             q, s, qs = 0, 0, 0
@@ -344,8 +344,8 @@ class Answer:
                 # Also, expansions omit standard terms to avoid counting evidence twice.
                 # TODO: Scale ancestor weight by degree of generality.
                 std_freq = std_sen['KeySVec'][word]
-                stu_freq = stu_sen[stu_freq_lookup_key][word] if stu_sen[
-                    stu_freq_lookup_key].has_key(word) else 0
+                stu_freq = stu_sen[stu_freq_lookup_key][word] if word in stu_sen[
+                    stu_freq_lookup_key] else 0
                 std_word = word
                 stu_word = std_word
                 if ((stu_freq == 0) and apply_term_expansion):
@@ -353,7 +353,7 @@ class Answer:
                     # Check synonyms (e.g., attorney for lawyer), excluding
                     # words in standard
                     if (self.apply_synonym_expansion):
-                        print "Checking for synonym of standard term '%s' among student terms" % std_word
+                        print("Checking for synonym of standard term '%s' among student terms" % std_word)
                         synonyms = list_difference(
                             wordnet.get_synonyms(std_word), all_std_words)
                         exp_word = find_most_freq_term(
@@ -363,11 +363,11 @@ class Answer:
                             # synonym term
                             stu_word = exp_word
                             scale_factor = self.synonym_scale_factor
-                            print "Using (student) synonym '%s' to match (standard) word '%s'" % (exp_word, std_word)
+                            print("Using (student) synonym '%s' to match (standard) word '%s'" % (exp_word, std_word))
                     # Check ancestors (e.g., professional for lawyer),
                     # excluding words in standard
                     if (self.apply_ancestor_expansion and (stu_word == std_word)):
-                        print "Checking for ancestor of standard term '%s' among student terms" % std_word
+                        print("Checking for ancestor of standard term '%s' among student terms" % std_word)
                         # OLD: ancestors =
                         # list_difference(wordnet.get_hypernym_terms(std_word,
                         # self.max_ancestor_links), all_std_words)
@@ -380,20 +380,20 @@ class Answer:
                             # expansion term
                             stu_word = exp_word
                             scale_factor = self.ancestor_scale_factor
-                            print "Using (student) ancestor term '%s' to match (standard) word '%s'" % (exp_word, std_word)
+                            print("Using (student) ancestor term '%s' to match (standard) word '%s'" % (exp_word, std_word))
                     # Update frequency and make note of expansion for posthoc
                     # diagnosis
                     if (stu_word != std_word):
                         stu_freq = stu_sen[stu_freq_lookup_key][
                             stu_word] * scale_factor
-                        print "Scaled frequency score from %f to %f" % (stu_sen[stu_freq_lookup_key][stu_word], stu_freq)
+                        print("Scaled frequency score from %f to %f" % (stu_sen[stu_freq_lookup_key][stu_word], stu_freq))
                         exp_terms.append(std_word + "->" + stu_word)
                 # Do component-wise update
-                print "deltas: q=%f s=%f qs=%f w=%s" % (std_freq * std_freq, stu_freq * stu_freq, std_freq * stu_freq, word)
+                print("deltas: q=%f s=%f qs=%f w=%s" % (std_freq * std_freq, stu_freq * stu_freq, std_freq * stu_freq, word))
                 q += std_freq * std_freq
                 s += stu_freq * stu_freq
                 qs += std_freq * stu_freq
-                print "q=%f s=%f qs=%f" % (q, s, qs)
+                print("q=%f s=%f qs=%f" % (q, s, qs))
                 if (std_freq * stu_freq > 0):
                     matching_stu_words.append(stu_word)
             if q == 0 or s == 0:
@@ -417,7 +417,7 @@ class Answer:
             if self.only_match_word_tokens_once:
                 for word in best_matching_stu_words:
                     match_sen[stu_freq_lookup_key][word] = 0
-        print "Answer.CalCosDist(%s,_) => %s" % (str(ans_sentencelist), str((max_cos, match_sen, best_matching_stu_words)))
+        print("Answer.CalCosDist(%s,_) => %s" % (str(ans_sentencelist), str((max_cos, match_sen, best_matching_stu_words))))
         return max_cos, match_sen, best_matching_stu_words
 
     # Mark(key_sentences, key_point_info, answer_sentences): Mark the student ANSWER_SENTENCES against teacher KEY_SENTENCES,
@@ -456,7 +456,7 @@ class Answer:
         # std_sentencelist = x[0]
         # std_pointlist_no = x[1]
         # ans_sentencelist = x[2]
-        print "Answer.Mark%s" % str((std_sentencelist, std_pointlist_no, ans_sentencelist))
+        print("Answer.Mark%s" % str((std_sentencelist, std_pointlist_no, ans_sentencelist)))
         self.detailedmarklist = []
         marklist = []
         # Check each of the teacher key sentences
@@ -515,27 +515,26 @@ class Answer:
 
             # Trace out current state (based on Xiangguandu Juzi's commented out print code)
             # if (__debug__ and (debugging_level() > 2)):
-            print ("Point_No: " + str(point_no))
-            print ('stdsen: %s --- %s' %
-                   (str(std_sen['No']), str(std_sen['KeyS'])))
-            print ('stdvec: ' + str(std_sen['KeySVec']))
-            print ('Max Relevance: ' + str(sen_rate))
-            print ('max_cos=%s; sen_rate=%s; len_match=%s; sen_rate_match=%s; ' % (
-                str(max_cos), str(sen_rate), str(len_match), str(sen_rate_match)))
+            print(("Point_No: " + str(point_no)))
+            print(('stdsen: %s --- %s' %
+                   (str(std_sen['No']), str(std_sen['KeyS']))))
+            print(('stdvec: ' + str(std_sen['KeySVec'])))
+            print(('Max Relevance: ' + str(sen_rate)))
+            print(('max_cos=%s; sen_rate=%s; len_match=%s; sen_rate_match=%s; ' % (
+                str(max_cos), str(sen_rate), str(len_match), str(sen_rate_match))))
             if match_sen:
-                print ('stusen: %s --- %s' %
-                       (str(match_sen['No']), str(match_sen['StuS'])))
-                print ('stuvec: ' + str(match_sen['StuSVec']))
-                print ('Relevant Keyword: ' +
-                       str([word for word in match_sen['StuSVec'] if match_sen['StuSVec'][word] > 0]))
+                print(('stusen: %s --- %s' %
+                       (str(match_sen['No']), str(match_sen['StuS']))))
+                print(('stuvec: ' + str(match_sen['StuSVec'])))
+                print(('Relevant Keyword: ' +
+                       str([word for word in match_sen['StuSVec'] if match_sen['StuSVec'][word] > 0])))
                 # Optionally show words used during term expansion
                 # TODO: Track down when not defined
                 if (self.apply_synonym_expansion or self.apply_ancestor_expansion):
                     # OLD: debug_print('expansion terms: ' +
                     # str(match_sen['ExpTerms']))
-                    exp_terms = match_sen['ExpTerms'] if match_sen.has_key(
-                        'ExpTerms') else []
-                    print ('expansion terms: ' + str(exp_terms))
+                    exp_terms = match_sen['ExpTerms'] if 'ExpTerms' in match_sen else []
+                    print(('expansion terms: ' + str(exp_terms)))
             else:
                 print ('stusen/stuvec/Relevant Keyword: n/a')
 
@@ -552,9 +551,9 @@ class Answer:
         marklist = list(point['Point_No'] for point in self.detailedmarklist
                         if point['Sentence_Rate'] > self.sen_threshold
                         or point['Sentence_Rate_Match'] > self.multisen_threshold)
-        print ("detailedmarklist: %s" % str(self.detailedmarklist))
-        print ("Answer.Mark(_,_,%s) => %s" %
-               (str(ans_sentencelist), str(marklist)))
+        print(("detailedmarklist: %s" % str(self.detailedmarklist)))
+        print(("Answer.Mark(_,_,%s) => %s" %
+               (str(ans_sentencelist), str(marklist))))
         return marklist
 
     # Comparison(point-list, grading-rules): Determines the grade for POINT-LIST based on grading RULES.
@@ -564,8 +563,8 @@ class Answer:
     # TODO: check for bug in rule list generation (excessively long lists)
     #
     def Comparison(self, marklist, rulelist):
-        print "Answer.Comparison(%s, _)" % marklist
-        print "    rulelist=%s" % rulelist
+        print("Answer.Comparison(%s, _)" % marklist)
+        print("    rulelist=%s" % rulelist)
         match = True
         for rule in rulelist:
             # First first rule in which all correctly marked points occur
@@ -574,12 +573,12 @@ class Answer:
                     match = False
             # Return result mark score and rule if found
             if match:
-                print ("Answer.Comparison() => %s" %
-                       str((rule['Mark'], rule['Point'])))
+                print(("Answer.Comparison() => %s" %
+                       str((rule['Mark'], rule['Point']))))
                 return rule['Mark'], rule['Point']
             else:
                 match = True
-        print ("Answer.Comparison() => %s" % str((0, None)))
+        print(("Answer.Comparison() => %s" % str((0, None))))
         return 0, None
 
     # Omitted(correct-points, point-info, rules): Evaluates grading RULES to determine grade for CORRECT-POINTS and
@@ -589,7 +588,7 @@ class Answer:
     # TODO: Rename to something more indicative of the function's behavior (e.g., EvaluatePointRules)
     #
     def Omitted(self, marklist, std_pointlist, rulelist):
-        print ("Answer.Omitted%s" % str((marklist, std_pointlist, rulelist)))
+        print(("Answer.Omitted%s" % str((marklist, std_pointlist, rulelist))))
         mark, rule = self.Comparison(marklist, rulelist)
         omitted = []
         for point in std_pointlist:
@@ -600,7 +599,7 @@ class Answer:
                 else:
                     omitted.append(
                         'W' + point['Point_No'][1:] + point['Point_Text'])
-        print ("Answer.Omitted(_,_,_) => %s" % str((mark, omitted)))
+        print(("Answer.Omitted(_,_,_) => %s" % str((mark, omitted))))
         return mark, omitted
 
     # EvaluateCloseness(standard_sentences): Returns degree to which the student answer and teacher's key overlap, when considering
@@ -609,7 +608,7 @@ class Answer:
     # TODO: rework in terms of original text distributions
     #
     def EvaluateCloseness(self, std_sentencelist):
-        print("Answer.EvaluateCloseness%s" % str((std_sentencelist)))
+        print(("Answer.EvaluateCloseness%s" % str((std_sentencelist))))
         # Merge sentences from teacher standard key into single sentence
         # (ignores KeyBVec and other misc fields)
         std_document = {'TotalS_No': [
@@ -618,13 +617,13 @@ class Answer:
         for sentence in std_sentencelist:
             std_document['SenWords'] += sentence['SenWords']
             std_document['KeyS'] += "\n" + sentence['KeyS']
-            for w in sentence['KeySVec'].keys():
-                if not std_document['KeySVec'].has_key(w):
+            for w in list(sentence['KeySVec'].keys()):
+                if w not in std_document['KeySVec']:
                     std_document['KeySVec'][w] = 0
                 std_document['KeySVec'][w] += sentence['KeySVec'][w]
-        print ("std_doc_keys: %s" % (std_document['KeySVec'].keys()))
-        total_std_words = len(std_document['KeySVec'].keys())
-        print ("std_document=%s" % std_document)
+        print(("std_doc_keys: %s" % (list(std_document['KeySVec'].keys()))))
+        total_std_words = len(list(std_document['KeySVec'].keys()))
+        print(("std_document=%s" % std_document))
 
         # Likewise merge sentences from student answer into single sentence
         ans_document = {'StuS': '', 'No': 1, 'StuSVec': {}, 'StuWords': []}
@@ -632,13 +631,13 @@ class Answer:
         for sentence in self.ans_sentencelist:
             ans_document['StuWords'] += sentence['StuWords']
             ans_document['StuS'] += "\n" + sentence['StuS']
-            for w in sentence['StuSVec'].keys():
-                if not ans_document['StuSVec'].has_key(w):
+            for w in list(sentence['StuSVec'].keys()):
+                if w not in ans_document['StuSVec']:
                     ans_document['StuSVec'][w] = 0
                 ans_document['StuSVec'][w] += sentence['StuSVec'][w]
-        print("ans_doc_keys: %s" % (ans_document['StuSVec'].keys()))
-        total_ans_words = len(ans_document['StuSVec'].keys())
-        print("ans_document=%s" % ans_document)
+        print(("ans_doc_keys: %s" % (list(ans_document['StuSVec'].keys()))))
+        total_ans_words = len(list(ans_document['StuSVec'].keys()))
+        print(("ans_document=%s" % ans_document))
 
         # Calculate the closeness metric
         # Note: based on recall-precision F-score over number of matching word tokens, which
@@ -652,11 +651,11 @@ class Answer:
         f_score = 2 * (precision * recall) / (precision +
                                               recall) if (recall > 0) or (precision > 0) else 0
         score = dist * f_score
-        print("total_std_words=%d total_ans_words=%d num_matching_words=%d" %
-              (total_std_words, total_ans_words, len(matching_words)))
-        print("closeness recall=%.3f precision=%.3f f_score=%.3f score=%.3f" %
-              (recall, precision, f_score, score))
-        print("Answer.EvaluateCloseness() => %.3f" % score)
+        print(("total_std_words=%d total_ans_words=%d num_matching_words=%d" %
+              (total_std_words, total_ans_words, len(matching_words))))
+        print(("closeness recall=%.3f precision=%.3f f_score=%.3f score=%.3f" %
+              (recall, precision, f_score, score)))
+        print(("Answer.EvaluateCloseness() => %.3f" % score))
         return (score)
 
     # Analysis(answer_text, global_freq_dist, key_sentences, points, grading_rules): First preprocesses the student
@@ -671,27 +670,27 @@ class Answer:
     # TODO: Correct callers to base the global_freq_dist argument on the answer text not standard (see tests.ty and ../student/views.py).
     #
     def Analysis(self, fulltext, textfdist, std_sentencelist, std_pointlist, rulelist):
-        print "Answer.Analysis%s" % str((fulltext, textfdist, std_sentencelist, std_pointlist, rulelist))
-        print "\n\nfulltext\n{}\n\ntextfdist\n{}\n\nstd_sentencelist\n{}\n\nstd_pointlist\n{}\n\nrulelist\n{}".format(
-            fulltext, textfdist, std_sentencelist, std_pointlist, rulelist)
-        print "///////////////////////////////////////////////////////////////////////////////////////////////////"
-        print "888888888888"
+        print("Answer.Analysis%s" % str((fulltext, textfdist, std_sentencelist, std_pointlist, rulelist)))
+        print("\n\nfulltext\n{}\n\ntextfdist\n{}\n\nstd_sentencelist\n{}\n\nstd_pointlist\n{}\n\nrulelist\n{}".format(
+            fulltext, textfdist, std_sentencelist, std_pointlist, rulelist))
+        print("///////////////////////////////////////////////////////////////////////////////////////////////////")
+        print("888888888888")
         #debug_print("Answer.Analysis%s" % str((fulltext, textfdist, std_sentencelist, std_pointlist, rulelist)), level=99)
         self.logger.debug("starting Analysis")
         if not fulltext or not textfdist or not std_sentencelist or not std_pointlist or not rulelist:
             self.logger.debug("Missing input to Answer.Analysis")
-            print "Answer.Analysis(_,_,_,_,_) => %s" % str(None)
+            print("Answer.Analysis(_,_,_,_,_) => %s" % str(None))
             return None, None, None
         #######################################################################
         self.ans_sentencelist = self.SentenceAnalysis(fulltext, textfdist)
-        print "####################################################################################" + "\n sentence list completed\n"
+        print("####################################################################################" + "\n sentence list completed\n")
         std_pointlist_no = list(point['Point_No'] for point in std_pointlist)
         marklist = self.Mark(
             std_sentencelist, std_pointlist_no, self.ans_sentencelist)
-        print "###################################################################################"+ "\n marklist\n{}".format(marklist)
+        print("###################################################################################"+ "\n marklist\n{}".format(marklist))
 
         mark, omitted = self.Omitted(marklist, std_pointlist, rulelist)
-        print "####################################################################################" + "\n Omitted completed\n"
+        print("####################################################################################" + "\n Omitted completed\n")
 
         #######################################################################
         # Apply optional summarization and grammar checking
@@ -702,8 +701,8 @@ class Answer:
             self.logger.info("answer critique: %s" % critique)
 
         # Return 3-tuple with result
-        print("Answer.Analysis(_,_,_,_,_) => %s" %
-              str((mark, marklist, omitted)))
+        print(("Answer.Analysis(_,_,_,_,_) => %s" %
+              str((mark, marklist, omitted))))
         self.logger.debug("ending Analysis")
         return mark, marklist, omitted
 
@@ -736,13 +735,13 @@ class ImageAnswer(object):
                 if point not in marklist:
                     match = False
             if match:
-                print("ImageAnswer.Comparison(%s, %s) => %s" %
-                      (marklist, rulelist, str((rule['Mark'], rule['Point']))))
+                print(("ImageAnswer.Comparison(%s, %s) => %s" %
+                      (marklist, rulelist, str((rule['Mark'], rule['Point'])))))
                 return rule['Mark'], rule['Point']
             else:
                 match = True
-        print("ImageAnswer.Comparison(%s, %s) => %s" %
-              (marklist, rulelist, str((0, None))))
+        print(("ImageAnswer.Comparison(%s, %s) => %s" %
+              (marklist, rulelist, str((0, None)))))
         return 0, None
 
     def Omitted(self, marklist, std_pointlist, rulelist):
@@ -756,7 +755,7 @@ class ImageAnswer(object):
                 else:
                     omitted.append(
                         'W' + point['Point_No'][1:] + point['Point_Text'])
-        print("ImageAnswer.Omitted(_,_,_) => %s" % str((mark, omitted)))
+        print(("ImageAnswer.Omitted(_,_,_) => %s" % str((mark, omitted))))
         return mark, omitted
 
     def Analysis(self, imgpoints, std_pointlist, rulelist):
@@ -764,8 +763,8 @@ class ImageAnswer(object):
             marklist = list(imagepoint['Point_No']
                             for imagepoint, stuansimage in imgpoints)
             mark, omitted = self.Omitted(marklist, std_pointlist, rulelist)
-            print("ImageAnswer.Analysis(_,_,_) => %s" %
-                  str((mark, marklist, omitted)))
+            print(("ImageAnswer.Analysis(_,_,_) => %s" %
+                  str((mark, marklist, omitted))))
             return mark, marklist, omitted
         print("ImageAnswer.Analysis(_,_,_) => None")
 
@@ -774,11 +773,11 @@ class ImageAnswer(object):
 # If invoked standalone, show simple hard-coded example (see tests.py for detailed examples).
 # TODO: Straighten out convoluted invocation sequence (bowl of spaghetti module inter-dependencies).
 #
-print __name__
-print sys.argv
+print(__name__)
+print(sys.argv)
 if __name__ == '__main__' or __name__ == "django.core.management.commands.shell":
     # debug_print("Running simple test for %s" % __file__)
-    print "Running simple test for %s" % __file__
+    print("Running simple test for %s" % __file__)
     force_console_logging(__name__)
 
     #
@@ -857,17 +856,17 @@ if __name__ == '__main__' or __name__ == "django.core.management.commands.shell"
     # Analyze key and expand the rule template
     pointlist, key_freq_dist, key_sentencelist = std.Analysis(key_full_text)
 
-    print """\n\n\n\npointlist\n{}\n\n\n\nkey_freq_dist\n{}\n\n\n\nkey_sentencelist\n{}""".format(pointlist, key_freq_dist, key_sentencelist)
+    print("""\n\n\n\npointlist\n{}\n\n\n\nkey_freq_dist\n{}\n\n\n\nkey_sentencelist\n{}""".format(pointlist, key_freq_dist, key_sentencelist))
     #
-    print "Input:\n\nKey: %s\nScheme: %s\nStudent: %s\n" % (key_full_text, str(scheme), stu_full_text)
+    print("Input:\n\nKey: %s\nScheme: %s\nStudent: %s\n" % (key_full_text, str(scheme), stu_full_text))
     text_pointlist = [point['Point_No']
                       for point in pointlist if 'P0.' not in point['Point_No']]
 
-    print "\ntext_pointlist======> \n%s" % text_pointlist
+    print("\ntext_pointlist======> \n%s" % text_pointlist)
     ms = MarkScheme(text_pointlist)
-    print "\nms==========> \n%s" % ms
+    print("\nms==========> \n%s" % ms)
     rulelist = [r for r in ms.GetRules(scheme)]
-    print "\nrulelist========> \n%s" % rulelist
+    print("\nrulelist========> \n%s" % rulelist)
 
     # Get frequency distribution for answer text words (using dummy point indicator for Standard.PointAnalysis)
     # Note: Ignores the resulting point list and sentence decomposition.
@@ -881,14 +880,14 @@ if __name__ == '__main__' or __name__ == "django.core.management.commands.shell"
 
     stu_pointlist, stu_freq_dist, stu_sentencelist = std.Analysis(stu_full_text)
     if ans.apply_grammar_checking:
-        print("answer critique: %s" % ans.critique_results)
+        print(("answer critique: %s" % ans.critique_results))
         if (key_full_text != stu_full_text):
-            print("key critique: %s" % std.Critique(key_full_text))
+            print(("key critique: %s" % std.Critique(key_full_text)))
 
     # Do the answer analysis and show the result
     # Note: The frequency distribution needs to be done over the question for
     # term expansion to work.
     mark, marklist, omitted = ans.Analysis(
         stu_full_text, stu_freq_dist, key_sentencelist, pointlist, rulelist)
-    print "Result:\n\nMark: %s\nList: %s\nOmitted: %s" % (str(mark), str(marklist), str(omitted))
-    print "stop algo/answer.py: " + debug_timestamp()
+    print("Result:\n\nMark: %s\nList: %s\nOmitted: %s" % (str(mark), str(marklist), str(omitted)))
+    print("stop algo/answer.py: " + debug_timestamp())

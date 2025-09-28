@@ -5,11 +5,11 @@
 
 # Local packages
 #
-from common import *                    # common routines (mostly debugging)
+from .common import *                    # common routines (mostly debugging)
 debug_print("algo/standard.py: " + debug_timestamp())
-import wordnet                          # word information (dictionary, thesaurus, etc.)
-import text                             # text preprocessing
-from text_critique import TextCritique   # qualitative critique (e.g., grammar checking)
+from . import wordnet                          # word information (dictionary, thesaurus, etc.)
+from . import text                             # text preprocessing
+from .text_critique import TextCritique   # qualitative critique (e.g., grammar checking)
 
 # Other packages
 #
@@ -32,7 +32,7 @@ class Standard:
         self.logger.debug("Initializing Standard(): __name__=%s" % __name__)
         self.use_part_of_speech = get_property_value(settings, 'USE_PART_OF_SPEECH', False)
         self.use_true_tf_idf = get_property_value(settings, 'USE_TRUE_TF_IDF', False)
-        print "\n" * 6
+        print("\n" * 6)
         if __debug__:
 
             self.use_part_of_speech = getenv_boolean("USE_PART_OF_SPEECH", self.use_part_of_speech)
@@ -67,8 +67,8 @@ class Standard:
         text = fulltext.replace('\t', ' ')
         # new replacement
         text = text.replace('\n', '')
-        print '11111111111111111111111111111111111111111111111111111111\n' * 10
-        print text
+        print('11111111111111111111111111111111111111111111111111111111\n' * 10)
+        print(text)
         # Find all lines starting with digit, recording offset
         ## OLD: m = self.pointtext_pattern.findall(text)
         # TODO: convert into helper function for use elsewhere (e.g., findall_with_offsets)
@@ -92,7 +92,7 @@ class Standard:
             #print"No points detected in text: %s" % fulltext
         """
         point_text = [x.strip() for x in text.split("[ENDPOINT]") if x.strip()]
-        print 'point_text',point_text
+        print('point_text',point_text)
         # Create hash entries for point/text representation
         for i in range(0, len(point_text)):
             # Collect number proper and item text
@@ -163,7 +163,7 @@ class Standard:
                 sen_no += 1
                 pointsen_no[point['Point_No']].append(sen_no)
                 keyword = self.keyword_pattern.findall(new_point_text)
-                print'keyword  =  ==  ===  =', keyword
+                print('keyword  =  ==  ===  =', keyword)
                 sentencelist.append({'KeyS': new_point_text, 'KeyBVec': keyword,
                                                   'Point_No': point['Point_No'], 'No': sen_no})
             for sen in sentencelist:
@@ -183,7 +183,7 @@ class Standard:
         special = {'<': ' ', '>': '', '(': '',
                    ')': '', '.': ' ', ',': ' ',
                    '""': ''}			# TODO: See if this should be '"'
-        for (k, v) in special.items():
+        for (k, v) in list(special.items()):
             text = text.replace(k, v)
         debug_print(" => %s" % text, level=5)
         return text
@@ -242,11 +242,11 @@ class Standard:
         Update KeyBVec with only proper words
         """
         for sentence in sentencelist:
-            print "sentence['KeyBVec'] = ", sentence['KeyBVec']
+            print("sentence['KeyBVec'] = ", sentence['KeyBVec'])
             keybvec = '.'.join(sentence['KeyBVec'])
-            print 'remove_latex(keybvec) = ', remove_latex(keybvec)
+            print('remove_latex(keybvec) = ', remove_latex(keybvec))
             raw = self.ParseKeyword(remove_latex(keybvec))
-            print "rawwwwwwwwwwwwwwwwwwwwwwww = ", raw
+            print("rawwwwwwwwwwwwwwwwwwwwwwww = ", raw)
             text = nltk.word_tokenize(raw)
             part_of_speech_tagged_words =  nltk.pos_tag(text)
             stopwords_list = nltk.corpus.stopwords.raw('english').split()
@@ -261,8 +261,8 @@ class Standard:
                 words_proper = [wordnet.get_part_of_speech(tag) + ":" + word
                                 for (word, (token, tag)) in zip(words, part_of_speech_tagged_words)
                                 if word]
-        print 'words_proper   ' * 12
-        print words_proper
+        print('words_proper   ' * 12)
+        print(words_proper)
         sentence['KeyBVec'] = words_proper
 
     # SentenceCal(sent_list, overall_freq_dist): computes TF/IDF-style frequency distribution for
@@ -281,7 +281,7 @@ class Standard:
             # OLD: # word.lower() + '/' + tag
             fdist = nltk.FreqDist(sentence['SenWords'])
             try:
-                max_freq = max([f for f in fdist.values()])
+                max_freq = max([f for f in list(fdist.values())])
             except:
                 import traceback; traceback.print_exc();
                 print_stderr("Exception in Standard.SentenceCal: " + str(sys.exc_info()))
@@ -352,5 +352,5 @@ if __name__ == '__main__':
     (pointlist, textfdist, slist) = std.Analysis(full_text)
     #print"Output: \n\nPoints: %s\nDist: %s\nSents: %s\n" % (str(pointlist), str(textfdist), str(slist))
     if __debug__ and std.apply_grammar_checking:
-        print("critique: %s" % std.Critique(full_text))
+        print(("critique: %s" % std.Critique(full_text)))
     debug_print("stop algo/standard.py: " + debug_timestamp())

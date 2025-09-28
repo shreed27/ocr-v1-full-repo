@@ -15,8 +15,8 @@ class Canvascompare:
     def comparelist(self, sturulelist, stdrulelist):
         correctlist = []
         for stdrule in stdrulelist:
-            print "\n11sadasdasd1232134123412312312312-----------------"*12
-            print "stdrule = ",stdrule
+            print("\n11sadasdasd1232134123412312312312-----------------"*12)
+            print("stdrule = ",stdrule)
             try:
                 stdlegend_s = stdrule[1].split(')')[1].split('[')[0].strip()
             except:

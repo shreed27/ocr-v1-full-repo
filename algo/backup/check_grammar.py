@@ -21,12 +21,12 @@
 #------------------------------------------------------------------------
 # Library packages
 
-from common import *
+from .common import *
 
 # OS support
 import os
 import sys
-import commands
+import subprocess
 import tempfile
 
 #------------------------------------------------------------------------
@@ -36,7 +36,7 @@ def run_command(command_line, level=5):
     """Runs COMMAND_LINE and returns the output (as a string), with debug tracing at specified LEVEL"""
     # Issue command
     debug_print("Running command: %s" % command_line, level=level)
-    (status, output) = commands.getstatusoutput(command_line)
+    (status, output) = subprocess.getstatusoutput(command_line)
     if (status != 0):
         print_stderr("Warning: problem running command (status=%d): %s" % (status, command_line))
 
@@ -179,7 +179,7 @@ def main():
             grammar_issues = check_text_grammar(args[arg_pos], brief=brief_output, results_hash=detailed_results_hash)
             if detailed_results_hash:
                 ## OLD: print("score: %s: synopsis: %s" % (detailed_results_hash['score'], detailed_results_hash['synopsis']))
-                print(detailed_results_hash['report'])
+                print((detailed_results_hash['report']))
             else:
                 print(grammar_issues)
             sys.exit()
@@ -193,7 +193,7 @@ def main():
     grammar_issues = check_file_grammar(file, brief=brief_output, results_hash=detailed_results_hash)
     if detailed_results_hash:
         ## OLD: print("score: %s: synopsis: %s" % (detailed_results_hash['score'], detailed_results_hash['synopsis']))
-        print(detailed_results_hash['report'])
+        print((detailed_results_hash['report']))
     else:
         print(grammar_issues)
 
