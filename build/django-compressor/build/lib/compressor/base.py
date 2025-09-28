@@ -1,7 +1,7 @@
-from __future__ import with_statement
+
 import os
 import codecs
-import urllib
+import urllib.request, urllib.parse, urllib.error
 
 from django.core.files.base import ContentFile
 from django.template import Context
@@ -98,7 +98,7 @@ class Compressor(object):
                 filename = compressor_file_storage.path(basename)
         # secondly try to find it with staticfiles (in debug mode)
         if not filename and self.finders:
-            filename = self.finders.find(urllib.url2pathname(basename))
+            filename = self.finders.find(urllib.request.url2pathname(basename))
         if filename:
             return filename
         # or just raise an exception as the last resort
@@ -111,10 +111,10 @@ class Compressor(object):
         with codecs.open(filename, 'rb', charset) as fd:
             try:
                 return fd.read()
-            except IOError, e:
+            except IOError as e:
                 raise UncompressableFileError("IOError while processing "
                                               "'%s': %s" % (filename, e))
-            except UnicodeDecodeError, e:
+            except UnicodeDecodeError as e:
                 raise UncompressableFileError("UnicodeDecodeError while "
                                               "processing '%s' with "
                                               "charset %s: %s" %

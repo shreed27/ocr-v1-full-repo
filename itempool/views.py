@@ -111,7 +111,7 @@ def itempool_getquestions(request):
 
 @permission_required('auth.add_user')
 def itempool_updatename(request):
-    print request.GET, "get detatis"
+    print(request.GET, "get detatis")
     logger.info("itempool_updatename...")
     tp, res = getTpByRequest(request, None)
     response_data = {'state': 'failure'}
@@ -144,7 +144,7 @@ def itempool_updatedesc(request):
     tp, res = getTpByRequest(request, None)
     response_data = {"state": "failure"}
     if request.method == 'POST':
-        print request.POST, "Posted values"
+        print(request.POST, "Posted values")
         if tp:
             itempoolid = request.POST.get("itempoolid").strip()
             description = request.POST.get("description").replace('\r', '').replace('\n', '</br>').strip()
@@ -181,7 +181,7 @@ def getTeacherList(request):
         itempool_id = request.POST['itempool_id']
         view = request.POST['view']
         ztreejson = __teacherJsonList(tb, view)
-        print ztreejson
+        print(ztreejson)
         response = render_to_response('teacher_list.json',
                                       {'questiontree': ztreejson,
                                        'inum': len(ztreejson), 'qnum': qnum},
@@ -192,11 +192,11 @@ def getTeacherList(request):
     else:
         view = request.GET.get('view')
         itempool_id = request.GET.get('itempool_id')
-        print view,"view", itempool_id, "itempool_id"
+        print(view,"view", itempool_id, "itempool_id")
         if view:# Itempool view mode selected
             itempool = Itempool.objects.get(id=int(itempool_id))
             ztreejson = __teacherJsonList(tb, view, itempool)
-            print ztreejson
+            print(ztreejson)
             response = render_to_response('teacher_list.json',
                                           {'questiontree': ztreejson,
                                            'inum': len(ztreejson), 'qnum': qnum},
@@ -205,13 +205,13 @@ def getTeacherList(request):
             response['Cache-Control'] = 'no-cache'
             return response
         else:# Other than view mode either add item or modify item.
-            print 'yes'
+            print('yes')
             if itempool_id and int(itempool_id) != -1:
                 #Modify mode of selected box
                 modify = True
                 itempool = Itempool.objects.get(id=int(itempool_id))
                 ztreejson = __teacherJsonList(tb, view, itempool, modify)
-                print ztreejson
+                print(ztreejson)
                 response = render_to_response('teacher_list.json',
                                               {'questiontree': ztreejson,
                                                'inum': len(ztreejson), 'qnum': qnum},
@@ -222,7 +222,7 @@ def getTeacherList(request):
             else:
                 #Get method of selected teacher box
                 ztreejson = __teacherJsonList(tb, view)
-                print ztreejson
+                print(ztreejson)
                 response = render_to_response('teacher_list.json',
                                               {'questiontree': ztreejson,
                                                'inum': len(ztreejson), 'qnum': qnum},
@@ -250,9 +250,9 @@ def __teacherJsonList(teacher, view, itempool=None, modify=None):
     else:
         if modify:
             selected_teacher = itempool.accessible.all()#.exclude(user=itempool.teacher)
-            print selected_teacher,"selected teacher"
+            print(selected_teacher,"selected teacher")
             teacher_list = TProfile.objects.all().exclude(user__in = selected_teacher)
-            print teacher_list,"modified list"
+            print(teacher_list,"modified list")
         else:
             teacher_list = TProfile.objects.all().exclude(user = teacher.user)
     teacher_head = {'name': 'Teacher', 'checked': 'false'}
@@ -292,20 +292,20 @@ def addteacher(request):
     :return {'response':'success'} or {'response':'failure'}:
     """
     if request.method == 'POST':
-        print request.POST
+        print(request.POST)
         itempool_id = request.POST['itempool_id']
         teacher_ids = request.POST.get('teacher_ids')
         teacher_list = teacher_ids[1:-1].split(',')[1:]
         teacher_list = [int(i.strip('"')) for i in teacher_list]
-        print type(teacher_ids), teacher_ids
+        print(type(teacher_ids), teacher_ids)
         if int(itempool_id) != -1:
             itempool = Itempool.objects.get(id = int(itempool_id))
 
-            print itempool.teacher.user_id
+            print(itempool.teacher.user_id)
             for teacher in teacher_list:
                 if itempool.teacher.user_id != int(teacher):
                     teach = TProfile.objects.get(user_id=int(teacher))
-                    print teach,"teacher"
+                    print(teach,"teacher")
                     itempool.accessible.add(teach)
                     itempool.save()
                 try:
@@ -313,7 +313,7 @@ def addteacher(request):
                     for question in question_list:
                         if question.teacher.user_id != int(teacher):
                             teach = TProfile.objects.get(user_id=int(teacher))
-                            print teach,"teacher"
+                            print(teach,"teacher")
                             question.accessible.add(teach)
                             question.save()
                 except:

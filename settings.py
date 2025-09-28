@@ -256,6 +256,6 @@ EMAIL_PORT = 25
 MASTER_USERS = ('Setter1',)
 
 try:
-    from settings_local import *
+    from .settings_local import *
 except ImportError:
     pass

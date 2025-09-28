@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.encoding import smart_unicode
 
@@ -16,9 +16,9 @@ class LxmlParser(ParserBase):
             self.fromstring = fromstring
             self.soupparser = soupparser
             self.tostring = tostring
-        except ImportError, err:
+        except ImportError as err:
             raise ImproperlyConfigured("Error while importing lxml: %s" % err)
-        except Exception, err:
+        except Exception as err:
             raise ParserError("Error while initializing Parser: %s" % err)
         super(LxmlParser, self).__init__(content)
 
@@ -27,7 +27,7 @@ class LxmlParser(ParserBase):
         content = '<root>%s</root>' % self.content
         tree = self.fromstring(content)
         try:
-            self.tostring(tree, encoding=unicode)
+            self.tostring(tree, encoding=str)
         except UnicodeDecodeError:
             tree = self.soupparser.fromstring(content)
         return tree
@@ -50,7 +50,7 @@ class LxmlParser(ParserBase):
 
     def elem_str(self, elem):
         elem_as_string = smart_unicode(
-            self.tostring(elem, method='html', encoding=unicode))
+            self.tostring(elem, method='html', encoding=str))
         if elem.tag == 'link':
             # This makes testcases happy
             return elem_as_string.replace('>', ' />')

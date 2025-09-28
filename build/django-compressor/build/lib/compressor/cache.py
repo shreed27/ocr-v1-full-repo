@@ -39,7 +39,7 @@ def get_cachekey(*args, **kwargs):
             mod_name, func_name = get_mod_func(
                 settings.COMPRESS_CACHE_KEY_FUNCTION)
             _cachekey_func = getattr(import_module(mod_name), func_name)
-        except (AttributeError, ImportError), e:
+        except (AttributeError, ImportError) as e:
             raise ImportError("Couldn't import cache key function %s: %s" %
                               (settings.COMPRESS_CACHE_KEY_FUNCTION, e))
     return _cachekey_func(*args, **kwargs)

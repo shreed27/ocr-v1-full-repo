@@ -11,9 +11,9 @@ def imagecapture(request):
     name = request.POST['name']
     img_type = request.POST['type']
     image = request.POST['image']
-    print save
-    print name
-    print img_type
+    print(save)
+    print(name)
+    print(img_type)
     if save:
         if name and (img_type is "JPG" or img_type is "PNG"):
             img = base64.b64decode(image)

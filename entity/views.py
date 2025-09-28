@@ -50,13 +50,13 @@ def generaterandomcode(request):
         code = render()
         try:
             Randomcode.objects.create(randomcode = code)
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
         else:
             codes.append(code)
             i += 1
     response_data['status'] = 'success'
     response_data['randomcode'] = codes
-    print response_data
+    print(response_data)
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
 

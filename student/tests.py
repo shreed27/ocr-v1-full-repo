@@ -66,7 +66,7 @@ class StudentTest(TestCase):
         #student_getassignedassignments
         self.assertTrue(self.client.login(username='weiyan2', password='1'))
         response = self.client.get('/student/getassignedassignments/')
-        print response , "!!!!!!!!!!!!!!!!!!!!!!!!"
+        print(response , "!!!!!!!!!!!!!!!!!!!!!!!!")
         if response == []:
             pass
         else:

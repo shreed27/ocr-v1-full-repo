@@ -3,6 +3,7 @@ import ply.lex as lex
 import ply.yacc as yacc
 import itertools
 import collections
+from functools import reduce
 
 
 class MarkingSchemeLang(object):
@@ -82,7 +83,7 @@ class MarkingSchemeLang(object):
             self.allFlag = 2
             self.allNum = p[3]
         else:
-            print "len:%d" % len(p)
+            print("len:%d" % len(p))
 
     def p_onlysent(self, p):
         '''onlysent : ONLY block'''
@@ -129,7 +130,7 @@ class MarkingSchemeLang(object):
         elif len(p) == 2:
             self.pointlistArray.append(p[1])
         else:
-            print p
+            print(p)
 
     def p_block(self, p):
         '''block    : POINT
@@ -141,7 +142,7 @@ class MarkingSchemeLang(object):
         elif len(p) == 2:
             self.blockArray.append((p[1], "last"))
         else:
-            print p
+            print(p)
 
     # Error rule for syntax errors
     def p_error(self, p):
@@ -171,7 +172,7 @@ class MarkingSchemeLang(object):
 
     def flatten(self, l):
         for el in l:
-            if isinstance(el, collections.Iterable) and not isinstance(el, basestring):
+            if isinstance(el, collections.Iterable) and not isinstance(el, str):
                 for sub in self.flatten(el):
                     yield sub
             else:
@@ -332,7 +333,7 @@ class MarkingSchemeLang(object):
 
 if __name__ == "__main__":
     allpoints = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P3.24', 'P03.240']
-    print "All Points:%s\n" % allpoints
+    print("All Points:%s\n" % allpoints)
     sc = MarkingSchemeLang(allpoints)
     data = []
     ##########################################
@@ -357,12 +358,12 @@ if __name__ == "__main__":
     data += [("all less 4 combinations of P1;P3;P5;P9", 1)]
     data += [("all less 0 combinations of P1;P3;P5;P9", 1)]
     for sent, score in data:
-        print "Sent:%s | Score:%d" % (sent, score)
+        print("Sent:%s | Score:%d" % (sent, score))
         rlist = sc.analysis(sent, score)
         if not rlist:
-            print "This sentence cannot fit grammar"
-            print "--------------------------\n"
+            print("This sentence cannot fit grammar")
+            print("--------------------------\n")
             continue
         for rule, score in rlist:
-            print "Rule:%s | Score:%d" % (rule, score)
-        print "--------------------------\n"
+            print("Rule:%s | Score:%d" % (rule, score))
+        print("--------------------------\n")

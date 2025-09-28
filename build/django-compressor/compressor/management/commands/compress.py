@@ -6,9 +6,9 @@ from fnmatch import fnmatch
 from optparse import make_option
 
 try:
-    from cStringIO import StringIO
+    from io import StringIO
 except ImportError:
-    from StringIO import StringIO  # noqa
+    from io import StringIO  # noqa
 
 from django.core.management.base import  NoArgsCommand, CommandError
 from django.template import (Context, Template,
@@ -72,7 +72,7 @@ def patched_render_firstnode(self, context):
             # work. Therefore, we need to pop() the last block context for
             # each block name, to emulate what would have been done if the
             # {% block %} had been fully rendered.
-            for blockname in firstnode.blocks.keys():
+            for blockname in list(firstnode.blocks.keys()):
                 context.render_context[BLOCK_CONTEXT_KEY].pop(blockname)
         except (IOError, TemplateSyntaxError, TemplateDoesNotExist):
             # That first node we are trying to render might cause more errors
@@ -224,7 +224,7 @@ class Command(NoArgsCommand):
                 if verbosity > 0:
                     log.write("Unreadable template at: %s\n" % template_name)
                 continue
-            except TemplateSyntaxError, e:  # broken template -> ignore
+            except TemplateSyntaxError as e:  # broken template -> ignore
                 if verbosity > 0:
                     log.write("Invalid template %s: %s\n" % (template_name, e))
                 continue
@@ -250,13 +250,13 @@ class Command(NoArgsCommand):
         if verbosity > 0:
             log.write("Found 'compress' tags in:\n\t" +
                       "\n\t".join((t.template_name
-                                   for t in compressor_nodes.keys())) + "\n")
+                                   for t in list(compressor_nodes.keys()))) + "\n")
 
         log.write("Compressing... ")
         count = 0
         results = []
         offline_manifest = SortedDict()
-        for template, nodes in compressor_nodes.iteritems():
+        for template, nodes in compressor_nodes.items():
             context = Context(settings.COMPRESS_OFFLINE_CONTEXT)
             template._log = log
             template._log_verbosity = verbosity
@@ -276,7 +276,7 @@ class Command(NoArgsCommand):
                 key = get_offline_hexdigest(node.nodelist.render(context))
                 try:
                     result = node.render(context, forced=True)
-                except Exception, e:
+                except Exception as e:
                     raise CommandError("An error occured during rendering %s: "
                                        "%s" % (template.template_name, e))
                 offline_manifest[key] = result

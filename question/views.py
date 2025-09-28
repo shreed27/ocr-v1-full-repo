@@ -62,7 +62,7 @@ NUM_CLOSENESS_BANDS = 10
 
 logger = logging.getLogger(__name__)
 logger.debug("question/views.py: __name__=%s" % __name__)
-print "question/views.py: __name__=%s" % __name__
+print("question/views.py: __name__=%s" % __name__)
 
 @permission_required('auth.add_user')
 def question_add(request):
@@ -110,8 +110,8 @@ def questionvideo_upload(request):
             logger.error(sys.exc_info())
             return HttpResponse("Upload Error")
         VideoForm = QuestionVideoForm(request.POST, request.FILES)
-        print request
-        print VideoForm
+        print(request)
+        print(VideoForm)
         if VideoForm.is_valid():
             # profile = Profile()
             question = questionobj
@@ -133,13 +133,13 @@ def questionvideo_upload(request):
                 vidobj.save()
             # print profile.name
             # print profile.picture
-            print "Cleaned Data!"
+            print("Cleaned Data!")
             # profile.save()
-            print 'saved successfully'
+            print('saved successfully')
             return HttpResponse(json.dumps(response_data),
                  content_type="application/json")
         else:
-             print "Form invalid"
+             print("Form invalid")
 
     #     MyProfileForm = ProfileForm()
     # return HttpResponse(json.dumps(response_data),
@@ -271,19 +271,19 @@ def questionimage_upload(request):
             if isStandardImage and isStandardImage == 'yes':
                 iscorrect = True
                 imagename, thumbname = __changeNameForStd(image.name, questionid)
-                print 'imagename   ==  ', imagename,' thumbname    =  ', thumbname
+                print('imagename   ==  ', imagename,' thumbname    =  ', thumbname)
                 questionimages = QuestionImage.objects.filter(question=question).exclude(description='del')
-                print 'questionimages   ==  ', questionimages
+                print('questionimages   ==  ', questionimages)
                 digests = list(questionimage.digest for questionimage in questionimages)
                 
                 uploadeddigestimages = QuestionImage.objects.filter(question=question,
                                                                     iscorrect=True).exclude(description='del')
-                print 'uploadeddigestimages == ', uploadeddigestimages
+                print('uploadeddigestimages == ', uploadeddigestimages)
                 stddigests = list(i.digest for i in uploadeddigestimages)
                 uploadImageFullName, digest = __saveImage(image, settings.UPLOADFOLDER, imagename)
-                print 'uploadImageFullName   ', uploadImageFullName, 'digest   ', digest
+                print('uploadImageFullName   ', uploadImageFullName, 'digest   ', digest)
                 if digest in digests and digest not in stddigests:
-                    print 'description is None'
+                    print('description is None')
                     description = None
                 else:
                     description = 'del'
@@ -304,7 +304,7 @@ def questionimage_upload(request):
             if str(nameArr[-1]).lower() not in("pdf", "xlsx", "xls", "docx", "doc", "txt", "odt", "ods"):
                 __resizeImage(uploadImageFullName,
                               os.path.join(settings.THUMBNAILFOLDER, thumbname))
-            print "Image Name:%s,Image Thumbnail Name:%s" % (imagename, thumbname)
+            print("Image Name:%s,Image Thumbnail Name:%s" % (imagename, thumbname))
             logger.info("Image Name:%s,Image Thumbnail Name:%s" % (imagename, thumbname))
         try:
             imageObj, is_created = QuestionImage.objects.get_or_create(question=question,
@@ -314,9 +314,9 @@ def questionimage_upload(request):
                                                     description=description,
                                                     iscorrect=iscorrect)
             imageObj.save()
-            print "saved", 'imageObj = ', imageObj, 'description = ', description
+            print("saved", 'imageObj = ', imageObj, 'description = ', description)
         except:
-            print "exception             ", sys.exc_info()
+            print("exception             ", sys.exc_info())
             return HttpResponse("Upload Error")
         logger.info("upload sucessful")
         return HttpResponse("Upload Success!", mimetype="text/plain")
@@ -346,9 +346,9 @@ def question_deletevideo(request):
         questionid = request.POST.get("questionid")
         try:
             videoquesobj = Question.objects.get(id=questionid)
-            print videoquesobj
+            print(videoquesobj)
             video_obj = QuestionVideo.objects.get(question=videoquesobj)
-            print video_obj
+            print(video_obj)
             video_obj.src = ""
             video_obj.save()
             response_data['state'] = 'success'
@@ -377,8 +377,8 @@ def question_submit(request):
             for teacher in itempool.accessible.all():
                 question.accessible.add(teacher)
             question.save()
-        except Exception, e:
-            print 'eeeeeeeeeeeeeeeeeeeeee', e
+        except Exception as e:
+            print('eeeeeeeeeeeeeeeeeeeeee', e)
             logger.error(e)
             itempool = None
             question = None
@@ -439,7 +439,7 @@ def _updatecanvas(question, canvasnames, stdanswer=None):
         logger.debug(delcanvaslist)
         for canvas in delcanvaslist:
             canvas.delete()
-    except Exception, e:
+    except Exception as e:
         logger.error(e)
     else:
         retcanvas = {}
@@ -498,7 +498,7 @@ def __getquestiondetail(questionid):
                          'question_canvas': questioncanvas,
                          'stdanswer_canvas': stdanswercanvas
                          }
-    except Exception, e:
+    except Exception as e:
         return {'state': 'No Resource'}
     logger.debug("question=%s" % question)
 
@@ -508,7 +508,7 @@ def __getquestiondetail(questionid):
     else:
         try:
             rawArr = raw.split(',')
-        except Exception, e:
+        except Exception as e:
             logger.debug('raw:%s, error:%s' % (raw, e))
         else:
             schemelist = []
@@ -525,7 +525,7 @@ def __getquestiondetail(questionid):
     else:
         try:
             rawArr = raw.split(',')
-        except Exception, e:
+        except Exception as e:
             logger.debug('raw:%s, error:%s' % (raw, e))
         else:
             schemelist = []
@@ -541,13 +541,13 @@ def __getquestiondetail(questionid):
     if question.stdanswer:
         try:
             rulelist = pickle.loads(str(question.stdanswer.rulelist))
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             rulelist = []
 
         try:
             imgrulelist = pickle.loads(str(question.stdanswer.imgrulelist))
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             imgrulelist = []
         logger.debug('rulelist:%s, imgrulelist:%s' % (rulelist, imgrulelist))
@@ -556,7 +556,7 @@ def __getquestiondetail(questionid):
     if question.alt_stdanswer:
         try:
             alt_rulelist = pickle.loads(str(question.alt_stdanswer.rulelist))
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             alt_rulelist = []
 
@@ -609,17 +609,17 @@ def __getcanvas(question):
     for canvas in stdanswercanvaslist:
         try:
             rulelist = pickle.loads(str(canvas.rulelist))
-        except Exception, e:
+        except Exception as e:
             logger.info(e)
             rulelist = []
         try:
             markscheme = pickle.loads(str(canvas.markscheme))
-        except Exception, e:
+        except Exception as e:
             logger.info(e)
             markscheme = {}
         try:
             pointlist = pickle.loads(str(canvas.pointlist))
-        except Exception, e:
+        except Exception as e:
             logger.info(e)
             pointlist = {}
         stdanswercanvas[canvas.name] = {'id': canvas.id, 'occur': 1,
@@ -644,7 +644,7 @@ def stu_question_get(request):
                 stuanswer = StudentAnswer.objects.filter(question=question,
                                                          student=student).latest('timestamp')
                 html_answer = stuanswer.html_answer
-            except Exception, e:
+            except Exception as e:
                 logger.error(e)
                 pass
             else:
@@ -666,7 +666,7 @@ def __getstucanvas(question, stuanswer):
         for canvas in question_canvas:
             try:
                 stuanswer_canvas = Canvas.objects.get(question=question, name=canvas.name, stuanswer=stuanswer)
-            except Exception, e:
+            except Exception as e:
                 import traceback
                 traceback.print_exc()
                 logger.error(e)
@@ -751,8 +751,8 @@ def question_thumbnails(request):
                 thumbnails = QuestionImage.objects.filter(question=question, iscorrect=iscorrect).exclude(description='del')
             else:
                 thumbnails = []
-        except Exception, e:
-            print e
+        except Exception as e:
+            print(e)
             logger.error(e)
         if thumbnails:
             if iscorrect:
@@ -769,7 +769,7 @@ def question_thumbnails(request):
                                                    t.id] for i, t in stdthumbnails)
                 response_data['stdthumbnail_ids'] = list(t.id for t in thumbnails)
             else:
-                pointlist = list({'Point_No': u'P0.' + str(i + 1),
+                pointlist = list({'Point_No': 'P0.' + str(i + 1),
                                   'Point_Text': image.digest}
                                  for i, image in enumerate(thumbnails))
                 question.imagepointlist = pickle.dumps(pointlist)
@@ -790,7 +790,7 @@ def question_submitstandard(request):
     logger.info("qid:%s" % questionid)
     try:
         question = Question.objects.get(id=int(questionid))
-    except Exception, e:
+    except Exception as e:
         import traceback
         traceback.print_exc()
         logger.error('No question found: %s' % e)
@@ -815,7 +815,7 @@ def question_submitstandard(request):
             except:
                 import traceback
                 traceback.print_exc()
-    except Exception, e:
+    except Exception as e:
         import traceback
         traceback.print_exc()
         logger.error(e)
@@ -837,13 +837,13 @@ def __parsestdanswer(question, stdanswer_content):
         return None
     #parse txtpointlist
     sinst = Standard()
-    print '\n4444444444444444444444444444444444444444444444' * 5
+    print('\n4444444444444444444444444444444444444444444444' * 5)
     pointlist, textfdist, slist = sinst.Analysis(stdanswer_content['text'])
-    print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~' * 15, '\n' * 4
-    print 'pointlist = ',pointlist
-    print '\n\n', 'textfdist = ', textfdist
-    print '\n\n', 'slist= ', slist
-    print "5555555555555555555555555555" * 12
+    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~' * 15, '\n' * 4)
+    print('pointlist = ',pointlist)
+    print('\n\n', 'textfdist = ', textfdist)
+    print('\n\n', 'slist= ', slist)
+    print("5555555555555555555555555555" * 12)
     try:
         imagepointlist = pickle.loads(str(question.imagepointlist))
     except:
@@ -864,18 +864,18 @@ def __parsestdanswer(question, stdanswer_content):
                                                                       sentencelist=sentencelist_dumpped,
                                                                       pointlist=pointlist_dumpped,
                                                                       alternative=False)
-        except Exception, e:
-            print "EXCEPTION AT STANDARD ANSWER !!!!!!!!  = ", e
+        except Exception as e:
+            print("EXCEPTION AT STANDARD ANSWER !!!!!!!!  = ", e)
             import traceback
             traceback.print_exc()
             logger.error(e)
             stdanswer = None
         else:
-            print 'std answer created     ', stdanswer
+            print('std answer created     ', stdanswer)
             logger.info(stdanswer)
     else:
         stdanswer = None
-    print "@ return of std answer ", stdanswer
+    print("@ return of std answer ", stdanswer)
     return stdanswer
 
 
@@ -890,7 +890,7 @@ def __updatestdanswer(question, stdanswer, stdanswer_content):
     else:
         question.infocompleted &= ~Question.STDANSWERCOMPLETED
     question.save()
-    print "successfully saved"
+    print("successfully saved")
     return (question.infocompleted == Question.ALLCOMPLETED)
 
 
@@ -904,27 +904,27 @@ def question_submitmark(request):
         question = Question.objects.get(id=questionid)
         stdanswer = question.stdanswer
     except Exception as e:
-        print str(e), 'eeeeeeeeeeeeeeeeeeeeeeeeeeee'
+        print(str(e), 'eeeeeeeeeeeeeeeeeeeeeeeeeeee')
         question = None
         stdanswer = None
     else:
         try:
             logger.info("question:%s" % question)
-            print "question:%s" % question
+            print("question:%s" % question)
             rawschemes = request.POST.get('schemes') or ""
-            print 'rawschemes   =   ', rawschemes
+            print('rawschemes   =   ', rawschemes)
             scheme = __parsescheme(rawschemes)
-            print 'scheme = ', scheme, "       stdanswer      =  ", stdanswer
+            print('scheme = ', scheme, "       stdanswer      =  ", stdanswer)
             rulecount, rulelist = __updaterulelist(scheme, stdanswer)
-            print 'rulecount, rulelist         = ', rulecount, "  ssssssssss  rulelist  = ", rulelist
+            print('rulecount, rulelist         = ', rulecount, "  ssssssssss  rulelist  = ", rulelist)
     
             #update canvas rules
             rawcanvasschemes = request.POST.get('canvasschemes')
-            print 'rawcanvasschemes   = ', rawcanvasschemes
+            print('rawcanvasschemes   = ', rawcanvasschemes)
             canvasscheme = __parsecanvasscheme(rawcanvasschemes)
-            print 'canvasscheme     =  ', rawcanvasschemes
+            print('canvasscheme     =  ', rawcanvasschemes)
             canvasrulecount, canvasrulelist = __updatecanvasmarkscheme(canvasscheme, question, stdanswer)
-            print 'canvasrulecount, canvasrulelist   =   ', canvasrulecount, '        =     ', canvasrulelist
+            print('canvasrulecount, canvasrulelist   =   ', canvasrulecount, '        =     ', canvasrulelist)
     
             questioncomplete = __updatesheme(question, stdanswer, rawschemes)
             if questioncomplete:
@@ -936,10 +936,10 @@ def question_submitmark(request):
             if rulelist:
                 response_data['state'] = 'success'
         except Exception as e:
-            print "ellsssssssssssssssssssseeeeeeeeeeeeeeeeeeee"
+            print("ellsssssssssssssssssssseeeeeeeeeeeeeeeeeeee")
             import traceback
-            print traceback.format_exc()
-    print "response_data['state']    mark   = ", response_data['state']
+            print(traceback.format_exc())
+    print("response_data['state']    mark   = ", response_data['state'])
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
 
 
@@ -981,12 +981,12 @@ def __updaterulelist(scheme, stdanswer):
         if txtplist:
             try:
                 ms = MarkScheme(txtplist)
-                print 'ms   = ', ms
+                print('ms   = ', ms)
                 txtrulelist = list(rule for rule in ms.GetRules(scheme['txtscheme']))
-                print 'txtrulelist   = ', txtrulelist
+                print('txtrulelist   = ', txtrulelist)
             except:
-                print 'exceptionsssssssssssssss'
-                print traceback.format_exc()
+                print('exceptionsssssssssssssss')
+                print(traceback.format_exc())
         logger.debug("txtrulelist: %s" % txtrulelist)
 
         #imgrulelist
@@ -1005,7 +1005,7 @@ def __updaterulelist(scheme, stdanswer):
             stdanswer.imgrulelist = pickle.dumps(imgrulelist)
             stdanswer.fullmark = scheme['fullmark']
             stdanswer.save()
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             count = 0
             nestedrulelist = []
@@ -1039,7 +1039,7 @@ def __updatecanvasmarkscheme(scheme, question, stdanswer):
         try:
             stdcanvas = Canvas.objects.get(name=canvasname, question=question, stdanswer=stdanswer)
             stdcanvasplist = list(rule[0] for rule in pickle.loads(str(stdcanvas.rulelist)))
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
         else:
             try:
@@ -1050,7 +1050,7 @@ def __updatecanvasmarkscheme(scheme, question, stdanswer):
                 stdcanvas.pointlist = pickle.dumps(canvasrulelist)
                 stdcanvas.markscheme = pickle.dumps(canvasscheme)
                 stdcanvas.save()
-            except Exception, e:
+            except Exception as e:
                 logger.error(e)
                 stdcanvas.markscheme = None
             else:
@@ -1067,7 +1067,7 @@ def __updatesheme(question, stdanswer, rawschemes):
             question.markscheme = rawschemes
             question.infocompleted |= Question.MARKSCHEMECOMPLETED
             question.save()
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             pass
         else:
@@ -1142,7 +1142,7 @@ def questionid_get(request):
                 paper = Paper.objects.get(id=paperid)
                 qids = pickle.loads(str(paper.questionseq))
                 qnames = list(Question.objects.get(id=qid).qname for qid in qids)
-            except Exception, e:
+            except Exception as e:
                 logger.error(e)
             else:
                 response_data['qids'] = qids
@@ -1167,12 +1167,12 @@ def question_getstureport(request):
     vidobjsrc= ""
     try:
         question = Question.objects.get(id=qid)
-        print "Question is ", question
+        print("Question is ", question)
         # questionvid = QuestionVideo.objects.filter(question=question)
         try:
             vidobj = QuestionVideo.objects.get(question=question)
             vidobjsrc = vidobj.src
-            print "vidobjsrc is, ", vidobjsrc
+            print("vidobjsrc is, ", vidobjsrc)
         except QuestionVideo.DoesNotExist:
             pass
         stdanswer = question.stdanswer
@@ -1181,7 +1181,7 @@ def question_getstureport(request):
         stuanswer = StudentAnswer.objects.filter(question=question,
                                                  student=student, taked=True).latest('timestamp')
         stucanvaslist = Canvas.objects.filter(question=question, stuanswer=stuanswer, stdanswer=None)
-    except Exception, e:
+    except Exception as e:
         logger.error(e)
     else:
         response_data['canvas'] = {
@@ -1207,7 +1207,7 @@ def question_getstureport(request):
         response_data['num_closeness_bands'] = NUM_CLOSENESS_BANDS
         try:
             response_data['pointmarklist'] = pickle.loads(str(stuanswer.pointmarklist))
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             response_data['pointmarklist'] = []
         if stuanswer.omitted:
@@ -1239,7 +1239,7 @@ def report_thumbnails(request):
                 question = Question.objects.get(id=int(questionid))
                 stuanswer = StudentAnswer.objects.filter(question=question,
                                                          student=student).latest('timestamp')
-            except Exception, e:
+            except Exception as e:
                 logger.error(e)
                 pass
             else:
@@ -1292,7 +1292,7 @@ def question_alt_submitstandard(request):
 
     try:
         question = Question.objects.get(id=int(questionid))
-    except Exception, e:
+    except Exception as e:
         import traceback
         traceback.print_exc()
         logger.error('No question found: %s' % e)
@@ -1319,7 +1319,7 @@ def question_alt_submitstandard(request):
                 import traceback
                 traceback.print_exc()
 
-    except Exception, e:
+    except Exception as e:
         import traceback
         traceback.print_exc()
         logger.error(e)
@@ -1361,18 +1361,18 @@ def __alt_parsestdanswer(question, stdanswer_content):
                                                                       sentencelist=sentencelist_dumpped,
                                                                       pointlist=pointlist_dumpped,
                                                                       alternative=True)
-        except Exception, e:
-            print "EXCEPTION AT STANDARD ANSWER !!!!!!!!  = ", e
+        except Exception as e:
+            print("EXCEPTION AT STANDARD ANSWER !!!!!!!!  = ", e)
             import traceback
             traceback.print_exc()
             logger.error(e)
             stdanswer = None
         else:
-            print 'std answer created     ', stdanswer
+            print('std answer created     ', stdanswer)
             logger.info(stdanswer)
     else:
         stdanswer = None
-    print "@ return of std answer ", stdanswer
+    print("@ return of std answer ", stdanswer)
     return stdanswer
 
 # TODO: LEAVE THE CANVAS FOR NOW. WE CAN UPDATE IT LATER
@@ -1419,7 +1419,7 @@ def __alt_updatestdanswer(question, stdanswer, stdanswer_content):
         question.alt_stdanswertext = stdanswer_content['text']
         question.alt_stdanswerhtml = stripBody(stdanswer_content['html'])
         question.alt_stdanswer = stdanswer
-        print 'question.alt_stdanswer at assign to question answer = ', question.alt_stdanswer
+        print('question.alt_stdanswer at assign to question answer = ', question.alt_stdanswer)
         question.alt_infocompleted |= Question.STDANSWERCOMPLETED
     else:
         question.alt_infocompleted &= ~Question.STDANSWERCOMPLETED
@@ -1440,44 +1440,44 @@ def question_alt_submitmark(request):
         question = Question.objects.get(id=questionid)
         stdanswer = question.alt_stdanswer
     except Exception as e:
-        print str(e)
+        print(str(e))
         question = None
         stdanswer = None
     else:
         try:
             logger.info("question:%s" % question)
-            print "question:%s" % question
+            print("question:%s" % question)
             rawschemes = request.POST.get('schemes') or ""
-            print 'rawschemes   =   ', rawschemes
+            print('rawschemes   =   ', rawschemes)
             # tip: no need for customization
             scheme = __parsescheme(rawschemes)
-            print 'scheme = ', scheme, "       stdanswer      =  ", stdanswer
+            print('scheme = ', scheme, "       stdanswer      =  ", stdanswer)
             rulecount, rulelist = __updaterulelist(scheme, stdanswer)
-            print 'rulecount, rulelist         = ', rulecount, "  ssssssssss  rulelist  = ", rulelist
+            print('rulecount, rulelist         = ', rulecount, "  ssssssssss  rulelist  = ", rulelist)
     
             #update canvas rules
             rawcanvasschemes = request.POST.get('canvasschemes')
-            print 'rawcanvasschemes   = ', rawcanvasschemes
+            print('rawcanvasschemes   = ', rawcanvasschemes)
             canvasscheme = __parsecanvasscheme(rawcanvasschemes)
-            print 'canvasscheme     =  ', rawcanvasschemes
+            print('canvasscheme     =  ', rawcanvasschemes)
             canvasrulecount, canvasrulelist = __updatecanvasmarkscheme(canvasscheme, question, stdanswer)
-            print 'canvasrulecount, canvasrulelist   =   ', canvasrulecount, '        =     ', canvasrulelist
+            print('canvasrulecount, canvasrulelist   =   ', canvasrulecount, '        =     ', canvasrulelist)
     
             questioncomplete = __alt_updatesheme(question, stdanswer, rawschemes)
-            print 'questioncomplete    ', questioncomplete
+            print('questioncomplete    ', questioncomplete)
             if questioncomplete:
                 _updatepaper(question)
     
             response_data['canvasrulelist'] = canvasrulelist
             response_data['rulelist'] = rulelist
             response_data['rulecount'] = rulecount + canvasrulecount
-            print 'rulelist   =  ', rulelist
+            print('rulelist   =  ', rulelist)
             if rulelist:
                 response_data['state'] = 'success'
         except Exception as e:
-            print "ellsssssssssssssssssssseeeeeeeeeeeeeeeeeeee"
+            print("ellsssssssssssssssssssseeeeeeeeeeeeeeeeeeee")
             import traceback
-            print traceback.format_exc()
+            print(traceback.format_exc())
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
 
 
@@ -1489,7 +1489,7 @@ def __alt_updatesheme(question, stdanswer, rawschemes):
             question.alt_available = True
             question.alt_infocompleted |= Question.MARKSCHEMECOMPLETED
             question.save()
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             pass
         else:

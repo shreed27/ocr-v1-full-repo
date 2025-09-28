@@ -1,8 +1,8 @@
 from django.test import TestCase
 from django.utils import unittest
 import logging
-from standard import Standard
-from markscheme import MarkScheme
+from .standard import Standard
+from .markscheme import MarkScheme
 from algo.answer import Answer
 import os
 import re
@@ -317,7 +317,7 @@ class AlgorithmTest(TestCase):
         manualmark = 1
         mark, marklist, ommited = ans.Analysis(anstext, textfdist, slist, pointlist, rulelist)
         err = mark - manualmark
-        print("%s\t%d\t%s\t%d" % (ansfile, mark, marklist, err))
+        print(("%s\t%d\t%s\t%d" % (ansfile, mark, marklist, err)))
 
     #@unittest.skip("Too much time")
     def test_Q1_all(self):
@@ -331,7 +331,7 @@ class AlgorithmTest(TestCase):
             errcount = 0
             var = 0
             rd = random.uniform(0.32, 0.36)
-            print rd
+            print(rd)
             ans = abAnswer(dist_threshold=rd, multisen_matchrate=0.3, sen_threshold=rd, multisen_threshold=0.4)
             for root, dirs, files in os.walk('algo/testdata/raw/Q1'):
                 if 'Standard' in dirs:
@@ -347,13 +347,13 @@ class AlgorithmTest(TestCase):
                     maxerr += math.fabs(err)
                     var += err ** 2
                     errcount += 1 if math.fabs(err) > 3 else 0
-                    print("%s\t%d\t%s\t%d" % (ansfile, mark, marklist, err))
+                    print(("%s\t%d\t%s\t%d" % (ansfile, mark, marklist, err)))
                     if errcount < minerrcount:
                         minerrcount = errcount
                         minmaxerr = maxerr
                         minrd = rd
-            print "maxerr:%d, maxvar:%d, errcount:%d" % (maxerr, var, errcount)
-        print "minmaxerr:%d rd:%d count:%d" % (minmaxerr, minrd, minerrcount)
+            print("maxerr:%d, maxvar:%d, errcount:%d" % (maxerr, var, errcount))
+        print("minmaxerr:%d rd:%d count:%d" % (minmaxerr, minrd, minerrcount))
 
     def __traversal_process(self, testdir):
         ans = Answer()
@@ -391,7 +391,7 @@ class AlgorithmTest(TestCase):
                             else:
                                 mark = 0
                                 marklist = []
-                            print("%s\t%d\t%s" % (ansfile, mark, marklist))
+                            print(("%s\t%d\t%s" % (ansfile, mark, marklist)))
 
     @unittest.skip("Too much time")
     def test_Q2(self):

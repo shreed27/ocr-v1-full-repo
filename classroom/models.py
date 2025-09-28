@@ -12,4 +12,4 @@ class Classroom(models.Model):
         verbose_name = 'ClassRoom'
 
     def __unicode__(self):
-        return u'[ClassRoom:%s]' % self.roomname
+        return '[ClassRoom:%s]' % self.roomname

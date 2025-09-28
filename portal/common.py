@@ -1,6 +1,6 @@
 import sys
 import logging
-import urllib
+import urllib.request, urllib.parse, urllib.error
 from bs4 import BeautifulSoup
 from django.shortcuts import redirect
 from django.contrib import messages
@@ -100,7 +100,7 @@ def stripHTMLStrings(html):
                '&lt;': '<', '&gt;': '>', '&ldquo;': '"',
                '&rdquo;': '"', '&hellip;': '...'}
 
-    for (k, v) in special.items():
+    for (k, v) in list(special.items()):
         text = text.replace(k, v)
     return text
 
@@ -136,7 +136,7 @@ def retake_option(stuanswer_set):
     paper_total_mark = 0
     for stu_ans in stuanswer_set:
         actual_total_mark = actual_total_mark + actual_mark(stu_ans)
-    print actual_total_mark,"Full mark"
+    print(actual_total_mark,"Full mark")
 
     # for stu_ans in stuanswer_set:
     #     paper_total_mark = paper_total_mark + stu_ans.mark
@@ -151,7 +151,7 @@ def retake_option(stuanswer_set):
     except:
         for stud in stuanswer_set:
             if stud.attempted_count > 3:
-                print stud.attempted_count, "count count count"
+                print(stud.attempted_count, "count count count")
                 retake_flag = False
     return retake_flag
 
@@ -177,7 +177,7 @@ def latex_to_img(text, width=0, height=0):
         temp_text = p_text
         if p_text.startswith("$$"):
             strip_text = str(p_text.strip("$$"))
-            url_encode = urllib.urlencode({"":strip_text})[1:]
+            url_encode = urllib.parse.urlencode({"":strip_text})[1:]
             temp_text = '<img '
             if width and height:
                 temp_text += 'width="' + str(width)+ '" height="'+ str(height) + '"'

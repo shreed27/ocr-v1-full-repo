@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.encoding import smart_unicode
 
@@ -14,9 +14,9 @@ class BeautifulSoupParser(ParserBase):
         try:
             from BeautifulSoup import BeautifulSoup
             return BeautifulSoup(self.content)
-        except ImportError, err:
+        except ImportError as err:
             raise ImproperlyConfigured("Error while importing BeautifulSoup: %s" % err)
-        except Exception, err:
+        except Exception as err:
             raise ParserError("Error while initializing Parser: %s" % err)
 
     def css_elems(self):

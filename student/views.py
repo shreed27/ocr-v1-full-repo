@@ -124,7 +124,7 @@ def student_add(request):
             gender = form.cleaned_data['gender']
             try:
                 classroom = form.cleaned_data['clazz']
-            except Exception, e:
+            except Exception as e:
                 logger.error(e)
                 classroom = None
             user = User.objects.create_user(username, email, password)
@@ -242,19 +242,19 @@ def _getassignmentjson(assignments, teacher, student):
                 questionseq = pickle.loads(str(p.questionseq))
                 question_set = Question.objects.filter(id__in=questionseq)
                 stuanswer_set = getStuanswers(question_set, student)
-                print stuanswer_set, "stuanswer"
+                print(stuanswer_set, "stuanswer")
                 count = sum(1 for sa in stuanswer_set if sa.taked)
-                print p.total
-                print count,"count"
+                print(p.total)
+                print(count,"count")
 
-            except Exception, e:
+            except Exception as e:
                 logger.error(e)
                 logger.error(a)
                 logger.error(p)
                 break
             if count == p.total:
                 retake = retake_option(stuanswer_set)
-                print retake
+                print(retake)
                 # for stud_ans in stuanswer_set:
                 #     stud_ans.attempted_count += attempt_flag
                 #     stud_ans.save()
@@ -284,12 +284,12 @@ def _getassignmentjson(assignments, teacher, student):
 
 @login_required
 def student_takeassignment(request):
-    print "this is assignment"
+    print("this is assignment")
     student, res = getSpByRequest(request, None)
     paperid = request.GET.get("paperid")
     retake = request.GET.get("retake")
 
-    print retake, "retake"
+    print(retake, "retake")
     try:
         paper = Paper.objects.get(id=paperid)
         questionseq = pickle.loads(str(paper.questionseq))
@@ -305,7 +305,7 @@ def student_takeassignment(request):
             question_set = Question.objects.filter(id__in=questionseq)
             stuanswer_set = getStuanswers(question_set, student)
             qnameseq = list(Question.objects.get(id=qid).qname for qid in questionseq)
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             stuanswer_set = []
             qnameseq = []
@@ -341,12 +341,12 @@ def student_takeassignment(request):
         qnameseq = []
         # duration has to be defined
         messages.add_message(request, messages.INFO, 'Paper not found')
-    print student, "student"
-    print simplejson.dumps(questionseq),"simple json"
-    print simplejson.dumps(qnameseq),"simple qname"
-    print paper, "paper"
-    print assignment,"assignment"
-    print "\n"*5
+    print(student, "student")
+    print(simplejson.dumps(questionseq),"simple json")
+    print(simplejson.dumps(qnameseq),"simple qname")
+    print(paper, "paper")
+    print(assignment,"assignment")
+    print("\n"*5)
 
     return render_to_response('student_takeassignment.html',
                               {'student': student,
@@ -374,7 +374,7 @@ def __initstuanswer(paper, question_set, student):
                                                      question=question, taked=False)
             sa[0].timeleft = duration
             sa[0].save()
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             pass
     return duration
@@ -401,7 +401,7 @@ def student_checktime(request):
                 timeleft = stuanswer.timeleft
                 stuanswer.timeleft = timeleft - (curtime - starttime).seconds
                 stuanswer.save()
-        except Exception, e:
+        except Exception as e:
             logger.error("%s:can\'t save timeleft" % e)
         response_data = {'timeout': 'false'}
     else:
@@ -497,7 +497,7 @@ def get_text_distribution(anstext):
     try:
         stu_pointlist, stu_textfdist, stu_slist = sinst.Analysis(anstext)
     except:
-        print "In student views.py 1111111111"
+        print("In student views.py 1111111111")
         import traceback
         traceback.print_exc()
         stu_textfdist = None
@@ -670,7 +670,7 @@ def student_answersave(request):
 			stuanswer.html_answer = answer_html
 			stuanswer.save()
 			response_data = {'state': 'successful'}
-	except Exception , e:
+	except Exception as e:
 		logger.debug('Error in Answer Save: %s' % e)
 	return HttpResponse(simplejson.dumps(response_data), mimetype="application/json")
 @login_required
@@ -698,9 +698,9 @@ def student_submitanswer(request):
         else:
             alt_stdanswer = None
     except (Exception) as e:
-        print e
+        print(e)
         logger.error("question %s not exists" % qid)
-        print ("question %s does not exists" % qid)
+        print(("question %s does not exists" % qid))
         return HttpResponse(simplejson.dumps(response_data), mimetype="application/json")
 
     try:
@@ -726,16 +726,16 @@ def student_submitanswer(request):
                                                  student=student).latest('timestamp')
         stuanswer.html_answer = answer_html
 	stuanswer.save()
-        print "----------------------------------------------------------------------"
-        print anstext
+        print("----------------------------------------------------------------------")
+        print(anstext)
 
         # stuanswer.html_answer = answer_html
         # stuanswer.txt_answer = anstext
         # stuanswer.save()
-        print "answer saveddddddddddddddddddd      done"
+        print("answer saveddddddddddddddddddd      done")
     except Exception as e:
         import traceback
-        print 111111111111111111111111111111, traceback.format_exc()
+        print(111111111111111111111111111111, traceback.format_exc())
         traceback.format_exc()
         logger.error("cant find stuanswer for question %s" % question)
         logger.error(str(traceback.format_exc()))
@@ -743,7 +743,7 @@ def student_submitanswer(request):
 
     try:
         thumbnail_ids = [int(i) for i in request.POST['stuthumbnail_ids'].split(',') if i]
-        print 'thumbnail_ids@@@@@@@@@ = ', thumbnail_ids
+        print('thumbnail_ids@@@@@@@@@ = ', thumbnail_ids)
     except:
         import traceback
         traceback.format_exc()
@@ -759,10 +759,10 @@ def student_submitanswer(request):
         pointlist = _loadlist(stdanswer.pointlist)
         rulelist = _loadlist(stdanswer.rulelist)
 
-        print textfdist
-        print slist
-        print pointlist
-        print rulelist
+        print(textfdist)
+        print(slist)
+        print(pointlist)
+        print(rulelist)
 
         # for alternate answers
         if alternative and alt_stdanswer:
@@ -776,10 +776,10 @@ def student_submitanswer(request):
             alt_pointlist = None
             alt_rulelist = None
 
-        print alt_textfdist
-        print alt_slist
-        print alt_pointlist
-        print alt_rulelist
+        print(alt_textfdist)
+        print(alt_slist)
+        print(alt_pointlist)
+        print(alt_rulelist)
     # TODO: add better handling so that progress bar doesn't get stuck when algorithm code has an exception
     try:
         ans = Answer()
@@ -803,7 +803,7 @@ def student_submitanswer(request):
             # for alternate answer
             if not alt_textfdist:
                 alt_textfdist = nltk.FreqDist(['test'])
-        print ans.Analysis(anstext, textfdist, slist, pointlist, rulelist)
+        print(ans.Analysis(anstext, textfdist, slist, pointlist, rulelist))
         mark, marklist, omitted, closeness_stats = ans.Analysis(anstext, textfdist, slist, pointlist, rulelist)
         if alternative:
             # calculate the same with alternate standard answer
@@ -814,20 +814,20 @@ def student_submitanswer(request):
         try:
             stucanvaslist = Canvas.objects.filter(question=question, stuanswer=stuanswer)
             canvasmark = sum(stucanvas.mark for stucanvas in stucanvaslist)
-            print 'canvasmark = ', canvasmark
-        except Exception, e:
+            print('canvasmark = ', canvasmark)
+        except Exception as e:
             import traceback
             traceback.format_exc()
             logger.error(e)
             canvasmark = 0
         # save mark result
 
-        print '\n##############################################' * 2
-        print 'thumbnail_ids = ', thumbnail_ids
+        print('\n##############################################' * 2)
+        print('thumbnail_ids = ', thumbnail_ids)
         imgmark, stuansimages = __getimgmark(thumbnail_ids, question)
-        print 'imgmark = ', imgmark
+        print('imgmark = ', imgmark)
         # print 'stuansimages = ', stuansimages
-        print '\n##############################################' * 2
+        print('\n##############################################' * 2)
 
         if not mark or not marklist:
             mark = 0
@@ -858,7 +858,7 @@ def student_submitanswer(request):
                 mark = 0
 
             if not mark and alternative:
-                print "inside alternative marking analysis"
+                print("inside alternative marking analysis")
                 band = int(alt_closeness * NUM_CLOSENESS_BANDS - 0.001)
                 if (band < question.min_closeness_band):
                     alt_mark = 0
@@ -870,18 +870,18 @@ def student_submitanswer(request):
             stuanswer.save()
 
 
-        print 'mark = ', mark, '\n'
-        print 'marklist = ', marklist, '\n'
-        print 'omitted = ', omitted, '\n'
-        print 'closeness_stats = ', closeness_stats, '\n'
+        print('mark = ', mark, '\n')
+        print('marklist = ', marklist, '\n')
+        print('omitted = ', omitted, '\n')
+        print('closeness_stats = ', closeness_stats, '\n')
 
-        print 'alt_mark = ', alt_mark, '\n'
-        print 'alt_marklist = ', alt_marklist, '\n'
-        print 'alt_omitted = ', alt_omitted, '\n'
-        print 'alt_closeness_stats = ', alt_closeness_stats, '\n'
+        print('alt_mark = ', alt_mark, '\n')
+        print('alt_marklist = ', alt_marklist, '\n')
+        print('alt_omitted = ', alt_omitted, '\n')
+        print('alt_closeness_stats = ', alt_closeness_stats, '\n')
 
-    except Exception, e:
-        print e
+    except Exception as e:
+        print(e)
 	logger.debug('Exception : %s ' % e)
         import traceback
         traceback.print_exc()
@@ -930,9 +930,9 @@ def student_submitanswer(request):
         # # save mark result
         try:
             if alt_mark <= mark+imgmark+canvasmark:
-                print "inside the actual standard answer part"*10
+                print("inside the actual standard answer part"*10)
                 stuanswer.mark = mark + imgmark + canvasmark
-                print 'mark= ',mark, ' imgmark =', imgmark, ' canvasmark = ', canvasmark
+                print('mark= ',mark, ' imgmark =', imgmark, ' canvasmark = ', canvasmark)
                 if omitted:
                     stuanswer.omitted = pickle.dumps(omitted)
                 else:
@@ -942,15 +942,15 @@ def student_submitanswer(request):
                 stuanswer.grammar_issues = grammar_issues
                 stuanswer.closeness = closeness                
                 stuanswer.save()
-                print 'mark = ', mark, '\n'
-                print 'marklist = ', marklist, '\n'
-                print 'omitted = ', omitted, '\n'
-                print 'closeness_stats = ', closeness_stats, '\n'
+                print('mark = ', mark, '\n')
+                print('marklist = ', marklist, '\n')
+                print('omitted = ', omitted, '\n')
+                print('closeness_stats = ', closeness_stats, '\n')
 
                 # save the alternative answers to the student answer
                 # if the following criteria met.
             elif alternative and (alt_mark > mark):
-                print "inside the alternative part of the question"*10
+                print("inside the alternative part of the question"*10)
                 stuanswer.mark = alt_mark #+ imgmark + canvasmark
                 if alt_omitted:
                     stuanswer.omitted = pickle.dumps(alt_omitted)
@@ -962,18 +962,18 @@ def student_submitanswer(request):
                 stuanswer.closeness = alt_closeness
                 stuanswer.save()            
                 alternative_accepted = True
-                print 'alt_mark = ', alt_mark, '\n'
-                print 'alt_marklist = ', alt_marklist, '\n'
-                print 'alt_omitted = ', alt_omitted, '\n'
-                print 'alt_closeness_stats = ', alt_closeness_stats, '\n'                
+                print('alt_mark = ', alt_mark, '\n')
+                print('alt_marklist = ', alt_marklist, '\n')
+                print('alt_omitted = ', alt_omitted, '\n')
+                print('alt_closeness_stats = ', alt_closeness_stats, '\n')                
         except:
             import traceback
             traceback.format_exc()
             response_data['state'] = 'failure'
         else:
             # updating ClosenessReport
-            print closeness_stats
-            print alt_closeness_stats
+            print(closeness_stats)
+            print(alt_closeness_stats)
             closeness_report, created = ClosenessReport.objects.get_or_create(
                 question=question, 
                 student_answer=stuanswer)
@@ -984,12 +984,12 @@ def student_submitanswer(request):
             response_data['mark'] = stuanswer.mark
             response_data['state'] = 'success'
         logger.debug("out student_submitanswer(): response_data=%s" % response_data)
-        print ("out student_submitanswer(): response_data=%s" % response_data)
+        print(("out student_submitanswer(): response_data=%s" % response_data))
     else:
         response_data['mark'] = stuanswer.mark
         response_data['state'] = 'success'
         logger.debug("out student_submitanswer(): response_data=%s" % response_data)
-        print ("out student_submitanswer(): response_data=%s" % response_data)        
+        print(("out student_submitanswer(): response_data=%s" % response_data))        
 
     return HttpResponse(simplejson.dumps(response_data), mimetype="application/json")
 
@@ -1001,8 +1001,8 @@ def __getimgmark(thumbnail_ids, question):
         stdanswer = question.stdanswer
         stuansimages = QuestionImage.objects.filter(id__in=thumbnail_ids)
         imagepointlist = pickle.loads(str(question.imagepointlist))
-    except Exception, e:
-        print "expppppppp", e
+    except Exception as e:
+        print("expppppppp", e)
         logger.error(e)
         return 0, []
     else:
@@ -1015,7 +1015,7 @@ def __getimgmark(thumbnail_ids, question):
 
     try:
         imgrulelist = _loadlist(stdanswer.imgrulelist)
-    except Exception, e:
+    except Exception as e:
         logger.error(e)
     imgmark = None
     if stuanspoints and imgrulelist:
@@ -1082,15 +1082,15 @@ def student_submitpaper(request):
         paperid = request.POST.get('paperid')
         p = Paper.objects.get(id=int(paperid))
         questionseq = pickle.loads(str(p.questionseq))
-    except Exception, e:
+    except Exception as e:
         logger.error(e)
         return HttpResponse('paper not found')
 
     try:
         question_set = Question.objects.filter(id__in=questionseq)
         stuanswer_set = getStuanswers(question_set, student)
-        print stuanswer_set,"student answer submit paper"
-    except Exception, e:
+        print(stuanswer_set,"student answer submit paper")
+    except Exception as e:
         response_data['state'] = e
         logger.error(e)
     if stuanswer_set:
@@ -1099,12 +1099,12 @@ def student_submitpaper(request):
             totalmark += ans.mark
             ans.taked = True
             ans.save()
-        print totalmark ,"mark"
+        print(totalmark ,"mark")
         if totalmark < p.passpoint:
             response_data['state'] = 'failed'
         else:
             response_data['state'] = 'passed'
-        print response_data,"response data"
+        print(response_data,"response data")
     return HttpResponse(simplejson.dumps(response_data), mimetype="application/json")
 
 
@@ -1117,7 +1117,7 @@ def _reinitanswer(stuanswer_set):
         try:
             ans = StudentAnswer.objects.get_or_create(student=student, question=question,
                                                       taked=False)
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
     return mark
 
@@ -1175,6 +1175,7 @@ def student_getbyname(request):
 from .ocr_utils import ocr_processor
 from .forms import OCRAnswerSheetForm
 from django.utils import timezone
+
 
 @login_required
 @permission_required('student.add_studentanswer')
@@ -1305,6 +1306,9 @@ def ocr_processing_status(request):
         }, context_instance=RequestContext(request))
     
     return redirect('student_index')
+
+
+
 
 class StudentDelete(DeleteView):
     model = SProfile

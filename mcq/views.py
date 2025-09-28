@@ -176,7 +176,7 @@ def getall_mcq_assignment(request):
 		teacher = student.teacher
 	try:
 		assignments = MCQ_Assignment.objects.filter(teacher=teacher)
-	except Exception, e:
+	except Exception as e:
 		assignments = []
 	try:
 		forwhat = request.GET.get('forwhat')
@@ -329,7 +329,7 @@ def mcq_questioncategory_delete(request):
 		rowQuestCat = MCQ_QuestionCategory.objects.get(id=int(txtID))
 		rowQuestCat.delete()
 		response_data['state'] = "success"
-	except Exception, E:
+	except Exception as E:
 		rowQuestCat = None
 		logger.debug(E)
 	return HttpResponse(json.dumps(response_data), mimetype="application/json")
@@ -362,7 +362,7 @@ def mcq_questioncategory_save(request):
 			response_data['state'] = "success"
 			rowQuestCat.save()
 
-	except Exception, E:
+	except Exception as E:
 		rowQuestCat = None
 		logger.debug(E)
 	
@@ -436,7 +436,7 @@ def mcq_questioncategory_view(request):
 				{'errormessage': 'Access is Denied!!!'},
 				context_instance=RequestContext(request))
 		lst_questioncategory = MCQ_QuestionCategory.objects.filter(qct_sequence=0)
-	except  Exception , e :
+	except  Exception as e :
 		logger.debug("error %s " % e)
 		lst_questioncategory = []
 	for rowObj in lst_questioncategory:
@@ -480,7 +480,7 @@ def mcq_question_add(request):
 		lst_teacher = [tp]
 		lst_questioncategory = MCQ_QuestionCategory.objects.filter(qct_sequence=0, qct_teacher__in = lst_teacher)
 
-	except Exception , e:
+	except Exception as e:
 		logger.info('question category exception %s' % e)
 		lst_questioncategory = []
 	for rowQC in lst_questioncategory: #==== Array 1 ========
@@ -534,7 +534,7 @@ def __getquestiondetail(questionid):
 	questioncat_id = 0
 	try:
 		questioncat_id = question.qtn_questioncategory.id
-	except Exception , e:
+	except Exception as e:
 		#logger.debug('this is error exception for get questioncat %s ' % e)
 		questioncat_id= 0
         
@@ -546,7 +546,7 @@ def __getquestiondetail(questionid):
                          'question_mark': question.qtn_mark,
                          'question_item': question.itempool.id}
 	response_data['state'] = 'success'
-    except Exception, e:
+    except Exception as e:
         return {'state': 'No Resource'}
     return response_data
 
@@ -562,7 +562,7 @@ def mcq_question_getid(request):
 			paper = MCQ_Paper.objects.get(id=paperid)
 			qids = pickle.loads(str(paper.ppr_questionseq))
 			qnames = list(MCQ_Question.objects.get(id=qid).qtn_name for qid in qids)
-		except Exception, e:
+		except Exception as e:
 			logger.error(e)
 		else:
 			response_data['qids'] = qids
@@ -599,7 +599,7 @@ def mcq_question_updatename(request):
 			itempool = None
 		try:
 			categoryobj = MCQ_QuestionCategory.objects.get(id=int(questioncategoryid))
-		except Exception,e:
+		except Exception as e:
 			logger.info("exception get question category %s " % e)
 			categoryobj = None
 		if questionid and questionname and itempool:
@@ -641,7 +641,7 @@ def __changeName(name, qid):
 			imagename = "%s__%s.%s" % ("_".join(nameArr[:-1]), qid, nameArr[-1])
 			thumbname = "thumb__%s__%s.%s" % ("_".join(nameArr[:-1]), qid, nameArr[-1])
 			return imagename, thumbname
-	except Exception , e:
+	except Exception as e:
 		logger.error(e)
 def __changeNameForStd(name, qid):
 	try:
@@ -652,7 +652,7 @@ def __changeNameForStd(name, qid):
 			imagename = "std__%s__%s.%s" % ("_".join(nameArr[:-1]), qid, nameArr[-1])
 			thumbname = "thumb__std__%s__%s.%s" % ("_".join(nameArr[:-1]), qid, nameArr[-1])
 			return imagename, thumbname
-	except Exception , err:
+	except Exception as err:
 		logger.error(err)
 def __saveImage(image, fpath, fname):
 	try:
@@ -663,7 +663,7 @@ def __saveImage(image, fpath, fname):
 				m.update(chunk)
 				destination.write(chunk)
 		return fullname, m.hexdigest()
-	except Exception , e:
+	except Exception as e:
 		logger.error(e)
 
 def __resizeImage(imageIn, imageOut):
@@ -675,7 +675,7 @@ def __resizeImage(imageIn, imageOut):
     try:
         orig.thumbnail((destW, destH))
         orig.save(imageOut)
-    except Exception , e:
+    except Exception as e:
         logger.error("resize image failed %s" % e)
 
 
@@ -718,7 +718,7 @@ def mcq_question_uploadimage(request):
 					    description = 'del'
 					else:
 					    description = None
-				except Exception , e:
+				except Exception as e:
 					logger.error(e)
 
 			__resizeImage(uploadImageFullName,
@@ -732,7 +732,7 @@ def mcq_question_uploadimage(request):
 				                            qti_iscorrect=iscorrect)
 		    	imageObj.save()
 		except:
-		    	print sys.exc_info()
+		    	print(sys.exc_info())
 		    	return HttpResponse("Upload Error")
 		return HttpResponse("Upload Success!", mimetype="text/plain")
 	else:
@@ -757,7 +757,7 @@ def mcq_question_thumbnails(request):
 				thumbnails = MCQ_QuestionImage.objects.filter(question=question, qti_iscorrect=iscorrect).exclude(qti_description='del')
 			else:
 				thumbnails = []
-		except Exception, e:
+		except Exception as e:
 			logger.error(e)
 		if thumbnails:
 			if iscorrect:
@@ -773,7 +773,7 @@ def mcq_question_thumbnails(request):
 								    t.id] for i, t in enumerate(thumbnails))
 				response_data['stdthumbnail_ids'] = list(t.id for t in thumbnails)
 		    	else:
-				pointlist = list({'Point_No': u'P0.' + str(i + 1),
+				pointlist = list({'Point_No': 'P0.' + str(i + 1),
 				                  'Point_Text': image.qti_digest}
 				                for i, image in enumerate(thumbnails))
 				response_data['state'] = 'success' 
@@ -789,14 +789,14 @@ def mcq_question_deleteimage(request):
 		
 		tp, res = getTpByRequest(request, None) 
 		response_data = { 'state'  : 'failure' } 
-	except Exception , e:
+	except Exception as e:
 		logger.info('error %s ' % e)
 	#tp, res = getTpByRequest(request, None)
 	if tp and request.method == 'POST':
 		try: 
 			imageid = request.POST.get("imageid") 
 			MCQ_QuestionImage.objects.filter(id=imageid).delete() 
-		except Exception , e:
+		except Exception as e:
 			logger.info('error: %s' % e)
 			pass
 			
@@ -823,7 +823,7 @@ def mcq_question_submit(request):
         try:
             itempool = MCQ_Itempool.objects.get(itp_teacher=tp, id=int(itempoolid))
             question = MCQ_Question.objects.get(id=int(questionid))
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             itempool = None
             question = None
@@ -836,7 +836,7 @@ def mcq_question_submit(request):
 		    	logger.error('test1b')
 		        question.save()
 		    	logger.error('test1c')
-		except Exception, Err:
+		except Exception as Err:
 			logger.debug(Err)
             else:
 		try:
@@ -865,7 +865,7 @@ def mcq_question_submit(request):
 		        question.qty_text = stripHTMLStrings(strip_tags(question_content))
 		        question.save()
 		        response_data['state'] = 'success'
-		except Exception, e:
+		except Exception as e:
 			logger.debug('%s (%s)' % (e.message, type(e)))
 			response_data = {'state': 'failure'}
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
@@ -892,10 +892,10 @@ def MCQ_GetPaperInfoById(request):
                 paper = MCQ_Paper.objects.get(id=int(paperid))
                 response_data['papername'] = paper.ppr_papername
                 response_data['duration'] = paper.ppr_duration
-            except Exception, e:
+            except Exception as e:
 		logger.error('is here...')
 		logger.error("MCQ_GetPaperInfoById Error: %s" % MCQ_GetPaperInfoById)
-                print e
+                print(e)
             else:
 		try:
 		        if paper.assignment:
@@ -906,7 +906,7 @@ def MCQ_GetPaperInfoById(request):
 		            response_data['level'] = paper.level.levelname
 		        if paper.subject:
 		            response_data['subject'] = paper.subject.subjectname
-		except Exception , e:
+		except Exception as e:
 			logger.error(e)
                 response_data['state'] = 'success'
     return HttpResponse(simplejson.dumps(response_data), mimetype="application/json")
@@ -992,7 +992,7 @@ def mcq_optionlist_add(request):
 		else:
 			question = MCQ_Question.objects.get(id=questionid)
 			optionlisting = MCQ_Optionlist.objects.filter(opl_question=question)
-	except Exception, e:
+	except Exception as e:
 		logger.debug('%s (%s)' % (e.message, type(e)))
 		optionlisting = []
 
@@ -1024,7 +1024,7 @@ def mcq_optionlist_get(request):
 					}
 			
 				response_data['state'] = 'success'
-			except Exception, e:
+			except Exception as e:
 				logger.debug('%s (%s)' % (e.message, type(e)))
 				
 				response_data = {"state": "failure"}
@@ -1068,7 +1068,7 @@ def mcq_optionlist_updatefield(request):
 					optionObject.save()
 				
 				response_data["state"]="success"
-			except Exception, e:
+			except Exception as e:
 				logger.debug('%s (%s)' % (e.message, type(e)))
 				
 				response_data = {"state": "failure"}
@@ -1146,14 +1146,14 @@ def __teacher_closeness_info(pids):
 	try:
 		paperids = [int(i) for i in pids.split(',')]
 		papers = MCQ_Paper.objects.filter(id__in=paperids)
-	except Exception, e:
+	except Exception as e:
 		papers = []
 	logger.info('__teacher_closeness_info papers %s' % papers)
 	total_num_scores = 0
 	for p in papers:
 		try:
 			students = SProfile.objects.filter(mcq_assignment=p.assignment)
-		except Exception, e:
+		except Exception as e:
 			# logger.error('error here found')
 			logger.error(e)
 		for student in students:
@@ -1189,7 +1189,7 @@ def mcq_paper_getall_closeness(request):
 		response['Content-Type'] = 'text/plain; charset=utf-8'
 		response['Cache-Control'] = 'no-cache'
 		return response
-	except Exception,  Err:
+	except Exception as  Err:
 		logger.debug("Error: %s" % Err)
 def __teachermarkreport(pids):
 	"""
@@ -1199,9 +1199,9 @@ def __teachermarkreport(pids):
 	try:
 		paperids = [int(i) for i in pids.split(',')]
 		papers = MCQ_Paper.objects.filter(id__in=paperids)
-	except Exception, e:
+	except Exception as e:
 		logger.debug('__teachermarkreport : %s' % e)
-		print e
+		print(e)
 		papers = []
 	for p in papers:
 		logger.info('paper %s ' % p)
@@ -1322,7 +1322,7 @@ def mcq_paper_add(request):
 			# logger.debug('ok...ok....questionlist : %s' % questionlist)
 			paper.ppr_questionseq = pickle.dumps([q.id for q in questionlist])
 			paper.save()
-			print paper.ppr_questionseq
+			print(paper.ppr_questionseq)
 			messages.add_message(request, messages.SUCCESS, "One Paper Added")
 			# logger.info(' saved done, going to redirect page')
 			return redirect("/mcq/paper/add?paperid=" + str(paper.id))
@@ -1418,14 +1418,14 @@ def mcq_paper_getquestions(request):
 		    	teacher = student.teacher
 		# logger.info("paper_getquestions,paperid:%s,teacher:%s" % (paperid, teacher))
 
-		print paperid
+		print(paperid)
 		if paperid and paperid != '-1':
 			# logger.info("paper_getquestion ....option 1a")
 		    	try:	
 				# logger.info("paper_getquestion ....option 1a_1 , with paper id: %s " % paperid)
 				paper = MCQ_Paper.objects.get(id=int(paperid))
 				# logger.info("paper_getquestion ....option 1a_2")
-				print paper.ppr_questionseq
+				print(paper.ppr_questionseq)
 				# logger.info("paper_getquestion ....option 1a_3")
 				questionseq = pickle.loads(str(paper.ppr_questionseq))
 				# logger.info("paper_getquestion ....option 1a_4")
@@ -1445,7 +1445,7 @@ def mcq_paper_getquestions(request):
 						# logger.info("paper_getquestion ....option 1b")
 				    		ztreejson += __builduncheckeditempooltree(itempools, view, student)
 				
-			except Exception, e:
+			except Exception as e:
 				logger.error(e)
 		elif paperid == '-1':
 	    		itempools = MCQ_Itempool.objects.filter(itp_teacher=teacher)
@@ -1601,7 +1601,7 @@ def MCQ_assignment_getstudents(request):
 def __updatestuinassignment(assignment, studentlist):
     try:
         students = MCQ_Assignment.asm_students.all()
-    except Exception , e:
+    except Exception as e:
 	pass
 	for s in studentlist:
 	    # logger.info('adding new student list %s' % s)
@@ -1759,7 +1759,7 @@ def mcq_assignment_getstudents(request):
 	    # logger.info("get stduent start")	
             students = SProfile.objects.filter(teacher=teacher)
 	    # logger.info("get student end")	
-        except Exception, err:
+        except Exception as err:
 	    logger.info(err)
             students = []
 	    # logger.info("exception at student")	
@@ -1918,7 +1918,7 @@ def _reinitanswer(stuanswer_set,paper):
 		try:
 			ans = MCQ_StudentAnswer.objects.get_or_create(student=student, question=question,sta_paper=paper,
 				              sta_taked=False)
-		except Exception, e:
+		except Exception as e:
 			logger.error('ERRRO IN "reinitanswer" : %s' % e)
 	return mark
 def __initstu_retake_answer(paper, question_set, student):
@@ -1932,7 +1932,7 @@ def __initstu_retake_answer(paper, question_set, student):
 			srta_question=question, srta_taked=True)
 			sa[0].srta_timeleft = duration
 			sa[0].save()
-		except Exception, e:
+		except Exception as e:
 			logger.error(e)
 			pass
 	return duration
@@ -1945,7 +1945,7 @@ def __initstuanswer(paper, question_set, student):
 			question=question, sta_taked=True)
 			sa[0].sta_timeleft = duration
 			sa[0].save()
-		except Exception, e:
+		except Exception as e:
 			logger.error(e)
 			pass
 	return duration
@@ -1979,7 +1979,7 @@ def mcq_student_re_takeassignment(request):
 			deleteQuestion.delete()
 			stuanswer_set = getStu_retake_answers(question_set, student,paper)
 			qnameseq = list(MCQ_Question.objects.get(id=qid).qtn_name for qid in questionseq)
-		except Exception, e:
+		except Exception as e:
 			logger.error(e)
 			stuanswer_set = []
 			qnameseq = []
@@ -2052,7 +2052,7 @@ def mcq_student_takeassignment(request):
 			question_set = MCQ_Question.objects.filter(id__in=questionseq)
 			stuanswer_set = getStuanswers(question_set, student)
 			qnameseq = list(MCQ_Question.objects.get(id=qid).qtn_name for qid in questionseq)
-		except Exception, e:
+		except Exception as e:
 			logger.error(e)
 			stuanswer_set = []
 			qnameseq = []
@@ -2180,7 +2180,7 @@ def mcq_stu_question_get(request):
 					loopValue = loopValue + 1	
 				## logger.info('this is  the lst_optionlist ============= %s' % str_optionlist)
 				response_data['question_multiselection'] = str_optionlist
-			except Exception , e:
+			except Exception as e:
 				# logger.error('is here')
 				logger.error(e)
 				pass
@@ -2190,7 +2190,7 @@ def mcq_stu_question_get(request):
 					student=student)
 				# logger.info('test 2')
 				html_answer = "ned to change to option list id"
-			except Exception, e:
+			except Exception as e:
 				# logger.error('get student answer, i shouldnt in here: %s' % e)
 				logger.error(e)
 				pass
@@ -2281,7 +2281,7 @@ def mcq_stu_retake_question_get(request):
 					loopValue = loopValue + 1	
 				## logger.info('this is  the lst_optionlist ============= %s' % str_optionlist)
 				response_data['question_multiselection'] = str_optionlist
-			except Exception , e:
+			except Exception as e:
 				# logger.error('is here')
 				logger.error(e)
 				pass
@@ -2291,7 +2291,7 @@ def mcq_stu_retake_question_get(request):
 					srta_student=student)
 				# logger.info('test 2')
 				html_answer = "ned to change to option list id"
-			except Exception, e:
+			except Exception as e:
 				# logger.error('get student answer, i shouldnt in here: %s' % e)
 				logger.error(e)
 				pass
@@ -2324,7 +2324,7 @@ def mcq_student_selectedoption_retakepaper(request):
 			# logger.info("ok test1")
 			#check_isit_studentanswered = MCQ_StudentRetakeAnswer.objects.get(srta_question=obj_question ,srta_paper=obj_paper , srta_optionlist=None,srta_student=student) # MH16010001
 			check_isit_studentanswered = MCQ_StudentRetakeAnswer.objects.get(srta_question=obj_question ,srta_paper=obj_paper , srta_student=student) # MH16010001
-		except Exception , e:
+		except Exception as e:
 			
 			# logger.info("ERROR LOL: %s " % e)
 			response_data['message'] = "Question has been answered by you."
@@ -2361,7 +2361,7 @@ def mcq_student_selectedoption(request):
 			#check_isit_studentanswered = MCQ_StudentAnswer.objects.get(question=obj_question ,sta_paper=obj_paper , optionlist=None,student=student) # MH16010001
 			check_isit_studentanswered = MCQ_StudentAnswer.objects.get(question=obj_question ,sta_paper=obj_paper , student=student) # MH16010001
 			logger.info("ok test2")
-		except Exception , e:
+		except Exception as e:
 			
 			logger.info("ok test3")
 			logger.info("ERROR LOL: %s " % e)
@@ -2382,7 +2382,7 @@ def mcq_student_selectedoption(request):
 			try:
 				logger.info("thumbnail_ids: %s" % thumbnail_ids)
 				#stuansimages = __getimgmark(thumbnail_ids, obj_question)
-			except Exception , e:
+			except Exception as e:
 				logger.info("error: %s " % e) 
 			try:
 				logger.info("test 1")
@@ -2396,7 +2396,7 @@ def mcq_student_selectedoption(request):
 					check_isit_studentanswered.sta_mark = obj_question.qtn_mark
 				check_isit_studentanswered.save()
 				response_data = {'state': 'success'}
-			except Exception , e:
+			except Exception as e:
 				logger.info("error: %s " % e) 
 	return HttpResponse(json.dumps(response_data), mimetype="application/json")
 
@@ -2408,8 +2408,8 @@ def __getimgmark(thumbnail_ids, question):
 	#stdanswer = question.stdanswer
 	stuansimages = MCQ_QuestionImage.objects.filter(id__in=thumbnail_ids)
 	#imagepointlist = pickle.loads(str(question.imagepointlist))
-    except Exception, e:
-	print "expppppppp", e
+    except Exception as e:
+	print("expppppppp", e)
 	logger.error(e)
 	return 0, []
     #else:
@@ -2531,7 +2531,7 @@ def mcq_report_studentanswer(request):
         logger.debug("request.POST: %s" % request.POST)
         #get table list of all found papers after select table step 1
         paperids = request.POST.get('paperids')
-        print paperids,"paperids paperids"
+        print(paperids,"paperids paperids")
         pids = []
         stuids = []
         if paperids:
@@ -2540,7 +2540,7 @@ def mcq_report_studentanswer(request):
 		logger.info('this is all paperids: %s' % paperids)
                 paper_stu = re.findall(r'\{pid\:(\d+)\,\sstuid\:(\d+)\}', paperids)
 		logger.info('this is all paper_stu: %s' % paper_stu)
-            except Exception, e:
+            except Exception as e:
                 logger.error(e)
             for pid, stuid in paper_stu:
 		logger.info('this is each id : %s ' % pid)
@@ -2565,7 +2565,7 @@ def mcq_report_studentanswer(request):
                 pids = [int(id) for id in request.POST.get('pids').strip('[]').split(',')]
                 stuids = [int(id) for id in request.POST.get('stuids').strip('[]').split(',')]
                 form = MCQ_DetailSearchForm(request.POST, paper=pids, student=stuids)
-            except Exception, e:
+            except Exception as e:
                 logger.error(e)
             if form and form.is_valid():
                 student = form.cleaned_data['student']
@@ -2577,7 +2577,7 @@ def mcq_report_studentanswer(request):
                 try:
                     student = SProfile.objects.get(user__id=stuids[0])
                     paper = MCQ_Paper.objects.get(id=pids[0])
-                except Exception, e:
+                except Exception as e:
                     logger.error(e)
                     student = None
                     paper = None
@@ -2606,7 +2606,7 @@ def __studentmarkreport(student):
 		lst_assignments = MCQ_Assignment.objects.filter(asm_students=student)
 		lst_papers = MCQ_Paper.objects.filter(assignment__in=lst_assignments).distinct()
 		logger.info( ' check all lst_papers %s ' % lst_papers)
-	except Exception , E:
+	except Exception as E:
 		logger.info(' exception studentmarkreport %s ' % E)
 		lst_papers = []
 
@@ -2640,7 +2640,7 @@ def mcq_stu_question_thumbnails(request):
                 question = MCQ_Question.objects.get(id=int(questionid))
                 stuanswer = MCQ_StudentAnswer.objects.filter(question=question,
                                                          student=student).latest('sta_timestamp')
-            except Exception , e:
+            except Exception as e:
 		logger.info('debug2 %s ' % e)
                 stuanswer = None
                 thumbnails = MCQ_QuestionImage.objects.filter(question=question,
@@ -2656,7 +2656,7 @@ def mcq_stu_question_thumbnails(request):
 		                                                  qti_iscorrect=False)\
 		            .exclude(qti_description="del")\
 		            .exclude(qti_digest__in=studigests)
-		except Exception , e:
+		except Exception as e:
 			logger.debug('ok ..error here %s ' % e)
             logger.info("question %s, thumbnails%s" % (question, thumbnails))
                 #[0] thumb,[1] imagename,[2] orig image
@@ -2693,7 +2693,7 @@ def mcq_report_thumbnails(request):
 				question = MCQ_Question.objects.get(id=int(questionid))
 				stuanswer = MCQ_StudentAnswer.objects.filter(question=question,
 					student=student).latest('sta_timestamp')
-			except Exception, e:
+			except Exception as e:
 				logger.error(e)
 				pass
 			else:
@@ -2722,7 +2722,7 @@ def __getReportThumbnails(question, stuanswer):
 	logger.info('=====================================================')
 	logger.info('stuthum %s' % stuthumbnails if stuthumbnails != None else "is Empty")
 	logger.info('=====================================================')
-    except Exception , e:
+    except Exception as e:
 	logger.error(e)
         pass
     else:
@@ -2769,7 +2769,7 @@ def mcq_question_getstureport(request):
 			response_data['optionid_stdanswer'] = optionlist_stdanswer.id
 		else:
 			stdanswer = ""
-	except Exception , e:
+	except Exception as e:
 		logger.info('exception %s' % e)
 	 	optionlist_stdanswer= None
 		stdanswer = ""	
@@ -2788,7 +2788,7 @@ def mcq_question_getstureport(request):
 		pass
         stucanvaslist = [] #Canvas.objects.filter(question=question, stuanswer=stuanswer, stdanswer=None)
 	
-    except Exception, e:
+    except Exception as e:
 	
         logger.error(e)
     else: 
@@ -2842,7 +2842,7 @@ def mcq_question_getstureport(request):
 			response_data['pointmarklist'] = pickle.loads(str(stuanswer.srta_pointmarklist))
 		else:
 			response_data['pointmarklist'] = pickle.loads(str(stuanswer.sta_pointmarklist))
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             response_data['pointmarklist'] = [] 
 	response_data['omitted'] = ''
@@ -2855,7 +2855,7 @@ def mcq_question_getstureport(request):
     	mark_question_set = MCQ_Question.objects.filter(id__in=mark_questionseq)
     	stuanswer_set = getStuanswers(mark_question_set, student,paper) 
     	d_total_mark = sum(ans.sta_mark for ans in stuanswer_set)
-    except Exception, e:
+    except Exception as e:
     	logger.info('errro %s ' % e)
     logger.info('total mark %s ' % d_total_mark)
     response_data['total_mark'] = d_total_mark
@@ -2881,7 +2881,7 @@ def mcq_feedback_popup(request, pid, stuid):
 			)
 		logger.info("mcq_feedback_popup: if statement done") 
 		if request.method == 'POST':
-			print "post method calling"
+			print("post method calling")
 			form = MCQ_FeedbackForm(request.POST)
 
 			if form.is_valid():
@@ -2922,7 +2922,7 @@ def mcq_feedback_popup(request, pid, stuid):
 		stuanswer_set = getTakedStuanswers(qset, student,paper, False)
 		total_mark = 0
 		stud_mark = 0
-		print stuanswer_set
+		print(stuanswer_set)
 		lst_allanswer  = [];
 		for q in stuanswer_set:
 			answer_is_correct = "N"
@@ -2946,12 +2946,12 @@ def mcq_feedback_popup(request, pid, stuid):
 						if q.optionlist.id == actualAnswer_row.id :
 							answer_is_correct = "Y"
 					
-			except Exception , e:
+			except Exception as e:
 				logger.debug("eception here %s " % e)
 				actualAnswer = None
 			try:
 				lst_allanswer.append({'question': q.question.qtn_name + " - " +  q.question.qtn_description , 'student_answer': q.optionlist.opl_option ,'actual_answer':strActualAnswer ,'correct':answer_is_correct, 'mark':  q.sta_mark , 'feedback':q.sta_feedback , 'feedback_code':q.sta_feedback_code})
-			except Exception, e:
+			except Exception as e:
 				logger.debug(e)
 		return render_to_response('mcq_report_feedback_report.html',
 				{'user':student,'paper':paper,'stu':stuanswer_set, 'lst_allanswer':lst_allanswer,
@@ -2983,7 +2983,7 @@ def mcq_student_retake_checktime(request):
                 timeleft = stuanswer.srta_timeleft
                 stuanswer.srta_timeleft = timeleft - (curtime - starttime).seconds
                 stuanswer.save()
-        except Exception, e:
+        except Exception as e:
             logger.error("%s:can\'t save timeleft" % e)
         response_data = {'timeout': 'false'}
     else:
@@ -3020,7 +3020,7 @@ def mcq_student_checktime(request):
                 timeleft = stuanswer.sta_timeleft
                 stuanswer.sta_timeleft = timeleft - (curtime - starttime).seconds
                 stuanswer.save()
-        except Exception, e:
+        except Exception as e:
             logger.error("%s:can\'t save timeleft" % e)
         response_data = {'timeout': 'false'}
     else:
@@ -3087,7 +3087,7 @@ def _getassignmentjson(assignments, teacher, student):
 						
 				# logger.info('after miao ... this is the number %s' % count)
 				
-			except Exception, e:
+			except Exception as e:
 				logger.error(e)
 				# logger.error(a)
 				# logger.error(p)
@@ -3119,7 +3119,7 @@ def _getassignmentjson(assignments, teacher, student):
 						
 						
 
-				except Exception, Err:
+				except Exception as Err:
 					
 					logger.debug("exception %s" % Err)
 
@@ -3190,8 +3190,8 @@ class MCQ_OptionCanvasView(TemplateView):
 def mcq_canvas_upload(request):
     response_data = {'state': 'failure'}
     if request.method == "POST":
-        print "~~~~~~~~~~~~~~~~~~" * 122
-        print request.POST
+        print("~~~~~~~~~~~~~~~~~~" * 122)
+        print(request.POST)
         id = json.loads(request.POST['id'].encode('utf-8'))
         canvasmap = json.loads(request.POST['canvasmap'].encode('utf-8'))
         try:
@@ -3203,87 +3203,87 @@ def mcq_canvas_upload(request):
 		logger.info("should update standard answer, but mcq not available")
             elif id.get('stuanswerid'):
                 stuanswer = MCQ_StudentAnswer.objects.get(id=id['stuanswerid'])
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             response_data['state'] = "question not found"
         else:
-            for canvasname, canvasitem in canvasmap.items():
+            for canvasname, canvasitem in list(canvasmap.items()):
                 try:
                     
                     canvas = MCQ_Canvas.objects.get_or_create(name=str(canvasname),
                                                               question=question, stuanswer=None)
-                except Exception, e:
-                    print str(e) ,"EXCEP11111111111111111111111111"
+                except Exception as e:
+                    print(str(e) ,"EXCEP11111111111111111111111111")
                     logger.error(e)
                 try:
                     canvas[0].axismap = pickle.dumps(canvasitem['axis'])
                     canvas[0].drawopts = pickle.dumps(canvasitem['drawopts'])
                     canvas[0].rulelist = pickle.dumps(canvasitem['rulelist'])
-                except Exception, e:
-                    print str(e), "222222222222222222222222222222222222"
+                except Exception as e:
+                    print(str(e), "222222222222222222222222222222222222")
                     logger.error(e)
-                print stuanswer, "STUDENT ANSWER"
+                print(stuanswer, "STUDENT ANSWER")
                 if stuanswer:
                     mark = __canvasmark(question, canvas[0])
                     if not mark:
                         mark = 0
-                    print mark, "MARK555555555555"
+                    print(mark, "MARK555555555555")
                     canvas[0].mark = mark
                     response_data['canvasmark'] = mark
-                    print 'text twex'
+                    print('text twex')
                 try:
                     canvas[0].save()
                 except Exception as e:
-                    print str(e), "8888888888888888"
-                print 'End'
+                    print(str(e), "8888888888888888")
+                print('End')
             response_data['state'] = "success"
-    print response_data, "response_data response_data"
+    print(response_data, "response_data response_data")
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
 
 def mcq_optioncanvas_upload(request):
     response_data = {'state': 'failure'}
     if request.method == "POST":
-        print "~~~~~~~~~~~~~~~~~~" * 122
-        print request.POST
+        print("~~~~~~~~~~~~~~~~~~" * 122)
+        print(request.POST)
         id = json.loads(request.POST['id'].encode('utf-8'))
         canvasmap = json.loads(request.POST['canvasmap'].encode('utf-8'))
         try:
             optionobj = MCQ_Optionlist.objects.get(id=id['optionid'])
 	    
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             response_data['state'] = "question not found"
         else:
-            for canvasname, canvasitem in canvasmap.items():
+            for canvasname, canvasitem in list(canvasmap.items()):
                 try:
                     
                     canvas = MCQ_OptionCanvas.objects.get_or_create(name=str(canvasname),
                                                               option=optionobj )
-                except Exception, e:
-                    print str(e) ,"EXCEP11111111111111111111111111"
+                except Exception as e:
+                    print(str(e) ,"EXCEP11111111111111111111111111")
                     logger.error(e)
                 try:
                     canvas[0].axismap = pickle.dumps(canvasitem['axis'])
                     canvas[0].drawopts = pickle.dumps(canvasitem['drawopts'])
                     canvas[0].rulelist = pickle.dumps(canvasitem['rulelist'])
-                except Exception, e:
-                    print str(e), "222222222222222222222222222222222222"
+                except Exception as e:
+                    print(str(e), "222222222222222222222222222222222222")
                     logger.error(e)
                  
                 try:
                     canvas[0].save()
                 except Exception as e:
-                    print str(e), "8888888888888888"
-                print 'End'
+                    print(str(e), "8888888888888888")
+                print('End')
             response_data['state'] = "success"
-    print response_data, "response_data response_data"
+    print(response_data, "response_data response_data")
     return HttpResponse(json.dumps(response_data), mimetype="application/json")
 
 
 def __mcq_canvasmark(question, stucanvas):
-    print "###############################"
+    print("###############################")
     canvasname = stucanvas.name
-    print 'canvasname  = ', canvasname
+    print('canvasname  = ', canvasname)
     try:
         stdanswer = question.stdanswer
         stdcanvas = MCQ_Canvas.objects.get(name=str(canvasname), question=question,
@@ -3291,7 +3291,7 @@ def __mcq_canvasmark(question, stucanvas):
         stddrawopts = pickle.loads(str(stdcanvas.drawopts))
         stdrulelist = pickle.loads(str(stdcanvas.rulelist))
         stdpointlist = pickle.loads(str(stdcanvas.pointlist))
-    except Exception, e:
+    except Exception as e:
         import traceback
         traceback.print_exc()
         logger.error(e)
@@ -3300,23 +3300,23 @@ def __mcq_canvasmark(question, stucanvas):
         studrawopts = pickle.loads(str(stucanvas.drawopts))
         sturulelist = pickle.loads(str(stucanvas.rulelist))
         drawoptspair = canvascompare.comparecurvesimilarity(stddrawopts, studrawopts)
-        print 'drawoptspair = ', drawoptspair
+        print('drawoptspair = ', drawoptspair)
         logger.info(drawoptspair)
         correctlist = canvascompare.comparelist(sturulelist, stdrulelist)
-        print 'correctlist = ', correctlist
+        print('correctlist = ', correctlist)
         mark = canvascompare.mark(correctlist, stdpointlist)
-        print 'mark = ', mark
+        print('mark = ', mark)
         return mark
 
 
 def mcq_canvas_get(request):
     if request.method == 'POST':
-        print request.POST
+        print(request.POST)
         response_data = {'state': 'failure'}
         try:
             canvasname = request.POST['name']
             id = json.loads(request.POST['id'].encode('utf-8'))
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             response_data['state'] = "no name or id specified"
             return HttpResponse(json.dumps(response_data), mimetype="application/json")
@@ -3328,7 +3328,7 @@ def mcq_canvas_get(request):
                 stdanswer = question.stdanswer
             #elif id.get('stuanswerid'):
             #    stuanswer = MCQ_StudentAnswer.objects.get(id=id['stuanswerid'])
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             response_data['state'] = "question not found"
             return HttpResponse(json.dumps(response_data), mimetype="application/json")
@@ -3350,11 +3350,11 @@ def mcq_canvas_get(request):
                 canvas = MCQ_Canvas.objects.get(name=canvasname, question=question,
                                             stuanswer=stuanswer, stdanswer=None)
                 canvas.rulelist = pickle.dumps([])
-                print "\n  --------------------"
-                print 'stu_canvas = ', canvas
+                print("\n  --------------------")
+                print('stu_canvas = ', canvas)
                 canvas.save()
-            except Exception, e:
-                print "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+            except Exception as e:
+                print("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
                 import traceback
                 traceback.print_exc()
                 logger.info(e)
@@ -3364,8 +3364,8 @@ def mcq_canvas_get(request):
                 canvas = MCQ_Canvas.objects.get(name=canvasname, question=question,
                                             stdanswer=None, stuanswer=None)
 
-            except Exception, e:
-                print "@@@@@@@ last part     1111"
+            except Exception as e:
+                print("@@@@@@@ last part     1111")
                 import traceback
                 traceback.print_exc()                
                 logger.info(e)
@@ -3376,36 +3376,36 @@ def mcq_canvas_get(request):
                                       'rulelist': pickle.loads(str(canvas.rulelist))
                                       }
                          }
-            print canvasmap, "CANCAS @ canvas_get"
+            print(canvasmap, "CANCAS @ canvas_get")
             if canvasmap:
                 response_data['canvasmap'] = canvasmap
                 response_data['state'] = 'success'
-        print 'response_data @ last...............\n'
+        print('response_data @ last...............\n')
         return HttpResponse(json.dumps(response_data), mimetype="application/json")
 		
 def mcq_optioncanvas_get(request):
     if request.method == 'POST':
-        print request.POST
+        print(request.POST)
         response_data = {'state': 'failure'}
         try:
             canvasname = request.POST['name']
             id = json.loads(request.POST['id'].encode('utf-8'))
 	    logger.info("id:  %s" % id)
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             response_data['state'] = "no name or id specified"
             return HttpResponse(json.dumps(response_data), mimetype="application/json")
         try:
             optionlist = MCQ_Optionlist.objects.get(id=id['optionid'])
              
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             response_data['state'] = "question not found"
             return HttpResponse(json.dumps(response_data), mimetype="application/json")
        
         try:
             canvas = MCQ_OptionCanvas.objects.get(name=canvasname, option=optionlist)
-	except Exception , e:
+	except Exception as e:
             logger.error(e)
 
         if canvas:
@@ -3414,11 +3414,11 @@ def mcq_optioncanvas_get(request):
                                       'rulelist': pickle.loads(str(canvas.rulelist))
                                       }
                          }
-            print canvasmap, "CANCAS @ canvas_get"
+            print(canvasmap, "CANCAS @ canvas_get")
             if canvasmap:
                 response_data['canvasmap'] = canvasmap
                 response_data['state'] = 'success'
-        print 'response_data @ last...............\n'
+        print('response_data @ last...............\n')
         return HttpResponse(json.dumps(response_data), mimetype="application/json")
 		
 		
@@ -3438,7 +3438,7 @@ def getMCQTeacherList(request):
         itempool_id = request.POST['itempool_id']
         view = request.POST['view']
         ztreejson = __teacherJsonList(tb, view)
-        print ztreejson
+        print(ztreejson)
         response = render_to_response('mcq_teacher_list.json',
                                       {'questiontree': ztreejson,
                                        'inum': len(ztreejson), 'qnum': qnum},
@@ -3449,11 +3449,11 @@ def getMCQTeacherList(request):
     else:
         view = request.GET.get('view')
         itempool_id = request.GET.get('itempool_id')
-        print view,"view", itempool_id, "itempool_id"
+        print(view,"view", itempool_id, "itempool_id")
         if view:# Itempool view mode selected
             itempool = MCQ_Itempool.objects.get(id=int(itempool_id))
             ztreejson = __teacherJsonList(tb, view, itempool)
-            print ztreejson
+            print(ztreejson)
             response = render_to_response('teacher_list.json',
                                           {'mcq_questiontree': ztreejson,
                                            'inum': len(ztreejson), 'qnum': qnum},
@@ -3462,13 +3462,13 @@ def getMCQTeacherList(request):
             response['Cache-Control'] = 'no-cache'
             return response
         else:# Other than view mode either add item or modify item.
-            print 'yes'
+            print('yes')
             if itempool_id and int(itempool_id) != -1:
                 #Modify mode of selected box
                 modify = True
                 itempool = MCQ_Itempool.objects.get(id=int(itempool_id))
                 ztreejson = __teacherJsonList(tb, view, itempool, modify)
-                print ztreejson
+                print(ztreejson)
                 response = render_to_response('mcq_teacher_list.json',
                                               {'questiontree': ztreejson,
                                                'inum': len(ztreejson), 'qnum': qnum},
@@ -3479,7 +3479,7 @@ def getMCQTeacherList(request):
             else: 
                 #Get method of selected teacher box
                 ztreejson = __teacherJsonList(tb, view)
-                print ztreejson
+                print(ztreejson)
                 response = render_to_response('mcq_teacher_list.json',
                                               {'questiontree': ztreejson,
                                                'inum': len(ztreejson), 'qnum': qnum},
@@ -3505,9 +3505,9 @@ def __teacherJsonList(teacher, view, itempool=None, modify=None):
     else:
         if modify:
             selected_teacher = itempool.itp_accessible.all()#.exclude(user=itempool.teacher)
-            print selected_teacher,"selected teacher"
+            print(selected_teacher,"selected teacher")
             teacher_list = TProfile.objects.all().exclude(user__in = selected_teacher)
-            print teacher_list,"modified list"
+            print(teacher_list,"modified list")
         else:
             teacher_list = TProfile.objects.all().exclude(user = teacher.user)
     teacher_head = {'name': 'Teacher', 'checked': 'false'}
@@ -3552,15 +3552,15 @@ def addMCQteacher(request):
 			teacher_ids = request.POST.get('teacher_ids')
 			teacher_list = teacher_ids[1:-1].split(',')[1:]
 			teacher_list = [int(i.strip('"')) for i in teacher_list]
-			print type(teacher_ids), teacher_ids
+			print(type(teacher_ids), teacher_ids)
 			if int(itempool_id) != -1:
 				itempool = MCQ_Itempool.objects.get(id = int(itempool_id))
 
-				print itempool.itp_teacher.user_id
+				print(itempool.itp_teacher.user_id)
 				for teacher in teacher_list:
 					if itempool.itp_teacher.user_id != int(teacher):
 						teach = TProfile.objects.get(user_id=int(teacher))
-						print teach,"teacher"
+						print(teach,"teacher")
 						itempool.itp_accessible.add(teach)
 						itempool.save()
 					try:
@@ -3572,13 +3572,13 @@ def addMCQteacher(request):
 								logger.info("print teacher %s" % teach)
 								question.qtn_accessible.add(teach)
 								question.save()
-					except Exception , e:
+					except Exception as e:
 						logger.error(e)
 						#traceback.print_exec();
 				return HttpResponse(json.dumps({'response':'success'}))
 			else:
 				return HttpResponse(json.dumps({'response':'failure'}))
-		except Exception, e:
+		except Exception as e:
 			logger.error(e)
 	return HttpResponse(json.dumps({'response':'failure'}))
 
@@ -3586,12 +3586,12 @@ def addMCQteacher(request):
 
 def mcq_canvas_get(request):
     if request.method == 'POST':
-        print request.POST
+        print(request.POST)
         response_data = {'state': 'failure'}
         try:
             canvasname = request.POST['name']
             id = json.loads(request.POST['id'].encode('utf-8'))
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             response_data['state'] = "no name or id specified"
             return HttpResponse(json.dumps(response_data), mimetype="application/json")
@@ -3603,7 +3603,7 @@ def mcq_canvas_get(request):
             #    stdanswer = question.stdanswer
             #elif id.get('stuanswerid'):
             #stuanswer = MCQ_StudentAnswer.objects.get(id=id['stuanswerid'])
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             response_data['state'] = "question not found"
             return HttpResponse(json.dumps(response_data), mimetype="application/json")
@@ -3625,11 +3625,11 @@ def mcq_canvas_get(request):
                 canvas = MCQ_Canvas.objects.get(name=canvasname, question=question,
                                             stuanswer=stuanswer)
                 canvas.rulelist = pickle.dumps([])
-                print "\n  --------------------"
-                print 'stu_canvas = ', canvas
+                print("\n  --------------------")
+                print('stu_canvas = ', canvas)
                 canvas.save()
-            except Exception, e:
-                print "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+            except Exception as e:
+                print("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
                 import traceback
                 traceback.print_exc()
                 logger.info(e)
@@ -3639,8 +3639,8 @@ def mcq_canvas_get(request):
                 canvas = MCQ_Canvas.objects.get(name=canvasname, question=question,
                                              stuanswer=None)
 
-            except Exception, e:
-                print "@@@@@@@ last part     1111"
+            except Exception as e:
+                print("@@@@@@@ last part     1111")
                 import traceback
                 traceback.print_exc()                
                 logger.info(e)
@@ -3651,11 +3651,11 @@ def mcq_canvas_get(request):
                                       'rulelist': pickle.loads(str(canvas.rulelist))
                                       }
                          }
-            print canvasmap, "CANCAS @ canvas_get"
+            print(canvasmap, "CANCAS @ canvas_get")
             if canvasmap:
                 response_data['canvasmap'] = canvasmap
                 response_data['state'] = 'success'
-        print 'response_data @ last...............\n'
+        print('response_data @ last...............\n')
         return HttpResponse(json.dumps(response_data), mimetype="application/json")
 
 
@@ -3671,7 +3671,7 @@ def mcq_optionlist_uploadimage(request):
 			logger.info('optionid: %s' % optionid)
 			optionobj = MCQ_Optionlist.objects.get(id=optionid)
 			
-		except Exception, e:
+		except Exception as e:
 			logger.info('option not exists %s ' % e)
 			return HttpResponse("Upload Error")
 		else:
@@ -3702,7 +3702,7 @@ def mcq_optionlist_uploadimage(request):
 					    description = 'del'
 					else:
 					    description = None
-				except Exception , e:
+				except Exception as e:
 					logger.error(e)
 				
 				logger.info('option 1 %s' % uploadImageFullName)
@@ -3719,7 +3719,7 @@ def mcq_optionlist_uploadimage(request):
 				                            qti_iscorrect=iscorrect)
 		    	imageObj.save()
 		except:
-		    	print sys.exc_info()
+		    	print(sys.exc_info())
 		    	return HttpResponse("Upload Error")
 		return HttpResponse("Upload Success!", mimetype="text/plain")
 	else:
@@ -3744,7 +3744,7 @@ def mcq_optionlist_thumbnails(request):
 				thumbnails = MCQ_OptionImage.objects.filter(option=optionobj, qti_iscorrect=iscorrect).exclude(qti_description='del')
 			else:
 				thumbnails = []
-		except Exception, e:
+		except Exception as e:
 			logger.error(e)
 		if thumbnails:
 			if iscorrect:
@@ -3760,7 +3760,7 @@ def mcq_optionlist_thumbnails(request):
 								    t.id] for i, t in enumerate(thumbnails))
 				response_data['stdthumbnail_ids'] = list(t.id for t in thumbnails)
 		    	else:
-				pointlist = list({'Point_No': u'P0.' + str(i + 1),
+				pointlist = list({'Point_No': 'P0.' + str(i + 1),
 				                  'Point_Text': image.qti_digest}
 				                for i, image in enumerate(thumbnails))
 				response_data['state'] = 'success' 
@@ -3781,7 +3781,7 @@ def mcq_optionlist_deleteimage(request):
         try:
             imageToDelete = MCQ_OptionImage.objects.get(id=imageid)
 	    logger.info('this is imageToDelete: %s ' % imageToDelete)
-        except Exception ,e:
+        except Exception as e:
 	    logger.info(e)
             pass
         else:
@@ -3845,7 +3845,7 @@ def getMCQCategoryTeacherList(request):
             return response
         else:# Other than view mode either add item or modify item.
 	    #logger.info("getMCQCategoryTeacherList 2b  [questioncategory_id: %s ] " % questioncategory_id )
-            print 'yes'
+            print('yes')
             if questioncategory_id and int(questioncategory_id) != -1:
 	    	logger.info("getMCQCategoryTeacherList 2a1")
                 #Modify mode of selected box
@@ -3868,7 +3868,7 @@ def getMCQCategoryTeacherList(request):
 	    	logger.info("getMCQCategoryTeacherList 2a2")
                 #Get method of selected teacher box
                 ztreejson = __questionCategoryteacherJsonList(tb, view)
-                print ztreejson
+                print(ztreejson)
                 response = render_to_response('mcq_questioncategoryteacher_list.json',
                                               {'questiontree': ztreejson,
                                                'inum': len(ztreejson), 'qnum': qnum},
@@ -3999,7 +3999,7 @@ def addMCQCategoryteacher(request):
 			logger.info("question b %s " % teacher_list)
 			teacher_list = [int(i.strip('"')) for i in teacher_list]
 			logger.info("question c")
-			print type(teacher_ids), teacher_ids
+			print(type(teacher_ids), teacher_ids)
 			if int(questioncategory_id) != -1:
 				logger.info("question 1")
 				QuestionCategory = MCQ_QuestionCategory.objects.get(id = int(questioncategory_id))
@@ -4008,13 +4008,13 @@ def addMCQCategoryteacher(request):
 				QuestionCategory.qct_teacher.add(*lst_teacher)
 				try:
 					QuestionCategory.save()
-				except Exception , err:
+				except Exception as err:
 					logger.info("error while saving QuestionCategory: %s" % err)
 				logger.info("count for teachers: %s" % lst_teacher) 
 				return HttpResponse(json.dumps({'response':'success'}))
 			else:
 				return HttpResponse(json.dumps({'response':'failure'}))
-		except Exception, e:
+		except Exception as e:
 			logger.error(e)
 	return HttpResponse(json.dumps({'response':'failure'}))
 

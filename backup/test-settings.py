@@ -226,6 +226,6 @@ EMAIL_HOST_PASSWORD = '28mptest'
 EMAIL_PORT = 25
 
 try:
-    from settings_local import *
+    from .settings_local import *
 except ImportError:
     pass

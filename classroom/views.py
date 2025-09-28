@@ -102,8 +102,8 @@ def add(request):
 def __updatestuinclassroom(teacher, students, classroom):
     try:
         sp = SProfile.objects.filter(teacher=teacher, classroom__in=[classroom, None])
-    except Exception, e:
-        print e
+    except Exception as e:
+        print(e)
     else:
         temp = []
         for s in sp:

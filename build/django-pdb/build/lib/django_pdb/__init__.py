@@ -13,6 +13,6 @@ if DEBUG and POST_MORTEM == True:
         except ImportError:
             import pdb as ipdb
         p = ipdb
-        print >> sys.stderr, "Exception occured: %s, %s" % (exc_type, exc_value)
+        print("Exception occured: %s, %s" % (exc_type, exc_value), file=sys.stderr)
         p.post_mortem(tb)
     debug.technical_500_response = runpdb

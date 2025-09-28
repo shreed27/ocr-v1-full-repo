@@ -23,7 +23,7 @@ class CommonTest(TestCase):
 
         response = self.client.get('/common/deletecallback/')
         self.assertEqual(response.status_code,200)
-        print "+++++++++++++"
+        print("+++++++++++++")
 
 
         #LOGOUT STATE

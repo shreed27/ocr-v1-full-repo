@@ -49,7 +49,7 @@ class CompressorFileStorage(FileSystemStorage):
         """
         try:
             super(CompressorFileStorage, self).delete(name)
-        except OSError, e:
+        except OSError as e:
             if e.errno != errno.ENOENT:
                 raise
 
@@ -65,7 +65,7 @@ class GzipCompressorFileStorage(CompressorFileStorage):
     """
     def save(self, filename, content):
         filename = super(GzipCompressorFileStorage, self).save(filename, content)
-        out = gzip.open(u'%s.gz' % self.path(filename), 'wb')
+        out = gzip.open('%s.gz' % self.path(filename), 'wb')
         out.writelines(open(self.path(filename), 'rb'))
         out.close()
 

@@ -3,9 +3,9 @@
 # critique.py: Peforms qualitative analysis of texts (e.g., grammar checking)
 #
 
-from common import *
+from .common import *
 
-from check_grammar import check_text_grammar  # invokes external grammar checker
+from .check_grammar import check_text_grammar  # invokes external grammar checker
 import nltk                             # NLP toolkit
 
 #------------------------------------------------------------------------
@@ -62,9 +62,9 @@ def main():
     # Analyze text and show results
     dawg_text = "My dog has fleas.\nHis dawg were me.\nWho dawg you?\n"
     tc.analyze(dawg_text)
-    print("text: {\n%s}" % dawg_text)
-    print("grammar issues: {\n%s}" % tc.get_grammatical_errors())
-    print("grammar percentage: %s" % tc.percent_grammar_errors())
+    print(("text: {\n%s}" % dawg_text))
+    print(("grammar issues: {\n%s}" % tc.get_grammatical_errors()))
+    print(("grammar percentage: %s" % tc.percent_grammar_errors()))
 
     # Run unit tests for expected results
     # TODO: convert assertions into unit tests proper

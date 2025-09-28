@@ -1,4 +1,4 @@
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
 from django.utils.encoding import smart_unicode
 from compressor.exceptions import ParserError
 from compressor.parser import ParserBase
@@ -15,7 +15,7 @@ class DefaultHtmlParser(ParserBase, HTMLParser):
         try:
             self.feed(self.content)
             self.close()
-        except Exception, err:
+        except Exception as err:
             lineno = err.lineno
             line = self.content.splitlines()[lineno]
             raise ParserError("Error while initializing HtmlParser: %s (line: %s)" % (err, repr(line)))

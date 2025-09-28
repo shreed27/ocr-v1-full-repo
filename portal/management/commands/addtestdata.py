@@ -117,8 +117,8 @@ class Command(BaseCommand):
             sentencelist_dumpped = pickle.dumps(slist)
             pointlist_dumpped = pickle.dumps(pointlist)
             rulelist_dumpped = pickle.dumps(rulelist)
-        except Exception, e:
-            print e
+        except Exception as e:
+            print(e)
             textfdist_dumpped = None
             sentencelist_dumpped = None
             sentencelist_dumpped = None

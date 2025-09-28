@@ -14,7 +14,7 @@ class Migration(DataMigration):
 
         # migration scripts for updating the accessible filed
         for obj in orm.Itempool.objects.all():
-            if not obj.accessible.values().count():
+            if not list(obj.accessible.values()).count():
                 obj.accessible.add(obj.teacher)
                 obj.save()
 
@@ -23,7 +23,7 @@ class Migration(DataMigration):
 
         # run backward and just delete all the value in `accessible` field
         for obj in orm.Itempool.objects.all():
-            if obj.accessible.values().count():
+            if list(obj.accessible.values()).count():
                 obj.accessible.all().delete()
                 obj.save()
     models = {

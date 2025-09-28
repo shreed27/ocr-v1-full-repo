@@ -30,9 +30,9 @@
 
 
 try:
-    from cStringIO import StringIO
+    from io import StringIO
 except ImportError:
-    from StringIO import StringIO  # noqa
+    from io import StringIO  # noqa
 import re
 
 
@@ -134,7 +134,7 @@ def normalize_rgb_colors_to_hex(css):
     regex = re.compile(r"rgb\s*\(\s*([0-9,\s]+)\s*\)")
     match = regex.search(css)
     while match:
-        colors = map(lambda s: s.strip(), match.group(1).split(","))
+        colors = [s.strip() for s in match.group(1).split(",")]
         hexcolor = '#%.2x%.2x%.2x' % tuple(map(int, colors))
         css = css.replace(match.group(), hexcolor)
         match = regex.search(css)

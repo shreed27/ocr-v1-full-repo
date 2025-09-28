@@ -206,3 +206,5 @@ class OCRAnswerSheetForm(forms.Form):
                 )
 
         return image
+
+

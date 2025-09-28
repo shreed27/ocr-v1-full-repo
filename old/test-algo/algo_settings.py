@@ -1,7 +1,7 @@
 # Django settings for mysite project.
 # note: version for just running the algorithm code directly
 
-from common import *
+from .common import *
 debug_print("algo/algo-settings start: " + debug_timestamp(), level=3)
 
 # TPO: for getcwd

@@ -29,7 +29,7 @@ def actual_mark(stu_obj):
         if canvas.markscheme:
             canvas_mark = pickle.loads(canvas.markscheme)
     except Exception as exp:
-        print 'ObjectDoesNotExist = ', exp
+        print('ObjectDoesNotExist = ', exp)
         return total_mark
     else:
         for cm in canvas_mark:

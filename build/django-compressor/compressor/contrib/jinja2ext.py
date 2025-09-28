@@ -18,7 +18,7 @@ class CompressorExtension(CompressorMixin, Extension):
         args = [kindarg]
         if args[0].value not in self.compressors:
             raise TemplateSyntaxError('compress kind may be one of: %s' %
-                                      (', '.join(self.compressors.keys())),
+                                      (', '.join(list(self.compressors.keys()))),
                                       lineno)
         if parser.stream.skip_if('comma'):
             modearg = parser.parse_expression()

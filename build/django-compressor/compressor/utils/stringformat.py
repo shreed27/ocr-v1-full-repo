@@ -128,7 +128,7 @@ def _format_field(value, parts, conv, spec, want_bytes=False):
         value = value.strftime(str(spec))
     else:
         value = _strformat(value, spec)
-    if want_bytes and isinstance(value, unicode):
+    if want_bytes and isinstance(value, str):
         return str(value)
     return value
 
@@ -224,13 +224,13 @@ class FormattableString(object):
         # Encode arguments to ASCII, if format string is bytes
         want_bytes = isinstance(self._string, str)
         params = {}
-        for name, items in self._kwords.items():
+        for name, items in list(self._kwords.items()):
             value = kwargs[name]
             for item in items:
                 parts, conv, spec = item
                 params[str(id(item))] = _format_field(value, parts, conv, spec,
                                                       want_bytes)
-        for name, items in self._nested.items():
+        for name, items in list(self._nested.items()):
             value = kwargs[name]
             for item in items:
                 parts, conv, spec = item
@@ -244,13 +244,13 @@ def selftest():
     import datetime
     F = FormattableString
 
-    assert F(u"{0:{width}.{precision}s}").format('hello world',
-             width=8, precision=5) == u'hello   '
+    assert F("{0:{width}.{precision}s}").format('hello world',
+             width=8, precision=5) == 'hello   '
 
     d = datetime.date(2010, 9, 7)
-    assert F(u"The year is {0.year}").format(d) == u"The year is 2010"
-    assert F(u"Tested on {0:%Y-%m-%d}").format(d) == u"Tested on 2010-09-07"
-    print 'Test successful'
+    assert F("The year is {0.year}").format(d) == "The year is 2010"
+    assert F("Tested on {0:%Y-%m-%d}").format(d) == "Tested on 2010-09-07"
+    print('Test successful')
 
 if __name__ == '__main__':
     selftest()

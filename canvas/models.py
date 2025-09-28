@@ -5,7 +5,7 @@ from student.models import StudentAnswer
 
 # Create your models here.
 class Canvas(models.Model):
-    question = models.ForeignKey(Question, verbose_name=u'Question')
+    question = models.ForeignKey(Question, verbose_name='Question')
     stdanswer = models.ForeignKey(StandardAnswer, null=True, blank=True)
     stuanswer = models.ForeignKey(StudentAnswer, null=True, blank=True)
     name = models.CharField(max_length=20)
@@ -26,4 +26,4 @@ class Canvas(models.Model):
     # mark = models.IntegerField(default=0)
 
     def __unicode__(self):
-        return u'Canvas id:%d name:%s question:%s std:%s stu:%s' % (self.id, self.name, self.question, self.stdanswer, self.stuanswer)
+        return 'Canvas id:%d name:%s question:%s std:%s stu:%s' % (self.id, self.name, self.question, self.stdanswer, self.stuanswer)

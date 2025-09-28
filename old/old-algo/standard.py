@@ -49,7 +49,7 @@ class Standard:
         special = {'<': ' ', '>': '', '(': '',
                    ')': '', '.': '', ',': '',
                    '""': ''}
-        for (k, v) in special.items():
+        for (k, v) in list(special.items()):
             text = text.replace(k, v)
         return text
 

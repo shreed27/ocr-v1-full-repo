@@ -22,7 +22,7 @@ from portal.models import SProfile
 from paper.templatetags.paper_tags import actual_mark
 # from ..paper.templatetags.paper_tags import actual_mark
 import re
-import cStringIO as StringIO
+import io as StringIO
 import ho.pisa as pisa
 from django.template.loader import get_template
 from django.template import Context
@@ -65,7 +65,7 @@ def report_studentanswer(request):
         if paperids:
             try:
                 paper_stu = re.findall(r'\{pid\:(\d+)\,\sstuid\:(\d+)\}', paperids)
-            except Exception, e:
+            except Exception as e:
                 logger.error(e)
             for pid, stuid in paper_stu:
                 pids.append(int(pid))
@@ -86,7 +86,7 @@ def report_studentanswer(request):
                 pids = [int(id) for id in request.POST.get('pids').strip('[]').split(',')]
                 stuids = [int(id) for id in request.POST.get('stuids').strip('[]').split(',')]
                 form = DetailSearchForm(request.POST, paper=pids, student=stuids)
-            except Exception, e:
+            except Exception as e:
                 logger.error(e)
             if form and form.is_valid():
                 student = form.cleaned_data['student']
@@ -98,7 +98,7 @@ def report_studentanswer(request):
                 try:
                     student = SProfile.objects.get(user__id=stuids[0])
                     paper = Paper.objects.get(id=pids[0])
-                except Exception, e:
+                except Exception as e:
                     logger.error(e)
                     student = None
                     paper = None
@@ -222,14 +222,14 @@ def feedback_popup(request, pid, stuid):
         student = request.user
         paper = Paper.objects.get(id = pid)
         questionseq = pickle.loads(str(paper.questionseq)) #question sequence are added into this part
-        print "paper question sequence", paper.questionseq
-        print "question sequence", questionseq
+        print("paper question sequence", paper.questionseq)
+        print("question sequence", questionseq)
         for q in questionseq:
             qset.append(Question.objects.get(id = q))
         # print "qset" , qset
         stuanswer_set = getTakedStuanswers(qset, student)
         video_set = get_videoForQuestion(qset)
-        print "video SETTTTTT", video_set
+        print("video SETTTTTT", video_set)
         # print "stu_answer set" , stuanswer_set
         total_mark = 0
         stud_mark = 0
@@ -258,7 +258,7 @@ def feedback_popup(request, pid, stuid):
         #          'sum':total_mark,'smark':stud_mark,
         #          'print': True if request.is_ajax() else False,'len':len(questionseq),
         #         })
-        print "******** zipped List ********" , common_student_video
+        print("******** zipped List ********" , common_student_video)
         return render_to_response('report_feedback_report.html',
         {'user':student,'paper':paper,'stu':common_student_video,
          'sum':total_mark,'smark':stud_mark,
@@ -312,7 +312,7 @@ def generate_pdf(template_src, context_dict):
     with open(pdf_file_name, "w+") as pdf_file:
         pdf_result = pisa.pisaDocument(html_stream, pdf_file)
     if pdf_result.err:
-        print "some error occur when pdf is creating ", pdf_result.err
+        print("some error occur when pdf is creating ", pdf_result.err)
         return HttpResponse(result.getvalue(), mimetype='application/pdf')
     else:
         with open(pdf_file_name) as pdf:
@@ -334,7 +334,7 @@ def get_assignmet(asgn_id):
     try:
         return Assignment.objects.get(id=asgn_id)
     except (Assignment.DoesNotExist, ValueError) as e:
-        print e
+        print(e)
         print_exc()
         return None
 
@@ -369,7 +369,7 @@ def _get_closeness_report(q_id, s_id):
             return None
         return ClosenessReport.objects.get(question__id=q_id, student_answer=student_answer)
     except (ClosenessReport.DoesNotExist, Question.DoesNotExist) as e:
-        print e
+        print(e)
         print_exc()
         return None
 
@@ -425,7 +425,7 @@ def get_point_list(question, alternative=False):
 
         return list(pt['Point_No'] for pt in _point_list)
     except (Question.DoesNotExist, StandardAnswer.DoesNotExist) as e:
-        print e
+        print(e)
         print_exc()
         return list()
 
@@ -441,7 +441,7 @@ def update_student_closeness(q_id, s_id, s_name, point_dict):
         if not closeness_stats:
             return None
 
-        for key, value in closeness_stats.iteritems():
+        for key, value in closeness_stats.items():
             point_dict[key]['correct'].append(s_name) if value else point_dict[key]['wrong'].append(s_name)
     except:
         import traceback
@@ -560,7 +560,7 @@ def csv_closeness_report(request):
                 writer.writerow(["", "", "", ""])
 
         except KeyError as e:
-            print e
+            print(e)
             print_exc()
     else:
         logger.info("Empty response found")
@@ -681,17 +681,17 @@ def csv_closeness_report_summary(request):
     # writer = csv.writer(file_obj)
     try:
         teacher, res = getTpByRequest(request, None)
-        print teacher, res
+        print(teacher, res)
         # static for now
         assignments = Assignment.objects.filter(teacher=teacher)
         # assignments = Assignment.objects.filter(teacher__pk=206)
         # assignments = Assignment.objects.all()
-        print len(assignments)
+        print(len(assignments))
 
         for asgn in assignments:
             paper = get_paper(asgn.id)
             if paper:
-                print "asgn available"
+                print("asgn available")
                 students = asgn.students.all()
 
                 question_row = []
@@ -740,8 +740,8 @@ def csv_closeness_report_summary(request):
                                             _detail_row += ["N/A", "N/A"]
 
 
-                            print question_row
-                            print _detail_row
+                            print(question_row)
+                            print(_detail_row)
                             # append to the global list for each assignment
                             detail_row.append(_detail_row)
 
@@ -754,8 +754,8 @@ def csv_closeness_report_summary(request):
                     writer.writerow(row)
                 writer.writerows([[],[]])
 
-    except Exception, e:
+    except Exception as e:
         print_exc()
-        print e
+        print(e)
 
     return csv_response    

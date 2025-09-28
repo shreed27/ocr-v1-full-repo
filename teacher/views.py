@@ -99,8 +99,8 @@ def updatemark(request):
             question = Question.objects.get(id=int(questionid))
             stuanswer = StudentAnswer.objects.get(student=student, question=question)
             fullmark = question.stdanswer.fullmark
-        except Exception, e:
-            print e, 'stuanswer not found'
+        except Exception as e:
+            print(e, 'stuanswer not found')
         else:
             try:
                 mark = int(modifiedmark)
@@ -126,11 +126,11 @@ def updateomitted(request):
             student = SProfile.objects.get(user__id=int(studentid))
             question = Question.objects.get(id=int(questionid))
             stuanswer = StudentAnswer.objects.get(student=student, question=question)
-        except Exception, e:
-            print e, 'stuanswer not found'
+        except Exception as e:
+            print(e, 'stuanswer not found')
         else:
             try:
-                parsedomitted = filter(bool, omitted.replace('<p>', '').replace('</p>', '\n').split('\n'))
+                parsedomitted = list(filter(bool, omitted.replace('<p>', '').replace('</p>', '\n').split('\n')))
                 stuanswer.omitted = pickle.dumps(parsedomitted)
                 stuanswer.save()
             except:

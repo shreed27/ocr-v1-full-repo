@@ -27,7 +27,7 @@ def assignment_getall(request):
     logger.info("assignment getall:%s" % teacher)
     try:
         assignments = Assignment.objects.filter(teacher=teacher)
-    except Exception, e:
+    except Exception as e:
         logger.error(e)
         assignments = []
     logger.info("assignments %s" % assignments)

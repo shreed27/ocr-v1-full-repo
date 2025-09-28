@@ -100,6 +100,7 @@ OCR_API_SETTINGS = {
     'TEMP_UPLOAD_DIR': os.path.join(PROJECTPATH, 'temp_ocr_uploads'),
 }
 
+
 # Django 3.2 required settings
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 

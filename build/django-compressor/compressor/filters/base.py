@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+
 import os
 import logging
 import subprocess
@@ -45,7 +45,7 @@ class CallbackOutputFilter(FilterBase):
         try:
             mod_name, func_name = get_mod_func(self.callback)
             func = getattr(import_module(mod_name), func_name)
-        except ImportError, e:
+        except ImportError as e:
             if self.dependencies:
                 if len(self.dependencies) == 1:
                     warning = "dependency (%s) is" % self.dependencies[0]
@@ -57,7 +57,7 @@ class CallbackOutputFilter(FilterBase):
             raise ImproperlyConfigured("The callback %s couldn't be imported. "
                                        "Make sure the %s correctly installed."
                                        % (self.callback, warning))
-        except AttributeError, e:
+        except AttributeError as e:
             raise ImproperlyConfigured("An error occured while importing the "
                                        "callback filter %s: %s" % (self, e))
         else:
@@ -84,10 +84,10 @@ class CompilerFilter(FilterBase):
             raise FilterError("Required attribute 'command' not given")
         if isinstance(self.options, dict):
             new_options = ()
-            for item in kwargs.iteritems():
+            for item in kwargs.items():
                 new_options += (item,)
             self.options = new_options
-        for item in kwargs.iteritems():
+        for item in kwargs.items():
             self.options += (item,)
         self.stdout = subprocess.PIPE
         self.stdin = subprocess.PIPE
@@ -120,7 +120,7 @@ class CompilerFilter(FilterBase):
                 filtered, err = proc.communicate(self.content.encode('utf8'))
             else:
                 filtered, err = proc.communicate()
-        except (IOError, OSError), e:
+        except (IOError, OSError) as e:
             raise FilterError('Unable to apply %s (%r): %s' %
                               (self.__class__.__name__, self.command, e))
         else:

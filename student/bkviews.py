@@ -98,7 +98,7 @@ def student_add(request):
             gender = form.cleaned_data['gender']
             try:
                 classroom = form.cleaned_data['clazz']
-            except Exception, e:
+            except Exception as e:
                 logger.error(e)
                 classroom = None
             user = User.objects.create_user(username, email, password)
@@ -208,7 +208,7 @@ def _getassignmentjson(assignments, teacher, student):
                 question_set = Question.objects.filter(id__in=questionseq)
                 stuanswer_set = getStuanswers(question_set, student)
                 count = sum(1 for sa in stuanswer_set if sa.taked)
-            except Exception, e:
+            except Exception as e:
                 logger.error(e)
                 logger.error(a)
                 logger.error(p)
@@ -246,7 +246,7 @@ def student_takeassignment(request):
             question_set = Question.objects.filter(id__in=questionseq)
             stuanswer_set = getStuanswers(question_set, student)
             qnameseq = list(Question.objects.get(id=qid).qname for qid in questionseq)
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             stuanswer_set = []
             qnameseq = []
@@ -305,7 +305,7 @@ def __initstuanswer(paper, question_set, student):
                                                      question=question, taked=False)
             sa[0].timeleft = duration
             sa[0].save()
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
             pass
     return duration
@@ -332,7 +332,7 @@ def student_checktime(request):
                 timeleft = stuanswer.timeleft
                 stuanswer.timeleft = timeleft - (curtime - starttime).seconds
                 stuanswer.save()
-        except Exception, e:
+        except Exception as e:
             logger.error("%s:can\'t save timeleft" % e)
         response_data = {'timeout': 'false'}
     else:
@@ -474,7 +474,7 @@ def student_submitanswer(request):
     try:
         ans = Answer()
         mark, marklist, omitted = ans.Analysis(anstext, textfdist, slist, pointlist, rulelist)
-    except Exception, e:
+    except Exception as e:
         marklist = []
         omitted = []
         logger.error(e)
@@ -487,7 +487,7 @@ def student_submitanswer(request):
     try:
         stucanvaslist = Canvas.objects.filter(question=question, stuanswer=stuanswer)
         canvasmark = sum(stucanvas.mark for stucanvas in stucanvaslist)
-    except Exception, e:
+    except Exception as e:
         logger.error(e)
         canvasmark = 0
     # save mark result
@@ -516,7 +516,7 @@ def __getimgmark(thumbnail_ids, question):
         stdanswer = question.stdanswer
         stuansimages = QuestionImage.objects.filter(id__in=thumbnail_ids)
         imagepointlist = pickle.loads(str(question.imagepointlist))
-    except Exception, e:
+    except Exception as e:
         logger.error(e)
         return 0, []
     else:
@@ -529,7 +529,7 @@ def __getimgmark(thumbnail_ids, question):
 
     try:
         imgrulelist = _loadlist(stdanswer.imgrulelist)
-    except Exception, e:
+    except Exception as e:
         logger.error(e)
     if stuanspoints and imgrulelist:
         imgans = ImageAnswer()
@@ -595,14 +595,14 @@ def student_submitpaper(request):
         paperid = request.POST.get('paperid')
         p = Paper.objects.get(id=int(paperid))
         questionseq = pickle.loads(str(p.questionseq))
-    except Exception, e:
+    except Exception as e:
         logger.error(e)
         return HttpResponse('paper not found')
 
     try:
         question_set = Question.objects.filter(id__in=questionseq)
         stuanswer_set = getStuanswers(question_set, student)
-    except Exception, e:
+    except Exception as e:
         response_data['state'] = e
         logger.error(e)
     if stuanswer_set:
@@ -627,7 +627,7 @@ def _reinitanswer(stuanswer_set):
         try:
             ans = StudentAnswer.objects.get_or_create(student=student, question=question,
                                                       taked=False)
-        except Exception, e:
+        except Exception as e:
             logger.error(e)
     return mark
 

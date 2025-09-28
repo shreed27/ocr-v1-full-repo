@@ -33,8 +33,8 @@ def getPaperInfoById(request):
                 paper = Paper.objects.get(id=int(paperid))
                 response_data['papername'] = paper.papername
                 response_data['duration'] = paper.duration
-            except Exception, e:
-                print e
+            except Exception as e:
+                print(e)
             else:
                 if paper.assignment:
                     response_data['assignment'] = paper.assignment.assignmentname
@@ -121,8 +121,8 @@ def __teachermarkreport(pids):
     try:
         paperids = [int(i) for i in pids.split(',')]
         papers = Paper.objects.filter(id__in=paperids)
-    except Exception, e:
-        print e
+    except Exception as e:
+        print(e)
         papers = []
     for p in papers:
         # Performs equivalent of 'SELECT DISTINCT paper_paper.id, auth_user.username, student_studentanswer.question_id, student_studentanswer.mark FROM student_studentanswer, question_question_paper, paper_paper, assignment_assignment_students, portal_sprofile, auth_user WHERE paper_paper.assignment_id = assignment_assignment_students.assignment_id AND assignment_assignment_students.sprofile_id = portal_sprofile.user_id AND auth_user.id = portal_sprofile.user_id AND question_question_paper.paper_id = paper_paper.id;'
@@ -153,7 +153,7 @@ def __teacher_closeness_info(pids):
     try:
         paperids = [int(i) for i in pids.split(',')]
         papers = Paper.objects.filter(id__in=paperids)
-    except Exception, e:
+    except Exception as e:
         ## OLD: print e
         papers = []
     total_num_scores = 0
@@ -191,8 +191,8 @@ def __studentmarkreport(student):
         assignments = Assignment.objects.filter(students=student)
         papers = list(Paper.objects.filter(assignment__in=assignments))
         papers.extend(list(Paper.objects.filter(owner=student.user, ptype='Review')))
-    except Exception, e:
-        print e
+    except Exception as e:
+        print(e)
         papers = []
     for p in papers:
         question_set = Question.objects.filter(paper=p)
@@ -254,7 +254,7 @@ def paper_add(request):
             __updatequestioninpaper(questionlist, paper)
             paper.questionseq = pickle.dumps([q.id for q in questionlist])
             paper.save()
-            print paper.questionseq
+            print(paper.questionseq)
             messages.add_message(request, messages.SUCCESS, "One Paper Added")
             return redirect("/paper/add?paperid=" + str(paper.id))
     else:
@@ -309,7 +309,7 @@ def paper_getquestions(request):
                 view = request.POST['view']
             except:
                 view = 0
-            print view,"view"
+            print(view,"view")
             teacher, res = getTpByRequest(request, None)
             student = None
             if not teacher:
@@ -317,22 +317,22 @@ def paper_getquestions(request):
                 teacher = student.teacher
             logger.info("paper_getquestions,paperid:%s,teacher:%s" % (paperid, teacher))
             def inital_ztree():
-                print 1111111111111111111
+                print(1111111111111111111)
                 #itempools = Itempool.objects.filter(teacher=teacher)
                 itempools = Itempool.objects.filter(accessible=teacher)
                 ztreejson = __builduncheckeditempooltree(itempools, view, student)
                 return ztreejson
-            print paperid
+            print(paperid)
             if paperid and paperid != '-1':
                 try:
                     paper = Paper.objects.get(id=int(paperid))
-                    print 'paper.questionseq = ', paper.questionseq
+                    print('paper.questionseq = ', paper.questionseq)
                     questionseq = pickle.loads(str(paper.questionseq))
                 except:
                     paper = None
                     questionseq = []
-                print 'paper @@= ', paper
-                print 'questionseq @@@= ', questionseq
+                print('paper @@= ', paper)
+                print('questionseq @@@= ', questionseq)
                 if paper and questionseq:
                     ztreejson, qnum, checkeditempools = __buildcheckeditempooltree(questionseq, view, student)
                     try:
@@ -438,7 +438,7 @@ def __builduncheckeditempooltree(itempools, view, student):
                     questionnode['disabled'] = 'false'
                 questionnodes.append(questionnode)
             ztreejson.append([itemnode, questionnodes])
-    print ztreejson,"ztreejson"
+    print(ztreejson,"ztreejson")
     return ztreejson
 
 
@@ -459,9 +459,9 @@ def paper_updatename(request):
     try:
         if tp:
             paperid = int(request.GET.get('paperid').strip())
-            print 'paperid = ', paperid
+            print('paperid = ', paperid)
             papername = request.GET.get('papername')
-            print "papername = ", papername
+            print("papername = ", papername)
             if paperid == -1 and papername:
                 new_paper = Paper.objects.create(papername=papername,
                                                  owner=tp.user,
@@ -474,7 +474,7 @@ def paper_updatename(request):
                     paper = Paper.objects.get(id=paperid)
                 except Paper.DoesNotExist:
                     paper = None
-                print 'paper object = ', paper
+                print('paper object = ', paper)
                 if paper:
                     paper.papername = papername
                     paper.owner = tp.user
@@ -492,5 +492,5 @@ def paper_updatename(request):
                     response_data['state'] = 'success'
     except:
         traceback.print_exc()
-    print response_data
+    print(response_data)
     return HttpResponse(simplejson.dumps(response_data), mimetype="application/json")

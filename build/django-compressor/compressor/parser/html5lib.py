@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+
 from django.utils.encoding import smart_unicode
 from django.core.exceptions import ImproperlyConfigured
 
@@ -29,9 +29,9 @@ class Html5LibParser(ParserBase):
     def html(self):
         try:
             return self.html5lib.parseFragment(self.content)
-        except ImportError, err:
+        except ImportError as err:
             raise ImproperlyConfigured("Error while importing html5lib: %s" % err)
-        except Exception, err:
+        except Exception as err:
             raise ParserError("Error while initializing Parser: %s" % err)
 
     def css_elems(self):

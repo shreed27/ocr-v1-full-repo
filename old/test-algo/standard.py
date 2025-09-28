@@ -5,9 +5,9 @@
 
 # Local packages
 #
-from common import *
+from .common import *
 debug_print("algo/standard.py: " + debug_timestamp())
-import wordnet
+from . import wordnet
 
 # Other packages
 #
@@ -142,7 +142,7 @@ class Standard:
         special = {'<': ' ', '>': '', '(': '',
                    ')': '', '.': '', ',': '',
                    '""': ''}			# TODO: See if this should be '"'
-        for (k, v) in special.items():
+        for (k, v) in list(special.items()):
             text = text.replace(k, v)
         debug_print(" => %s" % text, level=5)
         return text
@@ -207,7 +207,7 @@ class Standard:
             # OLD: text = nltk.word_tokenize(sentence['KeyS'])
             # OLD: # word.lower() + '/' + tag
             fdist = nltk.FreqDist(sentence['SenWords'])
-            max_freq = max([f for f in fdist.values()])
+            max_freq = max([f for f in list(fdist.values())])
             log_max_freq = math.log(max_freq) if (max_freq > 1) else 1
             senvec = {}
             sen_len = len(sentencelist)
@@ -245,8 +245,8 @@ class Standard:
 #
 if __name__ == '__main__':
     full_text = "1 . It captured the vibrancy of India's slums.\n2 . which are often misperceived as being simply rundown housing areas.\n"
-    print "Input:\n\n%s\n" % full_text
+    print("Input:\n\n%s\n" % full_text)
     std = Standard()
     (pointlist, textfdist, slist) = std.Analysis(full_text)
-    print "Output: \n\nPoints: %s\nDist: %s\nSents: %s\n" % (str(pointlist), str(textfdist), str(slist))
+    print("Output: \n\nPoints: %s\nDist: %s\nSents: %s\n" % (str(pointlist), str(textfdist), str(slist)))
     debug_print("stop algo/standard.py: " + debug_timestamp())

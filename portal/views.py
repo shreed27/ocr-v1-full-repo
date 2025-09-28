@@ -8,10 +8,10 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-from forms import RegisterForm, LoginForm, InfoModForm, ForgotPasswordForm
-from models import TProfile, SProfile
+from .forms import RegisterForm, LoginForm, InfoModForm, ForgotPasswordForm
+from .models import TProfile, SProfile
 from django.views.decorators.csrf import csrf_exempt
-from emailtool import EmailTool
+from .emailtool import EmailTool
 from portal.common import getGroupNameByRequest
 from django.contrib.auth import get_backends
 from django.views.decorators.http import require_POST
@@ -143,9 +143,9 @@ def api_login(request):
     assert request.POST.get('api_key') == settings.MEGAFORT_API_KEY, "Not authorized to access this api"
     api_key = request.POST.get('unique_key')
     try:
-        print "I am enter"
+        print("I am enter")
         tprofile = TProfile.objects.get(api_key=api_key)
-        print tprofile,"profile"
+        print(tprofile,"profile")
         # Login after succecful register
         # Bypass `authenticate()` because we did't get the user password
         user = tprofile.user
@@ -190,8 +190,8 @@ def teacher_registration_API(request):
         email = request.POST.get('email')
         password = request.POST.get('password2')
         invitecode = request.POST.get('invitecode')
-        print request.POST
-        print invitecode,"code"
+        print(request.POST)
+        print(invitecode,"code")
         try:
             randomcode = Randomcode.objects.get(randomcode = invitecode, used = False)
             randomcode.used = True
@@ -224,7 +224,7 @@ def student_registration_API(request):
     :return response['response_status'], response['response_msg']:
     """
     response = dict()
-    print request.POST
+    print(request.POST)
     try:
         teacher_api_key = request.POST.get('teacher_api_key')
         username = request.POST.get('username')
@@ -237,7 +237,7 @@ def student_registration_API(request):
         except:
             classroom = None
         student_api_key = request.POST.get('student_api_key')
-        print username, password, email, gender, student_api_key
+        print(username, password, email, gender, student_api_key)
         try:
             tp = TProfile.objects.get(api_key=teacher_api_key)
         except TProfile.DoesNotExist:

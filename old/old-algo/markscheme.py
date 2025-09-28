@@ -1,5 +1,5 @@
 import logging
-from scheme_lang import *
+from .scheme_lang import *
 
 
 class MarkScheme(object):

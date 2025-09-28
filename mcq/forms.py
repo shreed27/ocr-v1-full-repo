@@ -59,8 +59,8 @@ class MCQ_DetailSearchForm(forms.Form):
 			self.fields['paper'].required = False
 			self.fields['student'] = forms.ChoiceField(choices=students, label='students')
 			self.fields['student'].required = False
-		except Exception,e:
-			print e
+		except Exception as e:
+			print(e)
 
 	paper = forms.ChoiceField()
 	student = forms.ChoiceField()
@@ -121,7 +121,7 @@ class MultiSelectWidget(forms.SelectMultiple):
 
 	def render(self, name, value, attrs=None):
 		rendered = super(MultiSelectWidget, self).render(name, value, attrs)
-		return rendered + mark_safe(u'''<script type="text/javascript">
+		return rendered + mark_safe('''<script type="text/javascript">
 		    $(document).ready(function afterReady() {
 			var elem = $('#id_%(name)s');
 			elem.multiselect();
@@ -173,7 +173,7 @@ class MCQ_AssignmentDetailForm(forms.Form):
 	def clean_description(self):
 		desc = self.cleaned_data['description'].replace('\r', '').replace('\n', '</br>').strip()
 		logger.info('clean-desc:%s' % desc)
-		print desc
+		print(desc)
 		return desc
 class MCQ_ItemPoolDetailForm(forms.Form):
     def __init__(self,*args,**kwargs):
@@ -225,7 +225,7 @@ class MCQ_PaperDetailForm(forms.Form):
 		for q in qids:
 			try:
 				question = MCQ_Question.objects.get(id=int(q))
-			except Exception, e:
+			except Exception as e:
 				logger.debug('exception to search for question: %s' % q)
 				logger.error(e)
 				continue

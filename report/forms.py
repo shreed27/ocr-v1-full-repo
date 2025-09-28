@@ -20,8 +20,8 @@ class DetailSearchForm(forms.Form):
             self.fields['paper'].required = False
             self.fields['student'] = forms.ChoiceField(choices=students, label='students')
             self.fields['student'].required = False
-        except Exception,e:
-            print e
+        except Exception as e:
+            print(e)
 
     paper = forms.ChoiceField()
     student = forms.ChoiceField()

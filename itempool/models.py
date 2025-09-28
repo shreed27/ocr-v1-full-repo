@@ -12,10 +12,10 @@ class Itempool(models.Model):
     accessible = models.ManyToManyField(TProfile, null=True, blank=True, related_name='Item Pool')
 
     class Meta:
-        verbose_name = u'Item Pool'
+        verbose_name = 'Item Pool'
 
     def __unicode__(self):
-        return u'[Itempool:%s]' % self.poolname
+        return '[Itempool:%s]' % self.poolname
 
     # def save(self, *args, **kwargs):
     #     # custom save method to provide `accessible` value

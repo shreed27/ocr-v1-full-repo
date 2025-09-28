@@ -31,7 +31,7 @@ class AutoOneToOneField(OneToOneField):
         setattr(cls, related.get_accessor_name(), AutoSingleRelatedObjectDescriptor(related))
 
 
-class JSONField(models.TextField):
+class JSONField(models.TextField, metaclass=models.SubfieldBase):
     """
     JSONField is a generic textfield that neatly serializes/unserializes
     JSON objects seamlessly.
@@ -47,14 +47,12 @@ class JSONField(models.TextField):
         page.save()
     """
 
-    __metaclass__ = models.SubfieldBase
-
     def to_python(self, value):
         if value == "":
             return None
 
         try:
-            if isinstance(value, basestring):
+            if isinstance(value, str):
                 return json.loads(value)
         except ValueError:
             pass

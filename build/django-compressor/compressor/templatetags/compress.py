@@ -27,7 +27,7 @@ class CompressorMixin(object):
         }
 
     def compressor_cls(self, kind, *args, **kwargs):
-        if kind not in self.compressors.keys():
+        if kind not in list(self.compressors.keys()):
             raise template.TemplateSyntaxError(
                 "The compress tag's argument must be 'js' or 'css'.")
         return get_class(self.compressors.get(kind),

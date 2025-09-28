@@ -34,7 +34,7 @@ class ConvertDocx(object):
 if __name__=="__main__":
     import sys
     if len(sys.argv) !=3:
-        print "Usage: ./convertdocx.py input output"
+        print("Usage: ./convertdocx.py input output")
         sys.exit(0)
     else:
         cd=ConvertDocx()

@@ -56,8 +56,8 @@ if __debug__:
             if (output_timestamps):
                 # Get time-proper from timestamp (TODO: find standard way to do this)
                 timestamp = re.sub(r"^\d+-\d+-\d+\s*", "", debug_timestamp())
-                print >> sys.stderr, "[%s] " % timestamp,
-            print >> sys.stderr, text,
+                print("[%s] " % timestamp, end=' ', file=sys.stderr)
+            print(text, end=' ', file=sys.stderr)
     
     
     # debug_print(level, text): Print TEXT if at debug trace LEVEL or higher.
@@ -66,7 +66,7 @@ if __debug__:
     def debug_print(text, level=1):
         debug_print_without_newline(text, level)
         if (debug_level >= level):
-            print >> sys.stderr
+            print(file=sys.stderr)
     
 
     # debug_timestamp(): Return timestamp for use in debugging traces
@@ -116,7 +116,7 @@ else:
 # print_stderr(text): output TEXT to standard error
 #
 def print_stderr(text):
-    print >> sys.stderr, text
+    print(text, file=sys.stderr)
 
 
 # getenv_text(var, [default=""]): returns textual value for environment variable VAR (or DEFAULT value)

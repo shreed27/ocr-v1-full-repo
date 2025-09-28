@@ -16,7 +16,7 @@ class MultiSelectWidget(forms.SelectMultiple):
 
     def render(self, name, value, attrs=None):
         rendered = super(MultiSelectWidget, self).render(name, value, attrs)
-        return rendered + mark_safe(u'''<script type="text/javascript">
+        return rendered + mark_safe('''<script type="text/javascript">
             $(document).ready(function afterReady() {
                 var elem = $('#id_%(name)s');
                 elem.multiselect();
@@ -61,5 +61,5 @@ class AssignmentDetailForm(forms.Form):
 
     def clean_description(self):
         desc = self.cleaned_data['description'].replace('\r', '').replace('\n', '</br>').strip()
-        print desc
+        print(desc)
         return desc

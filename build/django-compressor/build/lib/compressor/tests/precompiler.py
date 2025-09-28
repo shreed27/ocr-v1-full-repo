@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from __future__ import with_statement
+
 import optparse
 import sys
 
@@ -28,7 +28,7 @@ def main():
         with open(options.outfile, 'w') as f:
             f.write(content)
     else:
-        print content
+        print(content)
 
 
 if __name__ == '__main__':

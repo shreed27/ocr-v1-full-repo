@@ -60,11 +60,11 @@
 #------------------------------------------------------------------------
 # Library packages
 
-from common import *
+from .common import *
 
 # OS support
 import sys
-import commands
+import subprocess
 import tempfile
 
 #------------------------------------------------------------------------
@@ -86,7 +86,7 @@ def run_command(command_line, level=5):
     """Runs COMMAND_LINE and returns the output (as a string), with debug tracing at specified LEVEL"""
     # Issue command
     debug_print("Running command: %s" % command_line, level=level)
-    (status, output) = commands.getstatusoutput(command_line)
+    (status, output) = subprocess.getstatusoutput(command_line)
     if (status != 0):
         print_stderr("Warning: problem running command (status=%d): %s" % (status, command_line))
 
@@ -172,7 +172,7 @@ def main():
             pass
         elif (args[arg_pos] == "--text"):
             arg_pos += 1
-            print("%s" % parse_text(args[arg_pos]))
+            print(("%s" % parse_text(args[arg_pos])))
             sys.exit()
         else:
             print_stderr("Error: unexpected argument '%s'" % args[arg_pos])
@@ -181,7 +181,7 @@ def main():
     file = args[arg_pos]
 
     # Get parse tree for text and optionally draw it
-    print("%s" % parse_file(file))
+    print(("%s" % parse_file(file)))
 
     # Cleanup
     debug_print("stop %s: %s" % (__file__, debug_timestamp()), 3)
